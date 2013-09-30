@@ -1,0 +1,150 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/process_function.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('.carousel').carousel('cycle');
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+<body>
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop">
+						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: -40px;">เข้าสู่ระบบ</a>
+							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
+							padding-top: 15px;">
+							<li><h2>กรุณาเข้าสู่ระบบ</h2></li>
+
+								<form>
+									<input name="identity" id="username" type="text" placeholder="อีเมล"> 
+									<input name="password" id="password" type="password" placeholder="รหัสผ่าน"><br>
+									<input type="checkbox" name="remember" style="margin-top: -5px;"></input>
+									<a id="forgot-password" class="forgot-password" href="#">&nbspลืมรหัสผ่าน</a><br>
+									<button type="submit" class="btn btn-inverse" style="margin-top:5px;">เข้าสู่ระบบ</button>
+									<button type="submit" class="btn btn-warning" style="margin-top:5px;">ยกเลิก</button>
+								</form>
+							</ul>
+						</li>
+						<li class="register">
+								<a href="services.html"> สมัครสมาชิก </a>
+						</li>
+					</ul>
+
+					<!-- Phone -->
+					<ul class="visible-phone visible-tablet">
+						<li id="brand-text" style="float: left"><a href=""> หน่วยงานวัตุอันตราย</a></li>
+						<li class="menu-toggle"><a href="#" style="margin-left: 15px;">
+							<i class="icon-th-list icon-white" style="margin-top: 3px;"></i>&nbsp&nbspเมนู</a></li>
+						<ul class="menu-vertical">
+							<li><a id="home-li">หน้าหลัก</a></li>
+							<li><a id="register-li">สมัครสมาชิก</a></li>
+							<li><a id="login-li">เข้าสู่ระบบ</a></li>
+						</ul>
+					</ul>
+
+
+					</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+		<!--slide -->
+		<div id="hazard-carousel" class="carousel slide visible-desktop">
+			<ol class="carousel-indicators middle">
+				<li data-target="#hazard-carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#hazard-carousel" data-slide-to="1"></li>
+			</ol>	
+		
+		<div class="carousel-inner">
+			<div class="active item">
+				<img src="img/slide.png">	
+			</div>
+			<div class="item">
+				<img src="img/ex-carousel-1.jpg">	
+			</div>	
+		</div>
+
+			<a class="carousel-control left" href="#hazard-carousel" data-slide="prev" style="margin-top: 15px;">&lsaquo;</a>
+			<a class="carousel-control right" href="#hazard-carousel" data-slide="next" style="margin-top: 15px;">&rsaquo;</a>
+		</div>
+		<!--slide end -->
+
+	</body>
+</html>
