@@ -66,10 +66,18 @@ def list(request):
 	if(user_obj.role.name == 'officer'):
 		#DO SOMETHING
 		context = 'Officer'
+		auth_obj = Autherize_order.objects.filter(role=user_obj.role)
+		forms_obj=[]
+		for auth in auth_obj:
+			form_obj = Form.objects.filter(status=auth.priority, formType=auth.formType)
+			forms_obj+=form_obj
+
+		context = {'forms': forms_obj }
 		return render(request,'main/officer_documents.html',context)
 
 	#DO SOMETHING
 	form_obj = Form.objects.filter(user=user_obj)
+
 	context = {'forms':form_obj}
 	print(form_obj)
 	#render list.html
