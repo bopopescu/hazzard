@@ -1,0 +1,191 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/customer&officer_documents.css" type="text/css" media="screen" charset="utf-8">
+	<!-- <link rel="stylesheet" href="css/officer_documents.css" type="text/css" media="screen" charset="utf-8"> -->
+	<link rel="stylesheet" href="css/hazardTheme-responsive.css" type="text/css" media="screen" charset="utf-8">
+
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript"src="js/process_function.js"></script>
+
+	 
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: -40px;">ขอเอกสาร</a>
+							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
+							padding-top: 15px;">
+								<li><h2>ขอเอกสาร</h2></li>
+
+								
+							</ul>
+						</li>
+						<li class="register">
+								<a href="services.html"> ข้อมูลส่วนตัว </a>
+						</li>
+
+
+					</ul>
+
+					<!-- Phone -->
+					<ul class="visible-phone">
+					<!-- 	<li id="brand-text" style="float:left"><a href=""> หน่วยงานวัตุอันตราย</a></li> -->
+						<li class="menu-toggle"><a href="#" style="margin-left: 15px;">
+							<i class="icon-th-list icon-white" style="margin-top: 3px;"></i>&nbsp&nbspเมนู</a></li>
+						<ul class="menu-vertical">
+							<!-- <li><a id="home-li">หน้าหลัก</a></li>
+							<li><a id="register-li">สมัครสมาชิก</a></li>
+							<li><a id="login-li">เข้าสู่ระบบ</a></li> -->
+						</ul>
+					</ul>
+
+					</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+
+		<!-- <div class="span12" style="margin:0; padding:0"> -->
+			<div class="content">
+				<div class="subContent">
+
+				
+					<div class="span3">
+							<h4> สวัสดี,  คุณ .... </h4>
+								<ul class="process">
+									<li>		
+								
+									  <a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >
+								  	กระบวนการขอขึ้นทะเบียน</a>
+									  	<ul id="collapse-register" class="collapse sublist">
+									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลั่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+										</ul>
+							</li>
+
+							<li>  
+								<a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >  กระบวนการขอผลิต</a>
+								<ul id="collapse-register" class="collapse sublist">
+									    	<li><a href="#" onclick="registerFunction()">  ขอนำเข้าอันตราย</a></li>
+											<li><a href="#" onclick="modify_registerFunction()">   ขอเปลั่ยนแปลงใบอนุญาติเข้าวัตุอันตราย</a></li>
+											<li><a href="#" onclick="extend_registerFunction()">   ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+										</ul>
+							</li>
+							<li><a>  กระบวนการขอนำเข้า</a></li>
+							<li><a>  กระบวนการขอครอบครอง</a></li>
+							<li><a>  กระบวนการขอส่งออก</a></li>
+							<li><a>  กระบวนการขอแสดงตัวอย่าง</a></li>
+						</ul>
+					</div>
+
+					<div id="intro_officer" class="span6">
+						<H1> ตรวจเอกสาร </H1> 
+						</br>  <p p style="text-indent:0.5in"> เจ้าหน้าที่ สามารถ สามารถ เลือกตรวจสอบเอกสารของผู้ประกอบการ
+						ได้ตามกระบวนที่ ผู้ประกอบการได้ ทำการยื่นเอกสาร ไว้ ดังต่อไปนี้
+						 </p>
+						 <ul style="font-size:18px; ">
+						 	<li>  กระบวนการขอขึ้นทะเบียน </li>
+						 	<li>  กระบวนการขอผลิต </li>
+							<li>  กระบวนการขอนำเข้า </li>
+							<li> กระบวนการขอครอบครอง </li>
+							<li>  กระบวนการขอส่งออก </li>
+							<li>  กระบวนการขอแสดงตัวอย่าง </li>
+						</ul>
+
+						<p> โดยที่ เจ้าหน้าที่ แต่ละส่วน จะ สามารดูเอกสาร ที่ผู้ประกอบการ ยื่น
+						 ทำการพิจารณา อนุมัติ/ ไม่อนุมัติ เอกสาร ได้ตามความเหมาะสม </p>
+
+						 <a id="manual_officer" style="float:right; font-size:19px;"> คู่มือการใช้งาน </a>
+					</div>
+					
+
+
+					<div id="registerProcess_list" class="span6">
+						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
+						<H3 id="list_Title">   </H3>
+						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								      <th id="No_head"> No. </th>
+								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    <tr>
+								      <td id="No_value"></td>
+								      <td id="No_permit_value"></td>
+								      <td id="date1_value"></td>
+								      <td id="check_value">
+								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+
+								      <td id="manage_value">
+										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										</a>
+								      	
+								      </td>
+								    </tr>
+								  </tbody>
+						</table>
+					</div>
+
+
+
+				</div> <!--sub-content-->
+
+			</div> <!--content-->
+		<!-- </div><!--span12--> -->
+
+
+	</body>
+</html>

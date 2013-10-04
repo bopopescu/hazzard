@@ -1,0 +1,65 @@
+.subContent{
+	
+	width: 940px;
+	margin: 0 auto;
+	
+	font-family: 'thai_sans_lite';
+
+}
+
+h4{
+
+	font-family: 'thai_sans_lite';
+	padding-left: 30px;
+}
+.span3{
+	/*background-color: #FFFFFF;*/
+	margin-top: 0px;
+	padding-left: 0px;
+	font-size: 23px;
+	min-height:100px; 
+	
+}
+
+.process>li{
+	margin-top: 5px;
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	/*border-bottom: 1px solid #96BBD4;*/
+	border-top: 1px solid #E5E5E5;
+}
+
+
+.col-md-8{
+	font-size: 25px;
+}
+
+h1{
+	font-family: 'thai_sans_lite';
+	display: inline;
+}
+
+#add_icon{
+	display: inline;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+.No_permit{
+	width: 100px;
+}
+.date1{
+	width: 100px;
+}
+
+.table thead>tr>th{
+	text-align: center;
+}
+
+.table tbody>tr>td{
+	text-align: center;
+}

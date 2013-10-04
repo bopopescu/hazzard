@@ -1,0 +1,446 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="css/register.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('.carousel').carousel('cycle');
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop">
+						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: -40px;">ขอเอกสาร</a>
+							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
+							padding-top: 15px;">
+								<li><h2>ขอเอกสาร</h2></li>
+
+								
+							</ul>
+						</li>
+						<li class="register">
+								<a href="services.html"> ข้อมูลส่วนตัว </a>
+						</li>
+
+
+						</ul>
+					</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+			<div class="content">
+				<h1> คำขออนุญาตส่งออกวัตถุอันตราย</h1>
+				<h2> วอ. 5</h2>
+		
+				<form>
+					
+							<!-- <div class="form-group"> -->
+								<div class="form-inline date_des">
+									
+									<p class="date" >วันที่</p><input type="TEXT" class="form-control" id="dayBox" placeholder="01">
+									
+									<p class="date" >เดือน</p><input type="TEXT" class="form-control" id="monthBox" placeholder="01">
+									
+									<p class="date">ปี</p><input type="TEXT" class="form-control" id="yearBox" placeholder="1990">
+									
+
+								</div>
+							<!-- </div> -->
+
+
+							
+							<div class="form-group infoRight">
+								
+								<p class="name" >ข้าพเจ้า</p><input type="TEXT" class="form-control" id="nameBox" placeholder="ชื่อ-สุกล">
+								
+								<p class="age" >อายุ</p><input type="TEXT" class="form-control" id="ageBox" placeholder="..."><p> ปี </p>
+								
+								<p class="region">สัญชาติ</p><input type="TEXT" class="form-control" id="regionBox" placeholder="....">
+								
+
+							</div>
+
+
+							<div class="form-group infoLeft">	</div>
+
+							<div class="form-group infoLeft">
+
+									<p class="code-tax" >เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" id="code-taxBox" placeholder="หมายเลขภาษี">
+
+								</br>
+								
+								<p class="contact" >สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
+
+								<p class="address_contact" >ตั้งอยู่บ้านเลขที่</p>
+								<input type="TEXT" class="form-control" id="address_contactBox" placeholder="">
+								
+
+								<p class="mo_contact" >หมู่ที่</p>
+								<input type="TEXT" class="form-control" id="mo_contactBox" placeholder="">
+
+								<p class="soi_contact" >ตรอก/ซอย</p>
+								<input type="TEXT" class="form-control" id="soi_contactBox" placeholder="">
+
+								<br/>
+
+
+								<p class="street_contact" >ถนน</p>
+								<input type="TEXT" class="form-control" id="street_contactBox" placeholder="">
+
+								<p class="district_contact" >ตำบล/แขวง</p>
+								<input type="TEXT" class="form-control" id="district_contactBox" placeholder="">
+								<br/>
+								<p class="canton_contact" >อำเภอ/เขต</p>
+								<input type="TEXT" class="form-control" id="canton_contactBox" placeholder="">
+
+								<p class="mobile_contact" >โทรศัพท์</p>
+								<input type="TEXT" class="form-control" id="mobile_contactBox" placeholder="">
+								<br/>
+								<p class="fax_contact" >โทรสาร</p>
+								<input type="TEXT" class="form-control" id="fax_contactBox" placeholder="">
+
+								<p class="email_contact" >Email address</p>
+								<input type="TEXT" class="form-control" id="email_contactBox" placeholder="">
+
+								<br/></br>
+								<p class="hazard_address" >สถานที่เก็บวัตถุอันตรายชื่อ</p>
+								<input type="TEXT" class="form-control" id="hazard_address" placeholder="">
+
+								
+
+								</br>
+								<p> ตั้งอยู่เลขที่ </p>
+								<input type="TEXT" class="form-control" id="hazard_address_contactBox" placeholder="">
+								
+
+								<p class="hazard_mo_contact" >หมู่ที่</p>
+								<input type="TEXT" class="form-control" id="hazard_mo_contactBox" placeholder="">
+
+								<p class="hazard_soi_contact" >ตรอก/ซอย</p>
+								<input type="TEXT" class="form-control" id="hazard_soi_contactBox" placeholder="">
+
+								<br/>
+
+
+								<p class="hazard_street_contact" >ถนน</p>
+								<input type="TEXT" class="form-control" id="hazard_street_contactBox" placeholder="">
+
+								<p class="hazard_district_contact" >ตำบล/แขวง</p>
+								<input type="TEXT" class="form-control" id="hazard_district_contactBox" placeholder="">
+								<br/>
+								<p class="hazard_canton_contact" >อำเภอ/เขต</p>
+								<input type="TEXT" class="form-control" id="hazard_canton_contactBox" placeholder="">
+
+								<p class="hazard_mobile_contact" >โทรศัพท์</p>
+								<input type="TEXT" class="form-control" id="hazard_mobile_contactBox" placeholder="">
+								<br/>
+								<p class="hazard_fax_contact" >โทรสาร</p>
+								<input type="TEXT" class="form-control" id="hazard_fax_contactBox" placeholder="">
+
+								<p class="hazard_email_contact" >Email address</p>
+								<input type="TEXT" class="form-control" id="hazard_email_contactBox" placeholder="">
+
+
+
+								</br></br></br>
+									<p class="hazard_expert_name"> ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบการเก็บรักษา(ในกรณีที่มีใบประกาศฯ ออกตามความในมาตรา ๒๐(๒) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ. ๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ)</p>
+									<input type="TEXT" class="form-control" id="hazard_expert_nameBox" placeholder="">
+								</br>
+									<p>(ในกรณีที่มีสถานที่เก็บรักษาวัตถุอันตรายมากกว่า 1 แห่ง ให้ระบุรายละเอียดเพิ่มเติมด้านหลัง)</p>
+
+								</br></br></br>
+								<p>ขออนุญาตส่งออกวัตถุอันตายตามรายละเอียด ดังต่อไปนี้</p>
+								</br>
+									<p class"name_hazard">ชื่อวัตถุอันตราย สูตรเคมี(๑) และอัตราส่วน</p>
+									<input type="TEXT" class="form-control" id="hazardous_nameBox" placeholder="">
+								</br>
+
+									<p class"formula_hazard">ลักษณะและสูตร(Formulation)(๒)</p>
+									<input type="TEXT" class="form-control" id="hazardous_fomulaBox" placeholder="">
+									</br>
+									<p class"brandName_hazard">ชื่อทางการค้า(ถ้ามี)</p>
+									<input type="TEXT" class="form-control" id="hazardous_brandNameBox" placeholder="">
+									</br>
+									<p class"destinationCountry_hazard">ประเทศปลายทาง</p>
+									<input type="TEXT" class="form-control" id="hazardous_destCountryBox" placeholder="">
+									</br>
+									<p class"amount_hazard">ปริมาณ</p>
+									<input type="TEXT" class="form-control" id="hazardous_amountBox" placeholder="">
+									</br>
+									<p class"note_hazard">หมายเหตุ</p>
+									<input type="TEXT" class="form-control" id="hazardous_noteBox" placeholder="">
+
+
+									
+
+								
+
+								</br></br>
+									<p> พร้อมกันนี้ข้าพเจ้าได้ส่งมอบเอกสารประกอบคำขออนุญาต(๓) ดังต่อไปนี้ </p>
+									</br></br>
+									<div class="doc_zone">
+
+									<p class="checkboxLabel">
+									  <input id="ID_doc_check" class="checkbox"type="checkbox" value="">
+									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
+									 
+								    
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="ensure_doc_check" class="checkbox"type="checkbox" value="">
+									  สำเนาหนังสือรับรองการจดทะเบียนเป็นิติบุคคล
+									 
+									</p></br></br>
+
+
+									<p class="checkboxLabel">
+									  <input id="tax_doc_check"class="checkbox"type="checkbox" value="">
+									  สำเนาใบทะเบียนภาษีมูลค่าเพิ่ม
+									   
+									</p></br></br>
+
+
+									<p class="checkboxLabel">
+									  <input id="info_doc_check" class="checkbox"type="checkbox" value="">
+									สำเนาใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
+									 <br/>
+									  
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="analysis_hazard_check"class="checkbox"type="checkbox" value="">
+									สำเนาผลวิเคราะห์วัตถุอันตราย
+									 
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="map_hazard_check" class="checkbox"type="checkbox" value="">
+									แผนที่สังเขปแสดงสถานที่เก็บรักาวัตถุอันตรายและบริเวณข้างเคียง
+
+									
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="layout_hazard_location_check" class="checkbox"type="checkbox" value="">
+									แผนผังภายในของอาคารที่ใช้เป็นสถานที่เก็บรักษาวัตถุอันตราย (ในกรณีที่มีใบประกาศฯออกตามความในมาตรา ๒๐(๑) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ. ๒๕๓๕ ให้สถานที่เก็บรักษาวัตถุอันตรายต้องเป็นไปตามหลักเกณฑ์ที่กำหนด)
+									
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="expert_info_doc_check" class="checkbox"type="checkbox" value="">
+									เอกสารแสดงความรู้ความชำนาญของผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบสำหรับการเก็บรักษา
+									 
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="container_hazard_info_doc_check" class="checkbox"type="checkbox" value="">
+									เอกสารแสดงลักษณะภาชนะบรรจุที่จะใช้และการหุ้มห่อหรือผูกมัดภาชนะบรรจุวัตถุอันตราย
+									 
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="safety_hazard_info_doc_check" class="checkbox"type="checkbox" value="">
+									เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย เช่น Materials Safety Data Sheet
+									 
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <input id="others_doc_check" class="checkbox"type="checkbox" value="">
+									อื่นๆ (ระบุ)
+									  <div class="input-append infoRight">
+									    <input  id="others_doc" type="text" style="width:200px; height:30px;"> 
+									   <!--   <button class="btn btn-warning" type="button" style="height:30px;">Browes</button> -->
+									 </div>
+									</p>
+
+									</br></br></br><p>มาเพื่อประกอบการพิจารณาด้วย(๔)</p>
+								</br></br></br></br></br></br></br>
+									<p>หมายเเหตุ:
+									</br>(๑) วัตถุอันตรายในความรับผิดชอบของสำนักงานคณะกรรมการอาหารและยา กรมวิชาการเกษตร กรมประมง และกรมปศุสัตว์ไม่ต้องระบุสารเคมี
+									</br>(๒) วัตถุอันตรายในความรับผิดชอบของกรมโรงงานอุตสาหกรรมไม่ต้องระบุสูตร(Formulation)
+									</br>(๓) เอกสารประกอบคำขออนุญาตดังกล่าวข้างต้นต้องแนบเฉพาะการขออนุญาตครั้งแรกหรือในกรณีที่เอกสารประกอบคำขออนุญาตมีการเปลี่ยนแปลงข้อความไปจากฉบับเดิมที่ได้เคยมอบไว้
+									</br> (๔) ให้กดเลือกที่กล่องสี่เหลี่ยมหน้าข้อความที่ต้องการ
+								</p>
+
+								</br></br>
+								<hr>
+
+								<br/></br>
+								<p  >สถานที่เก็บวัตถุอันตรายแห่งที่ 2 ชื่อ</p>
+								<input type="TEXT" class="form-control" id="hazard_address2" placeholder="">
+
+								
+
+								</br>
+								<p> ตั้งอยู่เลขที่ </p>
+								<input type="TEXT"  id="hazard_address_contactBox2" placeholder="">
+								
+
+								<p class="hazard_mo_contact2" >หมู่ที่</p>
+								<input type="TEXT"  id="hazard_mo_contactBox2" placeholder="">
+
+								<p class="hazard_soi_contact2" >ตรอก/ซอย</p>
+								<input type="TEXT"  id="hazard_soi_contactBox2" placeholder="">
+
+								<br/>
+
+
+								<p class="hazard_street_contact2" >ถนน</p>
+								<input type="TEXT"  id="hazard_street_contactBox2" placeholder="">
+
+								<p class="hazard_district_contact2" >ตำบล/แขวง</p>
+								<input type="TEXT" id="hazard_district_contactBox2" placeholder="">
+								<br/>
+								<p class="hazard_canton_contact2" >อำเภอ/เขต</p>
+								<input type="TEXT"  id="hazard_canton_contactBox2" placeholder="">
+
+								<p class="hazard_mobile_contact2" >โทรศัพท์</p>
+								<input type="TEXT"  id="hazard_mobile_contactBox2" placeholder="">
+								<br/>
+								<p class="hazard_fax_contact2" >โทรสาร</p>
+								<input type="TEXT" id="hazard_fax_contactBox2" placeholder="">
+
+								<p class="hazard_email_contact2" >Email address</p>
+								<input type="TEXT" id="hazard_email_contactBox2" placeholder="">
+
+								<br/></br>
+								<p  >สถานที่เก็บวัตถุอันตรายแห่งที่ 3 ชื่อ</p>
+								<input type="TEXT" id="hazard_addresss" placeholder="">
+
+								
+
+								</br>
+								<p> ตั้งอยู่เลขที่ </p>
+								<input type="TEXT"  id="hazard_address_contactBox3" placeholder="">
+								
+
+								<p class="hazard_mo_contact3" >หมู่ที่</p>
+								<input type="TEXT"  id="hazard_mo_contactBox3" placeholder="">
+
+								<p class="hazard_soi_contact3" >ตรอก/ซอย</p>
+								<input type="TEXT"  id="hazard_soi_contactBox3" placeholder="">
+
+								<br/>
+
+
+								<p class="hazard_street_contact3" >ถนน</p>
+								<input type="TEXT"  id="hazard_street_contactBox3" placeholder="">
+
+								<p class="hazard_district_contact3" >ตำบล/แขวง</p>
+								<input type="TEXT" id="hazard_district_contactBox3" placeholder="">
+								<br/>
+								<p class="hazard_canton_contact3" >อำเภอ/เขต</p>
+								<input type="TEXT"  id="hazard_canton_contactBox3" placeholder="">
+
+								<p class="hazard_mobile_contact3" >โทรศัพท์</p>
+								<input type="TEXT"  id="hazard_mobile_contactBox3" placeholder="">
+								<br/>
+								<p class="hazard_fax_contact3" >โทรสาร</p>
+								<input type="TEXT" id="hazard_fax_contactBox3" placeholder="">
+
+								<p class="hazard_email_contact3" >Email address</p>
+								<input type="TEXT" id="hazard_email_contactBox3" placeholder="">
+
+
+								</div><!--doc zone-->
+								<div class="button">
+								<button id="submit" class="btn buttonRequest" type="button" style="height:30px; width: 80px;">ส่งเอกสาร</button>
+
+								<button id="reset" class="btn buttonRequest" type="button" style="height:30px; width: 80px;">รีเซ็ต</button>
+							</div>
+								</div><!--button->
+										
+							</div><!-- infoleft -->
+
+							
+				</form><!--form-->
+			</div><!--content-->
+		
+
+
+	</body>
+</html>

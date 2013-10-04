@@ -1,0 +1,129 @@
+
+.content1{
+	 /*background: none repeat scroll 0 0 #FEFEFE;*/
+	 margin-top: 50px;
+    border: 1px dashed #4A9DD4;
+	min-height: 200px;
+	width: 800px;
+
+	border-radius: 10px;
+	  opacity:1;
+
+	padding-top: 2%;
+	/*margin-top: 30px;*/
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.content2{
+	 /*background: none repeat scroll 0 0 #FEFEFE;*/
+	margin-top: 90px;
+    border: 1px dashed #4A9DD4;
+	min-height: 550px;
+	width: 800px;
+
+	border-radius: 10px;
+
+	padding-top: 2%;
+	/*margin-top: 30px;*/
+	margin-left: auto;
+	margin-right: auto;
+
+}
+.col-md-6{
+	padding-left:0px;
+}
+
+.form-group {
+	font-family: 'thai_sans_lite';
+	 font-weight: normal;
+	
+
+}
+
+.form-group > input{
+	font-size: 20px;
+	color: #000000;
+	margin-top: 8px;
+	margin-bottom: 20px;
+	width: 260px;
+	height: 30px;
+	border: 1px solid #96BBD4;
+	background: #FAFAFA;
+
+}
+
+input{
+	padding-top: 0px;
+	font-family: 'thai_sans_lite';
+
+}
+.date{
+	display: inline;
+	font-size:20px;
+	margin-top:0px;
+}
+
+textarea{
+	margin-top: -15px;
+	padding-top: 0px;
+	margin-left: 30px;
+	height: 100px;
+	width: 255px;
+	background: #FAFAFA;
+}
+
+.address{
+	margin-top: 30px;
+}
+
+#addressBox{
+	margin-top: 8px;
+	height: 30px;
+	width: 200px;
+	background: #FAFAFA;
+}
+
+.button{
+	margin:auto;
+	margin-top:50px;
+	width:250px;
+
+	font-family: 'thai_sans_lite';
+}
+
+
+
+#title{
+	/*background-image:url('../image/Regis/title.png');*/
+	background-repeat:no-repeat;
+	background-position:center;
+	height:70px;
+	margin:auto;
+	margin-top:30px;
+	width:800px;
+}	
+#dayBox, #monthBox, #yearBox{
+	margin-top: 15px;
+	margin-right:5px;
+	width:46px;
+	height:30px;
+	margin-left:3px;
+	background: #FAFAFA;
+	margin-bottom: 30px;
+}
+p{
+
+	font-family: 'thai_sans_lite';
+	font-weight: normal;
+	font-size:26px;
+	/*color: #59BDFF;*/
+	color: #424242;
+
+}
+
+input{
+	margin-left:30px;
+}
+
