@@ -80,6 +80,12 @@ ul
 #register_request_list{
 	visibility: hidden;
 }
+#modify_register_request_list{
+	visibility: hidden;
+}
+#extend_register_request_list{
+	visibility: hidden;
+}
 
 
 /*officer*/
@@ -96,11 +102,15 @@ ul
 	margin-right: 7px;
 }
 
-
-
-
 #registerProcess_list{
 	display: none;
-	
 }
-
+#modify_registerProcess_list{
+	display: none;
+}
+#extend_registerProcess_list{
+	display: none;
+}
+#substitue_registerProcess_list{
+	display: none;
+}

@@ -104,8 +104,8 @@
 								  	กระบวนการขอขึ้นทะเบียน</a>
 									  	<ul id="collapse-register" class="collapse sublist">
 									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตุอันตราย</a></li>
-											<li><a href="#registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลั่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
-											<li><a href="#registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลั่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
 										</ul>
 							</li>
 
@@ -148,6 +148,105 @@
 
 					<div id="registerProcess_list" class="span6">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตขึ้นทะเบียน   </H3>
+						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								      <th id="No_head"> No. </th>
+								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    <tr>
+								      <td id="No_value"></td>
+								      <td id="No_permit_value"></td>
+								      <td id="date1_value"></td>
+								      <td id="check_value">
+								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+
+								      <td id="manage_value">
+										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										</a>
+								      	
+								      </td>
+								    </tr>
+								  </tbody>
+						</table>
+					</div>
+
+					<div id="modify_registerProcess_list" class="span6">
+						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
+						<H3 id="list_Title">   รายชื่อผู้ขอแก้ไขเปลี่ยนแปลง ของใบอนุญาตขึ้นทะเบียน   </H3>
+						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								      <th id="No_head"> No. </th>
+								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    <tr>
+								      <td id="No_value"></td>
+								      <td id="No_permit_value"></td>
+								      <td id="date1_value"></td>
+								      <td id="check_value">
+								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+
+								      <td id="manage_value">
+										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										</a>
+								      	
+								      </td>
+								    </tr>
+								  </tbody>
+						</table>
+					</div>
+
+					<div id="extend_registerProcess_list" class="span6">
+						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
+						<H3 id="list_Title">  รายชื่อผู้ขอต่ออายุของใบอนุญาตขึ้นทะเบียน   </H3>
+						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								      <th id="No_head"> No. </th>
+								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    <tr>
+								      <td id="No_value"></td>
+								      <td id="No_permit_value"></td>
+								      <td id="date1_value"></td>
+								      <td id="check_value">
+								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+
+								      <td id="manage_value">
+										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										</a>
+								      	
+								      </td>
+								    </tr>
+								  </tbody>
+						</table>
+					</div>
+
+					<div id="substitue_registerProcess_list" class="span6">
+						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">   </H3>
 						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
@@ -163,22 +262,22 @@
 
 								   <tbody>
 								    <tr>
-								      {% for form_obj in forms %}
-								    	<td class="No_value">{{ forloop.counter }}</td>
-								    	<td class="No_permit_value"># {{ form_obj.id }}</td>
-								    	<td id="date1_value"></td>
-								    	<td id="check_value">
-								      		<a id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a>
-								      	</td>
+								      <td id="No_value"></td>
+								      <td id="No_permit_value"></td>
+								      <td id="date1_value"></td>
+								      <td id="check_value">
+								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
 
-								    	<td id="manage_value">
-											<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png"></a>
-								      	</td>
-								      {% endfor %}
+								      <td id="manage_value">
+										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										</a>
+								      	
+								      </td>
 								    </tr>
 								  </tbody>
 						</table>
 					</div>
+
 
 
 
