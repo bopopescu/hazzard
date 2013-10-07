@@ -5,18 +5,18 @@
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
 
 
-	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/register.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
-	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -63,10 +63,10 @@
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
@@ -106,7 +106,7 @@
 					
 			</div>
 			<div class="logo">
-				<!-- <img src="img/logo-color.png"> -->
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
 			</div>
 		</header>
 		<!--header end -->
@@ -120,11 +120,11 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
 									
-									<p >วันที่</p><input type="TEXT" class="form-control" id="dayBox" placeholder="">
+									<p >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ data.dayBox }}">
 									
-									<p >เดือน</p><input type="TEXT" class="form-control" id="monthBox" placeholder="">
+									<p >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ data.monthBox }}">
 									
-									<p >ปี</p><input type="TEXT" class="form-control" id="yearBox" placeholder="">
+									<p >ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ data.yearBox }}">
 									
 
 								</div>
@@ -134,11 +134,11 @@
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input type="TEXT" class="form-control" id="nameBox" placeholder="">
+								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" placeholder="{{ data.nameBox }}">
 								
-								<p>อายุ</p><input type="TEXT" class="form-control" id="ageBox" placeholder=""><p> ปี </p>
+								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" placeholder="{{ data.ageBox }}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input type="TEXT" class="form-control" id="regionBox" placeholder="">
+								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{ data.regionBox }}">
 								
 
 							</div>
@@ -148,53 +148,53 @@
 
 							<div class="form-group infoLeft">
 
-									<p >เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" id="code-taxBox" placeholder="หมายเลขภาษี">
+									<p >เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" id="code-taxBox" placeholder="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p  >สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p  >ตั้งอยู่บ้านเลขที่</p>
-								<input type="TEXT" class="form-control" id="address_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="address_contactBox" placeholder="{{ data.address_contactBox }}">
 								
 
 								<p >หมู่ที่</p>
-								<input type="TEXT" class="form-control" id="mo_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="mo_contactBox" placeholder="{{ data.mo_contactBox }}">
 
 								<p >ตรอก/ซอย</p>
-								<input type="TEXT" class="form-control" id="soi_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="soi_contactBox" placeholder="{{ data.soi_contactBox }}">
 
 								<br/>
 
 
 								<p  >ถนน</p>
-								<input type="TEXT" class="form-control" id="street_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="street_contactBox" placeholder="{{ data.street_contactBox }}">
 
 								<p  >ตำบล/แขวง</p>
-								<input type="TEXT" class="form-control" id="district_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="district_contactBox" placeholder="{{ data.district_contactBox }}">
 								<br/>
 
 								<p>อำเภอ/เขต</p>
-								<input type="TEXT" class="form-control" id="canton_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="canton_contactBox" placeholder="{{ data.canton_contactBox }}">
 
 								<p>จังหวัด</p>
-								<input type="TEXT" class="form-control" id="provice_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="provice_contactBox" placeholder="{{ data.provice_contactBox }}">
 
 								</br>
 
 								<p>รหัสไปรษณีย์</p>
-								<input type="TEXT" class="form-control" id="zip_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="zip_contactBox" placeholder="{{ data.zip_contactBox }}">
 
 
 								<p>โทรศัพท์</p>
-								<input type="TEXT" class="form-control" id="mobile_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="mobile_contactBox" placeholder="{{ data.mobile_contactBox }}">
 								<br/>
 
 								<p>โทรสาร</p>
-								<input type="TEXT" class="form-control" id="fax_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="fax_contactBox" placeholder="{{ data.fax_contactBox }}">
 
 								<p>Email address</p>
-								<input type="TEXT" class="form-control" id="email_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" id="email_contactBox" placeholder=" {{ data.email_contactBox }}">
 
 								<br/>
 								<p>ขอขึ้นทะเบียนวัตุอันตราย</p>
@@ -221,36 +221,36 @@
 								</br></br>
 								
 									<p>๑.ชื่อวัตถุอันตราย</p>
-									<input type="TEXT" class="form-control" id="hazardous_nameBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="hazardous_nameBox" placeholder="{{ data.hazardous_nameBox }}">
 
 								</br>
 									<p>๒.สูตรอัตราส่วนผสมและลักษณะ</p>
-									<input type="TEXT" class="form-control" id="fomula_nameBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="fomula_nameBox" placeholder="{{ data.fomula_nameBox }}">
 
 								</br>
 									<p>๓.ชื่อทางการค้าหรือหมายเลขรหัส</p>
-									<input type="TEXT" class="form-control" id="official_nameBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="official_nameBox" placeholder="{{ data.official_nameBox }}">
 
 								</br>
 									<p> ๔.ชื่อผู้ผลิตและแหล่งผลิต</p>
-									<input type="TEXT" class="form-control" id="producer_nameBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="producer_nameBox" placeholder="{{ data.producer_nameBox }}">
 
 								</br>
 									<p> ๕.ชื่อผู้นำเข้า</p>
-									<input type="TEXT" class="form-control" id="importer_name" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="importer_name" placeholder="{{ data.importer_name }}">
 
 								</br>
 									<p> ๖.ชื่อผู้จำหน่าย/ ผู้จัดจำหน่าย</p>
-									<input type="TEXT" class="form-control" id="seller_nameBox" placeholder=""
+									<input disabled type="TEXT" class="form-control" id="seller_nameBox" placeholder="{{ data.seller_nameBox }}"
 									>
 
 								</br>
 									<p> ๗.ชนิดและลักษณะหับห่อหรือาภาชนะบรรจุ พร้อมทั้งนาดบรรจุ</p>
-									<input type="TEXT" class="form-control" id="package_nameBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="package_nameBox" placeholder="{{ data.package_nameBox }}">
 
 								</br>
 									<p> ๘.ประเภทของการใช้</p>
-									<input type="TEXT" class="form-control" id="type_usingBox" placeholder="">
+									<input disabled type="TEXT" class="form-control" id="type_usingBox" placeholder="{{ data.type_usingBox }}">
 
 								</br></br>
 									<p> เอกสารที่และตัวอย่างที่ต้องส่งประกอบการขึ้นทะเบียน </p>
@@ -346,24 +346,26 @@
 								<div class="button buttonView">
 									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
 
-									<button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> ส่งเอกสาร </button>
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> Approve </button></a>
 
-									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมติ </button>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  Reject </button>
 
 									<div id="identify_customer_modal" class="modal hide fade">
+										 <form action="reject/" method="post">
 										  <div class="modal-header">
 										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไมผ่านการอนุมัติ </h3>
 										  </div>
 
 										  <div class="modal-body">
-										    <textarea style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										    <textarea name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
 										  </div>
 
 										  <div class="modal-footer">
 										    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </a>
-										    <a href="#" class="btn btn-primary"> แจ้งผู้ประกอบการ </a>
+										    <a class="btn btn-primary" type="submit"> แจ้งผู้ประกอบการ </a>
 										  </div>
+										</form>
 									</div>
 								</div><!--button->
 										

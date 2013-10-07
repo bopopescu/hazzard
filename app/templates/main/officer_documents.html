@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer&officer_documents.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
 	<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/officer_documents.css" type="text/css" media="screen" charset="utf-8"> -->
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme-responsive.css" type="text/css" media="screen" charset="utf-8">
 
@@ -84,7 +84,7 @@
 					
 			</div>
 			<div class="logo">
-				<!-- <img src="img/logo-color.png"> -->
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
 			</div>
 		</header>
 		<!--header end -->
@@ -149,7 +149,7 @@
 					<div id="registerProcess_list" class="span6">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตขึ้นทะเบียน   </H3>
-						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -162,27 +162,30 @@
 								 </thead>
 
 								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'register_request' %}
 								    <tr>
-								      <td id="No_value"></td>
-								      <td id="No_permit_value"></td>
-								      <td id="date1_value"></td>
+								      <td id="No_value">{{forloop.count}}</td>
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
 
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
 								      	
 								      </td>
 								    </tr>
-								  </tbody>
+								    {% endif %}
+								    {% endfor %}								  </tbody>
 						</table>
 					</div>
 
 					<div id="modify_registerProcess_list" class="span6">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">   รายชื่อผู้ขอแก้ไขเปลี่ยนแปลง ของใบอนุญาตขึ้นทะเบียน   </H3>
-						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -195,19 +198,23 @@
 								 </thead>
 
 								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'register_modify' %}
 								    <tr>
-								      <td id="No_value"></td>
-								      <td id="No_permit_value"></td>
-								      <td id="date1_value"></td>
+								      <td id="No_value">{{forloop.count}}</td>
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
 
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
 								      	
 								      </td>
 								    </tr>
+								    {% endif%}
+								    {% endfor %}
 								  </tbody>
 						</table>
 					</div>
@@ -215,7 +222,7 @@
 					<div id="extend_registerProcess_list" class="span6">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">  รายชื่อผู้ขอต่ออายุของใบอนุญาตขึ้นทะเบียน   </H3>
-						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -228,19 +235,23 @@
 								 </thead>
 
 								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'register_extend' %}
 								    <tr>
-								      <td id="No_value"></td>
-								      <td id="No_permit_value"></td>
-								      <td id="date1_value"></td>
+								      <td id="No_value">{{forloop.count}}</td>
+								      <td id="No_permit_value"># {{ form.id }}</td>
+								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
 
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
 								      	
 								      </td>
 								    </tr>
+								    {% endif %}
+								    {% endfor %}
 								  </tbody>
 						</table>
 					</div>
@@ -248,7 +259,7 @@
 					<div id="substitue_registerProcess_list" class="span6">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">   </H3>
-						<!-- <img id="add_icon" src="img/icon/Add-New-32.png">  -->
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -266,10 +277,10 @@
 								      <td id="No_permit_value"></td>
 								      <td id="date1_value"></td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="#"><img  src="img/icon/View-32.png"></a></td>
+								      	<a  id="check_value_link" href="#"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
 
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
 								      	
 								      </td>
@@ -284,7 +295,7 @@
 				</div> <!--sub-content-->
 
 			</div> <!--content-->
-		<!-- </div><!--span12--> -->
+		<!-- </div><!--span12-->
 
 
 	</body>

@@ -134,7 +134,7 @@
 
 					<div id="register_request_list" class="span6"  >
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
-						<a href="/form/1"><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<a href="/create/1"><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -148,17 +148,19 @@
 
 								   <tbody>
 								    {% for form_obj in forms %}
-
 								    <tr>
-								    <td class="No">{{ form_obj }}</td>
-									<td class="No_permit">{{ form_obj.id }}</td>
-									<td class="date1">Somedate</td>
+								    <td class="No">{{ forloop.counter }}</td>
+									<td class="No_permit"># {{ form_obj.id }}</td>
+									<td class="date1">{{ form_obj.date }}</td>
 									<td class="status">{{ form_obj.status }}</td>
 										<td class="mange">
-
-								      	<a href="#"  id="modify_link"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="#"  id="extend_link"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
-								      	<a href="#"  id="substitue_link"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a>
+										{%if 'request' in form_obj.formType.name %}
+										<a href="/modify/{{ form_obj.id }}"  id="modify_link"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+								      	{% if form_obj.formType.autherize_number == form_obj.status %}
+								      	<a href="/form/{{ form_obj.id }}/permit"  id="substitue_link"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a>
+								      	{% endif %}
+								      	{% endif %}
 								      </td>
 								  	</tr>
 									{% endfor %}

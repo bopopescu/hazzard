@@ -5,18 +5,18 @@
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
 
 
-	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/register.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
-	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -63,10 +63,10 @@
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
@@ -111,22 +111,25 @@
 		</header>
 		<!--header end -->
 
-
+		
+			
 		<div class="col-md-12 col-md-offset-2" style="margin:0; padding:0">
 			<div class="content">
 				<h1> คำขอต่ออายุใบสำคัญการขึ้นทะเบียนวัตุอันตราย</h1>
 				<h2> วอ./กษ./กวก.๓ </h2>
 		
 				<div role="form">
-					
+				<form action="" method="post">	
+					{% csrf_token %}
+					<input type="hidden" name="form_type" value="register_extend">
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p>วันที่</p><input type="TEXT" class="form-control" id="dayBox" placeholder="">
+									<p>วันที่</p><input type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="">
 									
-									<p>เดือน</p><input type="TEXT" class="form-control" id="monthBox" placeholder="">
+									<p>เดือน</p><input type="TEXT" class="form-control" name="monthBox"  id="monthBox" placeholder="">
 									
-									<p>ปี</p><input type="TEXT" class="form-control" id="yearBox" placeholder="">
+									<p>ปี</p><input type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
 									
 
 								</div>
@@ -136,11 +139,11 @@
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input type="TEXT" class="form-control" id="nameBox" placeholder="">
+								<p>ข้าพเจ้า</p><input type="TEXT" class="form-control" name="nameBox"id="nameBox" placeholder="">
 								
-								<p>อายุ</p><input type="TEXT" class="form-control" id="ageBox" placeholder=""><p> ปี </p>
+								<p>อายุ</p><input type="TEXT" class="form-control"  name="ageBox" id="ageBox" placeholder=""><p> ปี </p>
 								
-								<p>สัญชาติ</p><input type="TEXT" class="form-control" id="regionBox" placeholder="">
+								<p>สัญชาติ</p><input type="TEXT" class="form-control" name="regionBox"  id="regionBox" placeholder="">
 								
 
 							</div>
@@ -155,51 +158,51 @@
 
 							<div class="form-group infoLeft">
 
-									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" id="code-taxBox" placeholder="หมายเลขภาษี">
+									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="หมายเลขภาษี">
 
 								</br>
 								
 								<p>สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
-								<input type="TEXT" class="form-control" id="address_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="">
 								
 
 								<p>หมู่ที่</p>
-								<input type="TEXT" class="form-control" id="mo_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="">
 
 								<p>ตรอก/ซอย</p>
-								<input type="TEXT" class="form-control" id="soi_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="">
 
 								<br/>
 
 
 								<p>ถนน</p>
-								<input type="TEXT" class="form-control" id="street_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="street_contactBox"  id="street_contactBox" placeholder="">
 
 								<p>ตำบล/แขวง</p>
-								<input type="TEXT" class="form-control" id="district_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input type="TEXT" class="form-control" id="canton_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="">
 
 								<p >โทรศัพท์</p>
-								<input type="TEXT" class="form-control" id="mobile_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="">
 								<br/>
 								<p >โทรสาร</p>
-								<input type="TEXT" class="form-control" id="fax_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="">
 
 								<p>จังหวัด</p>
-								<input type="TEXT" class="form-control" id="provice_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="provice_contactBox" id="provice_contactBox" placeholder="">
 
 								</br>
 
 								<p>รหัสไปรษณีย์</p>
-								<input type="TEXT" class="form-control" id="zip_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="">
 
 
 								<p>Email address</p>
-								<input type="TEXT" class="form-control" id="email_contactBox" placeholder="">
+								<input type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
 
 								</br></br>
 									<p> เอกสารที่และตัวอย่างที่ต้องส่งประกอบการขึ้นทะเบียน </p>
@@ -301,15 +304,16 @@
 
 								</div><!--doc zone-->
 								<div class="button buttonRequest">
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ส่งเอกสาร</button>
+								<button class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่งเอกสาร</button>
 
 								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ไม่อนุมัติ</button>
 							</div>
 										
 							</div><!-- infoleft -->
 
-							
+				</form>			
 				</div><!--form-->
+
 			</div><!--content-->
 		</div>
 

@@ -16,6 +16,7 @@ class User(models.Model):
 class FormType(models.Model):
 	name = models.CharField(max_length=50)
 	autherize_order = models.ManyToManyField(Role, through='Autherize_order')
+	autherize_number = models.IntegerField()
 	def __unicode__(self):
 		return "FormType: "+self.name
 
@@ -29,7 +30,8 @@ class Form(models.Model):
 	user = models.ForeignKey(User)
 	data = models.CharField(max_length=99999)
 	status = models.IntegerField()
+	date = models.DateTimeField()
 	def __unicode__(self):
-		return "Form by "+str(self.user)+" Type: "+str(self.formType)+" status: "+str(self.status)
+		return "ID :"+str(self.id)+" Form by "+str(self.user)+" Type: "+str(self.formType)+" status: "+str(self.status)
 
 
