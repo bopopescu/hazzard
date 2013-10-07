@@ -1,7 +1,7 @@
 
 .content1{
 	 /*background: none repeat scroll 0 0 #FEFEFE;*/
-	 margin-top: 50px;
+	 margin-top: 30px;
     border: 1px dashed #4A9DD4;
 	min-height: 200px;
 	width: 800px;
@@ -18,7 +18,7 @@
 
 .content2{
 	 /*background: none repeat scroll 0 0 #FEFEFE;*/
-	margin-top: 90px;
+	margin-top: 30px;
     border: 1px dashed #4A9DD4;
 	min-height: 550px;
 	width: 800px;
@@ -54,6 +54,7 @@
 
 }
 
+
 input{
 	padding-top: 0px;
 	font-family: 'thai_sans_lite';
@@ -72,6 +73,7 @@ textarea{
 	height: 100px;
 	width: 255px;
 	background: #FAFAFA;
+		border: 1px solid #96BBD4;
 }
 
 .address{
@@ -115,7 +117,7 @@ textarea{
 }
 p{
 
-	font-family: 'thai_sans_lite';
+	/*font-family: 'thai_sans_lite';*/
 	font-weight: normal;
 	font-size:26px;
 	/*color: #59BDFF;*/

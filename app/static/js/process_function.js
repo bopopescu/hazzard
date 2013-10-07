@@ -1,14 +1,16 @@
 function register_request_listFunction(){
 
 	var el = document.getElementById('register_request_list');
-	el.style.visibility = 'visible';
+	el.style.display = 'block';
 
-	var ch = document.getElementById('modify_link');
-	ch.setAttribute("href", "modify_register_request_customer.html");
+	document.getElementById('intro_officer').style.display = 'none';
+
+	// var ch = document.getElementById('modify_link');
+	// ch.setAttribute("href", "modify_register_request_customer.html");
 
 
-	var mn = document.getElementById('extend_link');
-	mn.setAttribute("href","extend_register_request_customer.html");
+	// var mn = document.getElementById('extend_link');
+	// mn.setAttribute("href","extend_register_request_customer.html");
 
 }
 

@@ -3,7 +3,7 @@ body {
     /*background-color: #F6F5F2; */
     /*background: #E6E6E6;*/
     /*color: #FFFFFF;*/
-    color: #212014;
+     color: #212014;
  /*   color: #F3F3F3;
  */   font: 12px/21px Arial,Helvetica,sans-serif;
  
@@ -68,6 +68,9 @@ nav.head_nav ul li a{
 }
 
 
+form{
+    width: 250px;
+}
 
 #username{
 	height: 35px;

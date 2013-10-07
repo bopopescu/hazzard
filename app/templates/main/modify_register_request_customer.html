@@ -83,26 +83,34 @@
 					<nav class="head_nav">
 
 					<!-- DESKTOP -->
-					<ul class="mainmenu visible-desktop">
-						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/list"> ขอเอกสาร </a>
 
-							<a href="/list" data-toggle="dropdown" 
-							style="margin-left: -40px;">ขอเอกสาร</a>
+						</li>
+						<li class="logo">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
 							
 						</li>
-						<li class="register">
-								<a href="services.html"> ข้อมูลส่วนตัว </a>
-						</li>
 
+					</ul>
 
-						</ul>
-					</nav>
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username: </p>
+						<p style="display:inline" name="name"> ... </p>
+						<a href="#"> log out </a>
+					</div>
+
+				</nav>
 
 					
 			</div>
-			<div class="logo">
-				<!-- <img src="img/logo-color.png"> -->
-			</div>
+			
 		</header>
 		<!--header end -->
 

@@ -42,50 +42,44 @@
 
 	<body style="overflow: auto;">
 
+
 		<!--header-->
 		<header>
+			
 			<div class="header_block">
 					<nav class="head_nav">
 
 					<!-- DESKTOP -->
 					<ul class="mainmenu visible-desktop visible-tablet">
-						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/"> หน้าหลัก </a>
 
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-							style="margin-left: -40px;">ขอเอกสาร</a>
-							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
-							padding-top: 15px;">
-								<li><h2>ขอเอกสาร</h2></li>
-
-								
-							</ul>
 						</li>
-						<li class="register">
-								<a href="services.html"> ข้อมูลส่วนตัว </a>
-						</li>
+						<li class="logo">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
+						</li>
+						<li><a href="/list" style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
+						</li>
 
 					</ul>
 
-					<!-- Phone -->
-					<ul class="visible-phone">
-					<!-- 	<li id="brand-text" style="float:left"><a href=""> หน่วยงานวัตุอันตราย</a></li> -->
-						<li class="menu-toggle"><a href="#" style="margin-left: 15px;">
-							<i class="icon-th-list icon-white" style="margin-top: 3px;"></i>&nbsp&nbspเมนู</a></li>
-						<ul class="menu-vertical">
-							<!-- <li><a id="home-li">หน้าหลัก</a></li>
-							<li><a id="register-li">สมัครสมาชิก</a></li>
-							<li><a id="login-li">เข้าสู่ระบบ</a></li> -->
-						</ul>
-					</ul>
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username: </p>
+						<p style="display:inline" name="name"> ... </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
 
-					</nav>
+				</nav>
 
 					
 			</div>
-			<div class="logo">
-				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
-			</div>
+
+			
+
+
 		</header>
 		<!--header end -->
 
@@ -97,6 +91,7 @@
 				
 					<div class="span3">
 							<h4> สวัสดี,  คุณ .... </h4>
+								<!-- <a href="#" style="font-size:16px; display:inline; float:right; margin-top:-20px;"> log out </a> -->
 								<ul class="process">
 									<li>		
 								
@@ -104,7 +99,7 @@
 								  	กระบวนการขอขึ้นทะเบียน</a>
 									  	<ul id="collapse-register" class="collapse sublist">
 									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตุอันตราย</a></li>
-											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลั่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
 											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
 										</ul>
 							</li>
@@ -126,7 +121,7 @@
 
 					<div id="intro_officer" class="span6">
 						<H1> ตรวจเอกสาร </H1> 
-						</br>  <p p style="text-indent:0.5in"> เจ้าหน้าที่ สามารถ สามารถ เลือกตรวจสอบเอกสารของผู้ประกอบการ
+						</br>  <p p style="text-indent:0.5in"> เจ้าหน้าที่ สามารถเลือกตรวจสอบเอกสารของผู้ประกอบการ
 						ได้ตามกระบวนที่ ผู้ประกอบการได้ ทำการยื่นเอกสาร ไว้ ดังต่อไปนี้
 						 </p>
 						 <ul style="font-size:18px; ">
@@ -146,7 +141,7 @@
 					
 
 
-					<div id="registerProcess_list" class="span6">
+					<div id="registerProcess_list" class="span6" style="margin-top:20px;">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตขึ้นทะเบียน   </H3>
 						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
@@ -182,7 +177,7 @@
 						</table>
 					</div>
 
-					<div id="modify_registerProcess_list" class="span6">
+					<div id="modify_registerProcess_list" class="span6" style="margin-top:20px;">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">   รายชื่อผู้ขอแก้ไขเปลี่ยนแปลง ของใบอนุญาตขึ้นทะเบียน   </H3>
 						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
@@ -219,7 +214,7 @@
 						</table>
 					</div>
 
-					<div id="extend_registerProcess_list" class="span6">
+					<div id="extend_registerProcess_list" class="span6" style="margin-top:20px;">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">  รายชื่อผู้ขอต่ออายุของใบอนุญาตขึ้นทะเบียน   </H3>
 						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
@@ -256,7 +251,8 @@
 						</table>
 					</div>
 
-					<div id="substitue_registerProcess_list" class="span6">
+					<div id="substitue_registerProcess_list" class="span6"
+					style="margin-top:20px;">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<H3 id="list_Title">   </H3>
 						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->

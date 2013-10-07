@@ -12,6 +12,19 @@ body {
    
 }
 
+.info_id{
+    float: right;
+    /*margin-right: 200px;*/
+
+}
+
+.info_id>p{
+    font-size: 18px;
+}
+
+.info_id>a{
+    font-size: 18px;
+}
 div.header_block {
     margin: 0 auto;
     margin-top: 20px;
@@ -67,7 +80,10 @@ nav.head_nav ul li a{
     
 }
 
-
+#hazard-carousel{
+     border: 1px solid #EE7B22;
+     
+}
 
 #username{
 	height: 35px;
@@ -87,15 +103,20 @@ nav.head_nav ul li a{
 .logo{
 
     color: #FFFFFF;
-   	z-index: 100;
+   	/*z-index: 100;*/
     height: 120px;
-    left: 550px;
-    line-height: 39px;
+    margin-top: -60px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /*left: 550px;*/
+    /*line-height: 39px;*/
     position: absolute;
-    top: -5px;
+    /*top: -5px;*/
     width: 160px;
     /*background-image: url('../img/loho.jpg');*/
 }
+
 
 #hazard-carousel{
 	margin: -20 auto;

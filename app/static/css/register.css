@@ -1,3 +1,7 @@
+.content{
+	padding-top: 30px;
+}
+
 h1,h2 {
 	font-family: 'thai_sans_lite';
 	color: #000000;
@@ -53,13 +57,19 @@ input{
 #regionBox{
 	width: 80px;
 }
-#address_contactBox,#mo_contactBox,#soi_contactBox{
-	width: 50px;
+#address_contactBox,#mo_contactBox{
+	width: 80px;
+}
+
+#soi_contactBox{
+	width: 200px;
 }
 
 #typeBox,#toBox{
 	width: 100px;
 }
+
+
 
 .requeest_label,.to_label{
 	margin-bottom: 20px;

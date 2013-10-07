@@ -76,16 +76,11 @@ ul
 	margin-left: 10px;
 }
 
-/*customer*/
-#register_request_list{
-	visibility: hidden;
+.span3{
+	margin-top: 20px;
 }
-#modify_register_request_list{
-	visibility: hidden;
-}
-#extend_register_request_list{
-	visibility: hidden;
-}
+
+
 
 
 /*officer*/
@@ -98,10 +93,23 @@ ul
 	font-size: 20px;
 }
 #intro_officer{
+	margin-top: 20px;
 	padding: 17px;
 	margin-right: 7px;
 }
 
+/*customer*/
+#register_request_list{
+	display: none;
+}
+#modify_register_request_list{
+	display: none;
+}
+#extend_register_request_list{
+	display: none;
+}
+
+/*officer*/
 #registerProcess_list{
 	display: none;
 }

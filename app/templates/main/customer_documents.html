@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer&officer_documents.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
 
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
@@ -85,25 +85,29 @@
 					<nav class="head_nav">
 
 					<!-- DESKTOP -->
-					<ul class="mainmenu visible-desktop">
-						<li class="login dropdown pull-right" style = " padding-left: 0px;">
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/"> หน้าหลัก </a>
 
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-							style="margin-left: -40px;">ขอเอกสาร</a>
-							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
-							padding-top: 15px;">
-								<li><h2>ขอเอกสาร</h2></li>
-
-								
-							</ul>
 						</li>
-						<li class="register">
-								<a href="services.html"> ข้อมูลส่วนตัว </a>
+						<li class="logo">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
+
+						</li>
+						<li><a href="" style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
 						</li>
 
+					</ul>
 
-						</ul>
-					</nav>
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username: </p>
+						<p style="display:inline" name="name"> ... </p>
+						<a href="/logout"> log out </a>
+					</div>
+
+				</nav>
 
 					
 			</div>
@@ -132,6 +136,27 @@
 						</ul>
 					</div>
 
+					<div id="intro_officer" class="span6">
+						<H1> ขอเอกสาร </H1> 
+						</br>  <p p style="text-indent:0in"> ผู้ประกอบการสามารถเลือก ยื่นคำขอเอกสารเกี่ยวกับวัตถุอันตราย
+					ได้ตามกระบวนดังต่อไปนี้
+						 </p>
+						 <ul style="font-size:18px; ">
+						 	<li>  กระบวนการขอขึ้นทะเบียน </li>
+						 	<li>  กระบวนการขอผลิต </li>
+							<li>  กระบวนการขอนำเข้า </li>
+							<li> กระบวนการขอครอบครอง </li>
+							<li>  กระบวนการขอส่งออก </li>
+							<li>  กระบวนการขอแสดงตัวอย่าง </li>
+						</ul>
+
+						<p> โดยที่ เจ้าหน้าที่ แต่ละส่วน จะ สามารดูเอกสาร ที่ผู้ประกอบการ ยื่น
+						 ทำการพิจารณา อนุมัติ/ ไม่อนุมัติ เอกสาร ได้ตามความเหมาะสม </p>
+
+						 <a id="manual_officer" style="float:right; font-size:19px;"> คู่มือการใช้งาน </a>
+					</div>
+					
+
 					<div id="register_request_list" class="span6"  >
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<a href="/create/1"><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
@@ -143,6 +168,7 @@
 								      <th class="date1"> วันที่ </th>
 								      <th class="status"> สถานะ </th>
 								      <th class="mange"> Manage </th>
+								      <th class="type"> ประเภทงาน </th>
 								    </tr>
 								 </thead>
 
@@ -162,7 +188,10 @@
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
+
+								      <td class="type"> </td>
 								  	</tr>
+
 									{% endfor %}
 
 								  </tbody>
