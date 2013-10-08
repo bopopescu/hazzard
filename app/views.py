@@ -30,8 +30,8 @@ def login(request):
 	except User.DoesNotExist:
 		pass
 	
-	context = {'message':"Username or Password are incorrect."}
-	return render(request,'main/login.html',context)
+	context = {'message':'User are already in used.'}
+	return render(request,'main/message.html',context)
 
 def logout(request):
 	#this should work
@@ -39,7 +39,7 @@ def logout(request):
 		del request.session['user_id']
 	except KeyError:
 		pass
-	return HttpResponseRedirect("..")
+	return HttpResponseRedirect("/")
 
 def register(request):
 	#all this should work ??
@@ -57,8 +57,8 @@ def register(request):
 		return render(request,'main/registration.html',context)
 	member = User(username=request.POST['idBox'],password=request.POST['passwordBox'],role=Role.objects.get(name='non_autherize_member'))
 	member.save()
-	#context did not implements
-	return HttpResponseRedirect("/")
+	context = {'message':'User is created.'}
+	return render(request,'main/message.html',context)
 
 def list(request):
 	if('user_id' not in request.session):
@@ -105,9 +105,8 @@ def create_form(request,formtype_id):
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
 
-	print(info)
-	### and other form
-	return HttpResponseRedirect('/list')
+	context = {'message':'Form have been Saved.'}
+	return render(request,'main/message.html',context)
 
 def modify_form(request,form_id):
 	if('user_id' not in request.session):
@@ -116,7 +115,8 @@ def modify_form(request,form_id):
 	form_obj = Form.objects.get(pk=form_id)
 	
 	if(form_obj.user != user_obj):
-		return HttpResponseRedirect("/")
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	if(request.method != 'POST'):
 		context = {'form':form_obj}
 		#if formType = modify regis request
@@ -130,7 +130,8 @@ def modify_form(request,form_id):
 	info += '</xml>'
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
-	return HttpResponseRedirect("/")
+	context = {'message':'Form have been Saved.'}
+	return render(request,'main/message.html',context)
 
 def extend_form(request,form_id):
 	if('user_id' not in request.session):
@@ -138,7 +139,8 @@ def extend_form(request,form_id):
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
 	if(form_obj.user != user_obj):
-		return HttpResponseRedirect("/")
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	if(request.method != 'POST'):
 		context = {'form':form_obj}
 		#if formType = regis request
@@ -154,18 +156,22 @@ def extend_form(request,form_id):
 	print(info)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
-	return HttpResponseRedirect("/")
+	context = {'message':'Form have been Saved.'}
+	return render(request,'main/message.html',context)
 
 def approve_form(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
-	if('officer' not in user_obj.role.name):
-		return HttpResponseRedirect("/")
+	print(user_obj.role.name)
+	if('officer' not in user_obj.role.name ):
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		return HttpResponse('gg')
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	print(form_obj.data)
 	data = xmltodict.parse(form_obj.data)['xml']
 	print(data)
@@ -183,35 +189,44 @@ def approved(request,form_id):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
-		return HttpResponseRedirect("/")
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		return HttpResponse('gg')
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	form_obj.status += 1
 	form_obj.save()
-	return HttpResponse("approved")
+	context = {'message':'Form approved.'}
+	return render(request,'main/message.html',context)
 def reject(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
-		return HttpResponseRedirect("/")
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		return HttpResponse('gg')
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	form_obj.status = -1
 	form_obj.save()
-	return HttpResponse("reject")
+	context = {'message':'Form rejected.'}
+	return render(request,'main/message.html',context)
 
 
 def form_permit_show(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
+
 	form_obj = Form.objects.get(pk=form_id)
-	
+	if('officer' not in user_obj.role.name):
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
 	
 	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'officer' in user_obj.role.name):
 		data = xmltodict.parse(form_obj.data)['xml']
@@ -232,6 +247,9 @@ def form_permit_show(request,form_id):
 		form_obj.data = info
 		form_obj.save()
 		return HttpResponseRedirect("/list")
+	context = {'message':'Permission Denied'}
+	return render(request,'main/message.html',context)
+	
 
 
 

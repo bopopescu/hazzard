@@ -191,17 +191,15 @@
 									</td>
 										<td class="mange">
 										{%if 'request' in form_obj.formType.name %}
-										{%if form_obj.formType.autherize_number == form.status%}
+										{%if form_obj.formType.autherize_number == form_obj.status%}
 										<a href="/modify/{{ form_obj.id }}"  id="modify_link"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
 								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
-								      	{% if form_obj.formType.autherize_number == form_obj.status %}
 								      	<a href="/form/{{ form_obj.id }}/permit"  id="substitue_link"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a>
-								      	{% endif %}
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
-								      <td class="type"> </td>
+								      <td class="type">{{form_obj.formType.name}} </td>
 								  	</tr>
 
 									{% endfor %}
