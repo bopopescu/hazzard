@@ -98,7 +98,7 @@
 									  <a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >
 								  	กระบวนการขอขึ้นทะเบียน</a>
 									  	<ul id="collapse-register" class="collapse sublist">
-									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตุอันตราย</a></li>
+									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตถุอันตราย</a></li>
 											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
 											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
 										</ul>
@@ -163,14 +163,19 @@
 								      <td id="No_value">{{forloop.count}}</td>
 								      <td id="No_permit_value"># {{form.id}}</td>
 								      <td id="date1_value">{{form.date}}</td>
+								      
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
-
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      {% endif %}
+								  		</td>
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}/permit"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
-								      	
+								      	{% endif %}
 								      </td>
+								      
 								    </tr>
 								    {% endif %}
 								    {% endfor %}								  </tbody>
@@ -200,11 +205,11 @@
 								      <td id="No_permit_value"># {{form.id}}</td>
 								      <td id="date1_value">{{form.date}}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
-
+								      	{% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      	{% endif %}
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
-										</a>
+										
 								      	
 								      </td>
 								    </tr>
@@ -237,11 +242,11 @@
 								      <td id="No_permit_value"># {{ form.id }}</td>
 								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
-
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      {% endif %}
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
-										</a>
+										
 								      	
 								      </td>
 								    </tr>

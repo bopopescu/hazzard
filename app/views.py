@@ -71,7 +71,9 @@ def list(request):
 		forms_obj=[]
 		for auth in auth_obj:
 			form_obj = Form.objects.filter(status=auth.priority, formType=auth.formType)
+			form_obj2 = Form.objects.filter(status=auth.formType.autherize_number,formType=auth.formType)
 			forms_obj+=form_obj
+			forms_obj+=form_obj2
 		print(forms_obj)
 		context = {'forms': forms_obj }
 		return render(request,'main/officer_documents.html',context)
@@ -209,14 +211,28 @@ def form_permit_show(request,form_id):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
-	data = xmltodict.parse(form_obj.data)['xml']
-	context = {'form':form_obj,'data':data}
-	if(form_obj.formType.name == 'register_request'):
+	
+	
+	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'officer' in user_obj.role.name):
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data}
 		return render(request,'main/register_permit_officer.html',context)
-	if(form_obj.formType.name == 'register_modify'):
-		return render(request,'main/modify_register_view_officer',context)
-	if(form_obj.formType.name == 'register_extend'):
-		return render(request,'main/extend_register_view_officer',context)
+	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'autherize_member' in user_obj.role.name):
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data}
+		return render(request,'main/register_permit_user.html',context)	
+	if(request.method == "POST"):
+		info = '<xml>'
+		for key in request.POST:
+			value = request.POST[key]
+			info += '<'+key+'>'+value+'</'+key+'>'
+		info += '<form_id>'+form_id+'</form_id>'
+		info += '</xml>'
+		print(info)
+		form_obj.data = info
+		form_obj.save()
+		return HttpResponseRedirect("/list")
+
 
 
 
