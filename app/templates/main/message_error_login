@@ -1,0 +1,149 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
+
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/process_function.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('.carousel').carousel('cycle');
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+						<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop">
+						
+						<li class="register" style="margin-left:50px;">
+								<a href="/register"> สมัครสมาชิก </a>
+						</li>
+
+						<li class="logo">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
+
+						</li>
+
+						<li class="login dropdown pull-right">
+
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: -100px;">เข้าสู่ระบบ</a>
+
+							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
+							padding-top: 15px; width:300px; padding-top:-10px;">
+							<li><h2 style="margin-top: 0px;">กรุณาเข้าสู่ระบบ</h2></li>
+
+								<form action="/login/" method="post" style="width:300px; padding-top:10px;">{% csrf_token %}
+									<input name="identity" id="username" type="text" placeholder="username"> 
+									<input name="password" id="password" type="password" placeholder="password"><br>
+								
+									
+									<button type="submit" class="btn btn-inverse" style="margin-top:5px;">เข้าสู่ระบบ</button>
+									<button type="submit" class="btn btn-warning" style="margin-top:5px;">ยกเลิก</button>
+								</form>
+							</ul>
+						</li>
+						
+						
+					</ul>
+
+					</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+
+		<!-- <div class="col-md-12 col-md-offset-2" style="margin:0; padding:0"> -->
+			<div class="content"  style=" min-height:50px;">
+				<div class="subContent">
+
+						<p style="font-size: 24px; margin-left:30px; display:inline;">{{message}} </p>
+						<!-- <a href="/">Home Page</a><p > คุณได้ทำการ อนุมัติเอกสาร เรียบร้อยแล้ว กลับสู่หน้า </p> -->
+						<a style="font-size: 24px; padding-left:10px;" href="/"> กลับสู่หน้าหลัก</a>
+				
+					
+				</div>
+			</div>
+
+		<!-- </div> -->
+
+
+	</body>
+</html>
