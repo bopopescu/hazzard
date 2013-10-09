@@ -132,6 +132,45 @@ def modify_form(request,form_id):
 	form.save()
 	context = {'message':'Form have been Saved.'}
 	return render(request,'main/message.html',context)
+def copy_form(request,form_id):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	form_obj = Form.objects.get(pk=form_id)
+	if(form_obj.user != user_obj):
+		context = {'message':'Permission Denied'}
+		return render(request,'main/message.html',context)
+	if(request.method != 'POST'):
+		context = {'form':form_obj}
+		#if formType = regis request
+		return render(request,'main/copy_register_request_customer.html',context)
+
+	formType_obj = FormType.objects.get(name=request.POST['form_type'])
+	info = '<xml>'
+	for key in request.POST:
+		value = request.POST[key]
+		info += '<'+key+'>'+value+'</'+key+'>'
+	info += '<form_id>'+form_id+'</form_id>'
+	info += '</xml>'
+	print(info)
+	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
+	form.save()
+	context = {'message':'Form have been Saved.'}
+	return render(request,'main/message.html',context)
+
+
+
+def copy_form_show(request,form_id):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	form_obj = Form.objects.get(pk=form_id)
+	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'autherize_member' in user_obj.role.name):
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data}
+		return render(request,'main/register_permit_user.html',context)
+
+
 
 def extend_form(request,form_id):
 	if('user_id' not in request.session):
@@ -182,6 +221,8 @@ def approve_form(request,form_id):
 		return render(request,'main/modify_register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_extend'):
 		return render(request,'main/extend_register_view_officer.html',context)
+	if(form_obj.formType.name == 'register_copy'):
+		return render(request,'main.copy_register_view_officer.html',context)
 	return render(request,'main/register_permit_officer.html',context)
 	
 def approved(request,form_id):
@@ -224,9 +265,7 @@ def form_permit_show(request,form_id):
 	user_obj = User.objects.get(pk=request.session['user_id'])
 
 	form_obj = Form.objects.get(pk=form_id)
-	if('officer' not in user_obj.role.name):
-		context = {'message':'Permission Denied'}
-		return render(request,'main/message.html',context)
+	
 	
 	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'officer' in user_obj.role.name):
 		data = xmltodict.parse(form_obj.data)['xml']
