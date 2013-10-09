@@ -86,7 +86,7 @@
 					<ul class="mainmenu visible-desktop visible-tablet">
 						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
 						<li class="register" style="margin-left: 50px;">
-								<a href="profile.html"> ข้อมูลส่วนตัว </a>
+								<a href="/list"> เอกสาร </a>
 
 						</li>
 						<li class="logo">
@@ -94,7 +94,7 @@
 
 						</li>
 						<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-							style="margin-left: 200px;">ขอเอกสาร</a>
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
 							
 						</li>
 
@@ -103,7 +103,7 @@
 					<div class="info_id">
 						<p style="display:inline" style="font-size:10px;"> username: </p>
 						<p style="display:inline" name="name"> ... </p>
-						<a href="#"> log out </a>
+						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
 				</nav>
@@ -130,84 +130,84 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p>วันที่</p><input type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="">
+									<p>วันที่</p><input  type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="">
 									
-									<p>เดือน</p><input type="TEXT" class="form-control" name="monthBox"  id="monthBox" placeholder="">
+									<p>เดือน</p><input  type="TEXT" class="form-control" name="monthBox"  id="monthBox" placeholder="">
 									
-									<p>ปี</p><input type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
+									<p>ปี</p><input  type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
 									
 
 								</div>
 							<!-- </div> -->
 
 
+							<div class="form-group infoLeft">	
+								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="">	
+							</div>
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input type="TEXT" class="form-control" name="nameBox"id="nameBox" placeholder="">
+								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" name="nameBox"id="nameBox" placeholder="">
 								
-								<p>อายุ</p><input type="TEXT" class="form-control"  name="ageBox" id="ageBox" placeholder=""><p> ปี </p>
+								<p>อายุ</p><input disabled type="TEXT" class="form-control"  name="ageBox" id="ageBox" placeholder=""><p> ปี </p>
 								
-								<p>สัญชาติ</p><input type="TEXT" class="form-control" name="regionBox"  id="regionBox" placeholder="">
+								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" name="regionBox"  id="regionBox" placeholder="">
 								
 
 							</div>
 
 
 							<div class="form-group infoLeft">
-								
-							
-								
-
 							</div>
 
 							<div class="form-group infoLeft">
 
-									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="หมายเลขภาษี">
+									<p >เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="หมายเลขภาษี">
 
 								</br>
 								
 								<p>สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
-								<input type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="">
 								
 
 								<p>หมู่ที่</p>
-								<input type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="">
 
 								<p>ตรอก/ซอย</p>
-								<input type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="">
+								<input  disabled type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="">
 
 								<br/>
 
 
 								<p>ถนน</p>
-								<input type="TEXT" class="form-control" name="street_contactBox"  id="street_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="street_contactBox"  id="street_contactBox" placeholder="">
 
 								<p>ตำบล/แขวง</p>
-								<input type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="">
 
 								<p >โทรศัพท์</p>
-								<input type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="" style="width:320px;">
 								<br/>
 								<p >โทรสาร</p>
-								<input type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="">
+
 
 								<p>จังหวัด</p>
-								<input type="TEXT" class="form-control" name="provice_contactBox" id="provice_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="provice_contactBox" id="provice_contactBox" placeholder="" style="width:350px;">
 
 								</br>
 
 								<p>รหัสไปรษณีย์</p>
-								<input type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="">
 
 
 								<p>Email address</p>
-								<input type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
+								<input disabled type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
 
 								</br></br>
 									<p> เอกสารที่และตัวอย่างที่ต้องส่งประกอบการขึ้นทะเบียน </p>
@@ -309,9 +309,9 @@
 
 								</div><!--doc zone-->
 								<div class="button buttonRequest">
-								<button class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่งเอกสาร</button>
+								<button class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่ง</button>
 
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ไม่อนุมัติ</button>
+								<button class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">ไม่อนุมัติ</button>
 							</div>
 										
 							</div><!-- infoleft -->

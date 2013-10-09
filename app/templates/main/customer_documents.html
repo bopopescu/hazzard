@@ -19,6 +19,8 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/process_function.js"></script>
+
+	  
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -41,25 +43,7 @@
 
 	</script>
 
-	<script type="text/javascript">
-		
-		$(document).ready(function(){
-			
-			$('.menu-toggle').click(function() {
-				$('.head_nav').toggleClass('menu-expand');
-				if ($('.menu-vertical').is(':visible')) {
-					$('.menu-vertical').hide();
-				}
-				else {
-					$('.menu-vertical').show();
-				}
-			});
 
-			$('.menu-vertical').hide();
-
-		});
-
-	</script>
 
 	<style type="text/css">
 	
@@ -157,25 +141,27 @@
 					</div>
 					
 
-					<div id="register_request_list" class="span6"  >
+					<div id="register_request_list" class="span6"  style="overflow-y: auto;" >
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
 						<a href="/create/1"><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								      <th class="No"> No. </th>
+								    
 								      <th class="No_permit"> หมายเลขทะเบียน </th>
 								      <th class="date1"> วันที่ </th>
 								      <th class="status"> สถานะ </th>
-								      <th class="mange"> Manage </th>
+								      <th class="mange"> แก้ไข/ต่ออายุ/ใบแทน </th>
 								      <th class="type"> ประเภทงาน </th>
+								      <th class="permit_view"> ใบอนุญาต </th>
+
 								    								    </tr>
 								 </thead>
 
 								   <tbody>
 								    {% for form_obj in forms %}
 								    <tr>
-								    <td class="No">{{ forloop.counter }}</td>
+							
 									<td class="No_permit"># {{ form_obj.id }}</td>
 									<td class="date1">{{ form_obj.date }}</td>
 									<td class="status">
@@ -192,14 +178,18 @@
 										<td class="mange">
 										{%if 'request' in form_obj.formType.name %}
 										{%if form_obj.formType.autherize_number == form_obj.status%}
-										<a href="/modify/{{ form_obj.id }}"  id="modify_link"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
-								      	<a href="/form/{{ form_obj.id }}/permit"  id="substitue_link"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a>
+										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+
+								      	<a  href="/form/{{ form_obj.id }}/permit"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
+
 								      <td class="type">{{form_obj.formType.name}} </td>
+
+								      <td class="permit_view"> <a href="/form/{{ form_obj.id }}/permit"  id="substitue_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> </td>
 								  	</tr>
 
 									{% endfor %}

@@ -73,15 +73,30 @@ ul
 
 }
 .span6{
-	margin-left: 10px;
+	margin-left: 25px;
+	width: 600px;
 }
 
 .span3{
 	margin-top: 20px;
+	width: 230px;
 }
 
-
-
+.tooltip {
+	
+			position:absolute;
+			z-index: 100;
+			border:1px solid #333;
+			background-color:#161616;
+			border-radius:5px;
+			padding:10px;
+			color:#fff;
+			font-size:12px ;
+			
+			width: auto;
+			height:auto;
+			
+		}
 
 /*officer*/
 #intro_officer{

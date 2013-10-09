@@ -16,12 +16,20 @@ p{
 }
 
 
+
+.date_des>input{
+	border: 1px solid #96BBD4;
+		font-size: 20px;
+}
 .date_des{
 	float: right;
 	margin-right:  10px;
+
 }
 .form-inline>.date>input{
 	width: 20px;
+
+
 	
 }
 .infoRight{
@@ -46,6 +54,16 @@ input{
 	/*width: 80px;*/
 }
 
+textarea{
+	border: 1px solid #96BBD4;
+	font-family: 'thai_sans_lite';
+	font-size: 20px;
+}
+
+#codeBox{
+	width: 100px;
+
+}
 
 #nameBox{
 	width: 400px;
@@ -57,6 +75,10 @@ input{
 #regionBox{
 	width: 80px;
 }
+
+#code_taxBox{
+	width: 650px;
+}
 #address_contactBox,#mo_contactBox{
 	width: 80px;
 }
@@ -64,6 +86,27 @@ input{
 #soi_contactBox{
 	width: 200px;
 }
+#street_contactBox,#district_contactBox,#canton_contactBox{
+	width: 340px;
+}
+#provice_contactBox{
+	width: 330px;
+}
+
+.input-append>input{
+	border: 1px solid #96BBD4;
+	font-family: 'thai_sans_lite';
+	/*font-size: 20px;*/
+	/*font-size: 20px;*/
+	color: #000000;
+	/*margin-top: 8px;*/
+	/*margin-bottom: 20px;*/
+	/*width: 260px;*/
+	/*height: 30px;*/
+	/*border: 1px solid #96BBD4;*/
+	background: #FAFAFA;
+}
+
 
 #typeBox,#toBox{
 	width: 100px;

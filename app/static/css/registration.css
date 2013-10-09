@@ -64,6 +64,7 @@ input{
 	display: inline;
 	font-size:20px;
 	margin-top:0px;
+	border: 1px solid #96BBD4;
 }
 
 textarea{
@@ -73,7 +74,7 @@ textarea{
 	height: 100px;
 	width: 255px;
 	background: #FAFAFA;
-		border: 1px solid #96BBD4;
+	border: 1px solid #96BBD4;
 }
 
 .address{
