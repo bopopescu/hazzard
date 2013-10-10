@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
@@ -73,10 +73,10 @@
 		}
 
 	</style>
-
 </head>
 
 	<body style="overflow: auto;">
+
 		<!--header-->
 		<header>
 			<div class="header_block">
@@ -101,8 +101,8 @@
 					</ul>
 
 					<div class="info_id">
-						<p style="display:inline" style="font-size:10px;"> username: </p>
-						<p style="display:inline" name="name"> ... </p>
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
@@ -110,7 +110,9 @@
 
 					
 			</div>
-			
+			<div class="logo">
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
+			</div>
 		</header>
 		<!--header end -->
 
@@ -123,14 +125,17 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
 									
-									<p>วันที่</p><input type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="">
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
 									
-									<p>เดือน</p><input type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{date.month}}">
 									
-									<p>ปี</p><input type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{date.year}}">
 									
 
 								</div>
+							<!-- </div> -->
+
+
 							
 							<div class="form-group infoRight">
 								
@@ -139,7 +144,7 @@
 								<p>อายุ</p><input type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder=""><p> ปี </p>
 								
 								<p>สัญชาติ</p><input type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="">
-	
+								
 
 							</div>
 
@@ -152,7 +157,7 @@
 
 								</br>
 								
-								<p>สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
+								<p>สถานที่ติดต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
 								<input type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="">
@@ -194,26 +199,15 @@
 								<p>Email address</p>
 								<input type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
 
-								<br/>
-								<p>ขอขึ้นทะเบียนวัตุอันตราย</p>
+								</br>
+								</br>
+									<p> ขึ้นทะเบียนวัตถุอันตราย </p>
+									<p> ชนิดที่  </p><input type="TEXT" class="type" id="typeBox" name="typeBox" placeholder="">
 
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px;">
-								 <input type="radio" name="optionsRadios_type2"  value="check" > ชนิดที่ 2
-								</p>
-
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px; width:85px">
-								  <input type="radio" name="optionsRadios_type3" value="check"> ชนิดที่ 3
-								</p>
-
-								<p class="to_p" >เพื่อ</p>
-
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px;">
-								 <input type="radio" name="optionsRadios_import"  value="import_value" > นำเข้า
-								</p>
-
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px; width:85px">
-								  <input type="radio" name="optionsRadios_produce" value="produce_value"> ผลิต
-								</p>
+									<p> เพื่อ  </p> <input type="TEXT" class="to" id="toBox" name="toBox" placeholder="">
+									</br>
+						
+									</p>
 
 								</br></br>
 								<p> โดยมีรายละเอียด ดังนี้ </p>
@@ -334,7 +328,7 @@
 
 									<p class="checkboxLabel">
 									  <input class="checkbox"type="checkbox" value="">
-									อื่นๆ (ระบุ) 
+									อื่นๆ
 									  <div class="input-append infoRight">
 									    <input type="text" style="width:200px; height:30px;"> 
 									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>

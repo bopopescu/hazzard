@@ -65,6 +65,7 @@ function registerFunction(){
 	document.getElementById('registerProcess_list').style.display = 'block';
 	 document.getElementById('modify_registerProcess_list').style.display = 'none';
 	 document.getElementById('extend_registerProcess_list').style.display = 'none';
+	 document.getElementById('substitue_registerProcess_list').style.display = 'none';
 
 
 
@@ -88,6 +89,7 @@ function modify_registerFunction(){
 	 document.getElementById('modify_registerProcess_list').style.display = 'block';
 	 document.getElementById('registerProcess_list').style.display = 'none';
 	 document.getElementById('extend_registerProcess_list').style.display = 'none';
+	 document.getElementById('substitue_registerProcess_list').style.display = 'none';
 
 
 
@@ -108,7 +110,7 @@ function extend_registerFunction(){
 	 document.getElementById('modify_registerProcess_list').style.display = 'none';
 	 document.getElementById('registerProcess_list').style.display = 'none';
 	  document.getElementById('extend_registerProcess_list').style.display = 'block';
-
+	   document.getElementById('substitue_registerProcess_list').style.display = 'none';
 
 
 
@@ -125,9 +127,10 @@ function extend_registerFunction(){
 }
 
 
-function substitue_registerProcess_list(){
+function substitue_registerFunction(){
 	document.getElementById('intro_officer').style.display = 'none';
 	 document.getElementById('substitue_registerProcess_list').style.display = 'block';
 	 document.getElementById('registerProcess_list').style.display = 'none';
-
+	 document.getElementById('extend_registerProcess_list').style.display = 'none';
+	  document.getElementById('modify_registerProcess_list').style.display = 'none';
 }

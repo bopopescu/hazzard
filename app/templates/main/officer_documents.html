@@ -67,8 +67,8 @@
 					</ul>
 
 					<div class="info_id">
-						<p style="display:inline" style="font-size:10px;"> username: </p>
-						<p style="display:inline" name="name"> ... </p>
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
@@ -90,7 +90,7 @@
 
 				
 					<div class="span3">
-							<h4> สวัสดี,  คุณ .... </h4>
+							<h4> สวัสดี,  คุณ {{user.username}}  </h4>
 								<!-- <a href="#" style="font-size:16px; display:inline; float:right; margin-top:-20px;"> log out </a> -->
 								<ul class="process">
 									<li>		
@@ -99,8 +99,9 @@
 								  	กระบวนการขอขึ้นทะเบียน</a>
 									  	<ul id="collapse-register" class="collapse sublist">
 									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตถุอันตราย</a></li>
-											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
-											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   >    ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
+											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   > ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
+											<li><a href="#substitue_registerProcess_list" onclick="substitue_registerFunction()">   > ขอใบแทนใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
 										</ul>
 							</li>
 
@@ -108,8 +109,8 @@
 								<a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >  กระบวนการขอผลิต</a>
 								<ul id="collapse-register" class="collapse sublist">
 									    	<li><a href="#" onclick="registerFunction()">  ขอนำเข้าอันตราย</a></li>
-											<li><a href="#" onclick="modify_registerFunction()">   ขอเปลั่ยนแปลงใบอนุญาติเข้าวัตุอันตราย</a></li>
-											<li><a href="#" onclick="extend_registerFunction()">   ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตุอันตราย</a></li>
+											<li><a href="#" onclick="modify_registerFunction()">   ขอเปลั่ยนแปลงใบอนุญาติเข้าวัตถุอันตราย</a></li>
+											<li><a href="#" onclick="extend_registerFunction()">   ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
 										</ul>
 							</li>
 							<li><a>  กระบวนการขอนำเข้า</a></li>
@@ -148,11 +149,11 @@
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								     <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_head"> No. </th>
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
-								      <th id="status_head"> ดูใบคำขอ+อนุมัติ  </th>
-								      <th id="manage_head">  ใบอนุญาต </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
 								    </tr>
 								 </thead>
 
@@ -160,7 +161,7 @@
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'register_request' %}
 								    <tr>
-								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_value">{{forloop.count}}</td>
 								      <td id="No_permit_value"># {{form.id}}</td>
 								      <td id="date1_value">{{form.date}}</td>
 								      
@@ -171,7 +172,7 @@
 								  		</td>
 								      <td id="manage_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="manage_value_link" href="/form/{{form.id}}/permit"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
 								      	{% endif %}
 								      </td>
@@ -189,11 +190,12 @@
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								     <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_head"> No. </th>
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
-								      <th id="status_head"> ดูใบคำขอ+อนุมัติ  </th>
-								      <th id="manage_head">  ใบอนุญาต </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								      <th id="link_head"> Link with </th>
 								    </tr>
 								 </thead>
 
@@ -201,7 +203,7 @@
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'register_modify' %}
 								    <tr>
-								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_value">{{forloop.count}}</td>
 								      <td id="No_permit_value"># {{form.id}}</td>
 								      <td id="date1_value">{{form.date}}</td>
 								      <td id="check_value">
@@ -209,9 +211,13 @@
 								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
 								      	{% endif %}
 								      <td id="manage_value">
-										
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+										</a>
+								      	{% endif %}</td>
+									   <td id="link_value">
 								      	
-								      </td>
+								       </td>
 								    </tr>
 								    {% endif%}
 								    {% endfor %}
@@ -226,11 +232,12 @@
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_head"> No. </th>
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
-								      <th id="status_head"> ดูใบคำขอ+อนุมัติ  </th>
-								      <th id="manage_head">  ใบอนุญาต </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								      <th id="link_head"> Link with </th>
 								    </tr>
 								 </thead>
 
@@ -238,7 +245,7 @@
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'register_extend' %}
 								    <tr>
-								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_value">{{forloop.count}}</td>
 								      <td id="No_permit_value"># {{ form.id }}</td>
 								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
@@ -246,6 +253,11 @@
 								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
 								      {% endif %}
 								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+										</a>
+								      	{% endif %}</td>
+								      <td id="link_value">
 										
 								      	
 								      </td>
@@ -259,33 +271,44 @@
 					<div id="substitue_registerProcess_list" class="span6"
 					style="margin-top:20px;">
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
+					<H3 id="list_Title">   รายชื่อผู้ขอใบแทน ใบอนุญาตขึ้นทะเบียน   </H3>
 						<H3 id="list_Title">   </H3>
 						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_head"> No. </th>
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
-								      <th id="status_head"> ดูใบคำขอ+อนุมัติ  </th>
-								      <th id="manage_head">  ใบอนุญาต </th>
+								      <th id="status_head"> ตรวจสอบ </th>
+								      <th id="manage_head"> Manage </th>
+								      <th id="link_head"> Link with </th>
 								    </tr>
 								 </thead>
 
 								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'register_substitute' %}
 								    <tr>
-								      <!-- <td id="No_value"></td> -->
-								      <td id="No_permit_value"></td>
-								      <td id="date1_value"></td>
+								      <td id="No_value">{{forloop.count}}</td>
+								      <td id="No_permit_value"># {{ form.id }}</td>
+								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
-								      	<a  id="check_value_link" href="#"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a></td>
-
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      {% endif %}
 								      <td id="manage_value">
-										<a id="manage_value_link" href="#"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
 										</a>
+								      	{% endif %}</td>
+								      <td id="link_value">
+										
 								      	
 								      </td>
 								    </tr>
+								    {% endif %}
+								    {% endfor %}
 								  </tbody>
 						</table>
 					</div>

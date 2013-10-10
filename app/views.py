@@ -9,8 +9,7 @@ def index(request):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("login")
 	user_obj = User.objects.get(pk=request.session['user_id'])
-	#context ?? 
-	context = {'user_obj': user_obj }
+	context = {'user': user_obj }
 	return render(request,'main/index.html',context)
 
 def login(request):
@@ -23,15 +22,15 @@ def login(request):
 		#if login ok then do some redirect to index
 		if(user.password == request.POST['password']):
 			if(user.role == Role.objects.get(name='non_autherize_member')):
-				context = {'message':"UnAutherize"}
-				return render(request,'main/login.html',context)
+				context = {'message':"Unautherize user."}
+				return render(request,'main/message_error_login.html',context)
 			request.session['user_id'] = user.id
 			return HttpResponseRedirect('..')
 	except User.DoesNotExist:
 		pass
 	
-	context = {'message':'User are already in used.'}
-	return render(request,'main/message.html',context)
+	context = {'message':'User or password not found.'}
+	return render(request,'main/message_error_login.html',context)
 
 def logout(request):
 	#this should work
@@ -51,14 +50,17 @@ def register(request):
 		user = User.objects.filter(username=request.POST['idBox'])
 	except KeyError:
 		context = {'message':"Please fill all the field"}
-		return render(request,'main/registration.html',context)
+		return render(request,'main/message_error_login.html',context)
 	if( len(user)!=0 ):
 		context = {'message':"Username are already used."}
-		return render(request,'main/registration.html',context)
+		return render(request,'main/message_error_login.html',context)
 	member = User(username=request.POST['idBox'],password=request.POST['passwordBox'],role=Role.objects.get(name='non_autherize_member'))
 	member.save()
 	context = {'message':'User is created.'}
-	return render(request,'main/message.html',context)
+	return render(request,'main/message_error_login.html',context)
+
+
+
 
 def list(request):
 	if('user_id' not in request.session):
@@ -75,13 +77,13 @@ def list(request):
 			forms_obj+=form_obj
 			forms_obj+=form_obj2
 		print(forms_obj)
-		context = {'forms': forms_obj }
+		context = {'forms': forms_obj,'user':user_obj}
 		return render(request,'main/officer_documents.html',context)
 
 	#DO SOMETHING
 	form_obj = Form.objects.filter(user=user_obj)
 
-	context = { 'forms':form_obj }
+	context = { 'forms':form_obj,'user':user_obj}
 	print(form_obj)
 	#render list.html
 	return render(request,'main/customer_documents.html',context)
@@ -93,7 +95,9 @@ def create_form(request,formtype_id):
 	if(request.method != 'POST'):
 	#if user request form 1 use 1 template
 		if(formtype_id == '1'):
-			context = {}
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+
 			return render(request,'main/register_request_customer.html',context)
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
@@ -105,7 +109,7 @@ def create_form(request,formtype_id):
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
 
-	context = {'message':'Form have been Saved.'}
+	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
 def modify_form(request,form_id):
@@ -115,11 +119,12 @@ def modify_form(request,form_id):
 	form_obj = Form.objects.get(pk=form_id)
 	
 	if(form_obj.user != user_obj):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	if(request.method != 'POST'):
-		context = {'form':form_obj}
-		#if formType = modify regis request
+		date = timezone.now().date()
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		return render(request,'main/modify_register_request_customer.html',context)
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -130,47 +135,8 @@ def modify_form(request,form_id):
 	info += '</xml>'
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
-	context = {'message':'Form have been Saved.'}
+	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
-def copy_form(request,form_id):
-	if('user_id' not in request.session):
-		return HttpResponseRedirect("/")
-	user_obj = User.objects.get(pk=request.session['user_id'])
-	form_obj = Form.objects.get(pk=form_id)
-	if(form_obj.user != user_obj):
-		context = {'message':'Permission Denied'}
-		return render(request,'main/message.html',context)
-	if(request.method != 'POST'):
-		context = {'form':form_obj}
-		#if formType = regis request
-		return render(request,'main/copy_register_request_customer.html',context)
-
-	formType_obj = FormType.objects.get(name=request.POST['form_type'])
-	info = '<xml>'
-	for key in request.POST:
-		value = request.POST[key]
-		info += '<'+key+'>'+value+'</'+key+'>'
-	info += '<form_id>'+form_id+'</form_id>'
-	info += '</xml>'
-	print(info)
-	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
-	form.save()
-	context = {'message':'Form have been Saved.'}
-	return render(request,'main/message.html',context)
-
-
-
-def copy_form_show(request,form_id):
-	if('user_id' not in request.session):
-		return HttpResponseRedirect("/")
-	user_obj = User.objects.get(pk=request.session['user_id'])
-	form_obj = Form.objects.get(pk=form_id)
-	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'autherize_member' in user_obj.role.name):
-		data = xmltodict.parse(form_obj.data)['xml']
-		context = {'form':form_obj,'data':data}
-		return render(request,'main/register_permit_user.html',context)
-
-
 
 def extend_form(request,form_id):
 	if('user_id' not in request.session):
@@ -178,11 +144,12 @@ def extend_form(request,form_id):
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
 	if(form_obj.user != user_obj):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	if(request.method != 'POST'):
-		context = {'form':form_obj}
-		#if formType = regis request
+		date = timezone.now().date()
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		return render(request,'main/extend_register_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
@@ -195,8 +162,37 @@ def extend_form(request,form_id):
 	print(info)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
-	context = {'message':'Form have been Saved.'}
+	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
+
+def substitute_form(request,form_id):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	form_obj = Form.objects.get(pk=form_id)
+	if(form_obj.user != user_obj):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+	if(request.method != 'POST'):
+		date = timezone.now().date()
+		data = xmltodict.parse(form_obj.data)['xml']
+		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
+		return render(request,'main/substitute_register_request_customer.html',context)
+
+	formType_obj = FormType.objects.get(name=request.POST['form_type'])
+	info = '<xml>'
+	for key in request.POST:
+		value = request.POST[key]
+		info += '<'+key+'>'+value+'</'+key+'>'
+	info += '<form_id>'+form_id+'</form_id>'
+	info += '</xml>'
+	print(info)
+	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
+	form.save()
+	context = {'message':'Form have been saved.','user':user_obj}
+	return render(request,'main/message.html',context)
+
+
 
 def approve_form(request,form_id):
 	if('user_id' not in request.session):
@@ -204,25 +200,25 @@ def approve_form(request,form_id):
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	print(user_obj.role.name)
 	if('officer' not in user_obj.role.name ):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	print(form_obj.data)
 	data = xmltodict.parse(form_obj.data)['xml']
 	print(data)
-	context = { 'form' : form_obj , 'data' : data }
+	context = { 'form' : form_obj , 'data' : data ,'user':user_obj}
 	if(form_obj.formType.name == 'register_request'):
 		return render(request,'main/register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_modify'):
 		return render(request,'main/modify_register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_extend'):
 		return render(request,'main/extend_register_view_officer.html',context)
-	if(form_obj.formType.name == 'register_copy'):
-		return render(request,'main.copy_register_view_officer.html',context)
+	if(form_obj.formType.name == 'register_substitute'):
+		return render(request,'main/substitute_register_view_officer.html',context)
 	return render(request,'main/register_permit_officer.html',context)
 	
 def approved(request,form_id):
@@ -230,63 +226,63 @@ def approved(request,form_id):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj.status += 1
 	form_obj.save()
-	context = {'message':'Form approved.'}
+	context = {'message':'Form approved.','user':user_obj}
 	return render(request,'main/message.html',context)
+
 def reject(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj = Form.objects.get(pk=form_id)
 	autherizeOrder = Autherize_order.objects.get(role=user_obj.role,formType=form_obj.formType)
 	if(autherizeOrder.priority != form_obj.status):
-		context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj.status = -1
 	form_obj.save()
-	context = {'message':'Form rejected.'}
+	print(form_obj)
+	context = {'message':'Form rejected.','user':user_obj}
 	return render(request,'main/message.html',context)
 
 
-def form_permit_show(request,form_id):
+def form_show(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
-
 	form_obj = Form.objects.get(pk=form_id)
-	
-	
-	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'officer' in user_obj.role.name):
-		data = xmltodict.parse(form_obj.data)['xml']
-		context = {'form':form_obj,'data':data}
-		return render(request,'main/register_permit_officer.html',context)
-	if(form_obj.formType.name == 'register_request' and request.method == "GET" and 'autherize_member' in user_obj.role.name):
-		data = xmltodict.parse(form_obj.data)['xml']
-		context = {'form':form_obj,'data':data}
-		return render(request,'main/register_permit_user.html',context)	
 	if(request.method == "POST"):
-		info = '<xml>'
-		for key in request.POST:
-			value = request.POST[key]
-			info += '<'+key+'>'+value+'</'+key+'>'
-		info += '<form_id>'+form_id+'</form_id>'
-		info += '</xml>'
-		print(info)
-		form_obj.data = info
-		form_obj.save()
-		return HttpResponseRedirect("/list")
-	context = {'message':'Permission Denied'}
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+	if('officer' not in user_obj.role.name and form_obj.user != user_obj):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+
+	data = xmltodict.parse(form_obj.data)['xml']
+	if(form_obj.formType.name == 'register_request'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/register_permit.html',context)
+	if(form_obj.formType.name == 'register_extend'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/extend_register_permit.html',context)	
+	if(form_obj.formType.name == 'register_modify'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/modify_register_permit.html',context)
+	if(form_obj.formType.name == 'register_substitute'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/substitute_register_permit.html',context)
+	context = {'message':'Permission Denied','user':user_obj}
 	return render(request,'main/message.html',context)
 	
 
@@ -303,9 +299,11 @@ def setup(request):
 	formt1 = FormType(name='register_request',autherize_number=3)
 	formt2 = FormType(name='register_extend',autherize_number=1)
 	formt3 = FormType(name='register_modify',autherize_number=1)
+	formt4 = FormType(name='register_substitute',autherize_number=1)
 	formt1.save()
 	formt2.save()
 	formt3.save()
+	formt4.save()
 	role1 = Role(name='officer_hazzard')
 	role2 = Role(name='officer_plant')
 	role3 = Role(name='officer_produce')
@@ -321,11 +319,13 @@ def setup(request):
 	a3 = Autherize_order(role=role3,formType=formt1,priority=2)
 	a4 = Autherize_order(role=role1,formType=formt2,priority=0)
 	a5 = Autherize_order(role=role1,formType=formt3,priority=0)
+	a6 = Autherize_order(role=role1,formType=formt4,priority=0)
 	a1.save()
 	a2.save()
 	a3.save()
 	a4.save()
 	a5.save()
+	a6.save()
 	u1 = User(username='hazzard',password='1234',role=role1)
 	u2 = User(username='plant',password='1234',role=role2)
 	u3 = User(username='produce',password='1234',role=role3)

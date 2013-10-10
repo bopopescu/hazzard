@@ -1,5 +1,0 @@
-function registerFunction(){
-    		var myEl = document.getElementById('register_list');
-    		myEl.style.visibility = 'visible';
-    		alert('ss');
-}

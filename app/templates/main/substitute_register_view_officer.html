@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	
 
+	
 	<script type="text/javascript" charset="utf-8">
 
 	$(window).resize(function() {
@@ -32,11 +33,14 @@
 	</script>
 
 	<script type="text/javascript">
-
 		$(document).ready(function(){
+			
 			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
 		});
-
 	</script>
 
 	<script type="text/javascript">
@@ -101,8 +105,8 @@
 					</ul>
 
 					<div class="info_id">
-						<p style="display:inline" style="font-size:10px;"> username: </p>
-						<p style="display:inline" name="name"> ... </p>
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
@@ -117,20 +121,20 @@
 
 		
 			<div class="content">
-				<h1> คำขอใบแทนใบขึ้นทะเบียนวัตุอันตราย</h1>
+				<h1> ใบแทนใบขึ้นทะเบียนวัตถุอันตราย</h1>
 				
 		
 				<form action="" method="post">
 							{% csrf_token %}
-							<input type="hidden" name="form_type" value="register_modify">
+							<input type="hidden" name="form_type" value="register_substitute">
 							<!-- <div class="form-group"> -->
-								<div class="form-inline date_des">
+							<div class="form-inline date_des">
 									
-									<p >วันที่</p><input disabled type="TEXT" class="form-control"  name="dayBox" id="dayBox" placeholder="">
+									<p >วันที่</p><input readonly type="TEXT" class="form-control"  name="dayBox" id="dayBox" placeholder="{{form.date.date.day}}">
 									
-									<p >เดือน</p><input disabled type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="">
+									<p >เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{form.date.date.month}}">
 									
-									<p>ปี</p><input disabled type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{form.date.date.year}}">
 									
 
 								</div>
@@ -140,11 +144,11 @@
 							
 							<div class="form-group infoRight">
 								
-								<p >ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="">
+								<p >ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
 								
-								<p >อายุ</p><input disabled type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder=""><p> ปี </p>
+								<p >อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder="{{data.ageBox}}"><p> ปี </p>
 								
-								<p >สัญชาติ</p><input disabled type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="">
+								<p >สัญชาติ</p><input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
 								
 
 							</div>
@@ -155,63 +159,63 @@
 
 							<div class="form-group infoLeft">
 
-								<p >เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="">
+								<p >เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p >สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p >ตั้งอยู่บ้านเลขที่</p>
-								<input type="TEXT" disabled class="form-control" name="address_contactBox" id="address_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
 								
 
 								<p >หมู่ที่</p>
-								<input type="TEXT" disabled class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
 
 								<p >ตรอก/ซอย</p>
-								<input type="TEXT" disabled class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
 
 								<br/>
 
 
 								<p  >ถนน</p>
-								<input type="TEXT" disabled class="form-control" name="street_contactBox" id="street_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
 
 								<p >ตำบล/แขวง</p>
-								<input type="TEXT" disabled class="form-control" name="district_contactBox" id="district_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input type="TEXT" disabled class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
 
 								<p>จังหวัด</p>
-								<input type="TEXT" disabled class="form-control" name="provice_contactBox"  id="provice_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="provice_contactBox"  id="provice_contactBox" placeholder="{{data.provice_contactBox}}">
 
 								</br>
 
 								<p>รหัสไปรษณีย์</p>
-								<input type="TEXT" disabled class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
 
 
 								<p  >โทรศัพท์</p>
-								<input type="TEXT" disabled class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
 								<br/>
 								<p >โทรสาร</p>
-								<input type="TEXT" disabled class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
 
 								<p >Email address</p>
-								<input type="TEXT" disabled class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="email_contactBox" id="email_contactBox" placeholder="{{data.email_contactBox}}">
 								
 								</br>
 
 								<p >ข้าพเจ้า เป็นผู้รับใบอนุญาตขึ้นทะเบียน วัตถุอันตราย เลขที่ </p>
-								<input type="TEXT" disabled class="form-control" name="number_Box" id="number_Box" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="number_Box" id="number_Box" placeholder="{{data.form_id}}">
 								
 								<p >เหตุผลที่ขอรับใบแทนใบอนุญาต </p>
-								<input type="TEXT" disabled class="form-control" name="number_Box" id="number_Box" placeholder="">
+								<input type="TEXT" readonly class="form-control" name="reason_Box" id="reason_Box" placeholder="{{data.reason_Box}}">
 
 
 								</br></br>
-									<p> พร้อมกับคำขอนี้ ข้าพเจ้าได้แนบเอกสารหัลกฐานต่างๆ </p>
+									<p> พร้อมกับคำขอนี้ ข้าพเจ้าได้แนบเอกสารหลักฐานต่างๆ </p>
 									</br></br>
 									<div class="doc_zone">
 
@@ -220,7 +224,7 @@
 									  <input id="notify_doc_check" class="checkbox"type="checkbox" value="check">
 									  หลักฐานการแจ้งความใบอนุญาตสูญหาย
 									  <div class="input-append infoRight">
-									    <!-- <input disabled type="text" style="width:200px; height:30px;">  -->
+									    <!-- <input readonly type="text" style="width:200px; height:30px;">  -->
 									     <button id="notify_doc"class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 								    </p></br></br>
@@ -236,7 +240,7 @@
 									
 									
 									<p class="checkboxLabel">
-									  <input disabled id="ID_doc_check" class="checkbox"type="checkbox" value="">
+									  <input readonly id="ID_doc_check" class="checkbox"type="checkbox" value="">
 									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
 									  <div id="ID_doc" class="input-append infoRight">
 									    <!-- <input type="text" style="width:200px; height:30px;">  -->
@@ -246,7 +250,7 @@
 
 
 									<p class="checkboxLabel">
-									  <input disabled id="ensure_doc_check" class="checkbox"type="checkbox" value="">
+									  <input readonly id="ensure_doc_check" class="checkbox"type="checkbox" value="">
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นิติบุคคล
 									    <div id="ensure_doc" class="input-append infoRight">
 									    <!-- <input type="text" style="width:200px; height:30px;">  -->
@@ -255,7 +259,7 @@
 									</p></br></br>	
 
 									<p class="checkboxLabel">
-									  <input  disabled id="authorize_doc_check" class="checkbox"type="checkbox" value="">
+									  <input  readonly id="authorize_doc_check" class="checkbox"type="checkbox" value="">
 									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
 									    <div id="authorize_doc" class="input-append infoRight">
 									    <!-- <input type="text" style="width:200px; height:30px;">  -->
@@ -279,31 +283,29 @@
 								</div><!--doc zone-->
 
 								<div class="button buttonView">
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;" onclick="window.location.href='approved'">อนุมัติ
-								</button>
-
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;" href="#identyfy_customer_modal" data-toggle="modal">ไม่อนุมัติ</button>
-
-								<div id="identyfy_customer_modal" class="modal hide fade">
-									<form action="reject" method="post">
+									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> Approve </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  Reject </button>
+									<div id="identify_customer_modal" class="modal hide fade">
+										 <form id="modal-form">
+										 {%csrf_token%}
 										  <div class="modal-header">
 										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไมผ่านการอนุมัติ </h3>
 										  </div>
-
 										  <div class="modal-body">
-										    <textarea name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
 										  </div>
-
 										  <div class="modal-footer">
-										    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </a>
-										    <a href="#" class="btn btn-primary" type="submit"> แจ้งผู้ประกอบการ </a>
+										    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </button>
+										    <button class="btn btn-primary" type="submit" id="modal-button"> แจ้งผู้ประกอบการ </button>
 										  </div>
 										</form>
 									</div>
-							</div>
+								</div>
 										
 							</div><!-- infoleft -->
+
 
 							
 				

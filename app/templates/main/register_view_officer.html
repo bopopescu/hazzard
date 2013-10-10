@@ -32,11 +32,14 @@
 	</script>
 
 	<script type="text/javascript">
-
 		$(document).ready(function(){
+			
 			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
 		});
-
 	</script>
 
 	<script type="text/javascript">
@@ -101,8 +104,8 @@
 					</ul>
 
 					<div class="info_id">
-						<p style="display:inline" style="font-size:10px;"> username: </p>
-						<p style="display:inline" name="name"> ... </p>
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
@@ -124,18 +127,18 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
 									
-									<p >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ data.dayBox }}">
+									<p >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ form.date.date.day }}">
 									
-									<p >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ data.monthBox }}">
+									<p >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ form.date.date.month }}">
 									
-									<p >ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ data.yearBox }}">
+									<p >ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ form.date.date.year }}">
 									
 
 								</div>
 							<!-- </div> -->
 
 							<div class="form-group infoLeft">	
-								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="">	
+								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="{{form.id}}">	
 							</div>
 							
 							<div class="form-group infoRight">
@@ -202,25 +205,15 @@
 								<p>Email address</p>
 								<input disabled type="TEXT" class="form-control" id="email_contactBox" placeholder=" {{ data.email_contactBox }}">
 
-								<br/>
-								<p>ขอขึ้นทะเบียนวัตุอันตราย</p>
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px;">
-								 <input disabled type="radio" name="optionsRadios"  value="type2_value" > ชนิดที่ 2
-								</p>
+								</br>
+								</br>
+									<p> ขึ้นทะเบียนวัตถุอันตราย </p>
+									<p> ชนิดที่  </p><input disabled type="TEXT" class="type" id="typeBox" name="typeBox" placeholder="{{data.typeBox}}">
 
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px; width:85px">
-								  <input disabled type="radio" name="optionsRadios" value="type3_value"> ชนิดที่ 3
-								</p>
-
-								<p>เพื่อ</p>
-
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px;">
-								 <input disabled type="radio" name="optionsRadios"  value="import_value" > นำเข้า
-								</p>
-
-								<p class="radio inline" style="margin-top: 0px; padding-top:0px; width:85px">
-								  <input disabled type="radio" name="optionsRadios" value="produce_value"> ผลิต
-								</p>
+									<p> เพื่อ  </p> <input disabled type="TEXT" class="to" id="toBox" name="toBox" placeholder="{{data.toBox}}">
+									</br>
+						
+									</p>
 
 								</br></br>
 								<p> โดยมีรายละเอียด ดังนี้ </p>
@@ -267,8 +260,8 @@
 									  <input id="ID_doc_check" class="checkbox"type="checkbox" value="check">
 									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
 									  <div class="input-append infoRight">
-									    <input id="ID_doc" type="text" style="width:200px; height:30px;"> 
-									     <!-- <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button> -->
+									    <!--<input id="ID_doc" type="text" style="width:200px; height:30px;">  -->
+									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 								    
 									</p></br></br>
@@ -351,25 +344,20 @@
 								</div><!--doc zone-->
 								<div class="button buttonView">
 									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
-
-									<button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"onclick="window.location.href='approved'"> อนุมัติ </button></a>
-
-									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมัติ </button>
-
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> Approve </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  Reject </button>
 									<div id="identify_customer_modal" class="modal hide fade">
-										 <form action="reject/" method="post">
+										 <form id="modal-form">
 										  <div class="modal-header">
 										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไมผ่านการอนุมัติ </h3>
 										  </div>
-
 										  <div class="modal-body">
-										    <textarea name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
 										  </div>
-
 										  <div class="modal-footer">
 										    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </a>
-										    <a class="btn btn-primary" type="submit"> แจ้งผู้ประกอบการ </a>
+										    <button class="btn btn-primary" id="modal-button"> แจ้งผู้ประกอบการ </button>
 										  </div>
 										</form>
 									</div>
