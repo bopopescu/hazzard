@@ -2,10 +2,9 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse ,HttpResponseRedirect,Http404
 from app.models import Form,User,FormType,Autherize_order,Role
 import xmltodict
-import hashlib
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
-@never_cache
+
 def index(request):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("login")
@@ -13,7 +12,6 @@ def index(request):
 	context = {'user': user_obj }
 	return render(request,'main/index.html',context)
 
-@never_cache
 def login(request):
 	#index if not login go login
 	#if already login
@@ -22,7 +20,7 @@ def login(request):
 	try:
 		user = User.objects.get(username=request.POST['identity'])
 		#if login ok then do some redirect to index
-		if(user.password == hashlib.sha256(request.POST['password']).hexdigest()):
+		if(user.password == request.POST['password']):
 			if(user.role == Role.objects.get(name='non_autherize_member')):
 				context = {'message':"Unautherize user."}
 				return render(request,'main/message_error_login.html',context)
@@ -42,7 +40,6 @@ def logout(request):
 		pass
 	return HttpResponseRedirect("/")
 
-@never_cache
 def register(request):
 	#all this should work ??
 	#if not post render register page
@@ -57,14 +54,14 @@ def register(request):
 	if( len(user)!=0 ):
 		context = {'message':"Username are already used."}
 		return render(request,'main/message_error_login.html',context)
-	member = User(username=request.POST['idBox'],password=hashlib.sha256(request.POST['passwordBox']).hexdigest(),role=Role.objects.get(name='non_autherize_member'))
+	member = User(username=request.POST['idBox'],password=request.POST['passwordBox'],role=Role.objects.get(name='non_autherize_member'))
 	member.save()
 	context = {'message':'User is created.'}
 	return render(request,'main/message_error_login.html',context)
 
 
 
-@never_cache
+
 def list(request):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -91,7 +88,6 @@ def list(request):
 	#render list.html
 	return render(request,'main/customer_documents.html',context)
 
-@never_cache
 def create_form(request,formtype_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -116,7 +112,6 @@ def create_form(request,formtype_id):
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
-@never_cache
 def modify_form(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -143,7 +138,6 @@ def modify_form(request,form_id):
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
-@never_cache
 def extend_form(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -171,7 +165,6 @@ def extend_form(request,form_id):
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
-@never_cache
 def substitute_form(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -200,7 +193,7 @@ def substitute_form(request,form_id):
 	return render(request,'main/message.html',context)
 
 
-@never_cache
+
 def approve_form(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -227,8 +220,7 @@ def approve_form(request,form_id):
 	if(form_obj.formType.name == 'register_substitute'):
 		return render(request,'main/substitute_register_view_officer.html',context)
 	return render(request,'main/register_permit_officer.html',context)
-
-@never_cache	
+	
 def approved(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -246,7 +238,6 @@ def approved(request,form_id):
 	context = {'message':'Form approved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
-@never_cache
 def reject(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -265,7 +256,7 @@ def reject(request,form_id):
 	context = {'message':'Form rejected.','user':user_obj}
 	return render(request,'main/message.html',context)
 
-@never_cache
+
 def form_show(request,form_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
@@ -277,9 +268,7 @@ def form_show(request,form_id):
 	if('officer' not in user_obj.role.name and form_obj.user != user_obj):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
-	if(form_obj.status != form_obj.formType.autherize_number):
-		context = {'message':'Permission Denied','user':user_obj}
-		return render(request,'main/message.html',context)
+
 	data = xmltodict.parse(form_obj.data)['xml']
 	if(form_obj.formType.name == 'register_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
@@ -337,10 +326,10 @@ def setup(request):
 	a4.save()
 	a5.save()
 	a6.save()
-	u1 = User(username='hazzard',password=hashlib.sha256('1234').hexdigest(),role=role1)
-	u2 = User(username='plant',password=hashlib.sha256('1234').hexdigest(),role=role2)
-	u3 = User(username='produce',password=hashlib.sha256('1234').hexdigest(),role=role3)
-	u4 = User(username='user',password=hashlib.sha256('1234').hexdigest(),role=role5)
+	u1 = User(username='hazzard',password='1234',role=role1)
+	u2 = User(username='plant',password='1234',role=role2)
+	u3 = User(username='produce',password='1234',role=role3)
+	u4 = User(username='user',password='1234',role=role5)
 	u1.save()
 	u2.save()
 	u3.save()
