@@ -108,7 +108,8 @@
 
 				
 					<div class="span3">
-							<h4> สวัสดี,  คุณ .... </h4>
+							<p style="display:inline"> สวัสดี, คุณ  </p>
+							<p style="display:inline" name="name">{{user.username}} </p>
 						<ul class="process">
 							<li><a href="#register_request_list" 
 								onclick="register_request_listFunction()">  กระบวนการขอขึ้นทะเบียน </a></li>
@@ -137,13 +138,13 @@
 						<p> โดยที่ เจ้าหน้าที่ แต่ละส่วน จะ สามารดูเอกสาร ที่ผู้ประกอบการ ยื่น
 						 ทำการพิจารณา อนุมัติ/ ไม่อนุมัติ เอกสาร ได้ตามความเหมาะสม </p>
 
-						 <a id="manual_officer" style="float:right; font-size:19px;"> คู่มือการใช้งาน </a>
+						 <!-- <a id="manual_officer" style="float:right; font-size:19px;"> คู่มือการใช้งาน </a> -->
 					</div>
 					
 
 					<div id="register_request_list" class="span6"  style="overflow-y: auto;" >
 						<H1>  กระบวนการขอขึ้นทะเบียน </H1>
-						<a href="/create/1"><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<a href="/create/1"  data-toggle="tooltip"  title="ใบคำขออนุญาตขึ้นทะเบียน" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -151,7 +152,7 @@
 								      <th class="No_permit"> หมายเลขทะเบียน </th>
 								      <th class="date1"> วันที่ </th>
 								      <th class="status"> สถานะ </th>
-								      <th class="mange"> แก้ไข/ต่ออายุ/ใบแทน </th>
+								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
 								      <th class="type"> ประเภทงาน </th>
 								      <th class="permit_view"> ใบอนุญาต </th>
 

@@ -149,11 +149,11 @@
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								      <th id="No_head"> No. </th>
+								       <!-- <th id="No_head"> No. </th> -->
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
-								      <th id="status_head"> ตรวจสอบ </th>
-								      <th id="manage_head"> Manage </th>
+								      <th id="status_head"> ตรวจสอบ / อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
 								    </tr>
 								 </thead>
 
@@ -161,18 +161,18 @@
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'register_request' %}
 								    <tr>
-								      <td id="No_value">{{forloop.count}}</td>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
 								      <td id="date1_value">{{form.date}}</td>
 								      
-								      <td id="check_value">
+								      <td id="check_value" >
 								      {% if form.formType.autherize_number != form.status %}
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
 								      {% endif %}
 								  		</td>
 								      <td id="manage_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
 										</a>
 								      	{% endif %}
 								      </td>
@@ -277,12 +277,12 @@
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
-								      <th id="No_head"> No. </th>
+								      <!-- <th id="No_head"> No. </th> -->
 								      <th id="No_permit_head"> หมายเลขทะเบียน </th>
 								      <th id="date1_head"> วันที่ </th>
 								      <th id="status_head"> ตรวจสอบ </th>
-								      <th id="manage_head"> Manage </th>
-								      <th id="link_head"> Link with </th>
+								      <th id="manage_head"> ดูใบอนุญาต </th>
+								      <!-- <th id="link_head"> Link with </th> -->
 								    </tr>
 								 </thead>
 
@@ -290,19 +290,19 @@
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'register_substitute' %}
 								    <tr>
-								      <td id="No_value">{{forloop.count}}</td>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{ form.id }}</td>
 								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
 								      {% if form.formType.autherize_number != form.status %}
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/CheckBox-32.png"></a>
 								      {% endif %}
 								      <td id="manage_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png">
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/View-32.png">
 										</a>
 								      	{% endif %}</td>
-								      <td id="link_value">
+								      <!-- <td id="link_value"> -->
 										
 								      	
 								      </td>
