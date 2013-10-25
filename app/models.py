@@ -31,6 +31,7 @@ class Form(models.Model):
 	data = models.CharField(max_length=99999)
 	status = models.IntegerField()
 	date = models.DateTimeField()
+	expire = models.DateTimeField()
 	def __unicode__(self):
 		return "ID :"+str(self.id)+" Form by "+str(self.user)+" Type: "+str(self.formType)+" status: "+str(self.status)
 

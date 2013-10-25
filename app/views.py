@@ -242,6 +242,8 @@ def approved(request,form_id):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	form_obj.status += 1
+	date = timezone.now()
+	form_obj.expire = date.replace(date=date.year + 1)
 	form_obj.save()
 	context = {'message':'Form approved.','user':user_obj}
 	return render(request,'main/message.html',context)
