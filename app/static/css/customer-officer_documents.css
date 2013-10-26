@@ -102,6 +102,9 @@ ul
 #register_request_list{
 	display: none;
 }
+#sample_request_list{
+	display: none;
+}
 #modify_register_request_list{
 	display: none;
 }

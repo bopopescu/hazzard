@@ -1,9 +1,13 @@
 function register_request_listFunction(){
 
-	var el = document.getElementById('register_request_list');
-	el.style.display = 'block';
+	// var el = document.getElementById('register_request_list');
+	// el.style.display = 'block';
 
+	// document.getElementById('intro_officer').style.display = 'none';
+
+	document.getElementById('register_request_list').style.display = 'block';
 	document.getElementById('intro_officer').style.display = 'none';
+	document.getElementById('sample_request_list').style.display = 'none';
 
 	// var ch = document.getElementById('modify_link');
 	// ch.setAttribute("href", "modify_register_request_customer.html");
@@ -14,6 +18,15 @@ function register_request_listFunction(){
 
 }
 
+
+function sample_request_listFunction(){
+
+
+	document.getElementById('register_request_list').style.display = 'none';
+	document.getElementById('intro_officer').style.display = 'none';
+	document.getElementById('sample_request_list').style.display = 'block';
+
+}
 // function modify_register_request_listFunction(){
 
 // 	var el = document.getElementById('modify_register_request_list');

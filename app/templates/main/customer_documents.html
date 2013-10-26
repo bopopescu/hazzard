@@ -117,7 +117,7 @@
 							<li><a>  กระบวนการขอนำเข้า</a></li>
 							<li><a>  กระบวนการขอครอบครอง</a></li>
 							<li><a>  กระบวนการขอส่งออก</a></li>
-							<li><a 
+							<li><a href="#sample_request_list"
 								onclick="sample_request_listFunction()">  กระบวนการขอแสดงตัวอย่าง</a></li>
 						</ul>
 					</div>
@@ -155,6 +155,7 @@
 								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
 								      <th class="type"> ประเภทงาน </th>
 								      <th class="permit_view"> ใบอนุญาต </th>
+								      <th class="expire_date"> วันหมดอายุ </th>
 
 								    								    </tr>
 								 </thead>
@@ -195,6 +196,8 @@
 								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
+
+
 								  	</tr>
 
 									{% endfor %}
@@ -217,6 +220,7 @@
 								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
 								      <th class="type"> ประเภทงาน </th>
 								      <th class="permit_view"> ใบอนุญาต </th>
+								       <th class="expire_date"> วันหมดอายุ </th>
 
 								    								    </tr>
 								 </thead>
