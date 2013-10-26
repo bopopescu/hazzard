@@ -112,7 +112,7 @@ ul
 	display: none;
 }
 
-/*officer*/
+/*officer register*/
 #registerProcess_list{
 	display: none;
 }
@@ -123,5 +123,13 @@ ul
 	display: none;
 }
 #substitue_registerProcess_list{
+	display: none;
+}
+
+/*officer sample*/
+#sampleProduceProcess_list{
+	display: none;
+}
+#sampleImportProcess_list{
 	display: none;
 }

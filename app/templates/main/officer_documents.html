@@ -98,25 +98,28 @@
 									  <a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >
 								  	กระบวนการขอขึ้นทะเบียน</a>
 									  	<ul id="collapse-register" class="collapse sublist">
-									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  > ขอขึ้นทะเบียนวัตถุอันตราย</a></li>
-											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">   > ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
-											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">   > ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
-											<li><a href="#substitue_registerProcess_list" onclick="substitue_registerFunction()">   > ขอใบแทนใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
+									    	<li><a href="#registerProcess_list" onclick="registerFunction()">  ขอขึ้นทะเบียนวัตถุอันตราย</a></li>
+											<li><a href="#modify_registerProcess_list" onclick="modify_registerFunction()">ขอเปลี่ยนแปลงใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
+											<li><a href="#extend_registerProcess_list" onclick="extend_registerFunction()">ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
+											<li><a href="#substitue_registerProcess_list" onclick="substitue_registerFunction()">ขอใบแทนใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
 										</ul>
 							</li>
 
 							<li>  
-								<a href="#collapse-register"  data-toggle="collapse" data-parent="process"  >  กระบวนการขอผลิต</a>
-								<ul id="collapse-register" class="collapse sublist">
-									    	<li><a href="#" onclick="registerFunction()">  ขอนำเข้าอันตราย</a></li>
-											<li><a href="#" onclick="modify_registerFunction()">   ขอเปลั่ยนแปลงใบอนุญาติเข้าวัตถุอันตราย</a></li>
-											<li><a href="#" onclick="extend_registerFunction()">   ขอต่ออายุใบอนุญาตขึ้นทะเบียนวัตถุอันตราย</a></li>
-										</ul>
+								<a href="collapse-register"  data-toggle="collapse" data-parent="process"  >  กระบวนการขอผลิต</a>
+								
 							</li>
 							<li><a>  กระบวนการขอนำเข้า</a></li>
 							<li><a>  กระบวนการขอครอบครอง</a></li>
 							<li><a>  กระบวนการขอส่งออก</a></li>
-							<li><a>  กระบวนการขอแสดงตัวอย่าง</a></li>
+							<li><a href="#collapse-sample"  data-toggle="collapse" data-parent="process">  กระบวนการขอแสดงตัวอย่าง</a>
+								<ul id="collapse-sample" class="collapse sublist">
+									    	<li><a href="#sampleProduceProcess_list" onclick="sampleProduceFunction()">  ขอแสดงตัวอย่างเพื่อผลิต</a></li>
+											<li><a href="#sampleImportProcess_list" onclick="sampleImportFunction()">   ขอแสดงตัวอย่างเพื่อนำเข้า</a></li>
+											
+										</ul>
+
+							</li>
 						</ul>
 					</div>
 
@@ -305,6 +308,92 @@
 						</table>
 					</div>
 
+
+					<!--ตัวอย่างผลิต -->
+					<div id="sampleProduceProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอผลิตตัวอย่าง </H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตนำเข้าตัวอย่าง เพื่อผลิต </H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ </th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == '' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
+
+					<!--ตัวอย่างนำเข้า-->
+					<div id="sampleImportProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอนำเข้าตัวอย่าง </H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตนำเข้าตัวอย่าง เพื่อนำเข้า</H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ</th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == '' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
 
 
 
