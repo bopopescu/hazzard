@@ -305,14 +305,13 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/substitute_register_permit.html',context)
 
-###### NEED FIX ########
-	if(form_obj.formType.name == 'sample_produce'):
-		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/sample_produce_permit_officer.html',context)
-	if(form_obj.formType.name == 'sample_import'):
-		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/sample_import_permit_officer.html',context)
-#####x
+	if(form_obj.formType.name == 'sample_produce_import'):
+		if(data['willing_radioButt'] == "produce") :
+			context = {'form':form_obj,'data':data,'user':user_obj}
+			return render(request,'main/sample_produce_permit_officer.html',context)
+		elif(data['willing_radioButt'] == "import") :
+			context = {'form':form_obj,'data':data,'user':user_obj}
+			return render(request,'main/sample_import_permit_officer.html',context)		
 	context = {'message':'Permission Denied','user':user_obj}
 	return render(request,'main/message.html',context)
 	
