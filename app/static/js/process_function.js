@@ -4,6 +4,8 @@ function hideCustomerFunction(){
 	document.getElementById('intro_officer').style.display = 'none';
 	document.getElementById('register_request_list').style.display = 'none';
 	document.getElementById('sample_request_list').style.display = 'none';
+	document.getElementById('hold_request_list').style.display = 'none';
+
 
 }
 
@@ -20,6 +22,11 @@ function sample_request_listFunction(){
 
 }
 
+function hold_request_listFunction(){
+	hideCustomerFunction();
+	document.getElementById('hold_request_list').style.display = 'block';
+}
+
 //officer
 function hideOfficerFunction(){
 
@@ -31,6 +38,15 @@ function hideOfficerFunction(){
 	document.getElementById('substitue_registerProcess_list').style.display = 'none';
 	document.getElementById('sampleProduceProcess_list').style.display = 'none';
 	document.getElementById('sampleImportProcess_list').style.display = 'none';
+	document.getElementById('holdProcess_list').style.display = 'none';
+	document.getElementById('modify_holdProcess_list').style.display = 'none';
+	document.getElementById('extend_registerProcess_list').style.display = 'none';
+	document.getElementById('substitue_holdProcess_list').style.display = 'none';
+	document.getElementById('holdProcess_list').style.display = 'none';
+	document.getElementById('modify_holdProcess_list').style.display = 'none';
+	document.getElementById('extend_registerProcess_list').style.display = 'none';
+	document.getElementById('substitue_holdProcess_list').style.display = 'none';
+
 }
 
 function registerFunction(){
@@ -61,7 +77,27 @@ function sampleProduceFunction(){
 }
 
 function sampleImportFunction(){
-	hideFunction();
+	hideOfficerFunction();
 	document.getElementById('sampleImportProcess_list').style.display = 'block';
 
+}
+
+function holdFunction(){
+	hideOfficerFunction();	
+	document.getElementById('holdProcess_list').style.display = 'block';
+}
+
+function modify_holdFunction(){
+	hideOfficerFunction();
+	document.getElementById('modify_holdProcess_list').style.display = 'block';
+}
+
+function extend_holdFunction(){
+	hideOfficerFunction();
+	document.getElementById('extend_registerProcess_list').style.display = 'block';
+}
+
+function substitue_holdFunction(){
+	hideOfficerFunction();
+	document.getElementById('substitue_holdProcess_list').style.display = 'block';
 }
