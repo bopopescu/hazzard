@@ -107,8 +107,11 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
+		
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
+	print('debug')
+	print(request.POST)
 	for key in request.POST:
 		value = request.POST[key]
 		info += '<'+key+'>'+value+'</'+key+'>'
@@ -134,7 +137,7 @@ def modify_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
-		if(form_obj.formtype_id = '1'):
+		if(form_obj.formtype_id == '1'):
 			return render(request,'main/modify_register_request_customer.html',context)
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -330,12 +333,56 @@ def setup(request):
 	formt2 = FormType(name='register_extend',autherize_number=1)
 	formt3 = FormType(name='register_modify',autherize_number=1)
 	formt4 = FormType(name='register_substitute',autherize_number=1)
-	formt5 = FormType(name='sample_produce_import',autherize_number=1)
+
+	formt5 = FormType(name='register_request',autherize_number=3)
+	formt6 = FormType(name='register_extend',autherize_number=1)
+	formt7 = FormType(name='register_modify',autherize_number=1)
+	formt8 = FormType(name='register_substitute',autherize_number=1)
+
+	formt9 = FormType(name='register_request',autherize_number=3)
+	formt10 = FormType(name='register_extend',autherize_number=1)
+	formt11 = FormType(name='register_modify',autherize_number=1)
+	formt12 = FormType(name='register_substitute',autherize_number=1)
+
+	formt13 = FormType(name='register_request',autherize_number=3)
+	formt14 = FormType(name='register_extend',autherize_number=1)
+	formt15 = FormType(name='register_modify',autherize_number=1)
+	formt16 = FormType(name='register_substitute',autherize_number=1)
+
+	formt17 = FormType(name='register_request',autherize_number=3)
+	formt18 = FormType(name='register_extend',autherize_number=1)
+	formt19 = FormType(name='register_modify',autherize_number=1)
+	formt20 = FormType(name='register_substitute',autherize_number=1)
+
+	formt21 = FormType(name='sample_produce_import',autherize_number=1)
+
 	formt1.save()
 	formt2.save()
 	formt3.save()
 	formt4.save()
+
 	formt5.save()
+	formt6.save()
+	formt7.save()
+	formt8.save()
+
+	formt9.save()
+	formt10.save()
+	formt11.save()
+	formt12.save()
+
+	formt13.save()
+	formt14.save()
+	formt15.save()
+	formt16.save()
+
+	formt17.save()
+	formt18.save()
+	formt19.save()
+	formt20.save()
+
+	formt21.save()
+
 	role1 = Role(name='officer_hazzard')
 	role2 = Role(name='officer_plant')
 	role3 = Role(name='officer_produce')
