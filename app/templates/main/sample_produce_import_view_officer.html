@@ -1,0 +1,354 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('static/fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('static/fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/list"> เอกสาร</a>
+
+						</li>
+						<li class="logo">
+							<img src="static/img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
+						</li>
+
+					</ul>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+
+				</nav>
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="static/img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+			<div class="content">
+				<h1> คำขออนุญาตผลิตหรือนำเข้าตัวอย่างวัตถุอันตราย</h1>
+				<h2> วอ./กษ./กวก.๑๒ </h2>
+		
+				<form>
+					
+							<!-- <div class="form-group"> -->
+								<div class="form-inline date_des">
+									
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
+									
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{date.month}}">
+									
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{date.year}}">
+									
+
+								</div>
+							<!-- </div> -->
+
+
+							
+							<div class="form-group infoRight">
+								
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
+								
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder="{{data.ageBox}}"><p> ปี </p>
+								
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
+								
+
+							</div>
+
+
+							<div class="form-group infoLeft">	</div>
+
+							<div class="form-group infoLeft">
+
+								<p>เลขประจำตัวผู้เสียภาษีอากร</p>
+								<input readonly type="TEXT" class="form-control" name="code_taxBox" id="code-taxBox" placeholder="{{data.code_taxBox}}">
+
+								</br>
+								
+								<p>สถานที่ติดต่อผู้ขออนุญาต</p>
+
+								<p>ตั้งอยู่เลขที่</p>
+								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								
+								<p>หมู่ที่</p>
+								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+
+								<p>ตรอก/ซอย</p>
+								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+
+								<br/>
+
+								<p>ถนน</p>
+								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+
+								<p>ตำบล/แขวง</p>
+								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<br/>
+								<p>อำเภอ/เขต</p>
+								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								
+								<p>จังหวัด</p>
+								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.provice_contactBox}}">
+								<br/>
+								<p>รหัสไปรษณีย์</p>
+								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+
+								<p>โทรศัพท์</p>
+								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<br/>
+								<p>โทรสาร</p>
+								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+
+								<p>Email address</p>
+								<input readonly type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="{{data.email_contactBox}}">
+								<br/>
+								
+								<p>ชื่อและที่อยู่ของสถานที่ผลิต/เก็บรักษาวัตถุอันตราย  ชื่อ</p>
+								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" placeholder="">
+								
+								<br/>
+								<p>ตั้งอยู่เลขที่</p>
+								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" placeholder="" style="width:50px;">
+								
+
+								<p>หมู่ที่</p>
+								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" placeholder="" style="width:50px;">
+
+								<p>ตรอก/ซอย</p>
+								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" placeholder="" style="width:50px">
+
+								<br/>
+								<p>ถนน</p>
+								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" placeholder="">
+
+								<p>ตำบล/แขวง</p>
+								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" placeholder="">
+								
+								<br/>
+								<p>อำเภอ/เขต</p>
+								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" placeholder="">
+								
+								<p>จังหวัด</p>
+								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" placeholder="">
+								
+								<br/>
+								<p>รหัสไปรษณีย์</p>
+								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" placeholder="">
+
+								<p>โทรศัพท์</p>
+								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" placeholder="">
+								<br/>
+								<p>โทรสาร</p>
+								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" placeholder="">
+								
+
+								</br></br>
+								<p> โดยมีรายละเอียด ดังนี้ </p>
+								</br></br>
+								
+									<p>๑.ชื่อวัตถุอันตราย</p>
+									<input readonly type="TEXT" class="form-control" name="hazardous_nameBox" id="hazardous_nameBox" placeholder="">
+
+									</br>
+									<p>๒.สูตรอัตราส่วนผสมและลักษณะ</p>
+									<input readonly type="TEXT" class="form-control" name="solution_nameBox" id="solution_nameBox" placeholder="">
+
+									</br>
+									<p>๓.ชื่อทางการค้าหรือหมายเลขรหัส</p>
+									<input readonly type="TEXT" class="form-control" name="official_nameBox" id="official_nameBox" placeholder="">
+
+									</br>
+									<p> ๔.ชื่อผู้ผลิตและแหล่งผลิต</p>
+									<input readonly type="TEXT" class="form-control" name="producer_nameBox" id="producer_nameBox" placeholder="">
+
+									</br>
+									<p> ๕.ชื่อผู้นำเข้า</p>
+									<input readonly type="TEXT" class="form-control" name="importer_nameBox" id="importer_nameBox" placeholder="">
+
+									</br>
+									<p> ๖.ปริมาณ</p>
+									<input readonly type="TEXT" class="form-control" name="quantity_nameBox" id="quantity_nameBox" placeholder="">
+									
+									</br>
+									<p> ๗.เอกสารและตัวอย่างที่ต้องส่งประกอบการขออนุญาต </p>
+									</br></br>
+									
+									
+									<div class="doc_zone">
+									<p>
+									  <input class="checkbox" id="identityCheck"  name="identityCheck"  type="checkbox" value="">
+									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
+									  <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+								    
+									</p></br></br>
+
+									<p>
+									  <input class="checkbox" id="comapny_identityCheck" name="comapny_identityCheck" type="checkbox" value="">
+									  สำเนาหนังสือรับรองการจดทะเบียนเป็นิติบุคคล
+									    <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+
+									<p>
+									  <input class="checkbox" id="authorizeCheck" name="authorizeCheck" type="checkbox" value="">
+									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
+									    <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+									
+									<p>
+									  <input class="checkbox" id="poison_testCheck" name="poison_testCheck" name="" type="checkbox" value="">
+									แผนการทดลองประสิทธิภาพ และพิษตกค้าง
+									  <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+
+									<p>
+									  <input class="checkbox" id="safe_guaranteeCheck" name="safe_guaranteeCheck" type="checkbox" value="">
+									เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย
+									  <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+
+									<p>
+									  <input class="checkbox"type="checkbox" id="otherCheck" name="otherCheck" value="">
+									อื่นๆ (ระบุ)
+									  <div class="input-append infoRight">
+									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+
+								</div><!--doc zone-->
+								<div class="button buttonView">
+									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมัติ </button>
+									<div id="identify_customer_modal" class="modal hide fade">
+										 <form id="modal-form">
+										  <div class="modal-header">
+										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไม่ผ่านการอนุมัติ </h3>
+										  </div>
+										  <div class="modal-body">
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										  </div>
+										  <div class="modal-footer">
+										    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </a>
+										    <button class="btn btn-primary" id="modal-button"> แจ้งผู้ประกอบการ </button>
+										  </div>
+										</form>
+									</div>
+								</div>
+										
+							</div><!-- infoleft -->
+
+							
+				</form><!--form-->
+			</div><!--content-->
+		
+
+
+	</body>
+</html>

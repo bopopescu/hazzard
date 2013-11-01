@@ -101,8 +101,12 @@ def create_form(request,formtype_id):
 		if(formtype_id == '1'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
-
 			return render(request,'main/register_request_customer.html',context)
+	#if user request form 2 use 2 template
+		if(formtype_id == '5'):
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+			return render(request,'main/sample_produce_import_request_customer.html',context)
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
 	for key in request.POST:
@@ -130,7 +134,8 @@ def modify_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
-		return render(request,'main/modify_register_request_customer.html',context)
+		if(form_obj.formtype_id = '1'):
+			return render(request,'main/modify_register_request_customer.html',context)
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
 	for key in request.POST:
@@ -226,6 +231,10 @@ def approve_form(request,form_id):
 		return render(request,'main/extend_register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_substitute'):
 		return render(request,'main/substitute_register_view_officer.html',context)
+
+	if(form_obj.formType.name == 'sample_produce_import'):
+		return render(request,'main/sample_produce_import_view_officer.html',context) #####
+	
 	return render(request,'main/register_permit_officer.html',context)
 
 @never_cache	
@@ -295,6 +304,15 @@ def form_show(request,form_id):
 	if(form_obj.formType.name == 'register_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/substitute_register_permit.html',context)
+
+###### NEED FIX ########
+	if(form_obj.formType.name == 'sample_produce'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/sample_produce_permit_officer.html',context)
+	if(form_obj.formType.name == 'sample_import'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/sample_import_permit_officer.html',context)
+#####x
 	context = {'message':'Permission Denied','user':user_obj}
 	return render(request,'main/message.html',context)
 	
@@ -313,10 +331,12 @@ def setup(request):
 	formt2 = FormType(name='register_extend',autherize_number=1)
 	formt3 = FormType(name='register_modify',autherize_number=1)
 	formt4 = FormType(name='register_substitute',autherize_number=1)
+	formt5 = FormType(name='sample_produce_import',autherize_number=1)
 	formt1.save()
 	formt2.save()
 	formt3.save()
 	formt4.save()
+	formt5.save()
 	role1 = Role(name='officer_hazzard')
 	role2 = Role(name='officer_plant')
 	role3 = Role(name='officer_produce')
@@ -333,12 +353,14 @@ def setup(request):
 	a4 = Autherize_order(role=role1,formType=formt2,priority=0)
 	a5 = Autherize_order(role=role1,formType=formt3,priority=0)
 	a6 = Autherize_order(role=role1,formType=formt4,priority=0)
+	a7 = Autherize_order(role=role1,formType=formt5,priority=0)##
 	a1.save()
 	a2.save()
 	a3.save()
 	a4.save()
 	a5.save()
 	a6.save()
+	a7.save()
 	u1 = User(username='hazzard',password=hashlib.sha256('1234').hexdigest(),role=role1)
 	u2 = User(username='plant',password=hashlib.sha256('1234').hexdigest(),role=role2)
 	u3 = User(username='produce',password=hashlib.sha256('1234').hexdigest(),role=role3)
