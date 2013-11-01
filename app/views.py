@@ -97,21 +97,24 @@ def create_form(request,formtype_id):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if(request.method != 'POST'):
-	#if user request form 1 use 1 template
+	#register
 		if(formtype_id == '1'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/register_request_customer.html',context)
-	#if user request form 2 use 2 template
-		if(formtype_id == '5'):
+	#sample
+		if(formtype_id == '21'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
+	#hold
+		if (formtype_id == '13')
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+			return render(request,'main/hold_request_customer.html', context)
 		
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
-	print('debug')
-	print(request.POST)
 	for key in request.POST:
 		value = request.POST[key]
 		info += '<'+key+'>'+value+'</'+key+'>'
@@ -137,8 +140,13 @@ def modify_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
+		#register
 		if(form_obj.formtype_id == '1'):
 			return render(request,'main/modify_register_request_customer.html',context)
+		#hold
+		if(form_obj.formtype_id == '13'):
+			return render(request,'main/modify_hold_request_customer.html',context)
+	
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
 	for key in request.POST:
@@ -164,7 +172,12 @@ def extend_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
-		return render(request,'main/extend_register_request_customer.html',context)
+		#register
+		if(form_obj.formtype_id == '1'):
+			return render(request,'main/extend_register_request_customer.html',context)
+		#hold#
+		if(form_obj.formtype_id == '13'):
+			return render(request,'main/extend_hold_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -192,7 +205,12 @@ def substitute_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
-		return render(request,'main/substitute_register_request_customer.html',context)
+		#register
+		if(form_obj.formtype_id == '1'):
+			return render(request,'main/substitute_register_request_customer.html',context)
+		#hold
+		if(form_obj.formtype_id == '13'):
+			return render(request,'main/substitute_hold_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -226,6 +244,7 @@ def approve_form(request,form_id):
 	data = xmltodict.parse(form_obj.data)['xml']
 	print(data)
 	context = { 'form' : form_obj , 'data' : data ,'user':user_obj}
+	#register
 	if(form_obj.formType.name == 'register_request'):
 		return render(request,'main/register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_modify'):
@@ -235,6 +254,17 @@ def approve_form(request,form_id):
 	if(form_obj.formType.name == 'register_substitute'):
 		return render(request,'main/substitute_register_view_officer.html',context)
 
+	#hold
+	if(form_obj.formType.name == 'hold_request'):
+		return render(request,'main/hold_view_officer.html',context)
+	if(form_obj.formType.name == 'hold_modify'):
+		return render(request,'main/modify_hold_view_officer.html',context)
+	if(form_obj.formType.name == 'hold_extend'):
+		return render(request,'main/extend_hold_view_officer.html',context)
+	if(form_obj.formType.name == 'hold_substitute'):
+		return render(request,'main/substitute_hold_view_officer.html',context)
+
+	#sample
 	if(form_obj.formType.name == 'sample_produce_import'):
 		return render(request,'main/sample_produce_import_view_officer.html',context) #####
 	
@@ -294,7 +324,9 @@ def form_show(request,form_id):
 	if(form_obj.status != form_obj.formType.autherize_number):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
+
 	data = xmltodict.parse(form_obj.data)['xml']
+	#register
 	if(form_obj.formType.name == 'register_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/register_permit.html',context)
@@ -308,6 +340,21 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/substitute_register_permit.html',context)
 
+	#hold
+	if(form_obj.formType.name == 'hold_request'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/hold_permit_officer.html',context)
+	if(form_obj.formType.name == 'hold_extend'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/extend_hold_permit_officer.html',context)	
+	if(form_obj.formType.name == 'hold_modify'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/modify_hold_permit_officer.html',context)
+	if(form_obj.formType.name == 'hold_substitute'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/substitute_hold_permit_officer.html',context)
+
+	#sample
 	if(form_obj.formType.name == 'sample_produce_import'):
 		if(data['willing_radioButt'] == "produce") :
 			context = {'form':form_obj,'data':data,'user':user_obj}
