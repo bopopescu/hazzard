@@ -120,8 +120,8 @@
 				<h1> คำขออนุญาตผลิตหรือนำเข้าตัวอย่างวัตถุอันตราย</h1>
 				<h2> วอ./กษ./กวก.๑๒ </h2>
 		
-				<form>
-					
+				<form action="" method="post">
+					{% csrf_token %}
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
@@ -329,7 +329,7 @@
 
 								</div><!--doc zone-->
 								<div class="button buttonRequest">
-								<button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ส่ง</button>
+								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่ง</button>
 
 								<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">รีเซ็ต</button>
 							</div>

@@ -134,7 +134,7 @@ def modify_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
-		if(form_obj.formtype_id = '1'):
+		if(form_obj.formtype_id == '1'):
 			return render(request,'main/modify_register_request_customer.html',context)
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
