@@ -63,10 +63,10 @@
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
@@ -90,7 +90,7 @@
 
 						</li>
 						<li class="logo">
-							<img src="static/img/hazard.min.png">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
 						</li>
 						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
