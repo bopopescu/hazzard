@@ -119,6 +119,9 @@ def create_form(request,formtype_id):
 		value = request.POST[key]
 		info += '<'+key+'>'+value+'</'+key+'>'
 	info += '</xml>'
+
+	print formtype_id
+
 	formType_obj = FormType.objects.get(pk=formtype_id)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
