@@ -50,6 +50,7 @@ function hideOfficerFunction(){
 }
 
 function registerFunction(){
+	hideOfficerFunction();
 	document.getElementById('registerProcess_list').style.display = 'block';
 }
 
