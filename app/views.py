@@ -108,11 +108,12 @@ def create_form(request,formtype_id):
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
 	#hold
-		if (formtype_id == '13'):
+		if(formtype_id == '13'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/hold_request_customer.html', context)
 		
+	print('con')
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
 	for key in request.POST:
