@@ -288,7 +288,7 @@ def approved(request,form_id):
 		return render(request,'main/message.html',context)
 	form_obj.status += 1
 	date = timezone.now()
-	form_obj.expire = date.replace(date=date.year + 1)
+	form_obj.expire = date.replace(year=date.year + 1)
 	form_obj.save()
 	context = {'message':'Form approved.','user':user_obj}
 	return render(request,'main/message.html',context)
@@ -374,95 +374,94 @@ def form_show(request,form_id):
 
 
 
+##################################################################################################################
+##     _____                                       ___                        O       O        O         O      ##
+##    |     \                                       |                        O      OO       OO        O        ##
+##    |     /                                       |                      O    OOO       OOO      OOO          ##
+##    |____/   ___      ____        _____           |   ____            O   OO      OOOO       OOOO             ##
+##    |     \ |   \  | |  __  |   |   |             |  |    |         O  OO   OOO      OOOOO                    ##
+##    |     / |___/  | |    | |___|   |       |     |  |____|        O  OO  OOOOOOO                             ##
+##    |____/  |   \  | |____| |   |   |       |_____|  |    |       O OO O                         ENTERPRISE   ##
+##                                                                                                              ##
+##################################################################################################################
 
-
-
+## SET UP SCRIPT :: HAZARD WEB APPLICATION
+## _______________________________________________________________________________________________________________
 
 def setup(request):
-	formt1 = FormType(name='register_request',autherize_number=3)
-	formt2 = FormType(name='register_extend',autherize_number=1)
-	formt3 = FormType(name='register_modify',autherize_number=1)
-	formt4 = FormType(name='register_substitute',autherize_number=1)
+	formts = []
+	#register
+	formts.append(FormType(name='register_request',autherize_number=3))
+	formts.append(FormType(name='register_extend',autherize_number=1))
+	formts.append(FormType(name='register_modify',autherize_number=1))
+	formts.append(FormType(name='register_substitute',autherize_number=1))
+	#produce
+	formts.append(FormType(name='produce_request',autherize_number=3))
+	formts.append(FormType(name='produce_extend',autherize_number=1))
+	formts.append(FormType(name='produce_modify',autherize_number=1))
+	formts.append(FormType(name='produce_substitute',autherize_number=1))
+	#import
+	formts.append(FormType(name='import_request',autherize_number=3))
+	formts.append(FormType(name='import_extend',autherize_number=1))
+	formts.append(FormType(name='import_modify',autherize_number=1))
+	formts.append(FormType(name='import_substitute',autherize_number=1))
+	#hold
+	formts.append(FormType(name='hold_request',autherize_number=1))
+	formts.append(FormType(name='hold_extend',autherize_number=1))
+	formts.append(FormType(name='hold_modify',autherize_number=1))
+	formts.append(FormType(name='hold_substitute',autherize_number=1))
+	#export
+	formts.append(FormType(name='export_request',autherize_number=3))
+	formts.append(FormType(name='export_extend',autherize_number=1))
+	formts.append(FormType(name='export_modify',autherize_number=1))
+	formts.append(FormType(name='export_substitute',autherize_number=1))
+	#sample
+	formts.append(FormType(name='sample_produce_import',autherize_number=1))
 
-	formt5 = FormType(name='register_request',autherize_number=3)
-	formt6 = FormType(name='register_extend',autherize_number=1)
-	formt7 = FormType(name='register_modify',autherize_number=1)
-	formt8 = FormType(name='register_substitute',autherize_number=1)
+	for form in formts :
+		form.save()
 
-	formt9 = FormType(name='register_request',autherize_number=3)
-	formt10 = FormType(name='register_extend',autherize_number=1)
-	formt11 = FormType(name='register_modify',autherize_number=1)
-	formt12 = FormType(name='register_substitute',autherize_number=1)
+	#############################################################################
 
-	formt13 = FormType(name='register_request',autherize_number=3)
-	formt14 = FormType(name='register_extend',autherize_number=1)
-	formt15 = FormType(name='register_modify',autherize_number=1)
-	formt16 = FormType(name='register_substitute',autherize_number=1)
+	roles = []
+	roles.append(Role(name='officer_hazzard'))
+	roles.append(Role(name='officer_plant'))
+	roles.append(Role(name='officer_produce'))
+	roles.append(Role(name='non_autherize_member'))
+	roles.append(Role(name='autherize_member'))
+	
+	for role in roles :
+		role.save()
 
-	formt17 = FormType(name='register_request',autherize_number=3)
-	formt18 = FormType(name='register_extend',autherize_number=1)
-	formt19 = FormType(name='register_modify',autherize_number=1)
-	formt20 = FormType(name='register_substitute',autherize_number=1)
+	#############################################################################
 
-	formt21 = FormType(name='sample_produce_import',autherize_number=1)
+	#register
+	auth_orders = []
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[0],priority=0))
+	auth_orders.append(Autherize_order(role=roles[1],formType=formts[0],priority=1))
+	auth_orders.append(Autherize_order(role=roles[2],formType=formts[0],priority=2))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[2],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[1],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[3],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[4],priority=0))
+	#hold
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[12],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[13],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[14],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[15],priority=0))
+	
+	for auth_order in auth_orders :
+		auth_order.save()
 
-	formt1.save()
-	formt2.save()
-	formt3.save()
-	formt4.save()
+	#############################################################################
 
-	formt5.save()
-	formt6.save()
-	formt7.save()
-	formt8.save()
-
-	formt9.save()
-	formt10.save()
-	formt11.save()
-	formt12.save()
-
-	formt13.save()
-	formt14.save()
-	formt15.save()
-	formt16.save()
-
-	formt17.save()
-	formt18.save()
-	formt19.save()
-	formt20.save()
-
-	formt21.save()
-
-	role1 = Role(name='officer_hazzard')
-	role2 = Role(name='officer_plant')
-	role3 = Role(name='officer_produce')
-	role4 = Role(name='non_autherize_member')
-	role5 = Role(name='autherize_member')
-	role3.save()
-	role1.save()
-	role2.save()
-	role4.save()
-	role5.save()
-	a1 = Autherize_order(role=role1,formType=formt1,priority=0)
-	a2 = Autherize_order(role=role2,formType=formt1,priority=1)
-	a3 = Autherize_order(role=role3,formType=formt1,priority=2)
-	a4 = Autherize_order(role=role1,formType=formt2,priority=0)
-	a5 = Autherize_order(role=role1,formType=formt3,priority=0)
-	a6 = Autherize_order(role=role1,formType=formt4,priority=0)
-	a7 = Autherize_order(role=role1,formType=formt5,priority=0)##
-	a1.save()
-	a2.save()
-	a3.save()
-	a4.save()
-	a5.save()
-	a6.save()
-	a7.save()
-	u1 = User(username='hazzard',password=hashlib.sha256('1234').hexdigest(),role=role1)
-	u2 = User(username='plant',password=hashlib.sha256('1234').hexdigest(),role=role2)
-	u3 = User(username='produce',password=hashlib.sha256('1234').hexdigest(),role=role3)
-	u4 = User(username='user',password=hashlib.sha256('1234').hexdigest(),role=role5)
+	u1 = User(username='hazzard',password=hashlib.sha256('1234').hexdigest(),role=roles[0])
+	u2 = User(username='plant',password=hashlib.sha256('1234').hexdigest(),role=roles[1])
+	u3 = User(username='produce',password=hashlib.sha256('1234').hexdigest(),role=roles[2])
+	u4 = User(username='user',password=hashlib.sha256('1234').hexdigest(),role=roles[4])
 	u1.save()
 	u2.save()
 	u3.save()
 	u4.save()
+
 	return HttpResponse('ok')
