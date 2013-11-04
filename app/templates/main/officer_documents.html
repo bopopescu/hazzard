@@ -379,7 +379,7 @@
 
 								   <tbody>
 								   	{% for form in forms %}
-								   	{% if form.formType.name == '' %}
+								   	{% if form.formType.name == 'hold_request' %}
 								    <tr>
 								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
@@ -422,7 +422,7 @@
 
 								   <tbody>
 								   	{% for form in forms %}
-								   	{% if form.formType.name == '' %}
+								   	{% if form.formType.name == 'hold_extend' %}
 								    <tr>
 								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
@@ -465,7 +465,7 @@
 
 								   <tbody>
 								   	{% for form in forms %}
-								   	{% if form.formType.name == '' %}
+								   	{% if form.formType.name == 'hold_modify' %}
 								    <tr>
 								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
@@ -508,7 +508,7 @@
 
 								   <tbody>
 								   	{% for form in forms %}
-								   	{% if form.formType.name == '' %}
+								   	{% if form.formType.name == 'hold_substitute' %}
 								    <tr>
 								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
