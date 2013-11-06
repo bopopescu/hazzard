@@ -1,0 +1,291 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="css/import_request.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('.carousel').carousel('cycle');
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/list"> เอกสาร </a>
+
+						</li>
+						<li class="logo">
+							<img src="static/img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
+						</li>
+
+					</ul>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+
+				</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="static/img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+			<div class="content">
+				<h1>ใบอนุญาตนำเข้าวัตถุอันตราย</h1>
+				<h2>แบบ วอ.๔</h2>
+		
+				<form>
+					
+								<div class="form-group infoleft">
+									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{data.permitID}}">
+								</div>
+								<div class="form-group infoRight">
+									<p>กรม/สำนักงาน</p><input disabled type="TEXT" class="form-control" name="departmentBox" id="departmentBox" placeholder="{{data.office}}">
+								</div>
+								
+								<br/> <br/> <br/>
+
+								<div class="form-group infoRight">
+									<p>กระทรวง</p><input disabled type="TEXT" class="form-control" name="ministryBox" id="ministryBox" placeholder="{{data.ministry}}">
+								</div>
+
+								<br/> <br/> <br/>
+
+							<!-- <div class="form-group"> -->
+								<div class="date_des">
+									
+									<p>วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" name="dayBox" placeholder="{{form.date.date.day}}">
+									
+									<p>เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" name="monthBox" placeholder="{{form.date.date.month}}">
+									
+									<p>ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" name="yearBox" placeholder="{{form.date.date.year}}">
+									
+
+								</div>
+							<!-- </div> -->
+
+								<br/> <br/> <br/>
+
+							<div class="form-group infoLeft">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{form.id}}">
+							</div>
+
+							<div class="form-group infoLeft">
+								<p>อนุญาตให้</p><input disabled type="TEXT"  class="form-control"name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
+								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
+							</div>
+
+
+							<div class="form-group infoLeft">	</div>
+							<div class="form-group infoLeft" style="width:100%">
+
+								<p>เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="{{data.code_taxBox}}">
+
+								</br>
+								
+								<p>สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
+
+								<p>ตั้งอยู่บ้านเลขที่</p>
+								<input type="TEXT" disabled class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								
+
+								<p>หมู่ที่</p>
+								<input type="TEXT" disabled class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+
+								<p>ตรอก/ซอย</p>
+								<input type="TEXT" disabled class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+
+								<br/>
+
+
+								<p>ถนน</p>
+								<input type="TEXT" disabled class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+
+								<p>ตำบล/แขวง</p>
+								<input type="TEXT" disabled class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+
+								<br/>
+
+								<p>อำเภอ/เขต</p>
+								<input type="TEXT" disabled class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+
+								<p>จังหวัด</p>
+								<input type="TEXT" disabled class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.province_contactBox}}">
+
+								<br/>
+
+								<p>รหัสไปรษณีย์</p>
+								<input type="TEXT" disabled class="form-control"  name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+
+								<br/>
+
+								<p>โทรศัพท์</p>
+								<input type="TEXT" disabled class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<p>โทรสาร</p>
+								<input type="TEXT" disabled class="form-control"  name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+
+								<br/> <br/>
+
+								<p>ขออนุญาตนำเข้าวัตถุอันตรายตามรายการ ดังต่อไปนี้</p><br/>
+
+								<br/>
+
+								<p>ชื่อวัตถุอันตราย สูตรเครมี และอัตราส่วน</p><br/>
+
+								<br/> <br/>
+
+              					<textarea disabled name="hazardItems" id="hazardBox" rows="3" placeholder="{{date.hazardItems}}" ></textarea>
+								<p>ลักษณะและสูตร (Formulation)</p>
+								<input disabled type="TEXT" class="form-control" name="fomulaBox" id="fomulaBox" placeholder="{{data.fomula_nameBox}}">
+
+								<br/>
+
+								<p>ชื่อทางการค้า (ถ้ามี)</p>
+								<input disabled type="TEXT" class="form-control" name="marketingBox" id="marketingBox" placeholder="{{data.official_nameBox}}">
+
+								<br/>
+
+								<p>ผู้ผลิต</p>
+								<input disabled type="TEXT" class="form-control" name="producerName" id="producerName" placeholder="{{data.producer_nameBox}}">
+
+								<br/>
+
+								<p>ประเทศที่ผลิต</p>
+								<input disabled type="TEXT" class="form-control" name="countryBox" id="countryBox" placeholder="{{data.country_nameBox}}">
+
+								<br/>
+
+								<p>ปริมาณ</p>
+								<input disabled type="TEXT" class="form-control" name="sellerBox" id="sellerBox" placeholder="{{data.quantity}}">
+
+								<br/> <br/>
+
+								<p>หมายเหตุ</p>
+
+								<br/> <br/>
+
+              					<textarea disabled  name="notationBox" id="notationBox" rows="2" placeholder="{{data.note}}"></textarea>
+								
+								<br/> <br/> <br/>
+								
+								<p>สถานที่เก็บรักษาวัตถุอันตรายตามรายการด้านหลังใบอนุญาตนี้</p>
+								<p>ใบอนุญาตนี้ออกให้โดยมีเงื่อนไข ดังต่อไปนี้</p>
+
+								<br/> <br/>
+
+              					<textarea  disabled name="conditionBox" id="conditionBox" rows="2" placeholder="{{data.hazardItems}}" ></textarea>
+
+							<!-- <div class="form-group"> -->
+								<div class="form-group infoLeft">
+									<p>ใบอนุญาตนี้ให้ใช้ได้จนถึงวันที่</p>		
+									<p class="date" >วันที่</p><input type="TEXT" class="form-control" name="dayBox2" id="dayBox2" placeholder="">
+									
+									<p class="date" >เดือน</p><input type="TEXT" class="form-control"  name="monthBox2" id="monthBox2" placeholder="">
+									
+									<p class="date">พ.ศ.</p><input type="TEXT" class="form-control"  name="yearBox2" id="yearBox2" placeholder="">
+									
+
+								</div>
+								<br/>							
+								<div class="button" style="float:center;">
+								<button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ส่ง</button>
+
+								<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">รีเซ็ต</button>
+							</div>
+										
+							</div><!-- infoleft -->
+
+							
+				</form><!--form-->
+			</div><!--content-->
+		
+
+
+	</body>
+</html>
