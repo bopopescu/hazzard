@@ -18,6 +18,15 @@
 	<script type="text/javascript" src="static/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="static/js/bootstrap.js"></script>
 	
+<script type="text/javascript" src="validate.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+var Validate = new validate();
+Validate.start();
+});
+</script>
 
 	<script type="text/javascript" charset="utf-8">
 
@@ -198,16 +207,13 @@
 								<p >โทรสาร</p>
 								<input type="TEXT" readonly class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
 
-								<p >Email address</p>
-								<input type="TEXT" readonly class="form-control" name="email_contactBox" id="email_contactBox" placeholder="{{data.email_contactBox}}">
-								
 								</br>
 
 								<p >ข้าพเจ้า เป็นผู้รับใบอนุญาตนำเข้า วัตถุอันตราย เลขที่ </p>
 								<input type="TEXT" readonly class="form-control" name="number_Box" id="number_Box" placeholder="{{data.form_id}}">
 								</br>
 								<p > ใช้ใบแทน เนื่องจาก </p>
-								<input type="TEXT" readonly class="form-control" name="reason_Box" id="reason_Box" placeholder="{{data.reason_Box}}">
+								<textarea name="reasonArea" id="reasonArea"  style="width:500px" placeholder=" {{data.reasonArea}} "></textarea>
 								
 								<div class="button buttonView">
 								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;"onclick="window.location.href='/list'">กลับ</button>

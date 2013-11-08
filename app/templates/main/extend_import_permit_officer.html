@@ -18,30 +18,15 @@
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="static/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="static/js/bootstrap.js"></script>
-	
+	<script type="text/javascript" src="validate.js"></script>
 
-	<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
 
-	$(window).resize(function() {
-		rs();
-	}).load(function() {
-		rs();
-	});
-
-	
-	
-	</script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-			
-			$('.carousel').carousel('cycle');
-			$('#modal-button').click(function(e){
-			      e.preventDefault();
-			      window.location = "reject?comment=" + $("#comment").val()
-			});
-		});
-	</script>
+$(document).ready(function(){
+var Validate = new validate();
+Validate.start();
+});
+</script>
 
 	<script type="text/javascript">
 		
@@ -139,13 +124,13 @@
 							<!-- </div> -->
 							<br><br><br>
 							<div class="form-group infoleft">
-							<p>อนุญาตให้ต่ออายุใบอนุญาต...........เลขที่ </p>
+							<p>อนุญาตให้ต่ออายุใบอนุญาตนำเข้าวัตถุอันตรายเลขที่ </p>
 							<input readonly type="TEXT" class="form-control" id="orderBox" name="orderBox" placeholder="{{data.orderBox}}">
 							<p>เป็นครั้งที่</p>
 							<input readonly type="TEXT" class="form-control" id="timesBox" name="timesBox" placeholder="{{data.timesBox}}" style="width:50px">
 							<br>
 							<p>ได้รับการอนุมัติโดย</p>
-							<input readonly type="TEXT" class="form-control" id="officernameBox" name="officernameBox" placeholder="{{data.timesBox}}">
+							<input readonly type="TEXT" class="form-control" id="official_nameBox" name="official_nameBox" placeholder="{{data.official_nameBox}}">
 							</div>
 
 							

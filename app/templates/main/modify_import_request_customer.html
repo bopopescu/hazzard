@@ -5,19 +5,30 @@
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap-responsive.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
 
 
-	<link rel="stylesheet" href="css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="css/registration.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/import_request.css" type="text/css" media="screen" charset="utf-8">
-	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
-	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	
+	<link rel="stylesheet" href="static/css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="static/css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="static/css/import_request.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="static/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap.js"></script>
+	<script type="text/javascript" src="validate.js"></script>
+
+<script type="text/javascript" src="validate.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+var Validate = new validate();
+Validate.start();
+});
+</script>
+
 
 	<script type="text/javascript" charset="utf-8">
 
@@ -28,13 +39,17 @@
 	});
 
 	
-	}
+	
 	</script>
 
 	<script type="text/javascript">
 
 		$(document).ready(function(){
 			$('.carousel').carousel('cycle');
+			var Validate = new validate();
+
+		
+			Validate.start();
 		});
 
 	</script>
@@ -116,7 +131,7 @@
 		<!--header end -->
 
 			<div class="content">
-				<h1> คำขอแก้ไขใบอนุญาตินำเข้า</h1>
+				<h1> คำขอแก้ไขใบอนุญาตินำเข้าวัตถุอันตราย</h1>
 				<h2> วอ./กษ./กวก.๑ </h2>
 		
 				<form>
@@ -221,7 +236,7 @@
 
               					<textarea disabled name="harzardBox" id="harzardBox" rows="3" placeholder="{{data.harzardItems}}"></textarea>
 								<p>ลักษณะและสูตร (Formulation)</p>
-								<input disabled type="TEXT" class="form-control" name="fomula_nameBox" id="fomula_nameBox" placeholder="{{fomula_nameBox}}">
+								<input disabled type="TEXT" class="form-control" name="formulaBox" id="formulaBox" placeholder="{{formulaBox}}">
 
 								<br/>
 
