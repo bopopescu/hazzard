@@ -199,7 +199,11 @@
 								      {% endif %}
 								  	</td>
 
-
+								  	<td class="date1">
+								  		{% if form_obj.formType.autherize_number == form_obj.status %}
+								      	{{ form_obj.expire }}
+								      	{% endif %}
+								    </td>
 								  	</tr>
 
 									{% endfor %}
@@ -263,6 +267,12 @@
 								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
+								  	<td class="date1">
+								  		{% if form_obj.formType.autherize_number == form_obj.status %}
+								      	{{ form_obj.expire }}
+								      	{% endif %}
+								    </td>
+								  	
 								  	</tr>
 
 									{% endfor %}
@@ -325,6 +335,11 @@
 								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
+								  	<td class="date1">
+								  		{% if form_obj.formType.autherize_number == form_obj.status %}
+								      	{{ form_obj.expire }}
+								      	{% endif %}
+								    </td>
 								  	</tr>
 
 									{% endfor %}

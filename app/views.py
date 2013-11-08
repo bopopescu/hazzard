@@ -145,10 +145,10 @@ def modify_form(request,form_id):
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		#register
-		if(form_obj.formtype_id == '1'):
+		if(form_obj.formType.id == 1):
 			return render(request,'main/modify_register_request_customer.html',context)
 		#hold
-		if(form_obj.formtype_id == '13'):
+		if(form_obj.formType.id == 13):
 			return render(request,'main/modify_hold_request_customer.html',context)
 	
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
@@ -176,11 +176,12 @@ def extend_form(request,form_id):
 		date = timezone.now().date()
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
+
 		#register
-		if(form_obj.formtype_id == '1'):
+		if(form_obj.formType.id == 1):
 			return render(request,'main/extend_register_request_customer.html',context)
 		#hold#
-		if(form_obj.formtype_id == '13'):
+		if(form_obj.formType.id == 13):
 			return render(request,'main/extend_hold_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
@@ -210,10 +211,10 @@ def substitute_form(request,form_id):
 		data = xmltodict.parse(form_obj.data)['xml']
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		#register
-		if(form_obj.formtype_id == '1'):
+		if(form_obj.formType.id == 1):
 			return render(request,'main/substitute_register_request_customer.html',context)
 		#hold
-		if(form_obj.formtype_id == '13'):
+		if(form_obj.formType.id == 13):
 			return render(request,'main/substitute_hold_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
