@@ -1,3 +1,4 @@
+
 //customer
 function hideCustomerFunction(){
 	document.getElementById('intro_officer').style.display = 'none';
@@ -34,18 +35,15 @@ function hideOfficerFunction(){
 	document.getElementById('modify_registerProcess_list').style.display = 'none';
 	document.getElementById('extend_registerProcess_list').style.display = 'none';
 	document.getElementById('substitue_registerProcess_list').style.display = 'none';
-	document.getElementById('substitue_registerProcess_list').style.display = 'none';
+	;
 	document.getElementById('sampleProduceProcess_list').style.display = 'none';
 	document.getElementById('sampleImportProcess_list').style.display = 'none';
 	document.getElementById('holdProcess_list').style.display = 'none';
-	document.getElementById('modify_holdProcess_list').style.display = 'none';
-	document.getElementById('extend_registerProcess_list').style.display = 'none';
-	document.getElementById('substitue_holdProcess_list').style.display = 'none';
-	document.getElementById('holdProcess_list').style.display = 'none';
-	document.getElementById('modify_holdProcess_list').style.display = 'none';
-	document.getElementById('extend_registerProcess_list').style.display = 'none';
-	document.getElementById('substitue_holdProcess_list').style.display = 'none';
 
+	document.getElementById('modify_holdProcess_list').style.display = 'none';
+	 document.getElementById('extend_holdProcess_list').style.display = 'none';
+	document.getElementById('substitue_holdProcess_list').style.display = 'none';
+	
 }
 
 function registerFunction(){
