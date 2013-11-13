@@ -1,22 +1,22 @@
-<!DOCTYPE>
+	<!DOCTYPE>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="static/css/bootstrap-responsive.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrapTheme3.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
 
 
-	<link rel="stylesheet" href="static/css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="static/css/registration.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="static/css/import_request.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
-	<script type="text/javascript" src="static/js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="static/js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -63,10 +63,10 @@
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
@@ -86,11 +86,11 @@
 					<ul class="mainmenu visible-desktop visible-tablet">
 						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
 						<li class="" style="margin-left: 50px;">
-								<a href="/list"> เอกสาร </a>
+								<a href="/list"> ขอเอกสาร </a>
 
 						</li>
 						<li class="logo">
-							<img src="static/img/hazard.min.png">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
 						</li>
 						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
@@ -110,11 +110,9 @@
 
 					
 			</div>
-			<div class="logo">
-				<!-- <img src="static/img/logo-color.png"> -->
-			</div>
+			
 		</header>
-		<!--header end -->
+		<!--header end -->		<!--header end -->
 
 			<div class="content">
 				<h1>ใบอนุญาตนำเข้าวัตถุอันตราย</h1>
@@ -122,9 +120,7 @@
 		
 				<form>
 					
-								<div class="form-group infoleft">
-									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{data.permitID}}">
-								</div>
+								
 								<div class="form-group infoRight">
 									<p>กรม/สำนักงาน</p><input disabled type="TEXT" class="form-control" name="departmentBox" id="departmentBox" placeholder="{{data.office}}">
 								</div>
@@ -150,11 +146,18 @@
 								</div>
 							<!-- </div> -->
 
-								<br/> <br/> <br/>
+								
+
+						<div class="form-group infoleft">
+									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
+								</div>
+
+								<br/>
 
 							<div class="form-group infoLeft">
-								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{form.id}}">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
 							</div>
+
 
 							<div class="form-group infoLeft">
 								<p>อนุญาตให้</p><input disabled type="TEXT"  class="form-control"name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
