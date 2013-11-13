@@ -1,0 +1,310 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/list"> เอกสาร </a>
+
+						</li>
+						<li class="logo">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
+						</li>
+
+					</ul>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+
+				</nav>
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+
+		<!-- <div class="span12" style="margin:0; padding:0"> -->
+			<div class="content">
+				<h1> ใบอนุญาตผลิตวัตถุอันตราย </h1>
+				<h2> วอ.๒ </h2>
+		
+				<form>
+					
+							<!--ฃฃ <div class="form-group"> -->
+								
+
+			 					<div class="date_des">
+										
+									<p class="office" style="float:rigth; margin-left:30px; margin-top: -10px;" >กรม/สำนักงาน</p><input type="TEXT" class="form-control" name="departmentBox" id="departmentBox" placeholder="{{data.departmentBox}}" style="float:rigth;  margin-left:10px; width:120px; margin-top:0px;">
+									<br>
+
+									<p class="office" style="float:rigth; margin-left:30px; margin-top:-10px;" >กระทรวง</p><input type="TEXT" class="form-control" name="ministryBox"id="ministryBox" placeholder="{{data.ministryBox}}" style="margin-left:10px; width:160px; margin-top:0px;">
+									<br>
+
+
+									<p >วันที่</p><input readonly type="TEXT" class="form-control"  id="dayBox" name="dayBox" value="{{date.day}}">
+									
+									<p >เดือน</p><input readonly type="TEXT" class="form-control"  id="monthBox" name="monthBox" value="{{date.month}}">
+									
+									<p>ปี</p><input readonly type="TEXT" class="form-control"  id="yearBox" name="yearBox" value="{{date.year}}">
+									
+
+								</div>
+							<!-- </div> -->
+						<div class="form-group infoleft">
+									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
+								</div>
+
+								<br/>
+
+							<div class="form-group infoLeft">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
+							</div>
+							
+								<p class="name" style= >อนุญาตให้</p>
+								<input type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}" style="width:500px;">
+
+							
+								<p class="region" >สัญชาติ</p>
+								<input type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}" style="width:120px;">
+							</br>	
+								
+								<p class="code-tax" >เลขประจำตัวผู้เสียภาษีอากร</p><input type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="{{data.code_taxBox}}"
+								style="width:250px;">
+
+								
+								
+								</br>
+								<p class="contact" >สถานที่ติต่อของผู้รับใบอณุญาตตั้งอยู่เลขที่ </p><input type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}" style="width:70;">
+
+							
+								
+								
+
+								<p class="mo_contact" >หมู่ที่</p>
+								<input type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}"style="width:70;">
+
+								<p class="soi_contact" >ตรอก/ซอย</p>
+								<input type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}"style="width:175;">
+
+								<br/>
+
+
+								<p class="street_contact" >ถนน</p>
+								<input type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}" style="width:175px;">
+
+								<p class="district_contact" >ตำบล/แขวง</p>
+								<input type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}" style="width:175px;">
+								
+								<p class="canton_contact" >อำเภอ/เขต</p>
+								<input type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}" style="width:175px;">
+								</br>
+
+								<p class="province_contact" >จังหวัด</p>
+								<input type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.province_contactBox}}" style="width:100px;">
+
+								<p class="province_contact" >รหัสไปรษณีย์</p>
+								<input type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}" style="width:100px;">
+
+								<p class="mobile_contact" >โทรศัพท์</p>
+								<input type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}" style="width:120px;">
+								
+								<p class="fax_contact" >โทรสาร</p>
+								<input type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}" style="width:120px;">
+								<br/>
+								
+								
+									<p> สถานที่ผลิตวัตถุอันตรายชื่อ </p><input type="TEXT" class="form-control" name="name_manufacture" id="name_manufacture" placeholder="{{data.name_manufacture}}">
+								</br>
+									<p> ตั้งอยู่เลขที่  </p><input type="TEXT" style="width:100;"class="form-control" name="address_manufacture" id="address_manufacture" placeholder="{{data.address_manufacture}}">
+
+									<p> หมู่ที่ </p> <input type="TEXT" style="width:50;"class="form-control" name="mo_manufacture" id="mo_manufacture" placeholder="{{data.mo_manufacture}}">
+									<p> ตรอก/ซอย </p> <input type="TEXT" class="form-control" name="soi_manufacture" id="soi_manufacture" placeholder="{{data.soi_manufacture}}" style="width:125px;">
+									<p> ถนน </p> <input type="TEXT" class="form-control" name="street_manufacture" id="street_manufacture" placeholder="{{data.street_manufacture}}" style="width:132px;">
+									</br>
+						
+									
+
+								
+									<p>ตำบล/แขวง</p>
+									<input type="TEXT" class="form-control" name="district_manufacture" id="district_manufacture" placeholder="{{data.district_manufacture}}" style="width:170px;">
+									<p>อำเภอ/เขต</p>
+									<input type="TEXT" class="form-control" name="canton_manufacture" id="canton_manufacture" placeholder="{{data.canton_manufacture}}" style="width:170px;">
+									<p>จังหวัด</p>
+									<input type="TEXT" class="form-control" name="province_manufacture" name="province_manufacture" placeholder="{{data.province_manufacture}}" style="width:170px;">
+									</br>
+									
+									<p>รหัสไปรษณีย์</p>
+									<input type="TEXT" class="form-control" name="zip_manufacture" id="zip_manufacture" placeholder="{{data.zip_manufacture}}" style="width:170px;">
+									<p>โทรศัพท์</p>
+									<input type="TEXT" class="form-control" name="mobile_manufacture" id="mobile_manufacture" placeholder="{{data.mobile_manufacture}}" style="width:170px;">
+									<p>โทรสาร</p>
+									<input type="TEXT" class="form-control" name="fax_manufacture" name="fax_manufacture" placeholder="{{data.fax_manufacture}}" style="width:170px;">
+									
+
+
+								</br>
+									<p>ผลิตวัตถุอันตรายตามรายการดังต่อไปนี้</p>
+									
+
+								</br>
+									<p>ชื่อวัตถุอันตราย สูตรเคมี และอัตราส่วน</p><br/>
+									<textarea readOnly type="TEXT" id="hazardousBox" name="hazardousBox" style="margin-top:20px; width:700px;" placeholder="{{data.hazardousBox}}"> </textarea></br>
+								</br>
+									<p class"producer_name"> ลักษญะและสูตร(Formulation)</p>
+									<input type="TEXT" class="form-control" name="formulaBox" id="formulaBox" placeholder="{{data.formulaBox}}">
+
+								</br>
+									<p class"importer_name"> ชื่อทางการค้า( ถ้ามี )</p>
+									<input type="TEXT" class="form-control" name="marketingBox" id="marketingBox" placeholder="{{data.marketingBox}}">
+
+								</br>
+									<p class"seller_name">ปริมาณ</p>
+									<input type="TEXT" class="form-control" name="seller_nameBox" id="seller_nameBox" placeholder="{{data.seller_nameBox}}">
+
+								</br>
+									<p class"type_using"> หมายเหตุ</p>
+									<textarea readOnly type="TEXT" id="notationBox" name="notationBox" style="margin-top:20px; width:700px;" placeholder="{{data.notationBox}}"> </textarea></br>
+
+
+								</br>
+									<p class"package_name">สถานที่เก็บรักษาวัตถุอันตรายตามรายการด้านหลังใบอนุญาตนี้</p>
+									
+
+								</br>
+									<p> ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบสำหรับการผลิต(ในกรณีที่มีประกาศฯ ออกตามความในมาตรา ๒๐(๒)</p>
+								</br>
+									<p> แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ.๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะผู้รับผิดชอบ)</p>
+								</br>
+									
+									<textarea readOnly type="TEXT" id="specialistBox" name="specialistBox" style="margin-top:20px; width:700px;" placeHolder ="{{data.specialistBox}}"> </textarea></br>
+								</br>
+									<p>ใบอณุญาตนี้ออกโดยมีเงื่อนไข ดังต่อไปนี้</p>
+
+									<textarea readOnly type="TEXT" id="conditionBox" name="conditionBox" style="margin-top:20px; width:700px;" placeholder="{{data.conditionBox}}"> </textarea></br>
+									<p>ใบอณุญาตนี้ใช้ได้จนถึงวันที่</p>
+									<input type="TEXT" class="form-control" name="dayBox2" id="dayBox2" placeholder="{{data.dayBox2}}" style="width:40px;">
+									<p>เดือน</p>
+									<input type="TEXT" class="form-control" name="monthBox2" id="monthBox2" placeholder="{{data.monthBox2}}" style="width:120px;">
+									<p>พ.ศ.</p>
+									<input type="TEXT" class="form-control" name="yearBox2" id="yearBox2" placeholder="{{data.yearBox2}}" style="width:80px;">
+
+
+									<div class="button" style="float:right; ">
+
+
+										<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">อนุมัติ</button>
+
+										<button class="btn btn-inverse" type="button" style="height:30px; width: 80px; " >ยกเลิก</button>
+
+
+									</div>
+
+								</div><!--doc zone-->
+								
+										
+							</div><!-- infoleft -->
+							
+				</form><!--form-->
+			</div><!--content-->
+		<!-- </div> -->
+
+
+	</body>
+</html>

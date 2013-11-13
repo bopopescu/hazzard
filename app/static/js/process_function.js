@@ -95,7 +95,7 @@ function modify_holdFunction(){
 
 function extend_holdFunction(){
 	hideOfficerFunction();
-	document.getElementById('extend_registerProcess_list').style.display = 'block';
+	document.getElementById('extend_Process_list').style.display = 'block';
 }
 
 function substitue_holdFunction(){
