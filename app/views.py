@@ -102,16 +102,21 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/register_request_customer.html',context)
-	#sample
-		if(formtype_id == '21'):
+	#import
+		if(formtype_id == '9'):
 			date = timezone.now().date()
-			context = {'date':date,'user':user_obj}
-			return render(request,'main/sample_produce_import_request_customer.html',context)
+			contect = {'date':date, 'user':user_obj}
+			return render(request,'main/import_request_customer.html', context)
 	#hold
 		if(formtype_id == '13'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/hold_request_customer.html', context)
+	#sample
+		if(formtype_id == '21'):
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+			return render(request,'main/sample_produce_import_request_customer.html',context)
 		
 	print('con')
 	info = '<xml>'
@@ -147,6 +152,9 @@ def modify_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/modify_register_request_customer.html',context)
+		#import
+		if(form_obj.formType.id == 9):
+			return render(request,'main/modify_import_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
 			return render(request,'main/modify_hold_request_customer.html',context)
@@ -180,7 +188,10 @@ def extend_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/extend_register_request_customer.html',context)
-		#hold#
+		#import
+		if(form_obj.formType.id == 9):
+			return render(request,'main/extend_import_request_customer.html',context)
+		#hold
 		if(form_obj.formType.id == 13):
 			return render(request,'main/extend_hold_request_customer.html',context)
 
@@ -213,6 +224,9 @@ def substitute_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/substitute_register_request_customer.html',context)
+		#import
+		if(form_obj.formType.id == 9):
+			return render(request,'main/substitute_import_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
 			return render(request,'main/substitute_hold_request_customer.html',context)
@@ -258,6 +272,16 @@ def approve_form(request,form_id):
 		return render(request,'main/extend_register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_substitute'):
 		return render(request,'main/substitute_register_view_officer.html',context)
+
+	#import
+	if(form_obj.formType.name == 'import_request'):
+		return render(request,'main/import_view_officer.html',context)
+	if(form_obj.formType.name == 'import_modify'):
+		return render(request,'main/modify_import_view_officer.html',context)
+	if(form_obj.formType.name == 'import_extend'):
+		return render(request,'main/extend_import_view_officer.html',context)
+	if(form_obj.formType.name == 'import_substitute'):
+		return render(request,'main/substitute_import_view_officer.html',context)
 
 	#hold
 	if(form_obj.formType.name == 'hold_request'):
@@ -345,6 +369,20 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/substitute_register_permit.html',context)
 
+	#import
+	if(form_obj.formType.name == 'import_request'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/import_permit_officer.html',context)
+	if(form_obj.formType.name == 'import_extend'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/extend_import_permit_officer.html',context)	
+	if(form_obj.formType.name == 'import_modify'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/modify_import_permit_officer.html',context)
+	if(form_obj.formType.name == 'import_substitute'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/substitute_import_permit_officer.html',context)
+
 	#hold
 	if(form_obj.formType.name == 'hold_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
@@ -376,19 +414,19 @@ def form_show(request,form_id):
 
 
 
-##################################################################################################################
-##     _____                                       ___                        O       O        O         O      ##
-##    |     \                                       |                        O      OO       OO        O        ##
-##    |     /                                       |                      O    OOO       OOO      OOO          ##
-##    |____/   ___      ____        _____           |   ____            O   OO      OOOO       OOOO             ##
-##    |     \ |   \  | |  __  |   |   |             |  |    |         O  OO   OOO      OOOOO                    ##
-##    |     / |___/  | |    | |___|   |       |     |  |____|        O  OO  OOOOOOO                             ##
-##    |____/  |   \  | |____| |   |   |       |_____|  |    |       O OO O                         ENTERPRISE   ##
-##                                                                                                              ##
-##################################################################################################################
+################################################################################################################
+##     _____                                                                  O       O        O         O    ##
+##    |     \                                       |                        O      OO       OO        O      ##
+##    |     /                                       |                      O    OOO       OOO      OOO        ##
+##    |____/   ___      ____        _____           |   ____            O   OO      OOOO       OOOO           ##
+##    |     \ |   \  | |  __  |   |   |             |  |    |         O  OO   OOO      OOOOO                  ##
+##    |     / |___/  | |    | |___|   |       |     |  |____|        O  OO  OOOOOOO                           ##
+##    |____/  |   \  | |____| |   |   |       |_____|  |    |       O OO O                       ENTERPRISE   ##
+##                                                                                                            ##
+################################################################################################################
 
 ## SET UP SCRIPT :: HAZARD WEB APPLICATION
-## _______________________________________________________________________________________________________________
+## _____________________________________________________________________________________________________________
 
 def setup(request):
 	formts = []
@@ -446,6 +484,11 @@ def setup(request):
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[1],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[3],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[4],priority=0))
+	#import
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[8],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[9],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[10],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[11],priority=0))
 	#hold
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[12],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[13],priority=0))
