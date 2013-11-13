@@ -114,6 +114,9 @@ ul
 #hold_request_list{
 	display: none;
 }
+#import_request_list{
+	display: none;
+}
 
 /*officer register*/
 #registerProcess_list{
@@ -126,6 +129,23 @@ ul
 	display: none;
 }
 #substitue_registerProcess_list{
+	display: none;
+}
+
+/*Officer import*/
+#importProcess_list{
+	display: none;
+}
+
+#modify_importProcess_list{
+	display: none;
+}
+
+#extend_importProcess_list{
+	display: none;
+}
+
+#substitue_importProcess_list{
 	display: none;
 }
 

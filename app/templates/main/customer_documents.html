@@ -114,11 +114,16 @@
 						<ul class="process">
 							<li><a href="#register_request_list" 
 								onclick="register_request_listFunction()">  กระบวนการขอขึ้นทะเบียน </a></li>
+
 							<li><a>  กระบวนการขอผลิต</a></li>
-							<li><a>  กระบวนการขอนำเข้า</a></li>
+							<li><a href="#import_request_list"
+								onclick="import_request_listFunction()">  กระบวนการขอนำเข้า</a></li>
+
 							<li><a href="#hold_request_list"
 								onclick="hold_request_listFunction()">  กระบวนการขอครอบครอง</a></li>
+
 							<li><a>  กระบวนการขอส่งออก</a></li>
+
 							<li><a href="#sample_request_list"
 								onclick="sample_request_listFunction()">  กระบวนการขอแสดงตัวอย่าง</a></li>
 						</ul>
@@ -211,6 +216,76 @@
 								  </tbody>
 						</table>
 					</div> 
+
+					<!-- นำเข้า -->
+					<div id="import_request_list" class="span6"  style="overflow-y: auto;" >
+						<H1>  กระบวนการขอนำเข้า</H1>
+						<a href="/create/13"  data-toggle="tooltip"  title="ใบคำขออนุญาตนำเข้าวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								    
+								      <th class="No_permit"> หมายเลข </th>
+								      <th class="date1"> วันที่ </th>
+								      <th class="status"> สถานะ </th>
+								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
+								      <th class="type"> ประเภทงาน </th>
+								      <th class="permit_view"> ใบอนุญาต </th>
+								      <th class="expire_date"> วันหมดอายุ </th>
+
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    {% for form_obj in forms %}
+								    <tr>
+							
+									<td class="No_permit"># {{ form_obj.id }}</td>
+									<td class="date1">{{ form_obj.date }}</td>
+									<td class="status">
+										{% if form_obj.formType.autherize_number == form_obj.status %}
+										{{'Approve'}}
+										{% endif %}
+										{% if form_obj.status == -1 %}
+										{{'Reject'}}
+										{% endif %}
+										{% if form_obj.formType.autherize_number != form_obj.status and form_obj.status != -1 %}
+										{{'Pending'}}
+										{% endif %}
+									</td>
+										<td class="mange">
+										{%if 'request' in form_obj.formType.name %}
+										{%if form_obj.formType.autherize_number == form_obj.status%}
+										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+
+								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	{% endif %}
+								      	{% endif %}
+								      </td>
+
+
+								      <td class="type">{{form_obj.formType.name}}</td>
+
+								      <td class="permit_view">
+								      {% if form_obj.formType.autherize_number == form_obj.status %}
+								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% endif %}
+								  	</td>
+								  	<td class="date1">
+								  		{% if form_obj.formType.autherize_number == form_obj.status %}
+								      	{{ form_obj.expire }}
+								      	{% endif %}
+								    </td>
+								  	
+								  	</tr>
+
+									{% endfor %}
+
+								  </tbody>
+						</table>
+					</div> 
+
 
 					<!-- ครอบครอง -->
 					<div id="hold_request_list" class="span6"  style="overflow-y: auto;" >

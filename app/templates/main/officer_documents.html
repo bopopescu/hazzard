@@ -109,7 +109,18 @@
 								<a href="collapse-produce"  data-toggle="collapse" data-parent="process"  >  กระบวนการขอผลิต</a>
 								
 							</li>
-							<li><a>  กระบวนการขอนำเข้า</a></li>
+
+							<li><a href="#collapse-import"  data-toggle="collapse" data-parent="process">  กระบวนการขอนำเข้า</a>
+								<ul id="collapse-import" class="collapse sublist">
+									    	<li><a href="#importProcess_list" onclick=
+											"importFunction()">  ขอนำเข้าวัตถุอันตราย</a></li>
+											<li><a href="#modify_importProcess_list" onclick="modify_importFunction()">ขอเปลี่ยนแปลงใบอนุญาตนำเข้าวัตถุอันตราย</a></li>
+											<li><a href="#extend_importProcess_list" onclick="extend_importFunction()">ขอต่ออายุใบอนุญาตนำเข้าวัตถุอันตราย</a></li>
+											<li><a href="#substitue_importProcess_list" onclick="substitue_importFunction()">ขอใบแทนใบอนุญาตนำเข้าวัตถุอันตราย</a></li>
+										</ul>
+
+							</li>
+
 							<li><a href="#collapse-hold"  data-toggle="collapse" data-parent="process">  กระบวนการขอครอบครอง</a>
 								<ul id="collapse-hold" class="collapse sublist">
 									    	<li><a href="#holdProcess_list" onclick=
@@ -318,6 +329,179 @@
 						</table>
 					</div>
 
+					<!--ใบคำขอ นำเข้า -->
+					<div id="importProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอนำเข้า</H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอ ใบอนุญาตนำเข้าวัตถุอันตราย</H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ</th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'import_request' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
+
+					<!--ใบเปลี่ยนแปลง นำเข้า -->
+					<div id="modify_importProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอนำเข้า</H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอเปลี่ยนแปลง ใบอนุญาตนำเข้าวัตถุอันตราย</H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ</th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'import_modify' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
+
+					<!--ใบต่ออายุ นำเข้า -->
+					<div id="extend_importProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอนำเข้า</H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอต่ออายุ ใบอนุญาตนำเข้าวัตถุอันตราย</H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ</th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'import_extend' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
+
+					<!--ใบแทน นำเข้า -->
+					<div id="substitue_importProcess_list" class="span6" style="margin-top:20px;">
+						<H1>  กระบวนการขอนำเข้า</H1>
+						<H3 id="list_Title"> รายชื่อผู้ขอใบแทน ใบอนุญาตนำเข้าวัตถุอันตราย</H3>
+						<!-- <img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png">  -->
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								       <!-- <th id="No_head"> No. </th> -->
+								      <th id="No_permit_head"> หมายเลขคำขอ</th>
+								      <th id="date1_head"> วันที่ </th>
+								      <th id="status_head"> ตรวจสอบ/อนุมัติ </th>
+								      <th id="manage_head"> ใบอนุญาต </th>
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								   	{% for form in forms %}
+								   	{% if form.formType.name == 'import_substitute' %}
+								    <tr>
+								      <!-- <td id="No_value">{{forloop.count}}</td> -->
+								      <td id="No_permit_value"># {{form.id}}</td>
+								      <td id="date1_value">{{form.date}}</td>
+								      
+								      <td id="check_value" >
+								      {% if form.formType.autherize_number != form.status %}
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png" data-toggle="tooltip"  title="ดูเอกสารคำขอ"></a>
+								      {% endif %}
+								  		</td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										</a>
+								      	{% endif %}
+								      </td>
+								      
+								    </tr>
+								    {% endif %}
+								    {% endfor %}								  
+								</tbody>
+						</table>
+					</div>
+
+
 					<!--ใบคำขอ ครอบครอง -->
 					<div id="holdProcess_list" class="span6" style="margin-top:20px;">
 						<H1>  กระบวนการขอครอบครอง</H1>
@@ -360,6 +544,7 @@
 								</tbody>
 						</table>
 					</div>
+
 
 					<!--ใบเปลี่ยนแปลง ครอบครอง -->
 					<div id="modify_holdProcess_list" class="span6" style="margin-top:20px;">

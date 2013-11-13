@@ -5,6 +5,9 @@ function hideCustomerFunction(){
 	document.getElementById('register_request_list').style.display = 'none';
 	document.getElementById('sample_request_list').style.display = 'none';
 	document.getElementById('hold_request_list').style.display = 'none';
+	document.getElementById('import_request_list').style.display = 'none';
+	
+
 
 
 }
@@ -27,6 +30,11 @@ function hold_request_listFunction(){
 	document.getElementById('hold_request_list').style.display = 'block';
 }
 
+function import_request_listFunction(){
+	hideCustomerFunction();
+	document.getElementById('import_request_list').style.display = 'block';
+}
+
 //officer
 function hideOfficerFunction(){
 
@@ -35,14 +43,21 @@ function hideOfficerFunction(){
 	document.getElementById('modify_registerProcess_list').style.display = 'none';
 	document.getElementById('extend_registerProcess_list').style.display = 'none';
 	document.getElementById('substitue_registerProcess_list').style.display = 'none';
-	;
+
 	document.getElementById('sampleProduceProcess_list').style.display = 'none';
 	document.getElementById('sampleImportProcess_list').style.display = 'none';
-	document.getElementById('holdProcess_list').style.display = 'none';
 
+	document.getElementById('holdProcess_list').style.display = 'none';
 	document.getElementById('modify_holdProcess_list').style.display = 'none';
 	 document.getElementById('extend_holdProcess_list').style.display = 'none';
 	document.getElementById('substitue_holdProcess_list').style.display = 'none';
+
+	document.getElementById('importProcess_list').style.display = 'none';
+	document.getElementById('modify_importProcess_list').style.display = 'none';
+	 document.getElementById('extend_importProcess_list').style.display = 'none';
+	document.getElementById('substitue_importProcess_list').style.display = 'none';
+
+
 	
 }
 
@@ -98,4 +113,26 @@ function extend_holdFunction(){
 function substitue_holdFunction(){
 	hideOfficerFunction();
 	document.getElementById('substitue_holdProcess_list').style.display = 'block';
+}
+
+function importFunction(){
+	hideOfficerFunction();
+	document.getElementById('importProcess_list').style.display = 'block';
+
+}
+
+function modify_importFunction(){
+	hideOfficerFunction();
+	document.getElementById('modify_importProcess_list').style.display = 'block';
+}
+
+function extend_importFunction(){
+	hideOfficerFunction();
+	document.getElementById('extend_importProcess_list').style.display = 'block';
+}
+
+function substitue_importFunction(){
+	hideOfficerFunction();
+	document.getElementById('substitue_importProcess_list').style.display = 'block';
+
 }
