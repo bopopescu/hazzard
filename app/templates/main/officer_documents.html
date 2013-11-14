@@ -42,7 +42,6 @@
 
 	<body style="overflow: auto;">
 
-
 		<!--header-->
 		<header>
 			
@@ -674,7 +673,6 @@
 								</tbody>
 						</table>
 					</div>
-
 					<!--ตัวอย่างผลิต -->
 					<div id="sampleProduceProcess_list" class="span6" style="margin-top:20px;">
 						<H1>  กระบวนการขอผลิตตัวอย่าง </H1>
@@ -690,10 +688,10 @@
 								      <th id="manage_head"> ใบอนุญาต </th>
 								    </tr>
 								 </thead>
-
 								   <tbody>
 								   	{% for form in forms %}
 								   	{% if form.formType.name == 'sample_produce_import' %}
+								   	{{form.data}}
 								    <tr>
 								      <!-- <td id="No_value">{{forloop.count}}</td> -->
 								      <td id="No_permit_value"># {{form.id}}</td>
@@ -760,17 +758,9 @@
 								</tbody>
 						</table>
 					</div>
-
-
-
-
-
-
 				</div> <!--sub-content-->
 
 			</div> <!--content-->
 		<!-- </div><!--span12-->
-
-
 	</body>
 </html>

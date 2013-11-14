@@ -112,8 +112,15 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/hold_request_customer.html', context)
+
+	#export
+		if(formtype_id == '16'):
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+			return render(request,'main/export_request_customer.html', context)
+
 	#sample
-		if(formtype_id == '21'):
+		if(formtype_id == '20'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
@@ -229,6 +236,9 @@ def substitute_form(request,form_id):
 			return render(request,'main/substitute_import_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
+			return render(request,'main/substitute_hold_request_customer.html',context)
+		#export
+		if(form_obj.formType.id == 19):
 			return render(request,'main/substitute_hold_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
@@ -397,6 +407,22 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/substitute_hold_permit_officer.html',context)
 
+
+	#export
+	if(form_obj.formType.name == 'export_request'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/export_permit_officer.html',context)
+	if(form_obj.formType.name == 'export_extend'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/extend_export_permit_officer.html',context)	
+	if(form_obj.formType.name == 'export_modify'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/modify_export_permit_officer.html',context)
+	if(form_obj.formType.name == 'export_substitute'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/substitute_export_permit_officer.html',context)
+
+
 	#sample
 	if(form_obj.formType.name == 'sample_produce_import'):
 		if(data['willing_radioButt'] == "produce") :
@@ -404,7 +430,9 @@ def form_show(request,form_id):
 			return render(request,'main/sample_produce_permit_officer.html',context)
 		elif(data['willing_radioButt'] == "import") :
 			context = {'form':form_obj,'data':data,'user':user_obj}
-			return render(request,'main/sample_import_permit_officer.html',context)		
+			return render(request,'main/sample_import_permit_officer.html',context)
+
+
 	context = {'message':'Permission Denied','user':user_obj}
 	return render(request,'main/message.html',context)
 	
@@ -483,18 +511,35 @@ def setup(request):
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[2],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[1],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[3],priority=0))
+
+	#produce
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[4],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[5],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[6],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[7],priority=0))
+
 	#import
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[8],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[9],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[10],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[11],priority=0))
+
 	#hold
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[12],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[13],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[14],priority=0))
 	auth_orders.append(Autherize_order(role=roles[0],formType=formts[15],priority=0))
-	
+
+	#export
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[16],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[17],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[18],priority=0))
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[19],priority=0))
+
+
+	#sample
+	auth_orders.append(Autherize_order(role=roles[0],formType=formts[20],priority=0))
+
 	for auth_order in auth_orders :
 		auth_order.save()
 
