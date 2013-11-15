@@ -169,8 +169,8 @@
 
 								   <tbody>
 								    {% for form_obj in forms %}
+								    {%if 'request' in form_obj.formType.name %}
 								    <tr>
-							
 									<td class="No_permit"># {{ form_obj.id }}</td>
 									<td class="date1">{{ form_obj.date }}</td>
 									<td class="status">
@@ -185,14 +185,14 @@
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
+										
 										{%if form_obj.formType.autherize_number == form_obj.status%}
 										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
 								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
 								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
-								      	{% endif %}
+								      	
 								      </td>
 
 
@@ -210,7 +210,7 @@
 								      	{% endif %}
 								    </td>
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -238,6 +238,8 @@
 
 								   <tbody>
 								    {% for form_obj in forms %}
+								    {%if 'import' in form_obj.formType.name %}
+									{%if 'produce_import' not in form_obj.formType.name %}
 								    <tr>
 							
 									<td class="No_permit"># {{ form_obj.id }}</td>
@@ -254,14 +256,14 @@
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
+										
 										{%if form_obj.formType.autherize_number == form_obj.status%}
 										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
 								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
 								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
-								      	{% endif %}
+								      	
 								      </td>
 
 
@@ -279,7 +281,8 @@
 								    </td>
 								  	
 								  	</tr>
-
+								  	{% endif %}
+								    {% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -308,6 +311,7 @@
 
 								   <tbody>
 								    {% for form_obj in forms %}
+								    {%if 'hold' in form_obj.formType.name %}
 								    <tr>
 							
 									<td class="No_permit"># {{ form_obj.id }}</td>
@@ -324,13 +328,13 @@
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
+										
 										{%if form_obj.formType.autherize_number == form_obj.status%}
 										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
 								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
 								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
-								      	{% endif %}
+								      	
 								      	{% endif %}
 								      </td>
 
@@ -349,7 +353,7 @@
 								    </td>
 								  	
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -376,6 +380,7 @@
 
 								   <tbody>
 								    {% for form_obj in forms %}
+								    {%if 'sample' in form_obj.formType.name %}
 								    <tr>
 							
 									<td class="No_permit"># {{ form_obj.id }}</td>
@@ -392,14 +397,14 @@
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
+										
 										{%if form_obj.formType.autherize_number == form_obj.status%}
 										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
 								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
 								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
-								      	{% endif %}
+								      	
 								      </td>
 
 
@@ -416,7 +421,7 @@
 								      	{% endif %}
 								    </td>
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
