@@ -158,13 +158,13 @@ def modify_form(request,form_id):
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		#register
 		if(form_obj.formType.id == 1):
-			return render(request,'main/modify_register_request_customer.html',context)
+			return render(request,'main/register_modify_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
-			return render(request,'main/modify_import_request_customer.html',context)
+			return render(request,'main/import_modify_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
-			return render(request,'main/modify_hold_request_customer.html',context)
+			return render(request,'main/hold_modify_request_customer.html',context)
 	
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -194,13 +194,13 @@ def extend_form(request,form_id):
 
 		#register
 		if(form_obj.formType.id == 1):
-			return render(request,'main/extend_register_request_customer.html',context)
+			return render(request,'main/register_extend_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
-			return render(request,'main/extend_import_request_customer.html',context)
+			return render(request,'main/import_extend_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
-			return render(request,'main/extend_hold_request_customer.html',context)
+			return render(request,'main/hold_extend_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -230,16 +230,16 @@ def substitute_form(request,form_id):
 		context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
 		#register
 		if(form_obj.formType.id == 1):
-			return render(request,'main/substitute_register_request_customer.html',context)
+			return render(request,'main/register_substitute_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
-			return render(request,'main/substitute_import_request_customer.html',context)
+			return render(request,'main/import_substitute_request_customer.html',context)
 		#hold
 		if(form_obj.formType.id == 13):
-			return render(request,'main/substitute_hold_request_customer.html',context)
+			return render(request,'main/hold_substitute_request_customer.html',context)
 		#export
 		if(form_obj.formType.id == 19):
-			return render(request,'main/substitute_hold_request_customer.html',context)
+			return render(request,'main/export_substitute_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -277,31 +277,31 @@ def approve_form(request,form_id):
 	if(form_obj.formType.name == 'register_request'):
 		return render(request,'main/register_view_officer.html',context)
 	if(form_obj.formType.name == 'register_modify'):
-		return render(request,'main/modify_register_view_officer.html',context)
+		return render(request,'main/register_modify_view_officer.html',context)
 	if(form_obj.formType.name == 'register_extend'):
-		return render(request,'main/extend_register_view_officer.html',context)
+		return render(request,'main/register_extend_view_officer.html',context)
 	if(form_obj.formType.name == 'register_substitute'):
-		return render(request,'main/substitute_register_view_officer.html',context)
+		return render(request,'main/register_substitute_view_officer.html',context)
 
 	#import
 	if(form_obj.formType.name == 'import_request'):
 		return render(request,'main/import_view_officer.html',context)
 	if(form_obj.formType.name == 'import_modify'):
-		return render(request,'main/modify_import_view_officer.html',context)
+		return render(request,'main/import_modify_view_officer.html',context)
 	if(form_obj.formType.name == 'import_extend'):
-		return render(request,'main/extend_import_view_officer.html',context)
+		return render(request,'main/import_extend_view_officer.html',context)
 	if(form_obj.formType.name == 'import_substitute'):
-		return render(request,'main/substitute_import_view_officer.html',context)
+		return render(request,'main/import_substitute_view_officer.html',context)
 
 	#hold
 	if(form_obj.formType.name == 'hold_request'):
 		return render(request,'main/hold_view_officer.html',context)
 	if(form_obj.formType.name == 'hold_modify'):
-		return render(request,'main/modify_hold_view_officer.html',context)
+		return render(request,'main/hold_modify_view_officer.html',context)
 	if(form_obj.formType.name == 'hold_extend'):
-		return render(request,'main/extend_hold_view_officer.html',context)
+		return render(request,'main/hold_extend_view_officer.html',context)
 	if(form_obj.formType.name == 'hold_substitute'):
-		return render(request,'main/substitute_hold_view_officer.html',context)
+		return render(request,'main/hold_substitute_view_officer.html',context)
 
 	#sample
 	if(form_obj.formType.name == 'sample'):
@@ -371,13 +371,13 @@ def form_show(request,form_id):
 		return render(request,'main/register_permit.html',context)
 	if(form_obj.formType.name == 'register_extend'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/extend_register_permit.html',context)	
+		return render(request,'main/register_extend_permit.html',context)	
 	if(form_obj.formType.name == 'register_modify'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/modify_register_permit.html',context)
+		return render(request,'main/register_modify_permit.html',context)
 	if(form_obj.formType.name == 'register_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/substitute_register_permit.html',context)
+		return render(request,'main/register_substitute_permit.html',context)
 
 	#import
 	if(form_obj.formType.name == 'import_request'):
@@ -385,13 +385,13 @@ def form_show(request,form_id):
 		return render(request,'main/import_permit_officer.html',context)
 	if(form_obj.formType.name == 'import_extend'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/extend_import_permit_officer.html',context)	
+		return render(request,'main/import_extend_permit_officer.html',context)	
 	if(form_obj.formType.name == 'import_modify'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/modify_import_permit_officer.html',context)
+		return render(request,'main/import_modify_permit_officer.html',context)
 	if(form_obj.formType.name == 'import_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/substitute_import_permit_officer.html',context)
+		return render(request,'main/import_substitute_permit_officer.html',context)
 
 	#hold
 	if(form_obj.formType.name == 'hold_request'):
@@ -399,13 +399,13 @@ def form_show(request,form_id):
 		return render(request,'main/hold_permit_officer.html',context)
 	if(form_obj.formType.name == 'hold_extend'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/extend_hold_permit_officer.html',context)	
+		return render(request,'main/hold_extend_permit_officer.html',context)	
 	if(form_obj.formType.name == 'hold_modify'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/modify_hold_permit_officer.html',context)
+		return render(request,'main/hold_modify_permit_officer.html',context)
 	if(form_obj.formType.name == 'hold_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/substitute_hold_permit_officer.html',context)
+		return render(request,'main/hold_substitute_permit_officer.html',context)
 
 
 	#export
@@ -414,13 +414,13 @@ def form_show(request,form_id):
 		return render(request,'main/export_permit_officer.html',context)
 	if(form_obj.formType.name == 'export_extend'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/extend_export_permit_officer.html',context)	
+		return render(request,'main/export_extend_permit_officer.html',context)	
 	if(form_obj.formType.name == 'export_modify'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/modify_export_permit_officer.html',context)
+		return render(request,'main/export_modify_permit_officer.html',context)
 	if(form_obj.formType.name == 'export_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/substitute_export_permit_officer.html',context)
+		return render(request,'main/export_substitute_permit_officer.html',context)
 
 
 	#sample
@@ -469,7 +469,7 @@ def setup(request):
 	formts.append(FormType(name='produce_modify',autherize_number=1))
 	formts.append(FormType(name='produce_substitute',autherize_number=1))
 	#import
-	formts.append(FormType(name='import_request',autherize_number=3))
+	formts.append(FormType(name='import_request',autherize_number=1))
 	formts.append(FormType(name='import_extend',autherize_number=1))
 	formts.append(FormType(name='import_modify',autherize_number=1))
 	formts.append(FormType(name='import_substitute',autherize_number=1))
@@ -479,7 +479,7 @@ def setup(request):
 	formts.append(FormType(name='hold_modify',autherize_number=1))
 	formts.append(FormType(name='hold_substitute',autherize_number=1))
 	#export
-	formts.append(FormType(name='export_request',autherize_number=3))
+	formts.append(FormType(name='export_request',autherize_number=1))
 	formts.append(FormType(name='export_extend',autherize_number=1))
 	formts.append(FormType(name='export_modify',autherize_number=1))
 	formts.append(FormType(name='export_substitute',autherize_number=1))

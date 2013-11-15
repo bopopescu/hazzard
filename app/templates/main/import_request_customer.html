@@ -117,7 +117,7 @@
 			<div class="content">
 				<h1>คำขออนุญาตนำเข้าวัตถุอันตราย</h1>
 		
-				<form>
+				<form action="" method="post">{% csrf_token %}
 					
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
@@ -379,7 +379,7 @@
 
 								</div><!--doc zone-->
 								<div class="button">
-								<button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ส่งเอกสาร</button>
+								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่งเอกสาร</button>
 
 								<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">รีเซ็ต</button>
 							</div>
