@@ -168,49 +168,50 @@
 								 </thead>
 
 								   <tbody>
-								    {% for form_obj in forms %}
+								    {% for form in forms %}
+								    {% if 'register' in form.formType.name %}
 								    <tr>
 							
-									<td class="No_permit"># {{ form_obj.id }}</td>
-									<td class="date1">{{ form_obj.date }}</td>
+									<td class="No_permit"># {{ form.id }}</td>
+									<td class="date1">{{ form.date }}</td>
 									<td class="status">
-										{% if form_obj.formType.autherize_number == form_obj.status %}
+										{% if form.formType.autherize_number == form.status %}
 										{{'Approve'}}
 										{% endif %}
-										{% if form_obj.status == -1 %}
+										{% if form.status == -1 %}
 										{{'Reject'}}
 										{% endif %}
-										{% if form_obj.formType.autherize_number != form_obj.status and form_obj.status != -1 %}
+										{% if form.formType.autherize_number != form.status and form.status != -1 %}
 										{{'Pending'}}
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
-										{%if form_obj.formType.autherize_number == form_obj.status%}
-										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+										{%if 'request' in form.formType.name %}
+										{%if form.formType.autherize_number == form.status%}
+										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
-								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
 
-								      <td class="type">{{form_obj.formType.name}}</td>
+								      <td class="type">{{form.formType.name}}</td>
 
 								      <td class="permit_view">
-								      {% if form_obj.formType.autherize_number == form_obj.status %}
-								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% if form.formType.autherize_number == form.status %}
+								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
 
 								  	<td class="date1">
-								  		{% if form_obj.formType.autherize_number == form_obj.status %}
-								      	{{ form_obj.expire }}
+								  		{% if form.formType.autherize_number == form.status %}
+								      	{{ form.expire }}
 								      	{% endif %}
 								    </td>
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -220,7 +221,7 @@
 					<!-- นำเข้า -->
 					<div id="import_request_list" class="span6"  style="overflow-y: auto;" >
 						<H1>  กระบวนการขอนำเข้า</H1>
-						<a href="/create/13"  data-toggle="tooltip"  title="ใบคำขออนุญาตนำเข้าวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<a href="/create/9"  data-toggle="tooltip"  title="ใบคำขออนุญาตนำเข้าวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -237,49 +238,50 @@
 								 </thead>
 
 								   <tbody>
-								    {% for form_obj in forms %}
+								    {% for form in forms %}
+								    {% if 'import' in form.formType.name %}
 								    <tr>
 							
-									<td class="No_permit"># {{ form_obj.id }}</td>
-									<td class="date1">{{ form_obj.date }}</td>
+									<td class="No_permit"># {{ form.id }}</td>
+									<td class="date1">{{ form.date }}</td>
 									<td class="status">
-										{% if form_obj.formType.autherize_number == form_obj.status %}
+										{% if form.formType.autherize_number == form.status %}
 										{{'Approve'}}
 										{% endif %}
-										{% if form_obj.status == -1 %}
+										{% if form.status == -1 %}
 										{{'Reject'}}
 										{% endif %}
-										{% if form_obj.formType.autherize_number != form_obj.status and form_obj.status != -1 %}
+										{% if form.formType.autherize_number != form.status and form.status != -1 %}
 										{{'Pending'}}
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
-										{%if form_obj.formType.autherize_number == form_obj.status%}
-										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+										{%if 'request' in form.formType.name %}
+										{%if form.formType.autherize_number == form.status%}
+										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
-								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
 
-								      <td class="type">{{form_obj.formType.name}}</td>
+								      <td class="type">{{form.formType.name}}</td>
 
 								      <td class="permit_view">
-								      {% if form_obj.formType.autherize_number == form_obj.status %}
-								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% if form.formType.autherize_number == form.status %}
+								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
 								  	<td class="date1">
-								  		{% if form_obj.formType.autherize_number == form_obj.status %}
-								      	{{ form_obj.expire }}
+								  		{% if form.formType.autherize_number == form.status %}
+								      	{{ form.expire }}
 								      	{% endif %}
 								    </td>
 								  	
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -307,49 +309,50 @@
 								 </thead>
 
 								   <tbody>
-								    {% for form_obj in forms %}
+								    {% for form in forms %}
+								    {% if 'hold' in form.formType.name %}
 								    <tr>
 							
-									<td class="No_permit"># {{ form_obj.id }}</td>
-									<td class="date1">{{ form_obj.date }}</td>
+									<td class="No_permit"># {{ form.id }}</td>
+									<td class="date1">{{ form.date }}</td>
 									<td class="status">
-										{% if form_obj.formType.autherize_number == form_obj.status %}
+										{% if form.formType.autherize_number == form.status %}
 										{{'Approve'}}
 										{% endif %}
-										{% if form_obj.status == -1 %}
+										{% if form.status == -1 %}
 										{{'Reject'}}
 										{% endif %}
-										{% if form_obj.formType.autherize_number != form_obj.status and form_obj.status != -1 %}
+										{% if form.formType.autherize_number != form.status and form.status != -1 %}
 										{{'Pending'}}
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
-										{%if form_obj.formType.autherize_number == form_obj.status%}
-										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+										{%if 'request' in form.formType.name %}
+										{%if form.formType.autherize_number == form.status%}
+										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
-								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
 
-								      <td class="type">{{form_obj.formType.name}}</td>
+								      <td class="type">{{form.formType.name}}</td>
 
 								      <td class="permit_view">
-								      {% if form_obj.formType.autherize_number == form_obj.status %}
-								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% if form.formType.autherize_number == form.status %}
+								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
 								  	<td class="date1">
-								  		{% if form_obj.formType.autherize_number == form_obj.status %}
-								      	{{ form_obj.expire }}
+								  		{% if form.formType.autherize_number == form.status %}
+								      	{{ form.expire }}
 								      	{% endif %}
 								    </td>
 								  	
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
@@ -375,48 +378,49 @@
 								 </thead>
 
 								   <tbody>
-								    {% for form_obj in forms %}
+								    {% for form in forms %}
+								    {% if form.formType.name == 'sample' %}
 								    <tr>
 							
-									<td class="No_permit"># {{ form_obj.id }}</td>
-									<td class="date1">{{ form_obj.date }}</td>
+									<td class="No_permit"># {{ form.id }}</td>
+									<td class="date1">{{ form.date }}</td>
 									<td class="status">
-										{% if form_obj.formType.autherize_number == form_obj.status %}
+										{% if form.formType.autherize_number == form.status %}
 										{{'Approve'}}
 										{% endif %}
-										{% if form_obj.status == -1 %}
+										{% if form.status == -1 %}
 										{{'Reject'}}
 										{% endif %}
-										{% if form_obj.formType.autherize_number != form_obj.status and form_obj.status != -1 %}
+										{% if form.formType.autherize_number != form.status and form.status != -1 %}
 										{{'Pending'}}
 										{% endif %}
 									</td>
 										<td class="mange">
-										{%if 'request' in form_obj.formType.name %}
-										{%if form_obj.formType.autherize_number == form_obj.status%}
-										<a href="/modify/{{ form_obj.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form_obj.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+										{%if 'request' in form.formType.name %}
+										{%if form.formType.autherize_number == form.status%}
+										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
 
-								      	<a  href="/substitute/{{ form_obj.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
 								      	{% endif %}
 								      	{% endif %}
 								      </td>
 
 
-								      <td class="type">{{form_obj.formType.name}}</td>
+								      <td class="type">{{form.formType.name}}</td>
 
 								      <td class="permit_view">
-								      {% if form_obj.formType.autherize_number == form_obj.status %}
-								      <a href="/form/{{ form_obj.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% if form.formType.autherize_number == form.status %}
+								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
 								      {% endif %}
 								  	</td>
 								  	<td class="date1">
-								  		{% if form_obj.formType.autherize_number == form_obj.status %}
-								      	{{ form_obj.expire }}
+								  		{% if form.formType.autherize_number == form.status %}
+								      	{{ form.expire }}
 								      	{% endif %}
 								    </td>
 								  	</tr>
-
+								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>

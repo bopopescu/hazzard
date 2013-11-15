@@ -105,7 +105,7 @@ def create_form(request,formtype_id):
 	#import
 		if(formtype_id == '9'):
 			date = timezone.now().date()
-			contect = {'date':date, 'user':user_obj}
+			context = {'date':date, 'user':user_obj}
 			return render(request,'main/import_request_customer.html', context)
 	#hold
 		if(formtype_id == '13'):
@@ -294,7 +294,7 @@ def approve_form(request,form_id):
 		return render(request,'main/substitute_hold_view_officer.html',context)
 
 	#sample
-	if(form_obj.formType.name == 'sample_produce_import'):
+	if(form_obj.formType.name == 'sample'):
 		return render(request,'main/sample_produce_import_view_officer.html',context) #####
 	
 	return render(request,'main/register_permit_officer.html',context)
@@ -398,7 +398,7 @@ def form_show(request,form_id):
 		return render(request,'main/substitute_hold_permit_officer.html',context)
 
 	#sample
-	if(form_obj.formType.name == 'sample_produce_import'):
+	if(form_obj.formType.name == 'sample'):
 		if(data['willing_radioButt'] == "produce") :
 			context = {'form':form_obj,'data':data,'user':user_obj}
 			return render(request,'main/sample_produce_permit_officer.html',context)
@@ -456,7 +456,7 @@ def setup(request):
 	formts.append(FormType(name='export_modify',autherize_number=1))
 	formts.append(FormType(name='export_substitute',autherize_number=1))
 	#sample
-	formts.append(FormType(name='sample_produce_import',autherize_number=1))
+	formts.append(FormType(name='sample',autherize_number=1))
 
 	for form in formts :
 		form.save()
