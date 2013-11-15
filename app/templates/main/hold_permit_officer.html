@@ -126,31 +126,21 @@
 		
 				<form>
 					
-							<!-- <div class="form-group"> -->
-								<div class="date_des">
-								
-								<p class="date" >กรม/สำนักงาน</p><input disabled type="TEXT" class="form-control" id="departmentBox" name="departmentBox" placeholder="{{data.departmentBox}}">
-									<br><br>
-									<p class="date" >กระทรวง</p><input disabled type="TEXT" class="form-control" id="ministryBox" name="ministryBox" placeholder="{{data.ministryBox}}">
-									<br>
+							<div class="form-inline date_des">
 									
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
 									
-									<p class="date" >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" name="dayBox" placeholder="{{form.date.date.day}}">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{date.month}}">
 									
-									<p class="date" >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" name="monthBox" placeholder="{{form.date.date.month}}">
-									
-									<p class="date">ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" name="yearBox" placeholder="{{form.date.date.year}}">
-									
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{date.year}}">
 
 								</div>
-							<!-- </div> -->
-
 							
-						<div class="form-group infoleft">
+						<!-- <div class="form-group infoleft">
 									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
 								</div>
 
-								<br/>
+								<br/> -->
 
 							<!-- <div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
@@ -266,13 +256,22 @@
 									<p>ตารางเมตร</p>
 </br></br>
 									<p>มีไว้ในครอบครองซึ่งวัตถุอันตราย โดยมีวัตถุประสงค์ของการครอบครองเพื่อ</p> 
-									<input type="TEXT" class="to" id="toBox" placeholder="{{data.toBox}}" disabled type="TEXT" name="toBox">
+									<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
+								 <input checked type="radio" id="sell" name="radio"  value="sell_value" style = "margin-right: 5px;"> ขาย
+
+								  <input type="radio" id="shipping" name="radio" value="shipping_value" style = "margin-right: 5px;"> ขนส่ง
+
+								  <input type="radio" id="use" name="radio"  value="use_value" style = "margin-right: 5px;"> ใช้
+
+
+								</p>
+
 									</br>
 								<p class="hazard_name">ชื่อวัตถุอันตราย ที่ได้รับอนุญาตมีไว้ในครอบครอง</p>
 									<input type="TEXT" class="form-control" id="hazardous_nameBox" placeholder="{{data.hazardous_nameBox}}" disabled type="TEXT" name="hazadous_nameBox">
 				</br></br>
 				<p class="hazard_name">ชื่อทางการค้า ที่ได้รับอนุญาตมีไว้ในครอบครอง</p>
-									<input type="TEXT" class="form-control" id="maketingBox" placeholder="{{data.maketingBox}}" disabled type="TEXT" name="maketingBox">
+									<input type="TEXT" class="form-control" id="marketingBox" placeholder="{{data.marketingBox}}" disabled type="TEXT" name="marketingBox">
 </br></br>
 								<p class="hazard_name">ทะเบียนเลขที่</p>
 									<input type="TEXT" class="form-control" id="codeBox" placeholder="{{data.codeBox}}" disabled type="TEXT" name="codeBox">
@@ -280,15 +279,15 @@
 									<!-- <p class="hazard_name">ใบอนุญาตนี้ออกโดยมีเงื่อนไข ดังต่อไปนี้</p>
 										<textarea class="descriptionBox" style="font-size:20px; width:565px; height:200px;" placeholder="{{data.conditionBox}}" id="conditionBox" disabled type="TEXT" name="conditionBox"></textarea> -->
 </br></br>
-					<div class="date_des">
+							<div class="date_des">
 										
 										<p class="hazard_name"> อนุญาต ถึง  </p>
 									
-									<p class="date" >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox2" name="dayBox2" placeholder="{{form.date.date.day}}">
+									<p class="date" >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox2" name="dayBox2" placeholder="{{date.day2}}">
 									
-									<p class="date" >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox2" name="monthBox2" placeholder="{{form.date.date.month}}">
+									<p class="date" >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox2" name="monthBox2" placeholder="{{date.month2}}">
 									
-									<p class="date">ปี</p><input disabled type="TEXT" class="form-control" id="yearBox2" name="yearBox2" placeholder="{{form.date.date.year}}">
+									<p class="date">ปี</p><input disabled type="TEXT" class="form-control" id="yearBox2" name="yearBox2" placeholder="{{date.year2}}">
 									
 
 								</div>

@@ -138,15 +138,15 @@
 								
 							<!-- </div> -->
 							
-						<div class="form-group infoleft">
+						<!-- <div class="form-group infoleft">
 									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
 								</div>
 
-								<br/>
+								<br/> -->
 
-							<div class="form-group infoLeft">
+							<!-- <div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
-							</div>
+							</div> -->
 
 							
 							<div class="form-group infoRight">
@@ -155,7 +155,7 @@
 								
 								<p class="age" >อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" name="ageBox" placeholder="{{data.ageBox}}"><p> ปี </p>
 								
-								<p class="region">สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{data.data.regionBox}}"name="regionBox">
+								<p class="region">สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{data.regionBox}}"name="regionBox">
 								
 
 							</div>
@@ -258,22 +258,20 @@
 
 								<br>
 								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
-								 <input disabled  type="radio" id="sell" name="sell"  value="sell_value" style = "margin-right: 5px;" placeholder="{{data.sell}}"> ขาย
+								 <input checked type="radio" id="sell" name="radio"  value="sell_value" style = "margin-right: 5px;"> ขาย
+
+								  <input type="radio" id="shipping" name="radio" value="shipping_value" style = "margin-right: 5px;"> ขนส่ง
+
+								  <input type="radio" id="use" name="radio"  value="use_value" style = "margin-right: 5px;"> ใช้
+
+
 								</p>
 
-								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
-								  <input disabled type="radio" id="shipping" name="shipping" value="shipping_value" style = "margin-right: 5px;"placeholder="{{data.shipping}}"> ขนส่ง
-								</p>
-
-								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
-								 <input  disabled type="radio" id="use" name="use"  value="use_value" style = "margin-right: 5px;"placeholder="{{data.use}}"> ใช้
-								</p>
-
-								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
+								<!-- <p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
 								  <input disabled type="radio" id="otherchoice" name="otherchoice" value="otherchoice_value" style = "margin-right: 5px;"placeholder="{{data.otherchoice}}"> อื่นๆ (ระบุ)
 								</p>
 								<input disabled type="TEXT" class="form-control" id="others"name="others" placeholder="{{data.others}}" style = "width: 450px">
-
+ -->
 							
 								<br>
 								<p >ชื่อวัตถุอันตรายที่ขออนุญาตมีไว้ในครอบครอง</p>
@@ -419,10 +417,25 @@
 
 								</div><!--doc zone-->
 								<div class="button buttonView">
-								<button id="permit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">อนุมัติ </button>
-
-								<button id="notpermit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ไม่อนุมัติ</button>
-							</div>
+									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมัติ </button>
+									<div id="identify_customer_modal" class="modal hide fade">
+										 <form id="modal-form">
+										  <div class="modal-header">
+										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไม่ผ่านการอนุมัติ </h3>
+										  </div>
+										  <div class="modal-body">
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										  </div>
+										  <div class="modal-footer">
+										    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </button>
+										    <button class="btn btn-primary" type="submit" id="modal-button"> แจ้งผู้ประกอบการ </button>
+										  </div>
+										</form>
+									</div>
+								</div>
 										
 							</div><!-- infoleft -->
 
