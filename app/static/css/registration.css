@@ -64,7 +64,7 @@ input{
 	display: inline;
 	font-size:20px;
 	margin-top:0px;
-	border: 1px solid #96BBD4;
+	/*border: 1px solid #96BBD4;*/
 }
 
 .dateRe{
@@ -80,8 +80,8 @@ textarea{
 	margin-left: 30px;
 	height: 100px;
 	width: 255px;
-	background: #FAFAFA;
-	border: 1px solid #96BBD4;
+	background: none repeat scroll 0 0 #FAFAFA;
+		border: 1px solid #96BBD4;
 }
 
 .address{
@@ -114,12 +114,31 @@ textarea{
 	margin-top:30px;
 	width:800px;
 }	
+
+#ministryBox,#departmentBox{
+	background: #FAFAFA;
+		height:30px;
+}
 #dayBox, #monthBox, #yearBox{
 	margin-top: 15px;
 	margin-right:5px;
 	width:46px;
 	height:30px;
 	margin-left:3px;
+	background: #FAFAFA;
+	margin-bottom: 30px;
+	font-size:20px;
+	/*margin-top:0px;*/
+	border: 1px solid #96BBD4;
+}
+
+#dayBox2, #monthBox2, #yearBox2{
+
+	margin-top: 15px;
+	/*margin-le:5px;*/
+	width:46px;
+	height:30px;
+	/*margin-left:3px;*/
 	background: #FAFAFA;
 	margin-bottom: 30px;
 	font-size:20px;
