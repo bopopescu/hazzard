@@ -117,6 +117,9 @@ ul
 #import_request_list{
 	display: none;
 }
+#export_request_list{
+	display: none;
+}
 
 /*officer register*/
 #registerProcess_list{

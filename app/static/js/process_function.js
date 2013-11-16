@@ -6,6 +6,7 @@ function hideCustomerFunction(){
 	document.getElementById('sample_request_list').style.display = 'none';
 	document.getElementById('hold_request_list').style.display = 'none';
 	document.getElementById('import_request_list').style.display = 'none';
+	document.getElementById('export_request_list').style.display = 'none';
 	
 
 
@@ -35,6 +36,11 @@ function import_request_listFunction(){
 	document.getElementById('import_request_list').style.display = 'block';
 }
 
+function export_request_listFunction(){
+	hideCustomerFunction();
+	document.getElementById('export_request_list').style.display = 'block';
+}
+
 //officer
 function hideOfficerFunction(){
 
@@ -56,6 +62,11 @@ function hideOfficerFunction(){
 	document.getElementById('modify_importProcess_list').style.display = 'none';
 	 document.getElementById('extend_importProcess_list').style.display = 'none';
 	document.getElementById('substitue_importProcess_list').style.display = 'none';
+
+	document.getElementById('exportProcess_list').style.display = 'none';
+	document.getElementById('modify_exportProcess_list').style.display = 'none';
+	 document.getElementById('extend_exportProcess_list').style.display = 'none';
+	document.getElementById('substitue_exportProcess_list').style.display = 'none';
 
 
 	
@@ -134,5 +145,28 @@ function extend_importFunction(){
 function substitue_importFunction(){
 	hideOfficerFunction();
 	document.getElementById('substitue_importProcess_list').style.display = 'block';
+
+}
+
+
+function exportFunction(){
+	hideOfficerFunction();
+	document.getElementById('exportProcess_list').style.display = 'block';
+
+}
+
+function modify_exportFunction(){
+	hideOfficerFunction();
+	document.getElementById('modify_exportProcess_list').style.display = 'block';
+}
+
+function extend_exportFunction(){
+	hideOfficerFunction();
+	document.getElementById('extend_exportProcess_list').style.display = 'block';
+}
+
+function substitue_exportFunction(){
+	hideOfficerFunction();
+	document.getElementById('substitue_exportProcess_list').style.display = 'block';
 
 }
