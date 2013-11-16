@@ -123,10 +123,10 @@
 				<h1> คำขอต่ออายุใบอนุญาตผลิตวัตถุอันตราย</h1>
 				<!-- <h2> วอ.๑	 </h2> -->
 		
-				<form>
+				<form action="" method="post">{% csrf_token %}
 					
 							<!-- <div class="form-group"> -->
-								<div class="form-inline date_des">
+							<div class="form-inline date_des">
 									
 									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
 									
@@ -143,9 +143,9 @@
 
 								<br/>
 
-							<div class="form-group infoLeft">
+							<!-- <div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
-							</div>
+							</div> -->
 
 							
 							<div class="form-group infoRight">

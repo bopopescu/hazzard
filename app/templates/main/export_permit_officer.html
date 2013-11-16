@@ -1,3 +1,4 @@
+
 <!DOCTYPE>
 <html>
 <head>
@@ -102,26 +103,26 @@
 
 							<!-- <div class="form-group"> -->
 								<div class="form-group infoRight">
-									<p>กรม/สำนักงาน</p><input readonly type="TEXT" class="form-control" id="departmentBox" name="departmentBox" placeholder="01">
+									<!-- <p>กรม/สำนักงาน</p><input readonly type="TEXT" class="form-control" id="departmentBox" name="departmentBox" placeholder="01">
 								
 									<br>
-									<p>กระทรวง</p><input readonly type="TEXT" class="form-control" id="ministryBox" name="ministryBox" placeholder="1990">
+									<p>กระทรวง</p><input readonly type="TEXT" class="form-control" id="ministryBox" name="ministryBox" placeholder="1990"> -->
 								
-									<br>
+									<!-- <br> -->
 									<p>วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox" name="dayBox" placeholder="{{form.date.date.day}}">
 									<p>เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox" name="monthBox" placeholder="{{form.date.date.month}}">
 									<p>ปี</p><input readonly type="TEXT" class="form-control" id="yearBox" name="yearBox" placeholder="{{form.date.date.year">
 								</div>
 							<!-- </div> -->
-							<div class="form-group infoleft">
+							<!-- <div class="form-group infoleft">
 									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
 								</div>
 
-								<br/>
+								<br/> -->
 
-							<div class="form-group infoLeft">
+							<!-- <div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
-							</div>
+							</div> -->
 							
 
 							<div class="form-group infoLeft">
@@ -197,6 +198,11 @@
 
 								<p>ชื่อทางการค้า (ถ้ามี)</p>
 								<input readonly type="TEXT" class="form-control" id="marketingBox" name="marketingBox" placeholder="{{data.marketingBox}}">
+
+								<br/>
+
+								<p class="hazard_name">ทะเบียนเลขที่</p>
+									<input type="TEXT" class="form-control" id="codeBox" placeholder="{{data.codeBox}}" readonly type="TEXT" name="codeBox">
 
 								<br/>
 

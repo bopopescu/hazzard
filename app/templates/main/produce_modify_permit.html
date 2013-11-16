@@ -124,20 +124,17 @@
 				<form>
 					
 							<!-- <div class="form-group"> -->
-								<div class="date_des">
-										
-									<p class="office" style="float:rigth; margin-left:30px; margin-top:-10px;" >กรม/สำนักงาน</p><input readonly type="TEXT" class="form-control" name="departmentBox" id="departmentBox" placeholder="{{data.departmentBox}}" style="float:rigth;  margin-left:10px; width:120px; margin-top:0px;">
-									<br>
-
-									<p class="office" style="float:rigth; margin-left:30px; margin-top:-10px;" >กระทรวง</p><input readonly type="TEXT" class="form-control" name="ministryBox"id="ministryBox" placeholder="{{data.ministryBox}}" style="margin-left:10px; width:160px; margin-top:0px;">
-									<br>
-
-
-									<p >วันที่</p><input readonly type="TEXT" class="form-control"  id="dayBox" name="dayBox" placeholder="{{date.day}}">
+								
+								<div class="form-inline date_des">
 									
-									<p >เดือน</p><input readonly type="TEXT" class="form-control"  id="monthBox" name="monthBox" placeholder="{{date.month}}">
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox" name="dayBox" placeholder="{{form.date.date.day}}">
 									
-									<p>ปี</p><input readonly type="TEXT" class="form-control"  id="yearBox" name="yearBox" placeholder="{{date.year}}">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox" name="monthBox" placeholder="{{form.date.date.month}}">
+									
+									<p>ปี</p><input readonly type="TEXT" class="form-control" id="yearBox" name="yearBox" placeholder="{{form.date.date.year}}">
+									
+
+								</div>
 									
 
 								</div>
@@ -148,9 +145,9 @@
 
 								<br/>
 
-							<div class="form-group infoLeft">
+							<!-- <div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
-							</div>
+							</div> -->
 							
 							</br>
 								<p class="name" style= >อนุญาตให้</p>
