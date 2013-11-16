@@ -165,6 +165,20 @@ ul
 #substitue_holdProcess_list{
 	display: none;
 }
+
+/*Officer hold*/
+#exportProcess_list{
+	display: none;
+}
+#modify_exportProcess_list{
+	display: none;
+}
+#extend_exportProcess_list{
+	display: none;
+}
+#substitue_exportProcess_list{
+	display: none;
+}
 /*officer sample*/
 #sampleProduceProcess_list{
 	display: none;
