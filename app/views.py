@@ -102,6 +102,11 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/register_request_customer.html',context)
+	#produce DISABLE
+	#if(formtype_id == '5'):
+	#		date = timezone.now().date()
+	#		context = {'date':date,'user':user_obj}
+	#		return render(request,'main/register_request_customer.html',context)
 	#import
 		if(formtype_id == '9'):
 			date = timezone.now().date()
@@ -114,13 +119,13 @@ def create_form(request,formtype_id):
 			return render(request,'main/hold_request_customer.html', context)
 
 	#export
-		if(formtype_id == '16'):
-			date = timezone.now().date()
+		if(formtype_id == '17'):
+			date = timezone.now().date()	
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/export_request_customer.html', context)
 
 	#sample
-		if(formtype_id == '20'):
+		if(formtype_id == '21'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
@@ -165,6 +170,10 @@ def modify_form(request,form_id):
 		#hold
 		if(form_obj.formType.id == 13):
 			return render(request,'main/hold_modify_request_customer.html',context)
+		#export
+		if(form_obj.formType.id == 17):
+			return render(request,'main/export_modify_request_customer.html',context)
+		
 	
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
@@ -302,6 +311,16 @@ def approve_form(request,form_id):
 		return render(request,'main/hold_extend_view_officer.html',context)
 	if(form_obj.formType.name == 'hold_substitute'):
 		return render(request,'main/hold_substitute_view_officer.html',context)
+
+	#export
+	if(form_obj.formType.name == 'export_request'):
+		return render(request,'main/export_view_officer.html',context)
+	if(form_obj.formType.name == 'export_modify'):
+		return render(request,'main/export_modify_view_officer.html',context)
+	if(form_obj.formType.name == 'export_extend'):
+		return render(request,'main/export_extend_view_officer.html',context)
+	if(form_obj.formType.name == 'export_substitute'):
+		return render(request,'main/export_substitute_view_officer.html',context)	
 
 	#sample
 	if(form_obj.formType.name == 'sample'):

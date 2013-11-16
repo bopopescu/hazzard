@@ -241,6 +241,7 @@
 								   <tbody>
 								    {% for form in forms %}
 								    {% if 'import' in form.formType.name %}
+								    {% if 'produce' not in form.formType.name %}
 								    <tr>
 							
 									<td class="No_permit"># {{ form.id }}</td>
@@ -283,83 +284,12 @@
 								  	
 								  	</tr>
 								  	{% endif %}
-									{% endfor %}
-
-								  </tbody>
-						</table>
-					</div> 
-
-					<!-- ส่งออก -->
-					<div id="export_request_list" class="span6"  style="overflow-y: auto;" >
-						<H1>  กระบวนการขอส่งออก</H1>
-						<a href="/create/17"  data-toggle="tooltip"  title="ใบคำขออนุญาตส่งออกวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
-						<table class="table table-striped">
-	  							<thead>
-								    <tr>
-								    
-								      <th class="No_permit"> หมายเลข </th>
-								      <th class="date1"> วันที่ </th>
-								      <th class="status"> สถานะ </th>
-								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
-								      <th class="type"> ประเภทงาน </th>
-								      <th class="permit_view"> ใบอนุญาต </th>
-								      <th class="expire_date"> วันหมดอายุ </th>
-
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								    {% for form in forms %}
-								    {% if 'export' in form.formType.name %}
-								    <tr>
-							
-									<td class="No_permit"># {{ form.id }}</td>
-									<td class="date1">{{ form.date }}</td>
-									<td class="status">
-										{% if form.formType.autherize_number == form.status %}
-										{{'Approve'}}
-										{% endif %}
-										{% if form.status == -1 %}
-										{{'Reject'}}
-										{% endif %}
-										{% if form.formType.autherize_number != form.status and form.status != -1 %}
-										{{'Pending'}}
-										{% endif %}
-									</td>
-										<td class="mange">
-										{%if 'request' in form.formType.name %}
-										{%if form.formType.autherize_number == form.status%}
-										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
-								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
-
-								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
-								      	{% endif %}
-								      	{% endif %}
-								      </td>
-
-
-								      <td class="type">{{form.formType.name}}</td>
-
-								      <td class="permit_view">
-								      {% if form.formType.autherize_number == form.status %}
-								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
-								      {% endif %}
-								  	</td>
-								  	<td class="date1">
-								  		{% if form.formType.autherize_number == form.status %}
-								      	{{ form.expire }}
-								      	{% endif %}
-								    </td>
-								  	
-								  	</tr>
 								  	{% endif %}
 									{% endfor %}
 
 								  </tbody>
 						</table>
-					</div> 
-
-
+					</div>  
 
 					<!-- ครอบครอง -->
 					<div id="hold_request_list" class="span6"  style="overflow-y: auto;" >
@@ -430,10 +360,83 @@
 								  </tbody>
 						</table>
 					</div> 
+
+
+					<!-- ส่งออก -->
+					<div id="export_request_list" class="span6"  style="overflow-y: auto;" >
+						<H1>  กระบวนการขอส่งออก</H1>
+						<a href="/create/17"  data-toggle="tooltip"  title="ใบคำขออนุญาตส่งออกวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<table class="table table-striped">
+	  							<thead>
+								    <tr>
+								    
+								      <th class="No_permit"> หมายเลข </th>
+								      <th class="date1"> วันที่ </th>
+								      <th class="status"> สถานะ </th>
+								      <th class="mange" style="width:150px;"> แก้ไข/ต่ออายุ/ใบแทน </th>
+								      <th class="type"> ประเภทงาน </th>
+								      <th class="permit_view"> ใบอนุญาต </th>
+								      <th class="expire_date"> วันหมดอายุ </th>
+
+								    </tr>
+								 </thead>
+
+								   <tbody>
+								    {% for form in forms %}
+								    {% if 'export' in form.formType.name %}
+								    <tr>
+							
+									<td class="No_permit"># {{ form.id }}</td>
+									<td class="date1">{{ form.date }}</td>
+									<td class="status">
+										{% if form.formType.autherize_number == form.status %}
+										{{'Approve'}}
+										{% endif %}
+										{% if form.status == -1 %}
+										{{'Reject'}}
+										{% endif %}
+										{% if form.formType.autherize_number != form.status and form.status != -1 %}
+										{{'Pending'}}
+										{% endif %}
+									</td>
+										<td class="mange">
+										{%if 'request' in form.formType.name %}
+										{%if form.formType.autherize_number == form.status%}
+										<a href="/modify/{{ form.id }}"  id="modify_link" data-toggle="tooltip"title="ขอแก้ไข"><img src="{{ STATIC_URL }}img/icon/Document-Edit-32.png"></a>
+								      	<a href="/extend/{{ form.id }}"  id="extend_link" data-toggle="tooltip" title="ขอต่ออายุ"><img src="{{ STATIC_URL }}img/icon/Document-Exchange-02-32.png"></a>
+
+								      	<a  href="/substitute/{{ form.id }}"  id="substitue_link"  data-toggle="tooltip"  title="ขอใบแทน"><img src="{{ STATIC_URL }}img/icon/Agreement-32.png" ></a>
+								      	{% endif %}
+								      	{% endif %}
+								      </td>
+
+
+								      <td class="type">{{form.formType.name}}</td>
+
+								      <td class="permit_view">
+								      {% if form.formType.autherize_number == form.status %}
+								      <a href="/form/{{ form.id }}"  id="permit_link"  data-toggle="tooltip"  title="ดูใบอนุญาต"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png"></a> 
+								      {% endif %}
+								  	</td>
+								  	<td class="date1">
+								  		{% if form.formType.autherize_number == form.status %}
+								      	{{ form.expire }}
+								      	{% endif %}
+								    </td>
+								  	
+								  	</tr>
+								  	{% endif %}
+									{% endfor %}
+
+								  </tbody>
+						</table>
+					</div>
+
+
 					<!-- ตัวอย่าง -->
 					<div id="sample_request_list" class="span6"  style="overflow-y: auto;" >
 						<H1>  กระบวนการขอแสดงตัวอย่าง </H1>
-						<a href="/create/20"  data-toggle="tooltip"  title="ใบคำขออนุญาตแสดงตัวอย่าง" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<a href="/create/21"  data-toggle="tooltip"  title="ใบคำขออนุญาตแสดงตัวอย่าง" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
