@@ -134,7 +134,7 @@
 								</div>
 							<!-- </div> -->
 
-							<div class="form-group infoleft">
+							<!-- <div class="form-group infoleft">
 									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
 								</div>
 
@@ -142,7 +142,7 @@
 
 							<div class="form-group infoLeft">
 								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
-							</div>
+							</div> -->
 							
 							
 							<div class="form-group infoRight">
@@ -213,8 +213,7 @@
 
 								<br/> <br/>
 
-              					<textarea disabled name="specialistBox" id="specialistBox" rows="3" placeholder="{{data.expert}}"></textarea>
-
+              					<textarea readonly style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" name="specialistBox" id="specialistBox" width: rows="3" placeholder="{{data.specialistBox}}"   ></textarea>
 								<br/> <br/> <br/> <br/> <br/>
 
 								<p>(ในกรณีที่มีสถานที่เก็บรักษาวัตถุอัตรายมากกว่า๑แห่ง ให้ระบุรายละเอียดเพิ่มเติมด้านหลัง)</p>
@@ -226,42 +225,46 @@
 
 								<br/> <br/>
 
-              					<textarea disabled name="harzardBox" id="harzardBox" rows="3" placeholder="{{data.harzardItems}}"></textarea>
+              					<textarea readonly name="hazardItems" id="hazardItems" rows="3" placeholder="{{data.hazardItems}}"   style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" ></textarea>
+
+              					 <br/>
+
 								<p>ลักษณะและสูตร (Formulation)</p>
-								<input disabled type="TEXT" class="form-control" name="formulaBox" id="formulaBox" placeholder="{{formula_nameBox}}">
+								<input readonly type="TEXT" class="form-control" name="fomulaBox" id="fomulaBox" placeholder="{{data.fomulaBox}}">
 
 								<br/>
 
 								<p>ชื่อทางการค้า (ถ้ามี)</p>
-								<input disabled type="TEXT" class="form-control" name="marketingBox" id="marketingBox" placeholder="{{official_nameBox}}">
+								<input readonly type="TEXT" class="form-control" name="officialBox" id="officialBox" placeholder="{{data.officialBox}}">
 
 								<br/>
 
 								<p>ผู้ผลิต</p>
-								<input disabled type="TEXT" class="form-control" name="producerBox" id="producerBox" placeholder="{{producer_nameBox}}">
+								<input readonly type="TEXT" class="form-control" name="producerBox" id="producerBox" placeholder="{{data.producerBox}}">
 
 								<br/>
 
 								<p>ประเทศที่ผลิต</p>
-								<input disabled type="TEXT" class="form-control" name="countryBox" id="countryBox" placeholder="{{country_nameBox}}">
-
+								<input readonly type="TEXT" class="form-control" name="countryBox" id="countryBox" placeholder="{{data.countryBox}}">
 								<br/>
 
 								<p>ปริมาณ</p>
-								<input disabled type="TEXT" class="form-control" name="seller_nameBox"id="seller_nameBox" placeholder="{{quantity}}">
+								<input readonly type="TEXT" class="form-control" name="seller_nameBox" 
+								id="seller_nameBox" placeholder="{{data.seller_nameBox}}">
 
-								<br/> <br/> <br/> <br/>
+								<br/> 
 
 								<p>หมายเหตุ</p>
 
 								<br/>
 								<br/>
 
-              					<textarea disabled  name="notationBox" id="notationBox" rows="2" placeholder="{{note_box}}" ></textarea>
+              					<textarea  name="notationBox" id="notationBox" rows="2" placeholder="{{data.notationBox}}" style="width:500px;"></textarea>
+
+              					 <br/>
 
 								<p > รายการที่แก้ไขขอการเปลี่ยนแปลง</p>
-								<textarea disabled name="descriptionBox" id="descriptionBox" style="font-size:20px; width:565px; height:200px; margin-top:20px;" placeholder="{{data.descriptionBox}} " ></textarea>
-
+								<textarea readonly name="descriptionBox" id="descriptionBox" style="font-size:20px; width:565px; height:200px; margin-top:20px; background: none repeat scroll 0 0 #FAFAFA;" placeholder="{{data.descriptionBox}} " ></textarea>
 								</br></br>
 
 								<br/>
