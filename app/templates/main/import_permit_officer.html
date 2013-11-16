@@ -272,13 +272,15 @@
               					<textarea  readonly name="conditionBox" id="conditionBox" rows="2" placeholder="{{data.hazardItems}}" ></textarea>
 
 							<!-- <div class="form-group"> -->
-								<div class="form-group infoLeft">
-									<p>ใบอนุญาตนี้ให้ใช้ได้จนถึงวันที่</p>		
-									<p class="date" >วันที่</p><input type="TEXT" class="form-control" name="dayBox2" id="dayBox2" placeholder="{{form.date.date.day}}">
+								<div class="date_des">
+										
+										<p>ใบอนุญาตนี้ให้ใช้ได้จนถึงวันที่</p>	<br/>	
 									
-									<p class="date" >เดือน</p><input type="TEXT" class="form-control"  name="monthBox2" id="monthBox2" placeholder="{{form.date.date.month}}">
+									<p class="date" >วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox2" name="dayBox2" placeholder="{{form.expire.date.day}}">
 									
-									<p class="date">พ.ศ.</p><input type="TEXT" class="form-control"  name="yearBox2" id="yearBox2" placeholder="{{form.date.date.year}}">
+									<p class="date" >เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox2" name="monthBox2" placeholder="{{form.expire.date.month}}">
+									
+									<p class="date">ปี</p><input readonly type="TEXT" class="form-control" id="yearBox2" name="yearBox2" placeholder="{{form.expire.date.year}}">
 									
 
 								</div>
