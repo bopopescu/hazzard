@@ -15,9 +15,12 @@
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
-	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=deivce-width, initial-scale=1.0"> -->
+		<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<!-- /<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-filestyle.js"></script> -->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+
+
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -29,36 +32,12 @@
 	});
 
 	
-	}
+	
 	</script>
 
-	<script type="text/javascript">
+	
 
-		$(document).ready(function(){
-			$('.carousel').carousel('cycle');
-		});
 
-	</script>
-
-	<script type="text/javascript">
-		
-		$(document).ready(function(){
-			
-			$('.menu-toggle').click(function() {
-				$('.head_nav').toggleClass('menu-expand');
-				if ($('.menu-vertical').is(':visible')) {
-					$('.menu-vertical').hide();
-				}
-				else {
-					$('.menu-vertical').show();
-				}
-			});
-
-			$('.menu-vertical').hide();
-
-		});
-
-	</script>
 
 	<style type="text/css">
 	
@@ -272,31 +251,31 @@
 									<div class="doc_zone">
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
-									  <div class="input-append infoRight">
-									    <input type="identityCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									  <div class="infoRight">
+						
+									    <input id="identity" name="identity"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 								    
 									</p></br></br>
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
-									    <div class="input-append infoRight">
-									    <input type="text" id="compantCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									     <div class="infoRight">
+						
+									    <input id="person" name="person"   value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาใบทะเบียนภาษีมูลค่าเพิ่ม(ภ.พ.๒๐)
-									    <div class="input-append infoRight">
-									    <input type="text" id="copytaxCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									      <div class="infoRight">
+						
+									    <input id="tax" name="tax"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
@@ -304,88 +283,78 @@
 									  
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
-									  <div class="input-append infoRight">
-									    <input type="text" id="copyRegisterCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									   <div class="infoRight">
+						
+									    <input id="register" name="register"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาผลการวิเคราะห์วัตถุอันตราย
-									  <div class="input-append infoRight">
-									    <input type="text" id="copyAnalysisCheck"style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									   <div class="infoRight">
+						
+									    <input id="analysis" name="analysis"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  แผนที่สังเขปแสดงสถานที่เก็บรักษาวัตถุอัตรายและบริเวณข้างเคียง
-									  <div class="input-append infoRight">
-									    <input id="keepMapCheck" type="text" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									    <div class="infoRight">
+						
+									    <input id="map" name="map"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									   <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  แผนผังภายในของอาคารที่ใช้เป็นสถานที่เก็บรักษาวัตถุอันตราย
-									  <div class="input-append infoRight">
-									    <input id="builingMapCheck" type="text" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									     <div class="infoRight">
+						
+									    <input id="mapIn" name="mapIn"  value=""type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									 <p>(ในกรณีที่มีประกาศฯ ออกตามความในมาตรา๒๐(๑) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ.๒๕๓๕ ให้สถานที่เก็บรักษาวัตถุอันตรายต้องเป็นไปตามหลักเกณฑ์ที่กำหนด)</p>
 									</p></br></br>
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									เอกสารแสดงความรู้ความชำนาญของผู้เชี่ยวชาญหรือบุคลากรเฉพาะ
-									  <div class="input-append infoRight">
-									    <input type="text" id="knowledgeCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									     <div class="infoRight">
+						
+									    <input id="expert" name="expert"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									 <p>รับผิดชอบสำหรับการเก็บรักษา</p>
 									</p></br></br>
 									
 									 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									เอกสารแสดงลักษณะภาชนะบรรจุที่จะใช้และการหุ้มห่อหรือผูกมัด
-									  <div class="input-append infoRight">
-									    <input type="text" id="containerCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									     <div class="infoRight">
+						<!-- -->
+									    <input id="container" name="container"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									 <p>ภาชนะบรรจุวัตถุอันตราย</p>
 									</p></br></br>
 
 
 									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย
-									  <div class="input-append infoRight">
-									    <input type="text" id="securityCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
+									    <div class="infoRight">
+						
+									   
+
+									    <input id="secure" name="secure"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 
 
-									<p class="checkboxLabel">
-									  <input class="checkbox"type="checkbox" value="">
-									อื่นๆ (ระบุ)
-									  <div class="input-append infoRight">
-									    <input type="text" id="otherCheck" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browes</button>
-									 </div>
-									</p></br></br>
-
-
-
-
-
+				
 
 								</div><!--doc zone-->
 								<div class="button">
