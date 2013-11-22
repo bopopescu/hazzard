@@ -5,7 +5,6 @@
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
 	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
@@ -32,29 +31,47 @@
 	}
 	</script>
 
-	
+
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
 
 	<style type="text/css">
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
 		}
 
 	</style>
-
-
 </head>
 
 	<body style="overflow: auto;">
 
-		<!--header-->
+	<!--header-->
 		<header>
 			<div class="header_block">
 					<nav class="head_nav">
@@ -63,11 +80,11 @@
 					<ul class="mainmenu visible-desktop visible-tablet">
 						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
 						<li class="" style="margin-left: 50px;">
-								<a href="/list"> เอกสาร </a>
+								<a href="/list"> ขอเอกสาร </a>
 
 						</li>
 						<li class="logo">
-							<img src="static/img/hazard.min.png">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
 						</li>
 						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
@@ -88,7 +105,7 @@
 					
 			</div>
 			<div class="logo">
-				<!-- <img src="static/img/logo-color.png"> -->
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
 			</div>
 		</header>
 		<!--header end -->
@@ -104,11 +121,11 @@
 							<!-- <div class="form-group"> -->
 								<div class="date_des">
 									
-									<p >วันที่</p><input disabled type="TEXT" class="form-control"  id="dayBox" value="{{date.day}}">
+									<p >วันที่</p><input disabled type="TEXT" class="form-control"  id="dayBox" value="{{form.date.date.day}}">
 									
-									<p >เดือน</p><input disabled type="TEXT" class="form-control"  id="monthBox" value="{{date.month}}">
+									<p >เดือน</p><input disabled type="TEXT" class="form-control"  id="monthBox" value="{{form.date.date.month}}">
 									
-									<p>ปี</p><input disabled type="TEXT" class="form-control"  id="yearBox" value="{{date.year}}">
+									<p>ปี</p><input disabled type="TEXT" class="form-control"  id="yearBox" value="{{form.date.date.year}}">
 									
 
 								</div>
@@ -118,135 +135,138 @@
 							<div class="form-group infoLeft">
 
 								<p>ใบอนุญาตเลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="{{data.form_id}}">
+								<input readonly type="TEXT" class="form-control" name="codeBox" id="codeBox" value="{{form.id}}">
 
 								<p>อนุญาตให้</p>
-								<input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}" style="width:300px;">
+								<input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" value="{{data.nameBox}}" style="width:300px;">
 
 								</br>
 								<p>สัญชาติ</p>
-								<input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
+								<input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" value="{{data.regionBox}}">
 								
 								
 								<p>เลขประจำตัวผู้เสียภาษีอากร</p>
-								<input readonly type="TEXT" class="form-control"  name="code_taxBox" id="code-taxBox" placeholder="{{data.code_taxBox}}">
+								<input readonly type="TEXT" class="form-control"  name="code_taxBox" id="code-taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								<p>สถานที่ติดต่อผู้รับใบอนุญาต </p>
 								<p>ตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" value="{{data.address_contactBox}}">
 								
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" value="{{data.district_contactBox}}">
 								
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" value="{{data.canton_contactBox}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.province_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" value="{{data.province_contactBox}}">
 								
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" value="{{data.zip_contactBox}}">
 								
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
 							
 								
 								<br/>
 								<p>ชื่อและที่อยู่ของสถานที่เก็บรักษาวัตถุอันตราย  ชื่อ</p>
-								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" placeholder="{{data.name_storage}}">
+								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" value="{{data.name_storage}}">
 								
 								<br/>
 								<p>ตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" placeholder="{{data.address_storage}}" style="width:50px;">
+								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" value="{{data.address_storage}}" style="width:50px;">
 								
 
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" placeholder="{{data.mo_storage}}" style="width:50px;">
+								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" value="{{data.mo_storage}}" style="width:50px;">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" placeholder="{{data.soi_storage}}" style="width:50px">
+								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" value="{{data.soi_storage}}" style="width:50px">
 
 								<br/>
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" placeholder="{{data.street_storage}}">
+								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" value="{{data.street_storage}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" placeholder="{{data.district_storage}}">
+								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" value="{{data.district_storage}}">
 								
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" placeholder="{{data.canton_storage}}">
+								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" value="{{data.canton_storage}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" placeholder="{{data.province_storage}}">
+								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" value="{{data.province_storage}}">
 								
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" placeholder="{{data.zip_storage}}">
+								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" value="{{data.zip_storage}}">
 
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" placeholder="{{data.mobile_storage}}">
+								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" value="{{data.mobile_storage}}">
 								
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" placeholder="{{data.fax_storage}}">
+								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" value="{{data.fax_storage}}">
 								
 
 								</br></br>
 									<p> เป็นผู้รับใบอนุญาตนำเข้าตัวอย่างวัตถุอันตรายเพื่อใช้ในการขึ้นทะเบียน  ดังนี้ </p><br><br>
 								
 									<p>๑.ชื่อวัตถุอันตราย</p>
-									<input readonly type="TEXT" class="form-control" name="hazardous_nameBox" id="hazardous_nameBox" placeholder="{{data.harzardous_nameBox}}">
+									<input readonly type="TEXT" class="form-control" name="hazardous_nameBox" id="hazardous_nameBox" value="{{data.hazardous_nameBox}}">
 
 								</br>
 									<p>๒.สูตรอัตราส่วนผสมของสารสำคัญและลักษณะ</p>
-									<input readonly type="TEXT" class="form-control" name="solution_nameBox" id="solution_nameBox" placeholder="{{data.solution_nameBox}}">
+									<input readonly type="TEXT" class="form-control" name="solution_nameBox" id="solution_nameBox" value="{{data.solution_nameBox}}">
 
 								</br>
 									<p>๓.ชื่อทางการค้าหรือหมายเลขรหัส</p>
-									<input readonly type="TEXT" class="form-control" name="official_nameBox" id="official_nameBox" placeholder="{{data.official_nameBox}}">
+									<input readonly type="TEXT" class="form-control" name="official_nameBox" id="official_nameBox" value="{{data.official_nameBox}}">
 
 								</br>
 									<p>๔.ชื่อผู้ผลิตและแหล่งผลิต</p>
-									<input readonly type="TEXT" class="form-control" name="producer_nameBox" id="producer_nameBox" placeholder="{{data.producer_nameBox}}">
+									<input readonly type="TEXT" class="form-control" name="producer_nameBox" id="producer_nameBox" value="{{data.producer_nameBox}}">
 
 								</br>
 									<p>๕.ชื่อผู้นำเข้า</p>
-									<input readonly type="TEXT" class="form-control" name="importer_nameBox" id="importer_nameBox" placeholder="{{data.importer_nameBox}}">
+									<input readonly type="TEXT" class="form-control" name="importer_nameBox" id="importer_nameBox" value="{{data.importer_nameBox}}">
 
 								</br>
 									<p> ๖.ปริมาณ</p>
-									<input readonly type="TEXT" class="form-control" name="seller_nameBox" id="seller_nameBox" placeholder="{{data.seller_namebox}}"
+									<input readonly type="TEXT" class="form-control" name="quantity_nameBox" id="quantity_nameBox" value="{{data.quantity_nameBox}}"
 									>
 
-								</br>
+								<!-- </br>
 									<p> ๗.อื่นๆ(ระบุ)</p>
-									<input readonly type="TEXT" class="form-control" name="type_usingBox" id="type_usingBox" placeholder="{{data.type_usingBox}}">
+									<input readonly type="TEXT" class="form-control" name="type_usingBox" id="type_usingBox" value="{{data.type_usingBox}}"> -->
 
 								</br>
-								<p>ใบอนุญาตนี้ใช้ได้จนถึงวันที่ </p><input readonly type="TEXT" class="form-control" id="dayBox2" placeholder="TODO" style="width:50px;">
-								<p> เดือน </p><input readonly type="TEXT" class="form-control" id="monthBox2" placeholder="" style="width:50px;">
-								<p> พ.ศ. </p><input readonly type="TEXT" class="form-control" id="yearBox2" placeholder="" style="width:50px;">
-								</br>
+								<p>ใบอนุญาตนี้ใช้ได้จนถึงวันที่ </p>
+								<p class="date" >วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox2" name="dayBox2" value="{{form.expire.date.day}}">
+									
+									<p class="date" >เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox2" name="monthBox2" value="{{form.expire.date.month}}">
+									
+									<p class="date">ปี</p><input readonly type="TEXT" class="form-control" id="yearBox2" name="yearBox2" value="{{form.expire.date.year}}">
+									
 									
 									<div class="button buttonView" >
 										<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;"onclick="window.location.href='/list'">กลับ</button>

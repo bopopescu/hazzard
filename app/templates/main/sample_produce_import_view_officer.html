@@ -5,7 +5,6 @@
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
 	<title>Hazard Web</title>
 
-	
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
 	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
@@ -30,6 +29,14 @@
 
 	
 	}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('.carousel').carousel('cycle');
+		});
+
 	</script>
 
 	<script type="text/javascript">
@@ -67,10 +74,10 @@
 	
 		@font-face {
 				    font-family: 'thai_sans_lite';
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('static/fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('{{ STATIC_URL }}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
 				    font-weight: normal;
 				    font-style: normal;
 
@@ -90,11 +97,11 @@
 					<ul class="mainmenu visible-desktop visible-tablet">
 						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
 						<li class="" style="margin-left: 50px;">
-								<a href="/list"> เอกสาร</a>
+								<a href="/list"> ขอเอกสาร </a>
 
 						</li>
 						<li class="logo">
-							<img src="static/img/hazard.min.png">
+							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
 						</li>
 						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
@@ -111,6 +118,7 @@
 					</div>
 
 				</nav>
+
 					
 			</div>
 			<div class="logo">
@@ -126,15 +134,13 @@
 				<form>
 					
 							<!-- <div class="form-group"> -->
-								<div class="form-inline date_des">
+								<div class="form-inline date_des infoRight">
 									
-									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" value="{{form.date.date.day}}">
 									
-									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{date.month}}">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" value="{{form.date.date.month}}">
 									
-									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{date.year}}">
-									
-
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" value="{{form.date.date.year}}">
 								</div>
 							<!-- </div> -->
 
@@ -142,11 +148,11 @@
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" value="{{data.nameBox}}">
 								
-								<p>อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder="{{data.ageBox}}"><p> ปี </p>
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" value="{{data.ageBox}}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" name="regionBox" id="regionBox" value="{{data.regionBox}}">
 								
 
 							</div>
@@ -157,85 +163,86 @@
 							<div class="form-group infoLeft">
 
 								<p>เลขประจำตัวผู้เสียภาษีอากร</p>
-								<input readonly type="TEXT" class="form-control" name="code_taxBox" id="code-taxBox" placeholder="{{data.code_taxBox}}">
+								<input readonly type="TEXT" class="form-control" name="code_taxBox" id="code-taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p>สถานที่ติดต่อผู้ขออนุญาต</p>
 
 								<p>ตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" value="{{data.address_contactBox}}">
 								
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" value="{{data.district_contactBox}}">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" value="{{data.canton_contactBox}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.provice_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" value="{{data.provice_contactBox}}">
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" value="{{data.zip_contactBox}}">
 
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
-								<p>Email address</p>
-								<input readonly type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="{{data.email_contactBox}}">
 								<br/>
+								<!-- <p>Email address</p>
+								<input readonly type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" value="{{data.email_contactBox}}">
+								<br/> -->
 								
 								<p>ชื่อและที่อยู่ของสถานที่ผลิต/เก็บรักษาวัตถุอันตราย  ชื่อ</p>
-								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" value="{{data.name_storage}}">
 								
 								<br/>
 								<p>ตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" placeholder="" style="width:50px;">
+								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" value="{{data.address_storage}}" style="width:50px;">
 								
 
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" placeholder="" style="width:50px;">
+								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" value="{{data.mo_storage}}" style="width:50px;">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" placeholder="" style="width:50px">
+								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" value="{{data.soi_storage}}" style="width:50px">
 
 								<br/>
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" value="{{data.street_storage}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" value="{{data.district_storage}}">
 								
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" value="{{data.canton_storage}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" value="{{data.province_storage}}">
 								
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" value="{{data.zip_storage}}">
 
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" value="{{data.mobile_storage}}">
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" placeholder="">
+								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" value="{{data.fax_storage}}">
 								
 
 								</br></br>
@@ -243,27 +250,27 @@
 								</br></br>
 								
 									<p>๑.ชื่อวัตถุอันตราย</p>
-									<input readonly type="TEXT" class="form-control" name="hazardous_nameBox" id="hazardous_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="hazardous_nameBox" id="hazardous_nameBox" value="{{data.hazardous_nameBox}}">
 
 									</br>
 									<p>๒.สูตรอัตราส่วนผสมและลักษณะ</p>
-									<input readonly type="TEXT" class="form-control" name="solution_nameBox" id="solution_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="solution_nameBox" id="solution_nameBox" value="{{data.solution_nameBox}}">
 
 									</br>
 									<p>๓.ชื่อทางการค้าหรือหมายเลขรหัส</p>
-									<input readonly type="TEXT" class="form-control" name="official_nameBox" id="official_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="official_nameBox" id="official_nameBox" value="{{data.official_nameBox}}">
 
 									</br>
 									<p> ๔.ชื่อผู้ผลิตและแหล่งผลิต</p>
-									<input readonly type="TEXT" class="form-control" name="producer_nameBox" id="producer_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="producer_nameBox" id="producer_nameBox" value="{{data.producer_nameBox}}">
 
 									</br>
 									<p> ๕.ชื่อผู้นำเข้า</p>
-									<input readonly type="TEXT" class="form-control" name="importer_nameBox" id="importer_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="importer_nameBox" id="importer_nameBox" value="{{data.importer_nameBox}}">
 
 									</br>
 									<p> ๖.ปริมาณ</p>
-									<input readonly type="TEXT" class="form-control" name="quantity_nameBox" id="quantity_nameBox" placeholder="">
+									<input readonly type="TEXT" class="form-control" name="quantity_nameBox" id="quantity_nameBox" value="{{data.quantity_nameBox}}">
 									
 									</br>
 									<p> ๗.เอกสารและตัวอย่างที่ต้องส่งประกอบการขออนุญาต </p>
@@ -272,53 +279,47 @@
 									
 									<div class="doc_zone">
 									<p>
-									  <input class="checkbox" id="identityCheck"  name="identityCheck"  type="checkbox" value="">
+									  <!-- <input class="checkbox" id="identityCheck"  name="identityCheck"  type="checkbox" value=""> -->
 									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
 									  <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    <button id="identityButton" name="identityButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 								    
 									</p></br></br>
 
 									<p>
-									  <input class="checkbox" id="comapny_identityCheck" name="comapny_identityCheck" type="checkbox" value="">
+									  <!-- <input class="checkbox" id="comapny_identityCheck" name="comapny_identityCheck" type="checkbox" value=""> -->
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นิติบุคคล
 									    <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    <button id="personButton" name="personButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>
 
 									<p>
-									  <input class="checkbox" id="authorizeCheck" name="authorizeCheck" type="checkbox" value="">
+									  <!-- <input class="checkbox" id="authorizeCheck" name="authorizeCheck" type="checkbox" value=""> -->
 									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
 									    <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    <button id="subButton" name="subButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>
 									
 									<p>
-									  <input class="checkbox" id="poison_testCheck" name="poison_testCheck" name="" type="checkbox" value="">
+									  <!-- <input class="checkbox" id="poison_testCheck" name="poison_testCheck" name="" type="checkbox" value=""> -->
 									แผนการทดลองประสิทธิภาพ และพิษตกค้าง
 									  <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    <button id="testButton" name="testButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>
 
 									<p>
-									  <input class="checkbox" id="safe_guaranteeCheck" name="safe_guaranteeCheck" type="checkbox" value="">
+									  <!--  <input class="checkbox" id="safe_guaranteeCheck" name="safe_guaranteeCheck" type="checkbox" value=""> -->
 									เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย
 									  <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    <button <button id="secureButton" name="secureButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button> 
 									 </div>
 									</p></br></br>
 
-									<p>
-									  <input class="checkbox"type="checkbox" id="otherCheck" name="otherCheck" value="">
-									อื่นๆ (ระบุ)
-									  <div class="input-append infoRight">
-									    <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
-									</p></br></br>
+									
 
 								</div><!--doc zone-->
 								<div class="button buttonView">

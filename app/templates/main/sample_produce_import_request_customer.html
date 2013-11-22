@@ -123,15 +123,13 @@
 				<form action="" method="post">
 					{% csrf_token %}
 							<!-- <div class="form-group"> -->
-								<div class="form-inline date_des">
+								<div class="form-inline date_des infoRight">
 									
-									<p>วันที่</p><input type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="">
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" value="{{date.day}}">
 									
-									<p>เดือน</p><input type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" value="{{date.month}}">
 									
-									<p>ปี</p><input type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="">
-									
-
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" value="{{date.year}}">
 								</div>
 							<!-- </div> -->
 
@@ -189,9 +187,9 @@
 								<p>โทรสาร</p>
 								<input type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="">
 
-								<p>Email address</p>
+								<!-- <p>Email address</p>
 								<input type="TEXT" class="form-control" name="email_contactBox" id="email_contactBox" placeholder="">
-								<br/>
+								<br/> -->
 								
 								<p>มีความประสงค์จะขออนุญาต</p>
 								<p><input checked class = "radio" type="radio" name="willing_radioButt" id="import_radioButt" value="import"> นำเข้า</P>
@@ -269,63 +267,62 @@
 									</br></br>
 									
 									<div class="doc_zone">
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
-									  สำเนาบัตรประจำตัวประชาชน / สำเนาใบสำคัญประจำตัวคนต่างด้าว
-									  <div class="input-append infoRight">
-									    <input type="text" id="identity" name="identity" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
+									
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
+									  <div class="infoRight">
+						
+									    <input id="identity" name="identity"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 								    
 									</p></br></br>
 
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
-									    <div class="input-append infoRight">
-									    <input type="text" id="company_identity"  name="company_identity" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
+									     <div class="infoRight">
+						
+									    <input id="person" name="person"   value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
-									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
-									    <div class="input-append infoRight">
-									    <input type="text" id="authorize"  name="authorize" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
+									     <div class="infoRight">
+						
+									    <input id="person" name="person"   value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
 
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  แผนการทดลองประสิทธิภาพและพิษตกค้าง
+									    <div class="infoRight">
+						
+									   
 
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
-									แผนการทดลองประสิทธิภาพและพิษตกค้าง
-									  <div class="input-append infoRight">
-									    <input type="text" id="poison_test"  name="poison_test" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
+									    <input id="test" name="test"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
-									เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย
-									  <div class="input-append infoRight">
-									    <input type="text" id="safe_guarantee" name="safe_guarantee" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
+									
+
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  เอกสารแสดงข้อมูลความปลอดภัยของวัตถุอันตราย
+									    <div class="infoRight">
+						
+									   
+
+									    <input id="secure" name="secure"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
-									<p>
-									  <input class="checkbox"type="checkbox" value="">
-									อื่นๆ (ระบุ)
-									  <div class="input-append infoRight">
-									    <input type="text" id="other" name="other" style="width:200px; height:30px;"> 
-									     <button class="btn btn-warning" type="button" style="height:30px;">Browse</button>
-									 </div>
-									</p></br></br>
+									
 
 								</div><!--doc zone-->
 								<div class="button buttonRequest">
