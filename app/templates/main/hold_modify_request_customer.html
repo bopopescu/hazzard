@@ -122,7 +122,8 @@
 			<div class="content">
 				<h1> คำขอแก้ไขใบอนุญาตครอบครองวัตถุอันตราย</h1>
 		
-				<form action="" method="post">{% csrf_token %}
+			<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
+					
 					<input type="hidden" name="form_type" value="hold_modify">
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
