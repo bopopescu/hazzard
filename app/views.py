@@ -1,10 +1,16 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse ,HttpResponseRedirect,Http404
-from app.models import Form,User,FormType,Autherize_order,Role
+from app.models import Form,User,FormType,Autherize_order,Role,FileUpload
 import xmltodict
 import hashlib
+import boto
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
+from django.conf import settings
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
+import mimetypes
+
 @never_cache
 def index(request):
 	if('user_id' not in request.session):
@@ -129,7 +135,9 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
-		
+	
+
+
 	print('con')
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
@@ -143,7 +151,9 @@ def create_form(request,formtype_id):
 	formType_obj = FormType.objects.get(pk=formtype_id)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
-
+	for key in request.FILES.iterkeys():
+		print(key)
+		uploadFile(request,form,key)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -456,6 +466,27 @@ def form_show(request,form_id):
 	return render(request,'main/message.html',context)
 	
 
+
+def uploadFile(request,form_obj,uploadType):
+	def store_in_s3(filename, content):
+		conn = S3Connection(settings.ACCESS_KEY, settings.PASS_KEY)
+		b = conn.create_bucket("testfileink")
+		mime = mimetypes.guess_type(filename)[0]
+		k = Key(b)
+		k.key = filename
+		k.set_metadata("Content-Type", mime)
+		k.set_contents_from_string(content)
+		k.set_acl("private")
+		return filename
+	print("KK")
+	file = request.FILES[uploadType]
+	filename = file.name
+	content = file.read()
+	k = store_in_s3(filename, content)
+	p = FileUpload(key=k,form=form_obj,uploadType=uploadType)
+	p.save()
+	print(p.key)
+	return
 
 
 

@@ -35,4 +35,11 @@ class Form(models.Model):
 	def __unicode__(self):
 		return "ID :"+str(self.id)+" Form by "+str(self.user)+" Type: "+str(self.formType)+" status: "+str(self.status)
 
+class FileUpload(models.Model):
+	key = models.CharField(max_length=200)
+	form = models.ForeignKey(Form) 
+	uploadType = models.CharField(max_length=20)
+
+
+
 
