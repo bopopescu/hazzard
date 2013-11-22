@@ -96,7 +96,7 @@
 
 			<div class="content">
 				<h1>คำขออนุญาตนำเข้าวัตถุอันตราย</h1>
-				<h2> วอ./กษ./กวก.๑ </h2>
+				<h2> วอ.๓ </h2>
 		
 				<form action="" method="post">{% csrf_token %}
 					
@@ -182,17 +182,17 @@
 								
 
 
-								<br/> <br/> <br/> <br/>
+								<br/> <br/> 
 
 								<p>ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบสำหรับการเก็บรักษา (ในกรณีที่มีประกาศฯ ออกตามความในมาตรา๒๐(๒) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ.๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ)</p>
 
 								<br/> <br/>
 
-              						<textarea  style="width:500px; backgroud-color:#FAFAFA;" name="specialistBox" id="specialistBox" width: rows="3" value=""   ></textarea>
+              					<textarea  style="width:500px; backgroud-color:#FAFAFA;" name="specialistBox" id="specialistBox" width: rows="3" value=""   ></textarea>
 
 								<br/> <br/> <br/> <br/> <br/>
 
-								<p>(ในกรณีที่มีสถานที่เก็บรักษาวัตถุอัตรายมากกว่า๑แห่ง ให้ระบุรายละเอียดเพิ่มเติมด้านหลัง)</p>
+								<!-- <p>(ในกรณีที่มีสถานที่เก็บรักษาวัตถุอัตรายมากกว่า๑แห่ง ให้ระบุรายละเอียดเพิ่มเติมด้านหลัง)</p> -->
 								
 								<br/>
 
@@ -201,7 +201,7 @@
 
 								<br/> <br/>
 
-              					<textarea  style="width:500px;" name="hazardItems" id="hazardItems" rows="3" value="" ></textarea> 
+              						<textarea  name="hazardItems" id="hazardItems" rows="3" value="" style="width: 600px"></textarea>
 
               					
 								<br/> <br/>
@@ -219,7 +219,7 @@
 
 								<p class="hazard_name">ทะเบียนเลขที่</p>
 									<input type="TEXT" class="form-control" id="codeBox" 
-									value="" disabled type="TEXT" name="codeBox">
+									value=""  type="TEXT" name="codeBox">
 								</br>
 
 								<p>ผู้ผลิต</p>

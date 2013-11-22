@@ -247,7 +247,7 @@ def substitute_form(request,form_id):
 		if(form_obj.formType.id == 13):
 			return render(request,'main/hold_substitute_request_customer.html',context)
 		#export
-		if(form_obj.formType.id == 19):
+		if(form_obj.formType.id == 17):
 			return render(request,'main/export_substitute_request_customer.html',context)
 
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])

@@ -124,34 +124,34 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
 									
-									<p >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ form.date.date.day }}">
+									<p >วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox" value="{{ form.date.date.day }}">
 									
-									<p >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ form.date.date.month }}">
+									<p >เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox" value="{{ form.date.date.month }}">
 									
-									<p >ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ form.date.date.year }}">
+									<p >ปี</p><input readonly type="TEXT" class="form-control" id="yearBox" value="{{ form.date.date.year }}">
 									
 
 								</div>
 							<!-- </div> -->
 
 							<div class="form-group infoleft">
-									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
+									<p>ใบอนุญาตเลขที่</p><input readonly type="TEXT" class="form-control" name="orderBox" id="orderBox" value="{{form.id}}">
 								</div>
 
 								<br/>
 
 							<!-- <div class="form-group infoLeft">
-								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input readonly type="TEXT" class="form-control" id="codeBox" name="codeBox" value="{{data.codeBox}}">
 							</div> -->
 							
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" placeholder="{{ data.nameBox }}">
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" id="nameBox" value="{{ data.nameBox }}">
 								
-								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" placeholder="{{ data.ageBox }}"><p> ปี </p>
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" id="ageBox" value="{{ data.ageBox }}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{ data.regionBox }}">
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" id="regionBox" value="{{ data.regionBox }}">
 								
 
 							</div>
@@ -161,50 +161,50 @@
 
 							<div class="form-group infoLeft">
 
-																<p>เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="{{data.code_taxBox}}">
+																<p>เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p>สถานที่ติต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
-								<input type="TEXT" disabled class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="address_contactBox" id="address_contactBox" value="{{data.address_contactBox}}">
 								
 
 								<p>หมู่ที่</p>
-								<input type="TEXT" disabled class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="mo_contactBox" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input type="TEXT" disabled class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="soi_contactBox" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 
 								<p>ถนน</p>
-								<input type="TEXT" disabled class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="street_contactBox" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input type="TEXT" disabled class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="district_contactBox" id="district_contactBox" value="{{data.district_contactBox}}">
 
 								<br/>
 
 								<p>อำเภอ/เขต</p>
-								<input type="TEXT" disabled class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="canton_contactBox" id="canton_contactBox" value="{{data.canton_contactBox}}">
 
 								<p>จังหวัด</p>
-								<input type="TEXT" disabled class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.province_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="province_contactBox" id="province_contactBox" value="{{data.province_contactBox}}">
 
 								<br/>
 
 								<p>รหัสไปรษณีย์</p>
-								<input type="TEXT" disabled class="form-control"  name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input type="TEXT" readonly class="form-control"  name="zip_contactBox" id="zip_contactBox" value="{{data.zip_contactBox}}">
 
 								<br/>
 
 								<p>โทรศัพท์</p>
-								<input type="TEXT" disabled class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input type="TEXT" readonly class="form-control" name="mobile_contactBox" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								<p>โทรสาร</p>
-								<input type="TEXT" disabled class="form-control"  name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input type="TEXT" readonly class="form-control"  name="fax_contactBox" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
 
 								<br/> <br/> <br/> <br/>
@@ -213,7 +213,7 @@
 
 								<br/> <br/>
 
-              					<textarea readonly style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" name="specialistBox" id="specialistBox" width: rows="3" placeholder="{{data.specialistBox}}"   ></textarea>
+              					<textarea readonly style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" name="specialistBox" id="specialistBox" width: rows="3" value=""> {{data.specialistBox}} </textarea>
 								<br/> <br/> <br/> <br/> <br/>
 
 								<p>(ในกรณีที่มีสถานที่เก็บรักษาวัตถุอัตรายมากกว่า๑แห่ง ให้ระบุรายละเอียดเพิ่มเติมด้านหลัง)</p>
@@ -225,32 +225,32 @@
 
 								<br/> <br/>
 
-              					<textarea readonly name="hazardItems" id="hazardItems" rows="3" placeholder="{{data.hazardItems}}"   style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" ></textarea>
+              					<textarea readonly name="hazardItems" id="hazardItems" rows="3" value=""   style="width:500px; background: none repeat scroll 0 0 #FAFAFA;" > {{data.hazardItems}} </textarea>
 
               					 <br/>
 
 								<p>ลักษณะและสูตร (Formulation)</p>
-								<input readonly type="TEXT" class="form-control" name="fomulaBox" id="fomulaBox" placeholder="{{data.fomulaBox}}">
+								<input readonly type="TEXT" class="form-control" name="fomulaBox" id="fomulaBox" value="{{data.fomulaBox}}">
 
 								<br/>
 
 								<p>ชื่อทางการค้า (ถ้ามี)</p>
-								<input readonly type="TEXT" class="form-control" name="officialBox" id="officialBox" placeholder="{{data.officialBox}}">
+								<input readonly type="TEXT" class="form-control" name="officialBox" id="officialBox" value="{{data.officialBox}}">
 
 								<br/>
 
 								<p>ผู้ผลิต</p>
-								<input readonly type="TEXT" class="form-control" name="producerBox" id="producerBox" placeholder="{{data.producerBox}}">
+								<input readonly type="TEXT" class="form-control" name="producerBox" id="producerBox" value="{{data.producerBox}}">
 
 								<br/>
 
 								<p>ประเทศที่ผลิต</p>
-								<input readonly type="TEXT" class="form-control" name="countryBox" id="countryBox" placeholder="{{data.countryBox}}">
+								<input readonly type="TEXT" class="form-control" name="countryBox" id="countryBox" value="{{data.countryBox}}">
 								<br/>
 
 								<p>ปริมาณ</p>
 								<input readonly type="TEXT" class="form-control" name="seller_nameBox" 
-								id="seller_nameBox" placeholder="{{data.seller_nameBox}}">
+								id="seller_nameBox" value="{{data.seller_nameBox}}">
 
 								<br/> 
 
@@ -259,12 +259,12 @@
 								<br/>
 								<br/>
 
-              					<textarea  name="notationBox" id="notationBox" rows="2" placeholder="{{data.notationBox}}" style="width:500px;"></textarea>
+              					<textarea  name="notationBox" id="notationBox" rows="2" value="" style="width:500px;">{{data.notationBox}}</textarea>
 
               					 <br/>
 
 								<p > รายการที่แก้ไขขอการเปลี่ยนแปลง</p>
-								<textarea readonly name="descriptionBox" id="descriptionBox" style="font-size:20px; width:565px; height:200px; margin-top:20px; background: none repeat scroll 0 0 #FAFAFA;" placeholder="{{data.descriptionBox}} " ></textarea>
+								<textarea readonly name="descriptionBox" id="descriptionBox" style="font-size:20px; width:565px; height:200px; margin-top:20px; background: none repeat scroll 0 0 #FAFAFA;" value="" >{{data.descriptionBox}}</textarea>
 								</br></br>
 
 								<br/>
