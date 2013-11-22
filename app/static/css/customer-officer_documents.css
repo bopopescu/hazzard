@@ -120,6 +120,9 @@ ul
 #export_request_list{
 	display: none;
 }
+#produce_request_list{
+	display: none;
+}
 
 /*officer register*/
 #registerProcess_list{
@@ -149,6 +152,20 @@ ul
 }
 
 #substitue_importProcess_list{
+	display: none;
+}
+
+/*Officer produce*/
+#produceProcess_list{
+	display: none;
+}
+#modify_produceProcess_list{
+	display: none;
+}
+#extend_produceProcess_list{
+	display: none;
+}
+#substitue_produceProcess_list{
 	display: none;
 }
 

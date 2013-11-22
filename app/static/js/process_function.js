@@ -7,6 +7,7 @@ function hideCustomerFunction(){
 	document.getElementById('hold_request_list').style.display = 'none';
 	document.getElementById('import_request_list').style.display = 'none';
 	document.getElementById('export_request_list').style.display = 'none';
+	document.getElementById('produce_request_list').style.display = 'none';
 	
 
 
@@ -41,6 +42,11 @@ function export_request_listFunction(){
 	document.getElementById('export_request_list').style.display = 'block';
 }
 
+function produce_request_listFunction(){
+	hideCustomerFunction();
+	document.getElementById('produce_request_list').style.display = 'block';
+}
+
 //officer
 function hideOfficerFunction(){
 
@@ -68,7 +74,12 @@ function hideOfficerFunction(){
 	 document.getElementById('extend_exportProcess_list').style.display = 'none';
 	document.getElementById('substitue_exportProcess_list').style.display = 'none';
 
+	document.getElementById('produceProcess_list').style.display = 'none';
+	document.getElementById('modify_produceProcess_list').style.display = 'none';
+	 document.getElementById('extend_produceProcess_list').style.display = 'none';
+	document.getElementById('substitue_produceProcess_list').style.display = 'none';
 
+	
 	
 }
 
@@ -170,3 +181,30 @@ function substitue_exportFunction(){
 	document.getElementById('substitue_exportProcess_list').style.display = 'block';
 
 }
+
+function produceFunction(){
+	hideOfficerFunction();
+	document.getElementById('produceProcess_list').style.display = 'block';
+
+}
+
+function modify_produceFunction(){
+	hideOfficerFunction();
+	document.getElementById('modify_produceProcess_list').style.display = 'block';
+}
+
+function extend_produceFunction(){
+	hideOfficerFunction();
+	document.getElementById('extend_produceProcess_list').style.display = 'block';
+}
+
+function substitue_produceFunction(){
+	hideOfficerFunction();
+	document.getElementById('substitue_produceProcess_list').style.display = 'block';
+
+}
+
+
+	
+	
+	
