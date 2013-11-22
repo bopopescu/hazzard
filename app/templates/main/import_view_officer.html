@@ -32,11 +32,14 @@
 	</script>
 
 	<script type="text/javascript">
-
 		$(document).ready(function(){
+			
 			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
 		});
-
 	</script>
 
 	<script type="text/javascript">
@@ -397,7 +400,7 @@
 										  </div>
 										  <div class="modal-footer">
 										    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </button>
-										    <button class="btn btn-primary" type="submit" id="modal-button" hreft="\list"> แจ้งผู้ประกอบการ </button>
+										    <button class="btn btn-primary" type="submit" id="modal-button"> แจ้งผู้ประกอบการ </button>
 										  </div>
 										</form>
 									</div>

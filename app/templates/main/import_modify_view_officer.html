@@ -31,12 +31,15 @@
 	}
 	</script>
 
-	<script type="text/javascript">
-
+		<script type="text/javascript">
 		$(document).ready(function(){
+			
 			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
 		});
-
 	</script>
 
 	<script type="text/javascript">
