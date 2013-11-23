@@ -296,7 +296,7 @@
 						<!-- ผลิต -->
 					<div id="produce_request_list" class="span6"  style="overflow-y: auto;" >
 						<H1>  กระบวนการขอผลิต</H1>
-						<a href="/create/9"  data-toggle="tooltip"  title="ใบคำขออนุญาตผลิตวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
+						<a href="/create/5"  data-toggle="tooltip"  title="ใบคำขออนุญาตผลิตวัตถุอันตราย" ><img id="add_icon" src="{{ STATIC_URL }}img/icon/Add-New-32.png"></a>
 						<table class="table table-striped">
 	  							<thead>
 								    <tr>
@@ -315,7 +315,6 @@
 								   <tbody>
 								    {% for form in forms %}
 								    {% if 'produce' in form.formType.name %}
-								    {% if 'produce' not in form.formType.name %}
 								    <tr>
 							
 									<td class="No_permit"># {{ form.id }}</td>
@@ -357,7 +356,6 @@
 								    </td>
 								  	
 								  	</tr>
-								  	{% endif %}
 								  	{% endif %}
 									{% endfor %}
 

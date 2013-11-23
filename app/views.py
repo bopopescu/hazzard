@@ -425,16 +425,16 @@ def form_show(request,form_id):
 	#produce
 	if(form_obj.formType.name == 'produce_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/produce_permit.html',context)
+		return render(request,'main/produce_permit_officer.html',context)
 	if(form_obj.formType.name == 'produce_extend'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/produce_extend_permit.html',context)	
+		return render(request,'main/produce_extend_permit_officer.html',context)	
 	if(form_obj.formType.name == 'produce_modify'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/produce_modify_permit.html',context)
+		return render(request,'main/produce_modify_permit_officer.html',context)
 	if(form_obj.formType.name == 'produce_substitute'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
-		return render(request,'main/produce_substitute_permit.html',context)
+		return render(request,'main/produce_substitute_permit_officer.html',context)
 
 	#import
 	if(form_obj.formType.name == 'import_request'):

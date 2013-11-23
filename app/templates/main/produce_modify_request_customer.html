@@ -121,14 +121,15 @@
 				
 		
 				<form action="" method="post">{% csrf_token %}
+					<input type="hidden" name="form_type" value="produce_modify">
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p >วันที่</p><input readonly type="TEXT" class="form-control"  id="dayBox" name="dayBox" placeholder="{{data.dayBox }}">
+									<p >วันที่</p><input readonly type="TEXT" class="form-control"  id="dayBox" name="dayBox" placeholder="{{form.date.date.day}}">
 									
-									<p >เดือน</p><input readonly type="TEXT" class="form-control"  id="monthBox" name="monthBox" placeholder="{{data.month}}">
+									<p >เดือน</p><input readonly type="TEXT" class="form-control"  id="monthBox" name="monthBox" placeholder="{{form.date.date.month}}">
 									
-									<p>ปี</p><input readonly type="TEXT" class="form-control"  id="yearBox" name="yearBox" placeholder="{{data.year}}">
+									<p>ปี</p><input readonly type="TEXT" class="form-control"  id="yearBox" name="yearBox" placeholder="{{form.date.date.year}}">
 									
  	
 								</div>
@@ -184,7 +185,7 @@
 								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
 
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="provice_contactBox"  id="provice_contactBox" placeholder="{{data.province_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="province_contactBox"  id="province_contactBox" placeholder="{{data.province_contactBox}}">
 
 								</br>
 
@@ -412,9 +413,9 @@
 
 								<p>มาเพื่อประกอบพิจารณาด้วย</p>
 								<div class="button buttonRequest">
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">ส่ง</button>
+								<button class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ส่ง</button>
 
-								<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">รีเซ็ต</button>
+								<button class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">รีเซ็ต</button>
 							</div>
 										
 							</div><!-- infoleft -->
