@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
-	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=deivce-width, initial-scale=1.0"> -->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	
@@ -28,7 +28,7 @@
 	});
 
 	
-	}
+	
 	</script>
 
 	<script type="text/javascript">
@@ -131,13 +131,13 @@
 
 			 					<div class="form-inline date_des infoRight">
 										
-									<p class="office" style="float:rigth; margin-left:30px; margin-top: -10px;" >กรม/สำนักงาน</p>
+								<!-- 	<p class="office" style="float:rigth; margin-left:30px; margin-top: -10px;" >กรม/สำนักงาน</p>
 									<input readonly type="TEXT" class="form-control" name="departmentBox" id="departmentBox" value="{{data.departmentBox}}" style="float:rigth;  margin-left:10px; width:120px; margin-top:0px;">
 									<br>
 
 									<p class="office" style="float:rigth; margin-left:30px; margin-top:-10px;" >กระทรวง</p>
 									<input readonly type="TEXT" class="form-control" name="ministryBox"id="ministryBox" value="{{data.ministryBox}}" style="margin-left:10px; width:160px; margin-top:0px;">
-									<br>
+									<br> -->
 
 					
 									<p >วันที่</p><input readonly type="TEXT" class="form-control"  id="dayBox" name="dayBox" value="{{form.date.date.day}}">
@@ -293,15 +293,15 @@
 
 								</div>
 
-									<div class="button" style="float:right; ">
+									<!-- <div class="button" style="float:right; "> -->
 
 
-										<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;">อนุมัติ</button>
-
-										<button class="btn btn-inverse" type="button" style="height:30px; width: 80px; " >ยกเลิก</button>
-
-
+									<div class="button buttonView" >
+									<button class="btn btn-inverse" type="button" style="height:30px; width: 80px;"onclick="window.location.href='/list'">กลับ</button>
 									</div>
+
+
+									<!-- </div> -->
 
 								</div><!--doc zone-->
 								
