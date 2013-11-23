@@ -81,52 +81,43 @@
 			<div class="header_block">
 					<nav class="head_nav">
 
-				<!-- DESKTOP -->
-						<ul class="mainmenu visible-desktop">
-							<li  style="margin-left:55px;">
-								<a href="/login"> หน้าหลัก </a>
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/"> หน้าหลัก </a>
+
 						</li>
 						<li class="logo">
 							<img src="{{ STATIC_URL }}img/hazard.min.png">
 
 						</li>
-						<li class="login dropdown pull-right" >
-
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-							style="margin-left: -100px;">เข้าสู่ระบบ</a>
-							<ul class="dropdown-menu" style="padding-left: 15px; padding-right: 15px; 
-							padding-top: 15px; width:300px; padding-top:-10px;">
-							<li><h2 style="margin-top: 0px;">กรุณาเข้าสู่ระบบ</h2></li>
-
-								<form action="/login/" method="post" style="width:300px; padding-top:10px;">{% csrf_token %}
-									<input name="identity" id="username" type="text" placeholder="username"> 
-									<input name="password" id="password" type="password" placeholder="password"><br>
-								
-									
-									<button type="submit" class="btn btn-inverse" style="margin-top:5px;">เข้าสู่ระบบ</button>
-									<button type="submit" class="btn btn-warning" style="margin-top:5px;">ยกเลิก</button>
-								</form>
-							</ul>
+						<li><a href="/list" style="margin-left: 200px;">เอกสาร</a>
+							
 						</li>
-						
-						
+
 					</ul>
-					</nav>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+
+				</nav>
 
 					
 			</div>
 			<div class="logo">
-				<!-- <img src="img/logo-color.png"> -->
+				<!-- <img src="{{ STATIC_URL }}img/logo-color.png"> -->
 			</div>
-
-			
 		</header>
 		<!--header end -->
 
 
 		
-			<form action="/register/" method="post">
-				{% csrf_token %}
+			<form >
+				<!-- {% csrf_token %} -->
 
     			<div class="content" style="margin-left:150px;">
 
@@ -139,13 +130,13 @@
 						  <div role="form">
 	    					<div class="form-group">
 									<p id="idText"> Username</p>
-									<input type="TEXT" class="form-control" id="idBox" name="idBox"placeholder="Enter Username">
+									<input disabled type="TEXT" class="form-control" id="idBox" name="idBox"value={{data.idBox}}>
 								</div>
 
 								<div style="width:280px;">
 								<div class="form-group">
 									<p id="PasswordText">Password</p>
-									<input type="password" class="form-control" id="passwordBox" name="passwordBox" placeholder="Enter Password">
+									<input disabled type="password" class="form-control" id="passwordBox" name="passwordBox" value={{data.passwordBox}}>
 								</div>
 								</div>
 
@@ -158,7 +149,7 @@
 
 							<div class="form-group" style="margin-top:90px;">
 								<p for="PasswordText">Re-Password</p>
-								<input type="password" class="form-control" id="re-passwordBox" name="re-passwordBox" placeholder="Enter Password">
+								<input disabled type="password" class="form-control" id="re-passwordBox" name="re-passwordBox" value={{data.re-passwordBox}}>
 							</div>
 						</div>
 					</div>
@@ -176,33 +167,41 @@
 								
 								<div class="form-group">
 									<p for="nameText">ชื่อ</p>
-									<input type="TEXT" class="form-control" id="nameBox" name="nameBox" placeholder="Enter First Name">
+									<input disabled type="TEXT" class="form-control" id="nameBox" name="nameBox"
+									value={{data.nameBox}}>
 								</div>
 								
 								<div class="form-group">
 									<p for="emailText">E-mail</p>
-									<input type="TEXT" class="form-control" id="emailBox"  name="emailBox" placeholder="Enter E-mail">
+									<input disabled type="TEXT" class="form-control" id="emailBox" name="emailBox"
+									 value={{data.emailBOx}}>
 								</div>
 
 								<p>วันเกิด</p>
 								<div class="form-inline" style="margin-top:-10px;">
-									<p class="dateRe" >วันที่</p><input type="TEXT" class="form-control" 
-									id="birthDayBox" name="birthDayBox" placeholder="01">
-									<p class="dateRe" >เดือน</p><input type="TEXT" class="form-control" 
-									id="birthmonthBox" name="birthmonthBox" placeholder="01">
-									<p class="dateRe">ปี</p><input type="TEXT" class="form-control" 
-									id="birthyearBox" name="birthyearBox" placeholder="1990">
+									<p class="dateRe" >วันที่</p>
+									<input disabled type="TEXT" class="form-control" id="birthdayBox"
+									name="birthdayBox" value={{data.birthdayBox}}>
+
+									<p class="dateRe" >เดือน</p>
+									<input disabled type="TEXT" class="form-control" id="birthmonthBox"
+									name="birthmonthBox" value={{data.birthmonthBox}}>
+
+									<p class="dateRe">ปี</p>
+									<input disabled type="TEXT" class="form-control" id="birthyearBox"
+									name="birthyearBox" value={{data.birthyearBox}}>
 
 								</div>
 
 								
 								<p>ที่อยู่</p><br/>
-								<textarea type="TEXT"> </textarea>
+								<textarea disabled type="TEXT" id="addressarea"
+								name="addressarea" value={{data.addressarea}}> </textarea>
 
 								<div class="form-inline">
 									<p class="address" >รหัสไปรษณีย์</p>
-									<input type="TEXT" class="form-control" 
-									id="addressBox" name="addressBox" placeholder="zip-code" style="background: #FAFAFA; border: 1px solid #96BBD4; font-size:18px;">
+									<input disabled type="TEXT" class="form-control" id="addressBox"
+									name="addressBox" value={{data.addressBox}}style="background: #FAFAFA; border: 1px solid #96BBD4; font-size:18px;">
 								</div>
 
 				
@@ -213,22 +212,26 @@
 						<div role="form">
 							<div class="form-group">
 								<p for="surnameText">นามสกุล</p>
-								<input type="TEXT" class="form-control" id="surnameBox"  name="surnameBox" placeholder="Enter Surname">
+								<input disabled type="TEXT" class="form-control" id="surnameBox"
+								name="surnameBox"  value={{data.surnameBox}}>
 							</div>
 
 							<div class="form-group">
 								<p for="re-emailText">Re E-mail</p>
-								<input type="TEXT" class="form-control" id="re-emailBox" name="re-emailBox" placeholder="Enter E-mail">
+								<input disabled type="TEXT" class="form-control" id="re-emailBox"
+								name="re-emailBox" value={{data.re-emailBox}}>
 							</div>
 
 							<div class="form-group">
 								<p for="personText">ID No.</p>
-								<input type="TEXT" class="form-control" id="personBox" name="personBox" placeholder="Enter ID No.">
+								<input disabled type="TEXT" class="form-control" id="personBox"
+								name="personBox" value={{data.personBox}}>
 							</div>
 
 							<div class="form-group">
 								<p for="telText">โทรศัพท์</p>
-								<input type="TEXT" class="form-control" id="telBox"  name="telBox" placeholder="Enter Telephone Number">
+								<input disabled type="TEXT" class="form-control" id="telBox"
+								 name="telBox" value={{data.telBox}}>
 							</div>
 						</div>
 					</div>
@@ -238,10 +241,7 @@
 		
 
 					
-					<div class="button">
-						<button type="submit" class="btn btn-danger btn-lg">สมัคร</button>
-						<button class="btn btn-danger btn-lg" style="margin-left:50px;" type="reset">รีเซ็ต</button>
-					</div>
+					
 					
 
     			</div>
