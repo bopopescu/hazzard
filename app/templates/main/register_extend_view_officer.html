@@ -130,27 +130,27 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p>วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ form.date.date.day }}">
+									<p>วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" value="{{ form.date.date.day }}">
 									
-									<p>เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ form.date.date.day }}">
+									<p>เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" value="{{ form.date.date.day }}">
 									
-									<p>ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ form.date.date.year }}">
+									<p>ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" value="{{ form.date.date.year }}">
 									
 
 								</div>
 							<!-- </div> -->
 							<div class="form-group infoLeft">	
-								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="{{data.form_id}}">	
+								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" value="{{data.form_id}}">	
 							</div>
 
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" placeholder="{{ data.nameBox }}">
+								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" value="{{ data.nameBox }}">
 								
-								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" placeholder="{{ data.ageBox}}"><p> ปี </p>
+								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" value="{{ data.ageBox}}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{ data.regionBox}}">
+								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" value="{{ data.regionBox}}">
 								
 
 							</div>
@@ -161,52 +161,52 @@
 
 							<div class="form-group infoLeft">
 
-									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" id="code_taxBox" placeholder="{{data.code_taxBox}}">
+									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" id="code_taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p>สถานที่ติดต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
-								<input disabled type="TEXT" class="form-control" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="address_contactBox" value="{{data.address_contactBox}}">
 								
 
 								<p>หมู่ที่</p>
-								<input disabled type="TEXT" class="form-control" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input disabled type="TEXT" class="form-control" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 
 								<p>ถนน</p>
-								<input disabled type="TEXT" class="form-control" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input disabled type="TEXT" class="form-control" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="district_contactBox" value="{{data.district_contactBox}}">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input disabled type="TEXT" class="form-control" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="canton_contactBox" value="{{data.canton_contactBox}}">
 
 
 								<p>จังหวัด</p>
-								<input disabled type="TEXT" class="form-control" id="provice_contactBox" placeholder="{{data.provice_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="provice_contactBox" value="{{data.provice_contactBox}}">
 
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input disabled type="TEXT" class="form-control" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="zip_contactBox" value="{{data.zip_contactBox}}">
 
 								<p>โทรศัพท์</p>
-								<input disabled type="TEXT" class="form-control" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								
 								</br>
 								<p>โทรสาร</p>
-								<input disabled type="TEXT" class="form-control" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input disabled type="TEXT" class="form-control" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
 							
 								<p>Email address</p>
-								<input disabled type="TEXT" class="form-control" id="email_contactBox" placeholder="{{data.email_contactBox}}" >
+								<input disabled type="TEXT" class="form-control" id="email_contactBox" value="{{data.email_contactBox}}" >
 								
 								</br>
 
@@ -220,66 +220,50 @@
 									<p class="checkboxLabel">
 									  <input id="permit_doc_check" class="checkbox"type="checkbox" value="check">
 									  ใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
-									  <div class="input-append infoRight">
+									  <!-- <div class="input-append infoRight"> -->
 									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button id="permit_doc"class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
+									     <button id="permitButton" name="permitButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 <!-- </div> -->
 								    </p></br></br>
 									
 									
 									<p class="checkboxLabel">
-									  <input id="ID_doc_check" class="checkbox"type="checkbox" value="check">
+									  
 									  สำเนาบัตรประชาชน / สำเนาใบสำคัญประจำคนต่างด้าว
 									  <div id="ID_doc" class="input-append infoRight">
-									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    
+									     <button id="identityButton" name="identityButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 								    </p></br></br>
 
 
 									<p class="checkboxLabel">
-									  <input id="ensure_doc_check" class="checkbox"type="checkbox" value="check">
+									 
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
-									    <div id="ensure_doc" class="input-append infoRight">
-									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   
+									     <button id="personButton" name="personButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>	
 
 									<p class="checkboxLabel">
-									  <input  id="authorize_doc_check" class="checkbox"type="checkbox" value="check">
+									 
 									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
-									    <div id="authorize_doc" class="input-append infoRight">
-									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
+									   <button id="subButton" name="subButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									    
 									</p></br></br>
 
 
 							
 
 									<p class="checkboxLabel">
-									  <input  id="envidence_doc_check"  class="checkbox"type="checkbox" value="check">
-									หลักฐานที่เกี่ยวข้องเพื่อประกอบการขอแก้ไขเปลี่ยนแปลง ดังนี้
-									  <div   id="envidence_doc" class="input-append infoRight">
-									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
+									 
+									หลักฐานที่เกี่ยวข้องเพื่อประกอบการขอแก้ไขเปลี่ยนแปลง 
+									   <button id="envidencButton" name="envidencButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									</p></br></br>
 
 									
 
 
-						
-
-									<p class="checkboxLabel">
-									  <input  d="others_doc_check" class="checkbox"type="checkbox" value="check">
-									อื่นๆ
-									  <div id="others_doc" class="input-append infoRight">
-									    <!-- <input  id="others" type="text" style="width:200px; height:30px;">  -->
-									     <button class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
-									</p></br></br>
 
 								</div><!--doc zone-->
 								<div class="button buttonView">
