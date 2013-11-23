@@ -108,11 +108,11 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/register_request_customer.html',context)
-	#produce DISABLE
-	#if(formtype_id == '5'):
-	#		date = timezone.now().date()
-	#		context = {'date':date,'user':user_obj}
-	#		return render(request,'main/register_request_customer.html',context)
+	#produce
+		if(formtype_id == '5'):
+			date = timezone.now().date()
+			context = {'date':date,'user':user_obj}
+			return render(request,'main/produce_request_customer.html',context)
 	#import
 		if(formtype_id == '9'):
 			date = timezone.now().date()
@@ -123,22 +123,17 @@ def create_form(request,formtype_id):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/hold_request_customer.html', context)
-
 	#export
 		if(formtype_id == '17'):
 			date = timezone.now().date()	
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/export_request_customer.html', context)
-
 	#sample
 		if(formtype_id == '21'):
 			date = timezone.now().date()
 			context = {'date':date,'user':user_obj}
 			return render(request,'main/sample_produce_import_request_customer.html',context)
 	
-
-
-	print('con')
 	info = '<xml>'
 	# DO SOME INFOMATION CONVERT TO XML OR SOMETHING
 	for key in request.POST:
@@ -174,6 +169,9 @@ def modify_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/register_modify_request_customer.html',context)
+		#produce
+		if(form_obj.formType.id == 5):
+			return render(request,'main/produce_modify_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
 			return render(request,'main/import_modify_request_customer.html',context)
@@ -214,6 +212,9 @@ def extend_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/register_extend_request_customer.html',context)
+		#produce
+		if(form_obj.formType.id == 5):
+			return render(request,'main/produce_extend_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
 			return render(request,'main/import_extend_request_customer.html',context)
@@ -250,6 +251,9 @@ def substitute_form(request,form_id):
 		#register
 		if(form_obj.formType.id == 1):
 			return render(request,'main/register_substitute_request_customer.html',context)
+		#produce
+		if(form_obj.formType.id == 5):
+			return render(request,'main/produce_substitute_request_customer.html',context)
 		#import
 		if(form_obj.formType.id == 9):
 			return render(request,'main/import_substitute_request_customer.html',context)
@@ -301,6 +305,16 @@ def approve_form(request,form_id):
 		return render(request,'main/register_extend_view_officer.html',context)
 	if(form_obj.formType.name == 'register_substitute'):
 		return render(request,'main/register_substitute_view_officer.html',context)
+
+	#produce
+	if(form_obj.formType.name == 'produce_request'):
+		return render(request,'main/produce_view_officer.html',context)
+	if(form_obj.formType.name == 'produce_modify'):
+		return render(request,'main/produce_modify_view_officer.html',context)
+	if(form_obj.formType.name == 'produce_extend'):
+		return render(request,'main/produce_extend_view_officer.html',context)
+	if(form_obj.formType.name == 'produce_substitute'):
+		return render(request,'main/produce_substitute_view_officer.html',context)
 
 	#import
 	if(form_obj.formType.name == 'import_request'):
@@ -408,6 +422,20 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/register_substitute_permit.html',context)
 
+	#produce
+	if(form_obj.formType.name == 'produce_request'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/produce_permit.html',context)
+	if(form_obj.formType.name == 'produce_extend'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/produce_extend_permit.html',context)	
+	if(form_obj.formType.name == 'produce_modify'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/produce_modify_permit.html',context)
+	if(form_obj.formType.name == 'produce_substitute'):
+		context = {'form':form_obj,'data':data,'user':user_obj}
+		return render(request,'main/produce_substitute_permit.html',context)
+
 	#import
 	if(form_obj.formType.name == 'import_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
@@ -436,7 +464,6 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/hold_substitute_permit_officer.html',context)
 
-
 	#export
 	if(form_obj.formType.name == 'export_request'):
 		context = {'form':form_obj,'data':data,'user':user_obj}
@@ -451,7 +478,6 @@ def form_show(request,form_id):
 		context = {'form':form_obj,'data':data,'user':user_obj}
 		return render(request,'main/export_substitute_permit_officer.html',context)
 
-
 	#sample
 	if(form_obj.formType.name == 'sample'):
 		if(data['willing_radioButt'] == "produce") :
@@ -460,7 +486,6 @@ def form_show(request,form_id):
 		elif(data['willing_radioButt'] == "import") :
 			context = {'form':form_obj,'data':data,'user':user_obj}
 			return render(request,'main/sample_import_permit_officer.html',context)
-
 
 	context = {'message':'Permission Denied','user':user_obj}
 	return render(request,'main/message.html',context)
@@ -514,7 +539,7 @@ def setup(request):
 	formts.append(FormType(name='register_modify',autherize_number=1))
 	formts.append(FormType(name='register_substitute',autherize_number=1))
 	#produce
-	formts.append(FormType(name='produce_request',autherize_number=3))
+	formts.append(FormType(name='produce_request',autherize_number=1))
 	formts.append(FormType(name='produce_extend',autherize_number=1))
 	formts.append(FormType(name='produce_modify',autherize_number=1))
 	formts.append(FormType(name='produce_substitute',autherize_number=1))
