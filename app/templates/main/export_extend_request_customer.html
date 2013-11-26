@@ -17,15 +17,7 @@
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/validate.js"></script>
 	
-	<script type="text/javascript">
-	function validateFrom(){
-		var Varl = new validate();
-		var test = Varl.start();
-		return test;
-	}
-	</script>
 
 	<script type="text/javascript" charset="utf-8">
 
@@ -128,7 +120,7 @@
 				<h1> คำขอต่ออายุใบอนุญาตส่งออกวัตถุอันตราย</h1>
 				<h2> วอ.๙	 </h2>
 		
-				<form action="" method="post" onsubmit="return validateFrom()" enctype="multipart/form-data">{% csrf_token %}
+				<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
 						<input type="hidden" name="form_type" value="export_extend">
 					
 							<!-- <div class="form-group"> -->
