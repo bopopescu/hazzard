@@ -17,8 +17,16 @@
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<!-- // <script type="text/javascript" src="{{ STATIC_URL }}js/validate.js"></script> -->
 	
-
+<!-- 	// <script type="text/javascript">
+	// function validateFrom(){
+	// 	var Varl = new validate();
+	// 	var test = Varl.start();
+	// 	return test;
+	// }
+	// </script>
+ -->
 	<script type="text/javascript" charset="utf-8">
 
 	$(window).resize(function() {
@@ -118,7 +126,7 @@
 				<h1> คำขอใบแทนใบอนุญาตผลิตวัตถุอันตราย </h1>
 				
 		
-				<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
+					<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
 							<input type="hidden" name="form_type" value="produce_substitute">
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">

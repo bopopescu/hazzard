@@ -1,0 +1,148 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+	<title>Hazard Web</title>
+
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="{{ static/ }}css/bootstrap3.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ static/ }}css/bootstrapTheme3.min.css"> -->
+
+
+	<link rel="stylesheet" href="static/css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="static/css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="static/css/register.css" type="text/css" media="screen" charset="utf-8">
+	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+	<script type="text/javascript" src="static/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript" charset="utf-8">
+
+	$(window).resize(function() {
+		rs();
+	}).load(function() {
+		rs();
+	});
+
+	
+	}
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('.carousel').carousel('cycle');
+			$('#modal-button').click(function(e){
+			      e.preventDefault();
+			      window.location = "reject?comment=" + $("#comment").val()
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('.menu-toggle').click(function() {
+				$('.head_nav').toggleClass('menu-expand');
+				if ($('.menu-vertical').is(':visible')) {
+					$('.menu-vertical').hide();
+				}
+				else {
+					$('.menu-vertical').show();
+				}
+			});
+
+			$('.menu-vertical').hide();
+
+		});
+
+	</script>
+
+	<style type="text/css">
+	
+		@font-face {
+				    font-family: 'thai_sans_lite';
+				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.eot');
+				    src: url('static/fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+				         url('static/fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+				         url('static/fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+				    font-weight: normal;
+				    font-style: normal;
+
+		}
+
+	</style>
+</head>
+
+	<body style="overflow: auto;">
+
+		<!--header-->
+		<header>
+			<div class="header_block">
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/list"> ขอเอกสาร </a>
+
+						</li>
+						<li class="logo">
+							<img src="static/img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
+							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							
+						</li>
+
+					</ul>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+
+				</nav>
+
+					
+			</div>
+			<div class="logo">
+				<!-- <img src="{{ static/ }}img/logo-color.png"> -->
+			</div>
+		</header>
+		<!--header end -->
+
+			<div class="content" style="height:300px;">
+				<h1> Approve / Disapprove </h1>
+		
+			<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
+					
+				
+							
+							<div class="form-group infoRight" style="height:300px;">
+								
+								<input type="TEXT" class="form-control" id="nameBox" value="" name="nameBox">
+								
+								<div class="button buttonRequest" style="display:inline";>
+								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ค้นหา</button>
+
+								<button id="reset" class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">รีเซ็ต</button>
+								</div>
+							
+							</div>
+
+							
+			 	</form><!--form-->
+			</div><!--content-->
+		
+
+
+	</body>
+</html>
