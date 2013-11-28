@@ -56,7 +56,7 @@
 			     
 			     window.open("http://www.google.com");
 			});
-			$('#analysisButton').click(function(e){
+			$('#mappButton').click(function(e){
 			     
 			      window.open("http://www.google.com");
 			});
@@ -65,6 +65,10 @@
 			     window.open("http://www.google.com");
 			});
 			$('#mapINButton').click(function(e){
+			     
+			      window.open("http://www.google.com");
+			});
+			$('#wayButton').click(function(e){
 			     
 			      window.open("http://www.google.com");
 			});
@@ -405,14 +409,6 @@
 									 </div>
 									</p></br></br>
 
-									<p>
-									  <!-- <input class="checkbox"type="checkbox" value=""id="copyAnalysisCheck"> -->
-									  สำเนาผลการวิเคราะห์วัตถุอันตราย
-	    								<div class="input-append infoRight">
-									    <!-- <input  id="ensure_doc" type="text" style="width:200px; height:30px;">  -->
-									     <button  id="analysisButton" name = "analysisButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
-									</p></br></br>
 
 									<p>
 									 <!-- <input class="checkbox"type="checkbox" value=""id="keepMapCheck"> -->
@@ -423,6 +419,16 @@
 									 </div>
 									</p></br></br>
 
+
+									<p>
+									  <!-- <input class="checkbox"type="checkbox" value=""id="copyAnalysisCheck"> -->
+									  แผนที่สังเขปแสดงสถานที่ผลิตรักษาวัตถุอัตรายและบริเวณข้างเคียง
+	    								<div class="input-append infoRight">
+									    <!-- <input  id="ensure_doc" type="text" style="width:200px; height:30px;">  -->
+									     <button  id="mappButton" name = "mappButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+									</p></br></br>
+
 									<p>
 									  <!-- <input class="checkbox"type="checkbox" value=""id="builingMapCheck" > -->
 									  แผนผังภายในของอาคารที่ใช้เป็นสถานที่เก็บรักษาวัตถุอันตราย
@@ -430,7 +436,17 @@
 									    <!-- <input  id="ensure_doc" type="text" style="width:200px; height:30px;">  -->
 									     <button  id="mapINButton" name = "mapINButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
-									 <p>(ในกรณีที่มีประกาศฯ ออกตามความในมาตรา๒๐(๑) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ.๒๕๓๕ ให้สถานที่เก็บรักษาวัตถุอันตรายต้องเป็นไปตามหลักเกณฑ์ที่กำหนด)</p>
+								
+									</p></br></br>
+
+									<p>
+									  <!-- <input class="checkbox"type="checkbox" value=""id="builingMapCheck" > -->
+									  เอกสารแสดงกรรมวิธีการผลิต
+	   									 <div class="input-append infoRight">
+									    <!-- <input  id="ensure_doc" type="text" style="width:200px; height:30px;">  -->
+									     <button  id="wayButton" name = "wayButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									 </div>
+								
 									</p></br></br>
 
 									<p>
@@ -463,6 +479,53 @@
 									     <button id="secureButton" name = "secureButton"  class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>
+
+							<div class="form-group infoLeft"> <br/>
+
+								<p> *** กรณีมีมากกว่า 1 ที่</p> </br>
+
+									<p>สถานที่เก็บวัตถุอันตรายชื่อ</p>
+								<input readonly type="TEXT" class="form-control" id="name_storage2" name="name_storage2" value="{{data.name_storage2}}" style="width: 300px">
+
+								<br>
+								<p> ตั้งอยู่เลขที่ </p>
+								<input readonly type="TEXT" class="form-control" id="address_storage2" id="address_storage2" value="{{data.address_storage2}}" style="width: 60px">
+								
+								<p>หมู่ที่</p>
+								<input readonly type="TEXT" class="form-control" id="mo_storage2" name="mo_storage2" value="{{data.mo_storage2}}" style="width: 60px">
+
+								<p>ตรอก/ซอย</p>
+								<input readonly type="TEXT" class="form-control" id="soi_storage2" name="soi_storage2" value="{{data.soi_storage2}}">
+
+								<br>
+								<p>ถนน</p>
+								<input readonly type="TEXT" class="form-control" id="street_storage2" name="street_storage2" value="{{data.street_storage2}}">
+
+								<p>ตำบล/แขวง</p>
+								<input readonly type="TEXT" class="form-control" id="district_storage2" name="address_storage2" value="{{data.address_storage2}}">
+																	
+								</br>
+								<p>อำเภอ/เขต</p>
+								<input readonly type="TEXT" class="form-control" id="canton_storage2" name="canton_storage2" value="{{data.canton_storage2}}">
+								
+								<p>จังหวัด</p>
+								<input readonly type="TEXT" class="form-control" id="province_storage2" name="province_storage2" value="{{data.province_storage2}}">
+								
+								</br>
+								<p>โทรศัพท์</p>
+								<input readonly type="TEXT" class="form-control" id="mobile_storage2" name="mobile_storage2" value="{{data.mobile_storage2}}">
+							
+								<p>โทรสาร</p>
+								<input readonly type="TEXT" class="form-control" id="fax_storage2" name="fax_storage2" value="{{data.fax_storage2}}">
+
+
+								</br>
+									<p> ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบการเก็บรักษา <br>(ในกรณีที่มีใบประกาศฯ ออกตามความในมาตรา ๒๐(๒) แห่งพระราชบัญญัติวัตถุอันตราย <br> พ.ศ. ๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ)</p>
+									<br><br>
+									<textarea readonly id="specialistBox2" name="specialistBox2" rows="2" value="" style="width: 600px">{{data.specialistBox2}}</textarea>
+								</br><br>
+
+							</div>
 
 								</div><!--doc zone-->
 
