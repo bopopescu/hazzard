@@ -13,10 +13,12 @@
 
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/register.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
+
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/process_function.js"></script>
 	
 
 	<script type="text/javascript" charset="utf-8">
@@ -32,14 +34,11 @@
 	</script>
 
 	<script type="text/javascript">
+
 		$(document).ready(function(){
-			
 			$('.carousel').carousel('cycle');
-			$('#modal-button').click(function(e){
-			      e.preventDefault();
-			      window.location = "reject?comment=" + $("#comment").val()
-			});
 		});
+
 	</script>
 
 	<script type="text/javascript">
@@ -88,8 +87,8 @@
 					<!-- DESKTOP -->
 					<ul class="mainmenu visible-desktop visible-tablet">
 						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
-						<li class="" style="margin-left: 50px;">
-								<a href="/list"> ขอเอกสาร </a>
+						<li class="register" style="margin-left: 50px;">
+								<a href="/approvement"> อนุมัติผู้ใช้ </a>
 
 						</li>
 						<li class="logo">
@@ -97,17 +96,13 @@
 
 						</li>
 						<li><a href="/list" class="dropdown-toggle" data-toggle="dropdown" 
-							style="margin-left: 200px;">ข้อมูลส่วนตัว</a>
+							style="margin-left: 200px;">เอกสาร</a>
 							
 						</li>
 
 					</ul>
 
-					<div class="info_id">
-						<p style="display:inline" style="font-size:10px;"> username:</p>
-						<p style="display:inline" name="name">{{user.username}} </p>
-						<a href="/logout"> ออกจากระบบ </a>
-					</div>
+					
 
 				</nav>
 
@@ -119,29 +114,20 @@
 		</header>
 		<!--header end -->
 
-			<div class="content" style="height:300px;">
-				<h1> Approve / Disapprove </h1>
-		
-			<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
-					
+
+		<!-- <div class="col-md-12 col-md-offset-2" style="margin:0; padding:0"> -->
+			<div class="content"  style=" min-height:50px;">
+				<div class="subContent">
+
+						<p style="font-size: 24px; margin-left:30px; display:inline;">{{message}} </p>
+						<!-- <a href="/">Home Page</a><p > คุณได้ทำการ อนุมัติเอกสาร เรียบร้อยแล้ว กลับสู่หน้า </p> -->
+						<a style="font-size: 24px; padding-left:10px;" href="/approvement"> กลับสู่หน้าอนุมัติผู้ใช้</a>
 				
-							
-							<div class="form-group infoRight" style="height:300px;">
-								
-								<input type="TEXT" class="form-control" id="nameBox" value="" name="nameBox">
-								
-								<div class="button buttonRequest" style="display:inline";>
-								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">ค้นหา</button>
+					
+				</div>
+			</div>
 
-								<button id="reset" class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">รีเซ็ต</button>
-								</div>
-							
-							</div>
-
-							
-			 	</form><!--form-->
-			</div><!--content-->
-		
+		<!-- </div> -->
 
 
 	</body>

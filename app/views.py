@@ -33,7 +33,7 @@ def login(request):
 				context = {'message':"Unautherize user."}
 				return render(request,'main/message_error_login.html',context)
 			request.session['user_id'] = user.id
-			return HttpResponseRedirect('..')
+			return HttpResponseRedirect('/list')
 	except User.DoesNotExist:
 		pass
 	
@@ -56,6 +56,59 @@ def profile(request):
 	return render(request, 'main/profile.html', context)
 
 @never_cache
+def approvement(request):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name ):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/approvement_message.html',context)
+
+	if(request.method != 'POST'):
+		return render(request, 'main/approvement.html')
+
+	id_no = request.POST['nameBox']
+	role_obj = Role.objects.get(name='non_autherize_member')
+	approved_role = Role.objects.get(name='autherize_member')
+	customer_obj = User.objects.get(id_no=id_no, role=role_obj)
+	if(customer_obj is None):
+		context = {'message':"User with id " + id_no + " not found"}
+		return render(request,'main/approvement_message.html',context)
+
+	context = {'user': customer_obj}
+	return render(request,'main/user_approve.html',context)
+
+@never_cache
+def user_approve(request):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name ):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/approvement_message.html',context)
+	if(request.method != 'POST'):
+		return render(request, 'main/user_approve.html')
+
+	customer_obj.role = approved_role
+	customer_obj.save()
+	context = {'message':"User with id " + id_no + " approved to autherized user"}
+	return render(request,'main/approvement_message.html',context)
+
+@never_cache
+def reject_user(request):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name ):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/approvement_message.html',context)
+	if(request.method != 'POST'):
+		return render(request, 'main/user_approve.html')
+
+	context = {'message':"User with id " + id_no + " rejected"}
+	return render(request,'main/approvement_message.html',context)
+
+@never_cache
 def register(request):
 	#all this should work ??
 	#if not post render register page
@@ -76,8 +129,6 @@ def register(request):
 	member.save()
 	context = {'message':'User is created.'}
 	return render(request,'main/message_error_login.html',context)
-
-
 
 @never_cache
 def list(request):
