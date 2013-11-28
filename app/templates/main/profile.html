@@ -120,43 +120,6 @@
 				<!-- {% csrf_token %} -->
 
     			<div class="content" style="margin-left:150px;">
-
-    				<h2 style=" margin-left:50px; margin-top:30px; color:#0A0A0A; 
-    					font-family: 'thai_sans_lite'; "> ข้อมูลเข้าสู่ระบบ </h2>
-    				
-    				<div class="content1">
-    					
-    					<div class="span3" style="margin-left: 50px;">
-						  <div role="form">
-	    					<div class="form-group">
-									<p id="idText"> Username</p>
-									<input disabled type="TEXT" class="form-control" id="idBox" name="idBox"value={{data.idBox}}>
-								</div>
-
-								<div style="width:280px;">
-								<div class="form-group">
-									<p id="PasswordText">Password</p>
-									<input disabled type="password" class="form-control" id="passwordBox" name="passwordBox" value={{data.passwordBox}}>
-								</div>
-								</div>
-
-	    				   </div>
-	    				</div>
-
-	    				<div class="span3" style="margin-left: 120px;">
-						<div role="form">
-							
-
-							<div class="form-group" style="margin-top:90px;">
-								<p for="PasswordText">Re-Password</p>
-								<input disabled type="password" class="form-control" id="re-passwordBox" name="re-passwordBox" value={{data.re-passwordBox}}>
-							</div>
-						</div>
-					</div>
-	    			</div>
-
-
-
 	    			 <h2 style=" margin-left:50px; margin-top:30px; color:#0A0A0A; 
     					font-family: 'thai_sans_lite';"> ข้อมูลส่วนตัว </h2>
 
@@ -168,40 +131,40 @@
 								<div class="form-group">
 									<p for="nameText">ชื่อ</p>
 									<input disabled type="TEXT" class="form-control" id="nameBox" name="nameBox"
-									value={{data.nameBox}}>
+									value="{{user.name}}">
 								</div>
 								
 								<div class="form-group">
 									<p for="emailText">E-mail</p>
 									<input disabled type="TEXT" class="form-control" id="emailBox" name="emailBox"
-									 value={{data.emailBOx}}>
+									 value="{{user.email}}">
 								</div>
 
 								<p>วันเกิด</p>
 								<div class="form-inline" style="margin-top:-10px;">
 									<p class="dateRe" >วันที่</p>
 									<input disabled type="TEXT" class="form-control" id="birthdayBox"
-									name="birthdayBox" value={{data.birthdayBox}}>
+									name="birthdayBox" value="{{user.birth_date}}">
 
 									<p class="dateRe" >เดือน</p>
 									<input disabled type="TEXT" class="form-control" id="birthmonthBox"
-									name="birthmonthBox" value={{data.birthmonthBox}}>
+									name="birthmonthBox" value="{{user.birth_month}}">
 
 									<p class="dateRe">ปี</p>
 									<input disabled type="TEXT" class="form-control" id="birthyearBox"
-									name="birthyearBox" value={{data.birthyearBox}}>
+									name="birthyearBox" value="{{user.birth_year}}">
 
 								</div>
 
 								
 								<p>ที่อยู่</p><br/>
-								<textarea disabled type="TEXT" id="addressarea"
-								name="addressarea" value={{data.addressarea}}> </textarea>
+								<textarea disabled type="TEXT" class="form-control" id="addressarea"
+								name="addressarea">{{user.address}}</textarea>
 
 								<div class="form-inline">
 									<p class="address" >รหัสไปรษณีย์</p>
-									<input disabled type="TEXT" class="form-control" id="addressBox"
-									name="addressBox" value={{data.addressBox}}style="background: #FAFAFA; border: 1px solid #96BBD4; font-size:18px;">
+									<input disabled type="TEXT" class="form-control" id="zip_code"
+									name="zip_code" value="{{user.zip_code}}" style="background: #FAFAFA; border: 1px solid #96BBD4; font-size:18px;">
 								</div>
 
 				
@@ -213,40 +176,24 @@
 							<div class="form-group">
 								<p for="surnameText">นามสกุล</p>
 								<input disabled type="TEXT" class="form-control" id="surnameBox"
-								name="surnameBox"  value={{data.surnameBox}}>
-							</div>
-
-							<div class="form-group">
-								<p for="re-emailText">Re E-mail</p>
-								<input disabled type="TEXT" class="form-control" id="re-emailBox"
-								name="re-emailBox" value={{data.re-emailBox}}>
+								name="surnameBox"  value="{{user.surname}}">
 							</div>
 
 							<div class="form-group">
 								<p for="personText">ID No.</p>
 								<input disabled type="TEXT" class="form-control" id="personBox"
-								name="personBox" value={{data.personBox}}>
+								name="personBox" value="{{user.id_no}}">
 							</div>
 
 							<div class="form-group">
 								<p for="telText">โทรศัพท์</p>
 								<input disabled type="TEXT" class="form-control" id="telBox"
-								 name="telBox" value={{data.telBox}}>
+								 name="telBox" value="{{user.phone}}">
 							</div>
 						</div>
 					</div>
 					</div> <!-- end content1 -->
-
-			
-		
-
-					
-					
-					
-
     			</div>
-    	
-
     		</form>
 
 	</body>

@@ -40,6 +40,7 @@ def login(request):
 	context = {'message':'User or password not found.'}
 	return render(request,'main/message_error_login.html',context)
 
+@never_cache
 def logout(request):
 	#this should work
 	try:
@@ -47,6 +48,12 @@ def logout(request):
 	except KeyError:
 		pass
 	return HttpResponseRedirect("/")
+
+@never_cache
+def profile(request):
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	context = {'user': user_obj}
+	return render(request, 'main/profile.html', context)
 
 @never_cache
 def register(request):
@@ -63,7 +70,9 @@ def register(request):
 	if( len(user)!=0 ):
 		context = {'message':"Username are already used."}
 		return render(request,'main/message_error_login.html',context)
-	member = User(username=request.POST['idBox'],password=hashlib.sha256(request.POST['passwordBox']).hexdigest(),role=Role.objects.get(name='non_autherize_member'))
+	member = User(username=request.POST['idBox'],password=hashlib.sha256(request.POST['passwordBox']).hexdigest(),role=Role.objects.get(name='non_autherize_member'),
+		name=request.POST['nameBox'],surname=request.POST['surnameBox'],email=request.POST['emailBox'],birth_date=request.POST['birthDayBox'],birth_month=request.POST['birthmonthBox'],
+		birth_year=request.POST['birthyearBox'],id_no=request.POST['personBox'],phone=request.POST['telBox'],address=request.POST['addressarea'],zip_code=request.POST['zip'])
 	member.save()
 	context = {'message':'User is created.'}
 	return render(request,'main/message_error_login.html',context)

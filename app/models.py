@@ -9,6 +9,16 @@ class Role(models.Model):
 class User(models.Model):
 	username = models.CharField(max_length=200)
 	password = models.CharField(max_length=200)
+	name = models.CharField(max_length=100, null=True)
+	surname = models.CharField(max_length=100, null=True)
+	email = models.CharField(max_length=200, null=True)
+	birth_date = models.IntegerField(null=True)
+	birth_month = models.IntegerField(null=True)
+	birth_year = models.IntegerField(null=True)
+	id_no = models.CharField(max_length=20, null=True)
+	phone = models.CharField(max_length=20, null=True)
+	address = models.CharField(max_length=500, null=True)
+	zip_code = models.CharField(max_length=10, null=True)
 	role = models.ForeignKey(Role)
 	def __unicode__(self):
 		return "User: "+self.username+" Role: "+self.role.name
