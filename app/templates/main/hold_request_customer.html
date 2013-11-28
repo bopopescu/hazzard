@@ -239,21 +239,13 @@
 								<p>ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบสำหรับการเก็บรักษา/การใช้รับจ้าง</p>
 									<br><p>( ในกรณีที่มีประกาศฯ ออกตามความมาตรา ๒๐ (๒) แห่งพระราชบัญญัติวัตถุอันตราย</p>
 									<br><p>พ.ศ.๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ )</p>
-								<textarea id = "specialistBox2" name="specialistBox2" style="margin-top:10px; margin-left:10; font-size:20px; width:565px; height:100px;" ></textarea>
+								<textarea id = "specialistBox" name="specialistBox" style="margin-top:10px; margin-left:10; font-size:20px; width:565px; height:100px;" ></textarea>
 
 								<br/>
 								<p>ขออนุญาตมีไว้ในครอบครองซึ่งวัตถุอันตราย โดยมีวัตถุประสงค์ในการครอบครองเพื่อ</p>
 
-								<br>
-
-							
-								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
-								 <input checked type="radio" id="sell_radioButt" name="sell_radioButt"  value="sell_value" style = "margin-right: 5px;"> ขาย
-
-								  <input class="radio" type="radio" id="shipping_radioButt" name="shipping_radioButt" value="shipping_value" style = "margin-right: 5px;"> ขนส่ง
-
-								  <input class="radio" type="radio" id="use_radioButt" name="use_radioButt"  value="use_value" style = "margin-right: 5px;"> ใช้
-
+								
+								<input type="TEXT" class="form-control" id="to_storage"name="to_storage" placeholder="ขาย/ขนส่ง/ใช้">
 
 								</p>
 
@@ -340,10 +332,21 @@
 
 									<p class="checkboxLabel">
 									  <!-- <input class="checkbox"type="checkbox" value=""> -->
-									  สำเนาผลการวิเคราะห์วัตถุอันตราย
+									  หลักฐานแสดงวัตถุอันตรายไว้ในครอบครอง
 									   <div class="infoRight">
 						
-									    <input id="analysisButton" name="analysisButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="ehButton" name="ehButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									 </div>
+									</p></br></br>
+
+									
+
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									 รายชื่อวัตุอันตรายที่มีไว้ในครอบครองกรณีมีมากกว่าหนึ่งรายการ
+									    <div class="infoRight">
+						
+									    <input id="lhButton" name="lhButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
@@ -379,12 +382,24 @@
 									 
 									<p class="checkboxLabel">
 									  <!-- <input class="checkbox"type="checkbox" value=""> -->
-									เอกสารแสดงลักษณะภาชนะบรรจุที่จะใช้และการหุ้มห่อหรือผูกมัด
+
+									<p>เอกสารแสดงระบบ/กรรมวิธี การป้องกัน </p>
+									<div class="infoRight">
+						<!-- -->
+									    <input id="sysButton" name="sysButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									 </div> <p>และอุปกรณ์ในการบรรเทาความรุนแรงของอุบัติภัยของสถานที่เก็บรักษาวัตถุอันตราย</p>
+									     
+									 
+									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									เอกสารแสดงวิธีเก็บรักษา
 									     <div class="infoRight">
 						<!-- -->
-									    <input id="containerButton" name="containerButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="keepButton" name="keepButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
-									 <p>ภาชนะบรรจุวัตถุอันตราย</p>
+									 
 									</p></br></br>
 
 
@@ -398,6 +413,32 @@
 									    <input id="secureButton" name="secureButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
+
+								<div class="form-group infoLeft" style="border-top: solid 1px gray;"> <br/>
+
+								<p> *** กรณีมีมากกว่า 1 รายการ่</p> </br>
+
+								<p >ชื่อวัตถุอันตรายที่ขออนุญาตมีไว้ในครอบครอง ๒</p>
+								<input type="TEXT" class="form-control" id="hazardous_nameBox2"name="hazardous_nameBox2" value="" style = "width: 450px">
+
+								<br>
+								<p >ชื่อทางการค้าของวัตถุอันตรายที่ขออนุญาตมีไว้ในครอบครอง</p>
+								<input type="TEXT" class="form-control" id="marketingBox2"name="marketingBox2" value="" style = "width: 350px">
+
+								<br>
+								<p >ทะเบียนเลขที่</p>
+								<input type="TEXT" class="form-control" id="codeBox2"name="codeBox2" value="" style = "width: 200px">
+
+								<br>
+								<p >ปริมาณการครอบครองรวมสูงสุด</p>
+								<input type="TEXT" class="form-control" id="seller_nameBox2"name="seller_nameBox2" value="" style = "width: 100px">
+
+								<br>
+								<p >พื้นที่เฉพาะในส่วนของการครอบครองรวมสูงสุด</p>
+								<input type="TEXT" class="form-control" id="maxArea_storage2"name="maxArea_storage2" value="" style = "width: 80px">
+								<p>ตารางเมตร</p> <br>
+								
+								</div>
 
 								<!-- 	<p class="checkboxLabel">
 									  <input class="checkbox"type="checkbox" value="otherCheck" id="otherCheck" name="otherCheck">

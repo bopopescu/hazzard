@@ -319,7 +319,7 @@
 									  สำเนาบัตรประชาชน / สำเนาใบสำคญประจำคนต่างด้าว
 									  <div class="infoRight">
 						
-									    <input id="identity" name="identity"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="idButton" name="idButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 								    
 									</p></br></br>
@@ -329,7 +329,7 @@
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
 									     <div class="infoRight">
 						
-									    <input id="person" name="person"   value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="personButton" name="personButton"   value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
@@ -339,7 +339,7 @@
 									  สำเนาใบทะเบียนภาษีมูลค่าเพิ่ม(ภ.พ.๒๐)
 									      <div class="infoRight">
 						
-									    <input id="tax" name="tax"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="taxButton" name="taxButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
@@ -351,27 +351,30 @@
 									  สำเนาใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
 									   <div class="infoRight">
 						
-									    <input id="register" name="register"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="registerButton" name="registerButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
 
-									<p class="checkboxLabel">
-									  <!-- <input class="checkbox"type="checkbox" value=""> -->
-									  สำเนาผลการวิเคราะห์วัตถุอันตราย
-									   <div class="infoRight">
-						
-									    <input id="analysis" name="analysis"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
-									 </div>
-									</p></br></br>
+									
 
 									<p class="checkboxLabel">
 									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									  แผนที่สังเขปแสดงสถานที่เก็บรักษาวัตถุอัตรายและบริเวณข้างเคียง
 									    <div class="infoRight">
 						
-									    <input id="map" name="map"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="mapButton" name="mapButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
+
+									<p class="checkboxLabel">
+									  <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  แผนที่สังเขปแสดงสถานที่ผลิตรักษาวัตถุอัตรายและบริเวณข้างเคียง
+									    <div class="infoRight">
+						
+									    <input id="mappButton" name="mappButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									 </div>
+									</p></br></br>
+
 
 									<p class="checkboxLabel">
 									   <!-- <input class="checkbox"type="checkbox" value=""> -->
@@ -380,15 +383,23 @@
 						
 									    <input id="mapIn" name="mapIn"  value=""type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
-									 <p>(ในกรณีที่มีประกาศฯ ออกตามความในมาตรา๒๐(๑) แห่งพระราชบัญญัติวัตถุอันตราย พ.ศ.๒๕๓๕ ให้สถานที่เก็บรักษาวัตถุอันตรายต้องเป็นไปตามหลักเกณฑ์ที่กำหนด)</p>
-									</p></br></br>
+									 </br></br>
+
+									 <p class="checkboxLabel">
+									   <!-- <input class="checkbox"type="checkbox" value=""> -->
+									  เอกสารแสดงกรรมวิธีการผลิต
+									     <div class="infoRight">
+						
+									    <input id="wayButton" name="wayButton"  value=""type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									 </div>
+									 </br></br>
 
 									<p class="checkboxLabel">
 									  <!-- <input class="checkbox"type="checkbox" value=""> -->
 									เอกสารแสดงความรู้ความชำนาญของผู้เชี่ยวชาญหรือบุคลากรเฉพาะ
 									     <div class="infoRight">
 						
-									    <input id="expert" name="expert"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="expertButton" name="expertButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									 <p>รับผิดชอบสำหรับการเก็บรักษา</p>
 									</p></br></br>
@@ -399,7 +410,7 @@
 									เอกสารแสดงลักษณะภาชนะบรรจุที่จะใช้และการหุ้มห่อหรือผูกมัด
 									     <div class="infoRight">
 						<!-- -->
-									    <input id="container" name="container"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="containerButton" name="containerButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									 <p>ภาชนะบรรจุวัตถุอันตราย</p>
 									</p></br></br>
@@ -412,9 +423,55 @@
 						
 									   
 
-									    <input id="secure" name="secure"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
+									    <input id="secureButton" name="secureButton"  value="" type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false">
 									 </div>
 									</p></br></br>
+
+									<div class="form-group infoLeft"> <br/>
+
+								<p> *** กรณีมีมากกว่า 1 ที่</p> </br>
+
+								<p>สถานที่เก็บวัตถุอันตรายชื่อ (๒)</p>
+								<input type="TEXT" class="form-control" id="name_storage2" name="name_storage2" value="" style="width: 300px">
+
+								<br>
+								<p> ตั้งอยู่เลขที่ </p>
+								<input type="TEXT" class="form-control" id="address_storage2" id="address_storage2" value="" style="width: 60px">
+								
+								<p>หมู่ที่</p>
+								<input type="TEXT" class="form-control" id="mo_storage2" name="mo_storage2" value="" style="width: 60px">
+
+								<p>ตรอก/ซอย</p>
+								<input type="TEXT" class="form-control" id="soi_storage2" name="soi_storage2" value="">
+
+								<br>
+								<p>ถนน</p>
+								<input type="TEXT" class="form-control" id="street_storage2" name="street_storage2" value="">
+
+								<p>ตำบล/แขวง</p>
+								<input type="TEXT" class="form-control" id="district_storage2" name="address_storage2" value="">
+								
+								</br>
+								<p>อำเภอ/เขต</p>
+								<input type="TEXT" class="form-control" id="canton_storage2" name="canton_storage2" value="">
+								
+								<p>จังหวัด</p>
+								<input type="TEXT" class="form-control" id="province_storage2" name="province_storage2" value="">
+								
+								</br>
+								<p>โทรศัพท์</p>
+								<input type="TEXT" class="form-control" id="mobile_storage2" name="mobile_storage2" value="">
+							
+								<p>โทรสาร</p>
+								<input type="TEXT" class="form-control" id="fax_storage2" name="fax_storage2" value="">
+
+								</br>
+									<p> ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบการเก็บรักษา <br>(ในกรณีที่มีใบประกาศฯ ออกตามความในมาตรา ๒๐(๒) แห่งพระราชบัญญัติวัตถุอันตราย <br> พ.ศ. ๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ)</p>
+									<br><br>
+									<textarea id="specialistBox2" name="specialistBox2" rows="2" style="width: 600px" value="กรณีที่มีมากกว่า ๑ คน กรุณาระบุเป็นข้อๆ"></textarea>
+								</br><br>
+
+							</div>
 
 								</div><!--doc zone-->
 
