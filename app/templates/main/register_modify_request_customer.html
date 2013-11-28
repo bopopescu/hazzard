@@ -120,8 +120,7 @@
 				<h1> คำขอแก้ไข เปลี่ยนแปลงรายการขึ้นทะเบียนวัตุอันตราย</h1>
 				<h2> วอ./กษ./กวก.๑๕ </h2>
 		
-				<form action="" method="post">
-							{% csrf_token %}
+				<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
 							<input type="hidden" name="form_type" value="register_modify">
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
