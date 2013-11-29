@@ -31,7 +31,7 @@
 	}
 	</script>
 
-	<script type="text/javascript">
+		<script type="text/javascript">
 		$(document).ready(function(){
 			
 			$('.carousel').carousel('cycle');
@@ -41,37 +41,44 @@
 			});
 			$('#idButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.idButton.id}}");
 			});
 			$('#personButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.personButton.id}}");
 			});
-			$('#subButton').click(function(e){
+			$('#taxButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.taxButton.id}}");
 			});
-			$('#listButton').click(function(e){
+			$('#registerButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.registerButton.id}}");
 			});
-			$('#planButton').click(function(e){
+			$('#analysisButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.analysisButton.id}}");
 			});
-			$('#SampleCon').click(function(e){
+			$('#mapButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.mapButton.id}}");
 			});
-			$('#Sampleinsert').click(function(e){
+			$('#mapINButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.mapINButton.id}}");
 			});
-			$('#reportAnalysis').click(function(e){
+			$('#expertButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.expertButton.id}}");
 			});
-			
+			$('#containerButton').click(function(e){
+			     
+			    window.open("/file/{{file.containerButton.id}}");
+			});
+			$('#secureButton').click(function(e){
+			     
+			      window.open("/file/{{file.secureButton.id}}");
+			});
 		});
 	</script>
 
