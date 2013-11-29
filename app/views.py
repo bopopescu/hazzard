@@ -553,25 +553,43 @@ def form_show(request,form_id):
 
 
 def uploadFile(request,form_obj,uploadType):
-	def store_in_s3(filename, content):
+	def store_in_s3(filename, content, key):
 		conn = S3Connection(settings.ACCESS_KEY, settings.PASS_KEY)
 		b = conn.create_bucket("testfileink")
 		mime = mimetypes.guess_type(filename)[0]
 		k = Key(b)
-		k.key = filename
+		k.key = key
 		k.set_metadata("Content-Type", mime)
 		k.set_contents_from_string(content)
 		k.set_acl("private")
-		return filename
-	print("KK")
+		return key
 	file = request.FILES[uploadType]
 	filename = file.name
+	filetemp = filename.split('.')
+	filetype = filetemp[len(filetemp)-1]
+	key = str(form_obj.id)+'_'+str(form_obj.user.id)+'_'+uploadType+'.'+filetype
 	content = file.read()
-	k = store_in_s3(filename, content)
+	k = store_in_s3(filename, content,key)
 	p = FileUpload(key=k,form=form_obj,uploadType=uploadType)
 	p.save()
 	print(p.key)
 	return
+
+def showfile(request,file_id):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	file_obj = FileUpload.objects.get(pk=file_id)
+	if(file_obj.form.user != user_obj and 'officer' not in user_obj.name ):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+	conn = S3Connection(settings.ACCESS_KEY, settings.PASS_KEY)
+	url = conn.generate_url(60, 'GET',
+                            bucket="testfileink",
+                            key=file_obj.key,
+                            force_http=True)
+	print url
+	return HttpResponseRedirect(url)
 
 
 

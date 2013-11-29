@@ -49,6 +49,8 @@ class FileUpload(models.Model):
 	key = models.CharField(max_length=200)
 	form = models.ForeignKey(Form) 
 	uploadType = models.CharField(max_length=20)
+	def __unicode__(self):
+		return "ID :"+str(self.id)+" Form "+str(self.form)+" Key: "+str(self.key)+" type: "+str(self.uploadType)
 
 
 
