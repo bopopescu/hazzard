@@ -35,14 +35,23 @@
 
 		$(document).ready(function(){
 			$('.carousel').carousel('cycle');
-		});
-		$('#modal-button').click(function(e){
+			$('#modal-button').click(function(e){
 			      e.preventDefault();
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
+	
+			$('#modal-button').click(function(e){
+				      e.preventDefault();
+				      window.location = "reject?comment=" + $("#comment").val()
+				});
+
+			{% if not file.permitButton %}
+				$('#permitButton').attr("disabled", "disabled");
+				{% endif %}
 			$('#permitButton').click(function(e){
-			     
-			       window.open("http://www.google.com");
+				     
+				     window.open("/file/{{file.permitButton.id}}");
+			});
 		});
 
 	</script>

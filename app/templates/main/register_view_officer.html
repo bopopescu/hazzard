@@ -39,42 +39,82 @@
 			      e.preventDefault();
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
+
+			% if not file.idButton %}
+			$('#idButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#idButton').click(function(e){
 			     
 			      window.open("/file/{{file.idButton.id}}");
 			});
+
+			% if not file.personButton %}
+			$('#personButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#personButton').click(function(e){
 			     
 			     window.open("/file/{{file.personButton.id}}");
 			});
+
+			% if not file.taxButton %}
+			$('#taxButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#taxButton').click(function(e){
 			     
 			     window.open("/file/{{file.taxButton.id}}");
 			});
+
+			% if not file.registerButton %}
+			$('#registerButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#registerButton').click(function(e){
 			     
 			     window.open("/file/{{file.registerButton.id}}");
 			});
+
+			% if not file.analysisButton %}
+			$('#analysisButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#analysisButton').click(function(e){
 			     
 			      window.open("/file/{{file.analysisButton.id}}");
 			});
+
+			% if not file.mapButton %}
+			$('#mapButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#mapButton').click(function(e){
 			     
 			     window.open("/file/{{file.mapButton.id}}");
 			});
+
+			% if not file.mapINButton %}
+			$('#mapINButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#mapINButton').click(function(e){
 			     
 			      window.open("/file/{{file.mapINButton.id}}");
 			});
+
+			% if not file.expertButton %}
+			$('#expertButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#expertButton').click(function(e){
 			     
 			     window.open("/file/{{file.expertButton.id}}");
 			});
+
+			% if not file.containerButton %}
+			$('#containerButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#containerButton').click(function(e){
 			     
 			    window.open("/file/{{file.containerButton.id}}");
 			});
+
+			% if not file.secureButton %}
+			$('#secureButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#secureButton').click(function(e){
 			     
 			      window.open("/file/{{file.secureButton.id}}");
@@ -295,20 +335,20 @@
 									<p> เอกสารที่และตัวอย่างที่ต้องส่งประกอบการขึ้นทะเบียน </p>
 									</br></br>
 									<div class="doc_zone">
-<p class="checkboxLabel">
-									  <input id="permit_doc_check" class="checkbox"type="checkbox" value="check">
+								<p class="checkboxLabel">
+									  <!-- <input id="permit_doc_check" class="checkbox"type="checkbox" value="check"> -->
 									  ใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
-									  <!-- <div class="input-append infoRight"> -->
+									  <div class="input-append infoRight">
 									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
 									     <button id="permitButton" name="permitButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 <!-- </div> -->
+									 </div>
 								    </p></br></br>
 									
 									
 									<p class="checkboxLabel">
 									  
 									  สำเนาบัตรประชาชน / สำเนาใบสำคัญประจำคนต่างด้าว
-									  <div id="ID_doc" class="input-append infoRight">
+									  <div  class="input-append infoRight">
 									    
 									     <button id="idButton" name="idButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
@@ -318,54 +358,61 @@
 									<p class="checkboxLabel">
 									 
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
-									   
+									   <div class="input-append infoRight">
 									     <button id="personButton" name="personButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 									</p></br></br>	
 
 									<p class="checkboxLabel">
-									 
+
+									
 									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
+									   <div class="input-append infoRight">
 									   <button id="subButton" name="subButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									  </div>   
 									</p></br></br>
 
 
 									<p class="checkboxLabel">
-									 
+									
 									  รายการข้อมูลเพื่อการขึ้นทะเบียนวัตถุอันตราย
 									ตามที่กรมวิชาการเกษตรประกาศกำหนดจำนวน 6 ชุด
+									 <div class="input-append infoRight">
 									   <button id="listButton" name="listButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									     </div>
 									</p></br></br>
 
 										<p class="checkboxLabel">
-									 
+									
 									  แผนการทดลองประสิทธิภาพ และพิษตกค้าง จำนวน 6 ชุด
+									   <div class="input-append infoRight">
 									   <button id="planButton" name="planButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									    </div>
 									</p></br></br>
 
 
 										<p class="checkboxLabel">
 									 
 									 ตัวอย่างเอกสารหรือภาพถ่ายแสดงลักษณะหีบห่อหรือภาชนะบรรจุ
+									 <div class="input-append infoRight">
 									   <button id="SampleCon" name="SampleCon" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									     </div>
 									</p></br></br>
 
 										<p class="checkboxLabel">
-									 
+									
 									 ตัวอย่างฉลากและใบแทรก
+									  <div class="input-append infoRight">
 									   <button id="Sampleinsert" name="Sampleinsert" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									     </div>
 									</p></br></br>
 
 										<p class="checkboxLabel">
 									 
 									 รายงานผลการวิเคราะห์ตัวอย่างวัตถุอันตราย
+									 <div class="input-append infoRight">
 									   <button id="reportAnalysis" name="reportAnalysis" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									    
+									   </div> 
 									</p></br></br>
 
 								</div><!--doc zone-->

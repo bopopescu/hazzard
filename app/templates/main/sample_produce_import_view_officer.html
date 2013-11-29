@@ -48,25 +48,44 @@
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
 
+			% if not file.idButton %}
+			$('#idButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#idButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			       window.open("/file/{{file.idButton.id}}");
 			});
+
+			% if not file.personButton %}
+			$('#personButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#personButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			      window.open("/file/{{file.personButton.id}}");
 			});
+
+			% if not file.subButton %}
+			$('#subButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#subButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			   window.open("/file/{{file.subButton.id}}");
 			});
+
+			% if not file.testButton %}
+			$('#testButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#testButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.testButton.id}}");
 			});
+
+			% if not file.secureButton %}
+			$('#secureButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#secureButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.secureButton.id}}");
 			});
 			
 		});

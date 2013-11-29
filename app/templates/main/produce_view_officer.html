@@ -40,49 +40,93 @@
 			      e.preventDefault();
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
+
+			{% if not file.idButton %}
+			$('#idButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#idButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.idButton.id}}");
 			});
+
+			% if not file.personButton %}
+			$('#personButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#personButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.personButton.id}}");
 			});
+
+			% if not file.taxButton %}
+			$('#taxButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#taxButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.taxButton.id}}");
 			});
+
+			% if not file.registerButton %}
+			$('#registerButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#registerButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.registerButton.id}}");
 			});
+
+			% if not file.mappButton %}
+			$('#mappButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#mappButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.mappButton.id}}");
 			});
+
+			% if not file.mapButton %}
+			$('#mapButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#mapButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			    window.open("/file/{{file.mapButton.id}}");
 			});
+
+			% if not file.mapINButton %}
+			$('#mapINButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#mapINButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.mapINButton.id}}");
 			});
+
+			% if not file.wayButton %}
+			$('#wayButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#wayButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			     window.open("/file/{{file.wayButton.id}}");
 			});
+
+			% if not file.expertButton %}
+			$('#expertButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#expertButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			     window.open("/file/{{file.expertButton.id}}");
 			});
+
+			% if not file.containerButton %}
+			$('#containerButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#containerButton').click(function(e){
 			     
-			    window.open("http://www.google.com");
+			    window.open("/file/{{file.containerButton.id}}");
 			});
+
+			% if not file.secureButton %}
+			$('#secureButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#secureButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			      window.open("/file/{{file.secureButton.id}}");
 			});
 		});
 	</script>

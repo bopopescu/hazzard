@@ -39,37 +39,69 @@
 			      e.preventDefault();
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
+
+			{% if not file.permitButton %}
+			$('#permitButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#permitButton').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			       window.open("/file/{{file.permitButton.id}}");
 			});
+
+			{% if not file.idButton %}
+			$('#idButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#idButton').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.idButton.id}}");
 			});
+
+			{% if not file.personButton %}
+			$('#personButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#personButton').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			       window.open("/file/{{file.personButton.id}}");
 			});
+
+			{% if not file.subButton %}
+			$('#subButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#subButton').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.subButton.id}}");
 			});
+
+			{% if not file.listButton %}
+			$('#listButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#listButton').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.listButton.id}}");
 			});
+
+			{% if not file.SampleCon %}
+			$('#SampleCon').attr("disabled", "disabled");
+			{% endif %}
 			$('#SampleCon').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.SampleCon.id}}");
 			});
+
+			{% if not file.Sampleinsert %}
+			$('#Sampleinsert').attr("disabled", "disabled");
+			{% endif %}
 			$('#Sampleinsert').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.Sampleinsert.id}}");
 			});
+
+			{% if not file.reportAnalysis %}
+			$('#reportAnalysis').attr("disabled", "disabled");
+			{% endif %}
 			$('#reportAnalysis').click(function(e){
 			     
-			       window.open("http://www.google.com");
+			        window.open("/file/{{file.reportAnalysis.id}}");
 			});
 			
 		});

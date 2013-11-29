@@ -39,28 +39,50 @@
 			$('#modal-button').click(function(e){
 			      e.preventDefault();
 			      window.location = "reject?comment=" + $("#comment").val()
-
 			});
 
+			{% if not file.envidenceButton %}
+			$('#envidenceButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#envidenceButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			       window.open("/file/{{file.envidenceButton.id}}");
 			});
+
+
+			{% if not file.envidenceButton %}
+			$('#envidenceButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#permitCopyButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			      window.open("/file/{{file.permitCopyButton.id}}");
 			});
+
+
+			{% if not file.idButton %}
+			$('#idButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#idButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			      window.open("/file/{{file.idButton.id}}");
 			});
+
+
+			{% if not file.personButton %}
+			$('#personButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#personButton').click(function(e){
 			     
-			     window.open("http://www.google.com");
+			      window.open("/file/{{file.personButton.id}}");
 			});
+
+			
+			{% if not file.subButton %}
+			$('#subButton').attr("disabled", "disabled");
+			{% endif %}
 			$('#subButton').click(function(e){
 			     
-			      window.open("http://www.google.com");
+			     window.open("/file/{{file.subButton.id}}");
 			});
 			
 		});
