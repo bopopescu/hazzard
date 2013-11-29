@@ -69,43 +69,40 @@ def approvement(request):
 
 	id_no = request.POST['nameBox']
 	role_obj = Role.objects.get(name='non_autherize_member')
-	approved_role = Role.objects.get(name='autherize_member')
-	customer_obj = User.objects.get(id_no=id_no, role=role_obj)
-	if(customer_obj is None):
+	customer_obj = User.objects.filter(id_no=id_no, role=role_obj)
+	if(len(customer_obj) == 0):
 		context = {'message':"User with id " + id_no + " not found"}
 		return render(request,'main/approvement_message.html',context)
 
-	context = {'user': customer_obj}
+	context = {'user': customer_obj[0]}
 	return render(request,'main/user_approve.html',context)
 
 @never_cache
-def user_approve(request):
+def user_approve(request, user_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/approvement_message.html',context)
-	if(request.method != 'POST'):
-		return render(request, 'main/user_approve.html')
 
+	customer_obj = User.objects.get(id=int(user_id))
+	approved_role = Role.objects.get(name='autherize_member')
 	customer_obj.role = approved_role
 	customer_obj.save()
-	context = {'message':"User with id " + id_no + " approved to autherized user"}
+	context = {'message':"User with id " + customer_obj.id_no + " approved to autherized user"}
 	return render(request,'main/approvement_message.html',context)
 
 @never_cache
-def reject_user(request):
+def reject_user(request, user_id):
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/approvement_message.html',context)
-	if(request.method != 'POST'):
-		return render(request, 'main/user_approve.html')
 
-	context = {'message':"User with id " + id_no + " rejected"}
+	context = {'message':"User with id " + customer_obj.id_no + " rejected"}
 	return render(request,'main/approvement_message.html',context)
 
 @never_cache

@@ -116,8 +116,7 @@
 
 
 		
-			<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
-				<!-- {% csrf_token %} -->
+			<form>				<!-- {% csrf_token %} -->
 
     			<div class="content" style="margin-left:150px;">
 	    			 <h2 style=" margin-left:50px; margin-top:30px; color:#0A0A0A; 
@@ -194,8 +193,8 @@
 					</div>
 					<div class="button buttonView">
 									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
-									<a href="approvedUser/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
-									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="rejectedUser">  ไม่อนุมัติ </button>
+									<a href="{{user.id}}/approve/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="{{user.id}}/reject/">  ไม่อนุมัติ </button>
 									
 								</div>
 
