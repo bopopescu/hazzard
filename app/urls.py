@@ -6,8 +6,6 @@ urlpatterns = patterns('',
     url(r'^register/$', views.register, name='register'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^approvement/$', views.approvement, name='approvement'),
-    url(r'^approvement/(?P<user_id>\d+)/approve/$', views.user_approve, name='user_approve'),
-    url(r'^approvement/(?P<user_id>\d+)/reject/$', views.reject_user, name='reject_user'),
     url(r'^login/$', views.login , name='login'),
     url(r'^logout/$', views.logout , name='logout'),
     url(r'^setup/$', views.setup , name='setup'),
@@ -45,7 +43,7 @@ urlpatterns = patterns('',
     url(r'^pdf17/$',views.pdf_exportEND , name='pdf17'),
     url(r'^pdf18/$',views.pdf_importEND , name='pdf18'),
     url(r'^pdf19/$',views.pdf_produceEND , name='pdf19'),
-    url(r'^pdf20/$',views.pdf_produceEND , name='pdf20'),
+    url(r'^pdf20/$',views.pdf_holdEND , name='pdf20'),
    
 
 )
