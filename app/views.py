@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse ,HttpResponseRedirect,Http404
 from app.models import Form,User,FormType,Autherize_order,Role,FileUpload
@@ -10,6 +13,1260 @@ from django.conf import settings
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 import mimetypes
+
+import Image
+from reportlab.lib.utils import ImageReader
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from reportlab.lib.fonts import addMapping
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+### pdf produce###
+def pdf_produce(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="produce.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_produce.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(150, 590, u"a")  #ใบเลขที่
+    p.drawString(425, 573, u"b")  #กรม/สำนักงาน
+    p.drawString(425, 555, u"c")  #กระทรวง
+    p.drawString(340, 538, u"d")  #
+    p.drawString(416, 538, u"e")  #
+    p.drawString(484, 538, u"f")  #
+
+    p.drawString(244, 525, u"g")  #
+
+    p.drawString(158, 508, u"h")  #
+    p.drawString(432, 508, u"i")  #
+    
+   
+  
+    p.drawString(200, 491, u"k")  #
+
+   
+    p.drawString(275, 474, u"l")  #
+    p.drawString(333, 474, u"m")  #
+    p.drawString(420, 474, u"n")  #
+
+    p.drawString(112, 459, u"o")  #
+    p.drawString(265, 459, u"q")  #
+    p.drawString(440, 459, u"r")  #
+
+    p.drawString(112, 443, u"s")  #
+    p.drawString(251, 443, u"t")  #
+    p.drawString(362, 443, u"u")  #
+
+    p.drawString(112, 427, u"v")  #
+
+    p.drawString(255, 394, u"w")  #
+
+    p.drawString(225, 347, u"x")  #
+
+    p.drawString(225, 347, u"x")  #
+    p.drawString(225, 332, u"y")  #
+    p.drawString(225, 316, u"z")  #
+
+    p.drawString(225, 299, u"a")  #
+    p.drawString(225, 283, u"b")  #
+
+    p.drawString(103, 205, u"c")  #
+
+    p.drawString(219, 128, u"date")  #
+    p.drawString(284, 128, u"date")  #
+    p.drawString(355, 128, u"date")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf import ###
+def pdf_import(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="import.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_import.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(150, 590, u"a")  #ใบเลขที่
+    p.drawString(425, 573, u"b")  #กรม/สำนักงาน
+    p.drawString(425, 555, u"c")  #กระทรวง
+    p.drawString(340, 538, u"d")  #
+    p.drawString(416, 538, u"e")  #
+    p.drawString(484, 538, u"f")  #
+
+    p.drawString(244, 525, u"g")  #
+
+    p.drawString(158, 508, u"h")  #
+    p.drawString(432, 508, u"i")  #
+    
+   
+  
+    p.drawString(200, 491, u"k")  #
+
+   
+    p.drawString(275, 474, u"l")  #
+    p.drawString(333, 474, u"m")  #
+    p.drawString(420, 474, u"n")  #
+
+    p.drawString(112, 459, u"o")  #
+    p.drawString(265, 459, u"q")  #
+    p.drawString(440, 459, u"r")  #
+
+    p.drawString(112, 443, u"s")  #
+    p.drawString(251, 443, u"t")  #
+    p.drawString(362, 443, u"u")  #
+
+    p.drawString(112, 427, u"v")  #
+
+    p.drawString(255, 394, u"w")  #
+
+    p.drawString(225, 347, u"x")  #
+
+    p.drawString(225, 347, u"x")  #
+    p.drawString(225, 332, u"y")  #
+    p.drawString(225, 316, u"z")  #
+
+    p.drawString(225, 299, u"a")  #
+    p.drawString(225, 283, u"b")  #
+
+    p.drawString(219, 206, u"c")  #
+    p.drawString(284, 206, u"d")  #
+    p.drawString(355, 206, u"e")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf export ###
+def pdf_export(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="export.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_export.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(150, 590, u"a")  #ใบเลขที่
+    p.drawString(425, 573, u"b")  #กรม/สำนักงาน
+    p.drawString(425, 555, u"c")  #กระทรวง
+    p.drawString(340, 538, u"d")  #
+    p.drawString(416, 538, u"e")  #
+    p.drawString(484, 538, u"f")  #
+
+    p.drawString(244, 525, u"g")  #
+
+    p.drawString(158, 508, u"h")  #
+    p.drawString(432, 508, u"i")  #
+    
+   
+  
+    p.drawString(200, 491, u"k")  #
+
+   
+    p.drawString(275, 474, u"l")  #
+    p.drawString(333, 474, u"m")  #
+    p.drawString(420, 474, u"n")  #
+
+    p.drawString(112, 459, u"o")  #
+    p.drawString(265, 459, u"q")  #
+    p.drawString(440, 459, u"r")  #
+
+    p.drawString(112, 443, u"s")  #
+    p.drawString(251, 443, u"t")  #
+    p.drawString(362, 443, u"u")  #
+
+    p.drawString(112, 427, u"v")  #
+
+    p.drawString(255, 394, u"w")  #
+
+    p.drawString(225, 347, u"x")  #
+
+    p.drawString(225, 347, u"x")  #
+    p.drawString(225, 332, u"y")  #
+    p.drawString(225, 316, u"z")  #
+
+    p.drawString(225, 299, u"a")  #
+    p.drawString(225, 283, u"b")  #
+
+    p.drawString(219, 206, u"c")  #
+    p.drawString(284, 206, u"d")  #
+    p.drawString(355, 206, u"e")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+
+## pdf hold###
+def pdf_hold(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="hold.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_import.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(150, 590, u"a")  #ใบเลขที่
+    p.drawString(425, 573, u"b")  #กรม/สำนักงาน
+    p.drawString(425, 555, u"c")  #กระทรวง
+    p.drawString(340, 538, u"d")  #
+    p.drawString(416, 538, u"e")  #
+    p.drawString(484, 538, u"f")  #
+
+   
+
+    p.drawString(158, 508, u"h")  #
+    p.drawString(432, 508, u"i")  #
+    
+   
+  
+    p.drawString(200, 491, u"k")  #
+
+   
+    p.drawString(275, 474, u"l")  #
+    p.drawString(333, 474, u"m")  #
+    p.drawString(420, 474, u"n")  #
+
+    p.drawString(112, 459, u"o")  #
+    p.drawString(265, 459, u"q")  #
+    p.drawString(440, 459, u"r")  #
+
+    p.drawString(112, 443, u"s")  #
+    p.drawString(251, 443, u"t")  #
+    p.drawString(362, 443, u"u")  #
+
+    p.drawString(112, 427, u"v")  #
+
+    p.drawString(270, 410, u"w")  #
+
+    p.drawString(118, 395, u"x")  #
+    p.drawString(195, 395, u"y")  #
+    p.drawString(283, 395, u"z")  #
+
+    p.drawString(424, 395, u"a")  #
+    p.drawString(140, 380, u"b")  #
+    p.drawString(302, 380, u"c")  #
+    p.drawString(443, 380, u"d")  #
+
+
+    p.drawString(153, 365, u"d")  #
+    p.drawString(278, 365, u"e")  #
+    p.drawString(419, 365, u"e")  #
+
+    p.drawString(131, 303, u"d")  #
+
+    p.drawString(131, 303, u"d")  #
+
+    p.drawString(228, 269, u"d")  #
+
+    p.drawString(294, 252, u"d")  #
+    p.drawString(400, 237, u"d")  #
+
+    p.drawString(316, 222, u"d")  #
+    p.drawString(371, 207, u"d")  #
+
+    p.drawString(172, 192, u"d")  #
+    p.drawString(273, 160, u"d")  #
+
+    p.drawString(215, 111, u"d")  #
+    p.drawString(280, 111, u"d")  #
+    p.drawString(386, 111, u"d")  #
+	
+	
+	
+	
+
+	
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf register###
+def pdf_register(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="register.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_register.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(126, 574, u"a")  #
+    p.drawString(391, 574, u"b")  #
+    p.drawString(450, 574, u"c")  #
+    p.drawString(511, 574, u"d")  #
+
+    p.drawString(511, 574, u"d")  #
+    p.drawString(140, 558, u"c")  #
+    p.drawString(422, 558, u"c")  #
+    
+    p.drawString(210, 541, u"c")  #
+
+    p.drawString(135, 510, u"c")  #
+    p.drawString(183, 510, u"c")  #
+    p.drawString(256, 510, u"c")  #
+
+    p.drawString(140, 494, u"e")  #
+    p.drawString(278, 494, u"e")  #
+    p.drawString(448, 494, u"e")  #
+
+    p.drawString(125, 478, u"f")  #
+    p.drawString(282, 478, u"f")  #
+    p.drawString(380, 478, u"f")  #
+    p.drawString(449, 478, u"f")  #
+
+    p.drawString(309, 446, u"f")  #
+    p.drawString(391, 446, u"f")  #
+
+    p.drawString(250, 431, u"g")  #
+    p.drawString(334, 414, u"h")  #
+
+    p.drawString(228, 394, u"i")  #
+
+    p.drawString(249, 378, u"j")  #
+
+    p.drawString(199, 362, u"k")  #
+
+    p.drawString(263, 346, u"l")  #
+    p.drawString(305, 329, u"m")  #
+
+    p.drawString(320, 314, u"n")  #
+
+    p.drawString(317, 272, u"date")  #
+    p.drawString(392, 272, u"date")  #
+    p.drawString(475, 272, u"date")  #
+
+
+  
+
+  
+   
+	
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf sample produce###
+def pdf_sample_produce(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="sample_produce.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_sample_produce.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    
+    p.drawString(140, 558, u"c")  #
+    p.drawString(267, 558, u"date")  #
+    p.drawString(338, 558, u"date")  #
+    p.drawString(445, 558, u"date")  #
+    
+    p.drawString(210, 541, u"c")  #
+    p.drawString(452, 541, u"c")  #
+
+    p.drawString(242, 524, u"d")  #
+
+    p.drawString(252, 507, u"e")  #
+    p.drawString(311, 507, u"e")  #
+    p.drawString(452, 507, u"e")  #
+
+   
+    p.drawString(140, 494, u"f")  #
+    p.drawString(278, 494, u"f")  #
+    p.drawString(448, 494, u"f")  #
+
+    p.drawString(115, 477, u"g")  #
+    p.drawString(246, 477, u"g")  #
+    p.drawString(339, 477, u"g")  #
+    p.drawString(449, 477, u"g")  #
+
+    p.drawString(324, 460, u"f")  #
+
+    p.drawString(134, 443, u"h")  #
+    p.drawString(191, 443, u"h")  #
+    p.drawString(281, 443, u"h")  #
+    p.drawString(423, 443, u"h")  #
+
+    p.drawString(164, 426, u"i")  #
+    p.drawString(294, 426, u"i")  #
+    p.drawString(428, 426, u"i")  #
+
+    p.drawString(150, 411, u"j")  #
+    p.drawString(273, 411, u"j")  #
+    p.drawString(416, 411, u"j")  #
+    
+    
+
+    
+    p.drawString(249, 378, u"j")  #
+
+    p.drawString(323, 362, u"k")  #
+
+    p.drawString(263, 346, u"l")  #
+    p.drawString(305, 331, u"m")  #
+
+    p.drawString(320, 315, u"n")  #
+
+    p.drawString(209, 300, u"o")  #
+
+    p.drawString(205, 255, u"date")  #
+    p.drawString(269, 255, u"date")  #
+    p.drawString(386, 255, u"date")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf sample import###
+def pdf_sample_import(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="sample_import.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_sample_import.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    
+    p.drawString(140, 558, u"c")  #
+    p.drawString(267, 558, u"date")  #
+    p.drawString(338, 558, u"date")  #
+    p.drawString(445, 558, u"date")  #
+    
+    p.drawString(210, 541, u"c")  #
+    p.drawString(452, 541, u"c")  #
+
+    p.drawString(242, 524, u"d")  #
+
+    p.drawString(252, 507, u"e")  #
+    p.drawString(311, 507, u"e")  #
+    p.drawString(452, 507, u"e")  #
+
+   
+    p.drawString(140, 494, u"f")  #
+    p.drawString(278, 494, u"f")  #
+    p.drawString(448, 494, u"f")  #
+
+    p.drawString(115, 477, u"g")  #
+    p.drawString(246, 477, u"g")  #
+    p.drawString(339, 477, u"g")  #
+    p.drawString(449, 477, u"g")  #
+
+    p.drawString(324, 460, u"f")  #
+
+    p.drawString(134, 443, u"h")  #
+    p.drawString(191, 443, u"h")  #
+    p.drawString(281, 443, u"h")  #
+    p.drawString(423, 443, u"h")  #
+
+    p.drawString(164, 426, u"i")  #
+    p.drawString(294, 426, u"i")  #
+    p.drawString(428, 426, u"i")  #
+
+    p.drawString(150, 411, u"j")  #
+    p.drawString(273, 411, u"j")  #
+    p.drawString(416, 411, u"j")  #
+    
+    
+
+    
+    p.drawString(249, 378, u"j")  #
+
+    p.drawString(323, 362, u"k")  #
+
+    p.drawString(263, 346, u"l")  #
+    p.drawString(305, 331, u"m")  #
+
+    p.drawString(320, 315, u"n")  #
+
+    p.drawString(209, 300, u"o")  #
+
+    p.drawString(205, 255, u"date")  #
+    p.drawString(269, 255, u"date")  #
+    p.drawString(386, 255, u"date")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf register extend ###
+def pdf_register_extend(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="register_extend.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_register_extend.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(406, 755, u"a")  #ใบเลขที่
+
+
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(137, 660, u"d")  #กระทรวง
+    p.drawString(272, 660, u"e")  #กระทรวง
+    p.drawString(367, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf produce extend ###
+def pdf_produce_extend(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="produce_extend.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_produce_extend.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(336, 755, u"a")  #ใบเลขที่
+
+
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(137, 660, u"d")  #กระทรวง
+    p.drawString(272, 660, u"e")  #กระทรวง
+    p.drawString(367, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf export extend ###
+def pdf_export_extend(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="export_extend.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_export_extend.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(336, 755, u"a")  #ใบเลขที่
+
+
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(137, 660, u"d")  #กระทรวง
+    p.drawString(272, 660, u"e")  #กระทรวง
+    p.drawString(367, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf import extend ###
+def pdf_import_extend(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="import_extend.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_import_extend.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(336, 755, u"a")  #ใบเลขที่
+
+
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(137, 660, u"d")  #กระทรวง
+    p.drawString(272, 660, u"e")  #กระทรวง
+    p.drawString(367, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf hold extend ###
+def pdf_hold_extend(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="hold_extend.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_hold_extend.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(406, 755, u"a")  #ใบเลขที่
+
+
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(137, 660, u"d")  #กระทรวง
+    p.drawString(272, 660, u"e")  #กระทรวง
+    p.drawString(367, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+
+### pdf hold modify ###
+def pdf_hold_modify(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="hold_modify.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_hold_modify.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(440, 755, u"a")  #ใบเลขที่
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(127, 660, u"d")  #กระทรวง
+    p.drawString(232, 660, u"e")  #กระทรวง
+    p.drawString(357, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf produce modify ###
+def pdf_produce_modify(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="produce_modify.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_produce_modify.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(397, 755, u"a")  #ใบเลขที่
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(127, 660, u"d")  #กระทรวง
+    p.drawString(232, 660, u"e")  #กระทรวง
+    p.drawString(357, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf import modify ###
+def pdf_import_modify(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="import_modify.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_import_modify.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(397, 755, u"a")  #ใบเลขที่
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(127, 660, u"d")  #กระทรวง
+    p.drawString(232, 660, u"e")  #กระทรวง
+    p.drawString(357, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf export modify ###
+def pdf_export_modify(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="export_modify.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_export_modify.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(397, 755, u"a")  #ใบเลขที่
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(127, 660, u"d")  #กระทรวง
+    p.drawString(232, 660, u"e")  #กระทรวง
+    p.drawString(357, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+### pdf register modify ###
+def pdf_register_modify(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="register_modify.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_register_modify.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(422, 755, u"a")  #ใบเลขที่
+    p.drawString(89, 660, u"b")  #กรม/สำนักงาน
+    p.drawString(127, 660, u"d")  #กระทรวง
+    p.drawString(232, 660, u"e")  #กระทรวง
+    p.drawString(357, 660, u"f")  #กระทรวง
+    
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf export end ###
+def pdf_exportEND(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="export_end.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_exportEnd.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(290, 740, u"a")  #
+    p.drawString(290, 723, u"b")  #
+
+
+    p.drawString(135, 706, u"c")  #
+    p.drawString(214, 706, u"c")  #
+    p.drawString(302, 706, u"c")  #
+    p.drawString(452, 706, u"c")  #
+
+    p.drawString(160, 689, u"d")  #
+    p.drawString(318, 689, u"d")  #
+    p.drawString(481, 689, u"d")  #
+
+    p.drawString(147, 675, u"e")  #
+    p.drawString(290, 675, u"e")  #
+    p.drawString(461, 675, u"e")  #
+   
+    p.drawString(138, 612, u"e")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf import end ###
+def pdf_importEND(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="import_end.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_importEnd.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(290, 740, u"a")  #
+    p.drawString(290, 723, u"b")  #
+
+
+    p.drawString(135, 706, u"c")  #
+    p.drawString(214, 706, u"c")  #
+    p.drawString(302, 706, u"c")  #
+    p.drawString(452, 706, u"c")  #
+
+    p.drawString(160, 689, u"d")  #
+    p.drawString(318, 689, u"d")  #
+    p.drawString(481, 689, u"d")  #
+
+    p.drawString(147, 675, u"e")  #
+    p.drawString(290, 675, u"e")  #
+    p.drawString(461, 675, u"e")  #
+   
+    p.drawString(138, 612, u"e")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf produce end ###
+def pdf_produceEND(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="produce_end.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_produceEnd.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(290, 740, u"a")  #
+    p.drawString(290, 723, u"b")  #
+
+
+    p.drawString(135, 706, u"c")  #
+    p.drawString(214, 706, u"c")  #
+    p.drawString(302, 706, u"c")  #
+    p.drawString(452, 706, u"c")  #
+
+    p.drawString(160, 689, u"d")  #
+    p.drawString(318, 689, u"d")  #
+    p.drawString(458, 689, u"d")  #
+
+    p.drawString(147, 675, u"e")  #
+    p.drawString(290, 675, u"e")  #
+    p.drawString(461, 675, u"e")  #
+   
+    p.drawString(138, 612, u"e")  #
+
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
+
+## pdf hold end ###
+def pdf_holdEND(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="hold_end.pdf"'
+
+    pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
+    addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
+
+    buffer = BytesIO()
+
+    # Create the PDF object, using the BytesIO object as its "file."
+    p = canvas.Canvas(buffer)
+    p.setFont('THSarabunNew',14)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+   
+   	## DRAW BACKGROUND IMAGE ##
+    p.drawImage(ImageReader("image/permit_holdEnd.jpg"), 0, 0, width=595, height=842)
+    ## DRAW STRINGS ##
+    p.drawString(290, 740, u"a")  #
+    p.drawString(290, 723, u"b")  #
+
+
+  
+    p.drawString(214, 706, u"c")  #
+   
+
+    
+    p.drawString(218, 689, u"d")  #
+    
+    p.drawString(290, 675, u"e")  #
+    
+
+    #
+    # p.drawString(255, 374, u"y")  #
+    # Close the PDF object cleanly.
+    p.showPage()
+    p.save()
+
+    # Get the value of the BytesIO buffer and write it to the response.
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+###
 
 @never_cache
 def index(request):
