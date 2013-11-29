@@ -252,6 +252,9 @@ def modify_form(request,form_id):
 	info += '</xml>'
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
+	for key in request.FILES.iterkeys():
+		print(key)
+		uploadFile(request,form,key)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -292,6 +295,9 @@ def extend_form(request,form_id):
 	print(info)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
+	for key in request.FILES.iterkeys():
+		print(key)
+		uploadFile(request,form,key)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -334,6 +340,9 @@ def substitute_form(request,form_id):
 	print(info)
 	form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
 	form.save()
+	for key in request.FILES.iterkeys():
+		print(key)
+		uploadFile(request,form,key)	
 	context = {'message':'Form have been saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -355,7 +364,12 @@ def approve_form(request,form_id):
 	print(form_obj.data)
 	data = xmltodict.parse(form_obj.data)['xml']
 	print(data)
-	context = { 'form' : form_obj , 'data' : data ,'user':user_obj}
+	form_file = FileUpload.objects.filter(form=form_obj)
+	file_dict = {}
+	for i in form_file:
+		file_dict[i.uploadType] = i
+	print file_dict
+	context = { 'form' : form_obj , 'data' : data ,'user':user_obj , 'file' : file_dict}
 	#register
 	if(form_obj.formType.name == 'register_request'):
 		return render(request,'main/register_view_officer.html',context)
