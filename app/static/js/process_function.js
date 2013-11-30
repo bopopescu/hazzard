@@ -79,6 +79,14 @@ function hideOfficerFunction(){
 	 document.getElementById('extend_produceProcess_list').style.display = 'none';
 	document.getElementById('substitue_produceProcess_list').style.display = 'none';
 
+	document.getElementById('report_person').style.display = 'none';
+	document.getElementById('report_country').style.display = 'none';
+	document.getElementById('report_placeKeep').style.display = 'none';
+	document.getElementById('report_name').style.display = 'none';
+	document.getElementById('report_log').style.display = 'none';
+
+	
+
 	
 	
 }
@@ -204,7 +212,59 @@ function substitue_produceFunction(){
 
 }
 
+function reportPersonFunction(){
+	hideOfficerFunction();
+	document.getElementById('report_person').style.display = 'block';
+}
+
+function reportCountryFunction(){
+	hideOfficerFunction();
+	document.getElementById('report_country').style.display = 'block';
+}
+
+function reportPlaceFunction(){
+	hideOfficerFunction();
+	document.getElementById('report_placeKeep').style.display = 'block';
+}
+
+
+function reportNameFunction(){
+	hideOfficerFunction();
+	document.getElementById('report_name').style.display = 'block';
+
+}
+
+function reportLogFunction(){
+	hideOfficerFunction();
+	document.getElementById('report_log').style.display = 'block';
+}
 
 	
+function queryperson(){
+	// hideOfficerFunction();
+	document.getElementById('table_person').style.display = 'block';
+}
+
+function querycountry(){
+	// hideOfficerFunction();
+	document.getElementById('table_country').style.display = 'block';
+}
+
+function queryplace(){
+	// hideOfficerFunction();
+	document.getElementById('table_place').style.display = 'block';
+}
 	
+
+function queryname(){
+	// hideOfficerFunction();
+	document.getElementById('table_name').style.display = 'block';
+}
 	
+function querylog(){
+	// hideOfficerFunction();
+	document.getElementById('table_log').style.display = 'block';
+}
+	
+
+
