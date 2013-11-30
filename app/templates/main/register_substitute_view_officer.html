@@ -166,8 +166,8 @@
 				<h1> คำขอใบแทน ใบอนุญาตขึ้นทะเบียนวัตถุอันตราย </h1>
 				
 		
-				<form action="" method="post"  enctype="multipart/form-data">{% csrf_token %}
-							{% csrf_token %}
+				<form >
+						
 							<input type="hidden" name="form_type" value="register_substitute">
 							<!-- <div class="form-group"> -->
 							<div class="form-inline date_des">
@@ -179,7 +179,7 @@
 									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" value="{{form.date.date.year}}">
 									
 
-								</div>
+							</div>
 							<!-- </div> -->
 
 

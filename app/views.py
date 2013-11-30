@@ -1509,19 +1509,19 @@ def pdf_register_sub(request,form_id):
     ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register_sub.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(150, 590, form_id)  #ใบเลขที่
-    p.drawString(425, 573, u"")  #กรม/สำนักงาน
-    p.drawString(425, 555, u"")  #กระทรวง
+    p.drawString(150, 578, form_id)  #ใบเลขที่
+    # p.drawString(425, 573, u"")  #กรม/สำนักงาน
+    # p.drawString(425, 555, u"")  #กระทรวง
 
 
     p.drawString(340, 538, data['dayBox'])  # วันที่
     p.drawString(416, 538, data['monthBox'])  #
     p.drawString(484, 538, data['yearBox'])  #
 
-    if( data['codeBox']  !=  None):
-        p.drawString(244, 525, data['codeBox'])  #
-    elif( data['codeBox']  ==  None):
-        p.drawString(244, 525, u"")  #
+    # if( data['codeBox']  !=  None):
+    #     p.drawString(244, 525, data['codeBox'])  #
+    # elif( data['codeBox']  ==  None):
+    #     p.drawString(244, 525, u"")  #
     # else
     # p.drawString(244, 525, u"")  #
 
@@ -1573,10 +1573,10 @@ def pdf_register_sub(request,form_id):
     elif( data['district_contactBox']  ==  None):
         p.drawString(440, 459, u"")  #
     
-    if( data['province_contactBox']  !=  None):
-        p.drawString(112, 443, data['province_contactBox'])  #
-    elif( data['province_contactBox']  ==  None):
-        p.drawString(112, 443, u"")  #
+    # if( data['province_contactBox']  !=  None):
+    #     p.drawString(112, 443, data['province_contactBox'])  #
+    # elif( data['province_contactBox']  ==  None):
+    #     p.drawString(112, 443, u"")  #
 
     if( data['zip_contactBox']  !=  None):
         p.drawString(251, 443, data['zip_contactBox'])  #
@@ -1594,102 +1594,102 @@ def pdf_register_sub(request,form_id):
         p.drawString(112, 427, u"")  #
 
 
-    if( data['name_storage']  !=  None):
-        p.drawString(270, 410, data['name_storage'])  #
-    elif( data['name_storage']  ==  None):
-        p.drawString(270, 410, u"")  #
+    # if( data['name_storage']  !=  None):
+    #     p.drawString(270, 410, data['name_storage'])  #
+    # elif( data['name_storage']  ==  None):
+    #     p.drawString(270, 410, u"")  #
 
-    if( data['address_storage']  !=  None):
-        p.drawString(118, 395, data['address_storage'])  #
-    elif( data['address_storage']  ==  None):
-        p.drawString(118, 395, u"")  #
+    # if( data['address_storage']  !=  None):
+    #     p.drawString(118, 395, data['address_storage'])  #
+    # elif( data['address_storage']  ==  None):
+    #     p.drawString(118, 395, u"")  #
 
-    if( data['mo_storage']  !=  None):
-        p.drawString(195, 395, data['mo_storage'])  #
-    elif( data['mo_storage']  ==  None):
-        p.drawString(195, 395, u"")  #
+    # if( data['mo_storage']  !=  None):
+    #     p.drawString(195, 395, data['mo_storage'])  #
+    # elif( data['mo_storage']  ==  None):
+    #     p.drawString(195, 395, u"")  #
 
-    if( data['soi_storage']  !=  None):
-        p.drawString(283, 395, data['soi_storage'])  #
-    elif( data['soi_storage']  ==  None):
-        p.drawString(283, 395, u"")  #
+    # if( data['soi_storage']  !=  None):
+    #     p.drawString(283, 395, data['soi_storage'])  #
+    # elif( data['soi_storage']  ==  None):
+    #     p.drawString(283, 395, u"")  #
 
-    if( data['street_storage']  !=  None):
-        p.drawString(424, 395, data['street_storage'])  #
-    elif( data['street_storage']  ==  None):
-        p.drawString(424, 395, u"")  #
+    # if( data['street_storage']  !=  None):
+    #     p.drawString(424, 395, data['street_storage'])  #
+    # elif( data['street_storage']  ==  None):
+    #     p.drawString(424, 395, u"")  #
 
-    if( data['canton_storage']  !=  None):
-        p.drawString(140, 380, data['canton_storage'])  #
-    elif( data['canton_storage']  ==  None):
-        p.drawString(140, 380, u"")  #
+    # if( data['canton_storage']  !=  None):
+    #     p.drawString(140, 380, data['canton_storage'])  #
+    # elif( data['canton_storage']  ==  None):
+    #     p.drawString(140, 380, u"")  #
 
-    if( data['district_storage']  !=  None):
-        p.drawString(320, 380, data['district_storage'])  #
-    elif( data['district_storage']  ==  None):
-        p.drawString(320, 380, u"")  #
-
-
-    if( data['province_storage']  !=  None):
-        p.drawString(443, 380, data['province_storage'])  #
-    elif( data['province_storage']  ==  None):
-        p.drawString(442, 380, u"")  #
+    # if( data['district_storage']  !=  None):
+    #     p.drawString(320, 380, data['district_storage'])  #
+    # elif( data['district_storage']  ==  None):
+    #     p.drawString(320, 380, u"")  #
 
 
-    if( data['zip_storage']  !=  None):
-        p.drawString(153, 365, data['zip_storage'])  #
-    elif( data['zip_storage']  ==  None):
-        p.drawString(153, 365, u"")  #
+    # if( data['province_storage']  !=  None):
+    #     p.drawString(443, 380, data['province_storage'])  #
+    # elif( data['province_storage']  ==  None):
+    #     p.drawString(442, 380, u"")  #
 
-    if( data['mobile_storage']  !=  None):
-        p.drawString(278, 365, data['mobile_storage'])  #
-    elif( data['mobile_storage']  ==  None):
-        p.drawString(278, 365, u"")  #
 
-    if( data['fax_storage']  !=  None):
-        p.drawString(419, 365, data['fax_storage'])  #
-    elif( data['fax_storage']  ==  None):
-        p.drawString(419, 365, u"")  
+    # if( data['zip_storage']  !=  None):
+    #     p.drawString(153, 365, data['zip_storage'])  #
+    # elif( data['zip_storage']  ==  None):
+    #     p.drawString(153, 365, u"")  #
 
-    if( data['specialistBox']  !=  None):
-        p.drawString(131, 303, data['specialistBox'])  #
-    elif( data['specialistBox']  ==  None):
-        p.drawString(131, 303, u"")  #
+    # if( data['mobile_storage']  !=  None):
+    #     p.drawString(278, 365, data['mobile_storage'])  #
+    # elif( data['mobile_storage']  ==  None):
+    #     p.drawString(278, 365, u"")  #
 
-    if( data['quantityBox']  !=  None):
-        p.drawString(228, 269, data['quantityBox'])  #
-    elif( data['quantityBox']  ==  None):
-        p.drawString(228, 269, u"")  #
+    # if( data['fax_storage']  !=  None):
+    #     p.drawString(419, 365, data['fax_storage'])  #
+    # elif( data['fax_storage']  ==  None):
+    #     p.drawString(419, 365, u"")  
 
-    if( data['maxArea_storage']  !=  None):
-        p.drawString(294, 252, data['maxArea_storage'])  #
-    elif( data['maxArea_storage']  ==  None):
-        p.drawString(294, 252, u"")  #
+    # if( data['specialistBox']  !=  None):
+    #     p.drawString(131, 303, data['specialistBox'])  #
+    # elif( data['specialistBox']  ==  None):
+    #     p.drawString(131, 303, u"")  #
 
-    if( data['to_storage']  !=  None):
-        p.drawString(400, 237, data['to_storage'])  #
-    elif( data['to_storage']  ==  None):
-        p.drawString(400, 237, u"")  #
+    # if( data['quantityBox']  !=  None):
+    #     p.drawString(228, 269, data['quantityBox'])  #
+    # elif( data['quantityBox']  ==  None):
+    #     p.drawString(228, 269, u"")  #
 
-    if( data['hazardous_nameBox']  !=  None):
-        p.drawString(316, 222, data['hazardous_nameBox'])  #
-    elif( data['hazardous_nameBox']  ==  None):
-        p.drawString(316, 222, u"")  #
+    # if( data['maxArea_storage']  !=  None):
+    #     p.drawString(294, 252, data['maxArea_storage'])  #
+    # elif( data['maxArea_storage']  ==  None):
+    #     p.drawString(294, 252, u"")  #
 
-    if( data['marketingBox']  !=  None):
-        p.drawString(271, 207, data['marketingBox'])  #
-    elif( data['marketingBox']  ==  None):
-        p.drawString(271, 207, u"")  #
+    # if( data['to_storage']  !=  None):
+    #     p.drawString(400, 237, data['to_storage'])  #
+    # elif( data['to_storage']  ==  None):
+    #     p.drawString(400, 237, u"")  #
 
-    if( data['codeBox']  !=  None):
-        p.drawString(172, 192, data['codeBox'])  #
-    elif( data['codeBox']  ==  None):
-        p.drawString(172, 192, u"")  #
+    # if( data['hazardous_nameBox']  !=  None):
+    #     p.drawString(316, 222, data['hazardous_nameBox'])  #
+    # elif( data['hazardous_nameBox']  ==  None):
+    #     p.drawString(316, 222, u"")  #
 
-    if( data['codeBox']  !=  None):
-        p.drawString(172, 192, data['codeBox'])  #
-    elif( data['codeBox']  ==  None):
-        p.drawString(172, 192, u"")  #
+    # if( data['marketingBox']  !=  None):
+    #     p.drawString(271, 207, data['marketingBox'])  #
+    # elif( data['marketingBox']  ==  None):
+    #     p.drawString(271, 207, u"")  #
+
+    # if( data['codeBox']  !=  None):
+    #     p.drawString(172, 192, data['codeBox'])  #
+    # elif( data['codeBox']  ==  None):
+    #     p.drawString(172, 192, u"")  #
+
+    # if( data['codeBox']  !=  None):
+    #     p.drawString(172, 192, data['codeBox'])  #
+    # elif( data['codeBox']  ==  None):
+    #     p.drawString(172, 192, u"")  #
 
 
 
