@@ -232,6 +232,12 @@
 										</a>
 								      	{% endif %}
 								      </td>
+								      <td id="manage_value">
+								      	{% if form.formType.autherize_number == form.status %}
+										<a id="manage_value_link" href="/form/{{form.id}}/pdf2"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png" data-toggle="tooltip"  title="พิมพ์">
+										</a>
+								      	{% endif %}
+								      </td>
 								      
 								    </tr>
 								    {% endif %}
@@ -272,7 +278,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf16"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 									   
@@ -320,7 +326,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf11"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 										
@@ -372,7 +378,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf21"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -422,7 +428,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf6"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -472,7 +478,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf14"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -522,7 +528,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf8"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -623,7 +629,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf5"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -674,7 +680,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf13"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -724,7 +730,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf10"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -824,7 +830,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf1"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -875,7 +881,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf12"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -918,14 +924,14 @@
 								  		</td>
 								      <td id="manage_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
+										<a id="manage_value_link" href="/form/{{form.id}}/"><img src="{{ STATIC_URL }}img/icon/CheckBox-32.png" data-toggle="tooltip"  title="ดูใบอนุญาต">
 										</a>
 								      	{% endif %}
 								      </td>
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf7"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -1025,7 +1031,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -1225,7 +1231,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf3"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
@@ -1275,7 +1281,7 @@
 
 								      	 <td id="print_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="print_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
+										<a id="print_value_link" href="/form/{{form.id}}/pdf2"><img src="{{ STATIC_URL }}img/icon/Certificate-02-32.png">
 										</a>
 								      	{% endif %}</td>
 								      
