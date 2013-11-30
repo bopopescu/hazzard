@@ -40,7 +40,7 @@
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
 
-			% if not file.idButton %}
+			{% if not file.idButton %}
 			$('#idButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#idButton').click(function(e){
@@ -48,7 +48,7 @@
 			      window.open("/file/{{file.idButton.id}}");
 			});
 
-			% if not file.personButton %}
+			{% if not file.personButton %}
 			$('#personButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#personButton').click(function(e){
@@ -56,7 +56,7 @@
 			     window.open("/file/{{file.personButton.id}}");
 			});
 
-			% if not file.taxButton %}
+			{% if not file.taxButton %}
 			$('#taxButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#taxButton').click(function(e){
@@ -64,7 +64,7 @@
 			     window.open("/file/{{file.taxButton.id}}");
 			});
 
-			% if not file.registerButton %}
+			{% if not file.registerButton %}
 			$('#registerButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#registerButton').click(function(e){
@@ -72,7 +72,7 @@
 			     window.open("/file/{{file.registerButton.id}}");
 			});
 
-			% if not file.ehButton %}
+			{% if not file.ehButton %}
 			$('#ehButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#ehButton').click(function(e){
@@ -80,7 +80,7 @@
 			      window.open("/file/{{file.ehButton.id}}");
 			});
 
-			% if not file.lhButton %}
+			{% if not file.lhButton %}
 			$('#lhButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#lhButton').click(function(e){
@@ -88,7 +88,7 @@
 			     window.open("/file/{{file.lhButton.id}}");
 			});
 
-			% if not file.mapButton %}
+			{% if not file.mapButton %}
 			$('#mapButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#mapButton').click(function(e){
@@ -96,7 +96,7 @@
 			    window.open("/file/{{file.mapButton.id}}");
 			});
 
-			% if not file.mapINButton %}
+			{% if not file.mapINButton %}
 			$('#mapINButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#mapINButton').click(function(e){
@@ -104,7 +104,7 @@
 			    window.open("/file/{{file.mapINButton.id}}");
 			});
 
-			% if not file.expertButton %}
+			{% if not file.expertButton %}
 			$('#expertButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#expertButton').click(function(e){
@@ -112,7 +112,7 @@
 			     window.open("/file/{{file.expertButton.id}}");
 			});
 
-			% if not file.sysButton %}
+			{% if not file.sysButton %}
 			$('#sysButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#sysButton').click(function(e){
@@ -120,7 +120,7 @@
 			   window.open("/file/{{file.sysButton.id}}");
 			});
 
-			% if not file.keepButton %}
+			{% if not file.keepButton %}
 			$('#keepButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#keepButton').click(function(e){
@@ -128,7 +128,7 @@
 			    window.open("/file/{{file.keepButton.id}}");
 			});
 
-			% if not file.secureButton %}
+			{% if not file.secureButton %}
 			$('#secureButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#secureButton').click(function(e){

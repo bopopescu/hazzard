@@ -40,7 +40,16 @@
 			      window.location = "reject?comment=" + $("#comment").val()
 			});
 
-			% if not file.idButton %}
+
+			{% if not file.permitButton %}
+			$('#permitButton').attr("disabled", "disabled");
+			{% endif %}
+			$('#permitButton').click(function(e){
+			     
+			      window.open("/file/{{file.permitButton.id}}");
+			});
+
+			{% if not file.idButton %}
 			$('#idButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#idButton').click(function(e){
@@ -48,7 +57,7 @@
 			      window.open("/file/{{file.idButton.id}}");
 			});
 
-			% if not file.personButton %}
+			{% if not file.personButton %}
 			$('#personButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#personButton').click(function(e){
@@ -56,55 +65,55 @@
 			     window.open("/file/{{file.personButton.id}}");
 			});
 
-			% if not file.taxButton %}
-			$('#taxButton').attr("disabled", "disabled");
+			{% if not file.subButton %}
+			$('#subButton').attr("disabled", "disabled");
 			{% endif %}
-			$('#taxButton').click(function(e){
+			$('#subButton').click(function(e){
 			     
-			     window.open("/file/{{file.taxButton.id}}");
+			     window.open("/file/{{file.subButton.id}}");
 			});
 
-			% if not file.registerButton %}
-			$('#registerButton').attr("disabled", "disabled");
+			{% if not file.listButton %}
+			$('#listButton').attr("disabled", "disabled");
 			{% endif %}
-			$('#registerButton').click(function(e){
+			$('#listButton').click(function(e){
 			     
-			     window.open("/file/{{file.registerButton.id}}");
+			     window.open("/file/{{file.listButton.id}}");
 			});
 
-			% if not file.analysisButton %}
-			$('#analysisButton').attr("disabled", "disabled");
+			{% if not file.planButton %}
+			$('#planButton').attr("disabled", "disabled");
 			{% endif %}
-			$('#analysisButton').click(function(e){
+			$('#planButton').click(function(e){
 			     
-			      window.open("/file/{{file.analysisButton.id}}");
+			      window.open("/file/{{file.planButton.id}}");
 			});
 
-			% if not file.mapButton %}
-			$('#mapButton').attr("disabled", "disabled");
+			{% if not file.SampleCon %}
+			$('#SampleCon').attr("disabled", "disabled");
 			{% endif %}
-			$('#mapButton').click(function(e){
+			$('#SampleCon').click(function(e){
 			     
-			     window.open("/file/{{file.mapButton.id}}");
+			     window.open("/file/{{file.SampleCon.id}}");
 			});
 
-			% if not file.mapINButton %}
-			$('#mapINButton').attr("disabled", "disabled");
+			{% if not file.mapINButton %}
+			$('#Sampleinsert').attr("disabled", "disabled");
 			{% endif %}
-			$('#mapINButton').click(function(e){
+			$('#Sampleinsert').click(function(e){
 			     
-			      window.open("/file/{{file.mapINButton.id}}");
+			      window.open("/file/{{file.Sampleinsert.id}}");
 			});
 
-			% if not file.expertButton %}
-			$('#expertButton').attr("disabled", "disabled");
+			{% if not file.reportAnalysis %}
+			$('#reportAnalysis').attr("disabled", "disabled");
 			{% endif %}
-			$('#expertButton').click(function(e){
+			$('#reportAnalysis').click(function(e){
 			     
-			     window.open("/file/{{file.expertButton.id}}");
+			     window.open("/file/{{file.reportAnalysis.id}}");
 			});
 
-			% if not file.containerButton %}
+			{% if not file.containerButton %}
 			$('#containerButton').attr("disabled", "disabled");
 			{% endif %}
 			$('#containerButton').click(function(e){
@@ -112,13 +121,7 @@
 			    window.open("/file/{{file.containerButton.id}}");
 			});
 
-			% if not file.secureButton %}
-			$('#secureButton').attr("disabled", "disabled");
-			{% endif %}
-			$('#secureButton').click(function(e){
-			     
-			      window.open("/file/{{file.secureButton.id}}");
-			});
+
 		});
 	</script>
 

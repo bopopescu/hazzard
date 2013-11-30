@@ -36,13 +36,15 @@ def pdf_produce(request):
     # Create the PDF object, using the BytesIO object as its "file."
     p = canvas.Canvas(buffer)
     p.setFont('THSarabunNew',14)
+   
+
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
    	## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produce.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(150, 590, u"a")  #ใบเลขที่
+    p.drawString(150, 590, u"{{form.id}}")  #ใบเลขที่
     p.drawString(425, 573, u"b")  #กรม/สำนักงาน
     p.drawString(425, 555, u"c")  #กระทรวง
     p.drawString(340, 538, u"d")  #
@@ -1848,7 +1850,7 @@ def showfile(request,file_id):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	file_obj = FileUpload.objects.get(pk=file_id)
-	if(file_obj.form.user != user_obj and 'officer' not in user_obj.name ):
+	if(file_obj.form.user != user_obj and 'officer' not in user_obj.role.name ):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 	conn = S3Connection(settings.ACCESS_KEY, settings.PASS_KEY)
