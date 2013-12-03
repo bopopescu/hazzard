@@ -1597,124 +1597,6 @@ def pdf_register_sub(request,form_id):
         p.drawString(440, 459, data['district_contactBox'])  #
     elif( data['district_contactBox']  ==  None):
         p.drawString(440, 459, u"")  #
-    
-    # if( data['province_contactBox']  !=  None):
-    #     p.drawString(112, 443, data['province_contactBox'])  #
-    # elif( data['province_contactBox']  ==  None):
-    #     p.drawString(112, 443, u"")  #
-
-    if( data['zip_contactBox']  !=  None):
-        p.drawString(251, 443, data['zip_contactBox'])  #
-    elif( data['zip_contactBox']  ==  None):
-        p.drawString(251, 443, u"")  #
-
-    if( data['mobile_contactBox']  !=  None):
-        p.drawString(362, 443, data['mobile_contactBox'])  #
-    elif( data['mobile_contactBox']  ==  None):
-        p.drawString(362, 443, u"")  #
-
-    if( data['fax_contactBox']  !=  None):
-        p.drawString(112, 427, data['fax_contactBox'])  #
-    elif( data['fax_contactBox']  ==  None):
-        p.drawString(112, 427, u"")  #
-
-
-    # if( data['name_storage']  !=  None):
-    #     p.drawString(270, 410, data['name_storage'])  #
-    # elif( data['name_storage']  ==  None):
-    #     p.drawString(270, 410, u"")  #
-
-    # if( data['address_storage']  !=  None):
-    #     p.drawString(118, 395, data['address_storage'])  #
-    # elif( data['address_storage']  ==  None):
-    #     p.drawString(118, 395, u"")  #
-
-    # if( data['mo_storage']  !=  None):
-    #     p.drawString(195, 395, data['mo_storage'])  #
-    # elif( data['mo_storage']  ==  None):
-    #     p.drawString(195, 395, u"")  #
-
-    # if( data['soi_storage']  !=  None):
-    #     p.drawString(283, 395, data['soi_storage'])  #
-    # elif( data['soi_storage']  ==  None):
-    #     p.drawString(283, 395, u"")  #
-
-    # if( data['street_storage']  !=  None):
-    #     p.drawString(424, 395, data['street_storage'])  #
-    # elif( data['street_storage']  ==  None):
-    #     p.drawString(424, 395, u"")  #
-
-    # if( data['canton_storage']  !=  None):
-    #     p.drawString(140, 380, data['canton_storage'])  #
-    # elif( data['canton_storage']  ==  None):
-    #     p.drawString(140, 380, u"")  #
-
-    # if( data['district_storage']  !=  None):
-    #     p.drawString(320, 380, data['district_storage'])  #
-    # elif( data['district_storage']  ==  None):
-    #     p.drawString(320, 380, u"")  #
-
-
-    # if( data['province_storage']  !=  None):
-    #     p.drawString(443, 380, data['province_storage'])  #
-    # elif( data['province_storage']  ==  None):
-    #     p.drawString(442, 380, u"")  #
-
-
-    # if( data['zip_storage']  !=  None):
-    #     p.drawString(153, 365, data['zip_storage'])  #
-    # elif( data['zip_storage']  ==  None):
-    #     p.drawString(153, 365, u"")  #
-
-    # if( data['mobile_storage']  !=  None):
-    #     p.drawString(278, 365, data['mobile_storage'])  #
-    # elif( data['mobile_storage']  ==  None):
-    #     p.drawString(278, 365, u"")  #
-
-    # if( data['fax_storage']  !=  None):
-    #     p.drawString(419, 365, data['fax_storage'])  #
-    # elif( data['fax_storage']  ==  None):
-    #     p.drawString(419, 365, u"")  
-
-    # if( data['specialistBox']  !=  None):
-    #     p.drawString(131, 303, data['specialistBox'])  #
-    # elif( data['specialistBox']  ==  None):
-    #     p.drawString(131, 303, u"")  #
-
-    # if( data['quantityBox']  !=  None):
-    #     p.drawString(228, 269, data['quantityBox'])  #
-    # elif( data['quantityBox']  ==  None):
-    #     p.drawString(228, 269, u"")  #
-
-    # if( data['maxArea_storage']  !=  None):
-    #     p.drawString(294, 252, data['maxArea_storage'])  #
-    # elif( data['maxArea_storage']  ==  None):
-    #     p.drawString(294, 252, u"")  #
-
-    # if( data['to_storage']  !=  None):
-    #     p.drawString(400, 237, data['to_storage'])  #
-    # elif( data['to_storage']  ==  None):
-    #     p.drawString(400, 237, u"")  #
-
-    # if( data['hazardous_nameBox']  !=  None):
-    #     p.drawString(316, 222, data['hazardous_nameBox'])  #
-    # elif( data['hazardous_nameBox']  ==  None):
-    #     p.drawString(316, 222, u"")  #
-
-    # if( data['marketingBox']  !=  None):
-    #     p.drawString(271, 207, data['marketingBox'])  #
-    # elif( data['marketingBox']  ==  None):
-    #     p.drawString(271, 207, u"")  #
-
-    # if( data['codeBox']  !=  None):
-    #     p.drawString(172, 192, data['codeBox'])  #
-    # elif( data['codeBox']  ==  None):
-    #     p.drawString(172, 192, u"")  #
-
-    # if( data['codeBox']  !=  None):
-    #     p.drawString(172, 192, data['codeBox'])  #
-    # elif( data['codeBox']  ==  None):
-    #     p.drawString(172, 192, u"")  #
 
 
 
@@ -1751,6 +1633,10 @@ def pdf_produce_extend(request,form_id):
     if(form_obj.status != form_obj.formType.autherize_number):
         context = {'message':'Permission Denied','user':user_obj}
         return render(request,'main/message.html',context)
+
+    date = timezone.now()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="produce_extend.pdf"'
@@ -1761,6 +1647,7 @@ def pdf_produce_extend(request,form_id):
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
+
     p.setFont('THSarabunNew',16)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
@@ -1780,9 +1667,9 @@ def pdf_produce_extend(request,form_id):
     # p.drawString(137, 660, data[monthBox])  
     p.drawString(235, 660, data['dayBox'])  #expire
     p.drawString(247, 660, u".")  
-    p.drawString(252, 660, data['monthBox'])  #expire
+    # p.drawString(252, 660, form_obj.expire['date.year])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    # p.drawString(272, 660, form_obj.expire.date.year)  #expire
 
     p.drawString(367, 660, u"")  #list
     
@@ -2050,9 +1937,9 @@ def pdf_hold_modify(request,form_id):
     p.drawString(250, 660, u".") 
     # p.drawString(255, 660, data['yearBox'])  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
+    if( data['descriptionBox'] != None ):
+        p.drawString(367, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
         p.drawString(367, 660, u"")  #list
     
 
@@ -2102,21 +1989,21 @@ def pdf_produce_modify(request,form_id):
    	## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produce_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, data['dayBox'])  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, data['monthBox'])  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, data['yearBox'])  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
     
 
 
@@ -2165,21 +2052,22 @@ def pdf_import_modify(request,form_id):
    	## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_import_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, data['dayBox'])  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, data['monthBox'])  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, data['yearBox'])  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
+    
 
 
     #
@@ -2227,21 +2115,21 @@ def pdf_export_modify(request,form_id):
    	## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_export_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, data['dayBox'])  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, data['monthBox'])  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, data['yearBox'])  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
     
 
 
@@ -2290,21 +2178,21 @@ def pdf_register_modify(request,form_id):
    	## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, data['dayBox'])  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, data['monthBox'])  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, data['yearBox'])  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
     
 
 
