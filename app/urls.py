@@ -46,6 +46,8 @@ urlpatterns = patterns('',
     url(r'^pdf19/$',views.pdf_produceEND , name='pdf19'),
     url(r'^pdf20/$',views.pdf_holdEND , name='pdf20'),
     
-    url(r'^form/(?P<form_id>\d+)/pdf21/$',views.pdf_register_sub , name='pdf21'),   
+    url(r'^form/(?P<form_id>\d+)/pdf21/$',views.pdf_register_sub , name='pdf21'),  
 
+    url(r'^count/$',views.count_year , name='count_year'),
+    url(r'^country/$',views.country_list , name='country_list'),
 )

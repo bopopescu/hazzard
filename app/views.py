@@ -6,12 +6,12 @@ from django.http import HttpResponse ,HttpResponseRedirect,Http404
 from app.models import Form,User,FormType,Autherize_order,Role,FileUpload
 import xmltodict
 import hashlib
-import boto
+# import boto
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
 from django.conf import settings
-from boto.s3.connection import S3Connection
-from boto.s3.key import Key
+# from boto.s3.connection import S3Connection
+# from boto.s3.key import Key
 import mimetypes
 
 import Image
@@ -22,6 +22,31 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+def count_year(request):
+
+    ##YEAR ( EDIT REQUEST YEAR )
+    YEAR = '2013'
+    count = 0
+    response = HttpResponse(content_type='text/html')
+    for f in Form.objects.all():
+        data = xmltodict.parse(f.data)['xml']
+        if data['yearBox'] == str(YEAR):
+            count += 1
+    response.write("<html><body>OK count : "+str(count)+"</body></html>")
+    return response
+
+def country_list(request):
+    countries = []
+    response = HttpResponse(content_type='text/html')
+    for f in Form.objects.all():
+        print f.formType.name
+        if 'import' in str(f.formType.name) or 'export' in f.formType.name:
+            data = xmltodict.parse(f.data)['xml']
+            if 'countryBox' in data:
+                countries.append(data['countryBox'])
+    print countries
+    response.write("<html><body>OK</body></html>")
+    return response
 
 ### pdf produce###
 def pdf_produce(request,form_id):
