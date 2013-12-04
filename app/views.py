@@ -217,7 +217,9 @@ def create_form(request,formtype_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -263,7 +265,9 @@ def modify_form(request,form_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -309,7 +313,9 @@ def extend_form(request,form_id):
     form.save()
     for key in request.FILES.iterkeys():
         print(key)
-        uploadFile(request,form,key)    
+        if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	  
     context = {'message':'Form have been Saved.','user':user_obj}
     return render(request,'main/message.html',context)
 
@@ -354,7 +360,9 @@ def substitute_form(request,form_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -595,11 +603,18 @@ def uploadFile(request,form_obj,uploadType):
 	filetype = filetemp[len(filetemp)-1]
 	key = str(form_obj.id)+'_'+str(form_obj.user.id)+'_'+uploadType+'.'+filetype
 	content = file.read()
-	k = store_in_s3(filename, content,key)
+	try:
+		k = store_in_s3(filename, content,key)
+	except:
+		alreadyUp = FileUpload.objects.filter(form=form_obj)
+		for i in alreadyUp:
+			i.delete()
+		form_obj.delete()
+		return 0
 	p = FileUpload(key=k,form=form_obj,uploadType=uploadType)
 	p.save()
 	print(p.key)
-	return
+	return 1
 
 def showfile(request,file_id):
 	if('user_id' not in request.session):

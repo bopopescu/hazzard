@@ -315,13 +315,26 @@
 								<p>มาเพื่อประกอบการพิจารณาด้วย</p>
 								
 
-								<div class="button buttonRequest">
-								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">อนุมัติ</button>
-
-								<button id="reset" class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">ไม่อนุมัต</button>
+								<div class="button buttonView">
+									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมัติ </button>
+									<div id="identify_customer_modal" class="modal hide fade">
+										 <form id="modal-form">
+										  <div class="modal-header">
+										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไม่ผ่านการอนุมัติ </h3>
+										  </div>
+										  <div class="modal-body">
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										  </div>
+										  <div class="modal-footer">
+										    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </button>
+										    <button class="btn btn-primary" id="modal-button"> แจ้งผู้ประกอบการ </button>
+										  </div>
+										</form>
+									</div>
 								</div>
-										
-							</div><!-- infoleft -->
 
 							
 				
