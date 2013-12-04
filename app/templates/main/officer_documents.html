@@ -367,11 +367,11 @@
 								      <td id="date1_value">{{ form.date }}</td>
 								      <td id="check_value">
 								      {% if form.formType.autherize_number != form.status %}
-								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/CheckBox-32.png"></a>
+								      	<a  id="check_value_link" href="/form/{{form.id}}/approve"><img  src="{{ STATIC_URL }}img/icon/View-32.png"></a>
 								      {% endif %}
 								      <td id="manage_value">
 								      	{% if form.formType.autherize_number == form.status %}
-										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/View-32.png">
+										<a id="manage_value_link" href="/form/{{form.id}}"><img src="{{ STATIC_URL }}img/icon/Checkbox-32.png">
 										</a>
 								      	{% endif %}
 								      </td>
