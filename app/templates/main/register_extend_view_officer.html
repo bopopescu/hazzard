@@ -103,6 +103,13 @@
 			     
 			        window.open("/file/{{file.reportAnalysis.id}}");
 			});
+			{% if not file.planButton %}
+			$('#planButton').attr("disabled", "disabled");
+			{% endif %}
+			$('#planButton').click(function(e){
+			     
+			        window.open("/file/{{file.planButton.id}}");
+			});
 			
 		});
 	</script>
@@ -281,11 +288,10 @@
 
 										
 									<p class="checkboxLabel">
-									  <input id="permit_doc_check" class="checkbox"type="checkbox" value="check">
 									  ใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
 									  <!-- <div class="input-append infoRight"> -->
 									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
-									     <button id="permitButton" name="permitButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									     <button id="permitButton" name="permitButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									 <!-- </div> -->
 								    </p></br></br>
 									
@@ -293,10 +299,7 @@
 									<p class="checkboxLabel">
 									  
 									  สำเนาบัตรประชาชน / สำเนาใบสำคัญประจำคนต่างด้าว
-									  <div id="ID_doc" class="input-append infoRight">
-									    
-									     <button id="idButton" name="idButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
+									    <button id="idButton" name="idButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 								    </p></br></br>
 
 
@@ -304,14 +307,14 @@
 									 
 									  สำเนาหนังสือรับรองการจดทะเบียนเป็นนิติบุคคล
 									   
-									     <button id="personButton" name="personButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
-									 </div>
+									     <button id="personButton" name="personButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
+									
 									</p></br></br>	
 
 									<p class="checkboxLabel">
 									 
 									  หนังสือมอบอำนาจ(กรณีที่มีการมอบอำนาจ)
-									   <button id="subButton" name="subButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="subButton" name="subButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
@@ -320,14 +323,14 @@
 									 
 									  รายการข้อมูลเพื่อการขึ้นทะเบียนวัตถุอันตราย
 									ตามที่กรมวิชาการเกษตรประกาศกำหนดจำนวน 6 ชุด
-									   <button id="listButton" name="listButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="listButton" name="listButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
 										<p class="checkboxLabel">
 									 
 									  แผนการทดลองประสิทธิภาพ และพิษตกค้าง จำนวน 6 ชุด
-									   <button id="planButton" name="planButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="planButton" name="planButton" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
@@ -335,21 +338,21 @@
 										<p class="checkboxLabel">
 									 
 									 ตัวอย่างเอกสารหรือภาพถ่ายแสดงลักษณะหีบห่อหรือภาชนะบรรจุ
-									   <button id="SampleCon" name="SampleCon" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="SampleCon" name="SampleCon" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
 										<p class="checkboxLabel">
 									 
 									 ตัวอย่างฉลากและใบแทรก
-									   <button id="Sampleinsert" name="Sampleinsert" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="Sampleinsert" name="Sampleinsert" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
 										<p class="checkboxLabel">
 									 
 									 รายงานผลการวิเคราะห์ตัวอย่างวัตถุอันตราย
-									   <button id="reportAnalysis" name="reportAnalysis" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
+									   <button id="reportAnalysis" name="reportAnalysis" class="btn btn-warning infoRight" type="button" style="height:30px;">ดูเอกสาร</button>
 									    
 									</p></br></br>
 
@@ -360,8 +363,6 @@
 									
 
 
-
-								</div><!--doc zone-->
 								<div class="button buttonView">
 									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
 									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>

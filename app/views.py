@@ -6,12 +6,12 @@ from django.http import HttpResponse ,HttpResponseRedirect,Http404
 from app.models import Form,User,FormType,Autherize_order,Role,FileUpload
 import xmltodict
 import hashlib
-# import boto
+import boto
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
 from django.conf import settings
-# from boto.s3.connection import S3Connection
-# from boto.s3.key import Key
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
 import mimetypes
 
 import Image
@@ -22,6 +22,7 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+<<<<<<< HEAD
 def count_year(request):
 
     ##YEAR ( EDIT REQUEST YEAR )
@@ -2531,6 +2532,8 @@ def pdf_holdEND(request,form_id):
     response.write(pdf)
     return response
 ###
+=======
+>>>>>>> 4ce82135cbb4655a33e1703b3dab7c28609c0386
 
 @never_cache
 def index(request):
@@ -2726,7 +2729,9 @@ def create_form(request,formtype_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -2772,12 +2777,15 @@ def modify_form(request,form_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
 @never_cache
 def extend_form(request,form_id):
+<<<<<<< HEAD
 	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
@@ -2802,10 +2810,37 @@ def extend_form(request,form_id):
 		#hold
 		if(form_obj.formType.id == 13):
 			return render(request,'main/hold_extend_request_customer.html',context)
+=======
+    if('user_id' not in request.session):
+        return HttpResponseRedirect("/")
+    user_obj = User.objects.get(pk=request.session['user_id'])
+    form_obj = Form.objects.get(pk=form_id)
+    if(form_obj.user != user_obj):
+        context = {'message':'Permission Denied','user':user_obj}
+        return render(request,'main/message.html',context)
+    if(request.method != 'POST'):
+        date = timezone.now().date()
+        data = xmltodict.parse(form_obj.data)['xml']
+        context = {'form':form_obj,'data':data,'date':date,'user':user_obj}
+
+        #register
+        if(form_obj.formType.id == 1):
+            return render(request,'main/register_extend_request_customer.html',context)
+        #produce
+        if(form_obj.formType.id == 5):
+            return render(request,'main/produce_extend_request_customer.html',context)
+        #import
+        if(form_obj.formType.id == 9):
+            return render(request,'main/import_extend_request_customer.html',context)
+        #hold
+        if(form_obj.formType.id == 13):
+            return render(request,'main/hold_extend_request_customer.html',context)
+>>>>>>> 4ce82135cbb4655a33e1703b3dab7c28609c0386
         #export
         if(form_obj.formType.id == 17):
             return render(request,'main/export_extend_request_customer.html',context)
 
+<<<<<<< HEAD
 	formType_obj = FormType.objects.get(name=request.POST['form_type'])
 	info = '<xml>'
 	for key in request.POST:
@@ -2821,6 +2856,25 @@ def extend_form(request,form_id):
 		uploadFile(request,form,key)	
 	context = {'message':'Form have been Saved.','user':user_obj}
 	return render(request,'main/message.html',context)
+=======
+    formType_obj = FormType.objects.get(name=request.POST['form_type'])
+    info = '<xml>'
+    for key in request.POST:
+        value = request.POST[key]
+        info += '<'+key+'>'+value+'</'+key+'>'
+    info += '<form_id>'+form_id+'</form_id>'
+    info += '</xml>'
+    print(info)
+    form = Form(user=user_obj,formType=formType_obj,data=info,status=0,date=timezone.now())
+    form.save()
+    for key in request.FILES.iterkeys():
+        print(key)
+        if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	  
+    context = {'message':'Form have been Saved.','user':user_obj}
+    return render(request,'main/message.html',context)
+>>>>>>> 4ce82135cbb4655a33e1703b3dab7c28609c0386
 
 @never_cache
 def substitute_form(request,form_id):
@@ -2863,7 +2917,9 @@ def substitute_form(request,form_id):
 	form.save()
 	for key in request.FILES.iterkeys():
 		print(key)
-		uploadFile(request,form,key)	
+		if(uploadFile(request,form,key) == 0):
+			context = {'message':'Invalid Filetype.','user':user_obj}
+			return render(request,'main/message.html',context)	
 	context = {'message':'Form have been saved.','user':user_obj}
 	return render(request,'main/message.html',context)
 
@@ -3104,11 +3160,18 @@ def uploadFile(request,form_obj,uploadType):
 	filetype = filetemp[len(filetemp)-1]
 	key = str(form_obj.id)+'_'+str(form_obj.user.id)+'_'+uploadType+'.'+filetype
 	content = file.read()
-	k = store_in_s3(filename, content,key)
+	try:
+		k = store_in_s3(filename, content,key)
+	except:
+		alreadyUp = FileUpload.objects.filter(form=form_obj)
+		for i in alreadyUp:
+			i.delete()
+		form_obj.delete()
+		return 0
 	p = FileUpload(key=k,form=form_obj,uploadType=uploadType)
 	p.save()
 	print(p.key)
-	return
+	return 1
 
 def showfile(request,file_id):
 	if('user_id' not in request.session):
