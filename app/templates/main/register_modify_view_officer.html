@@ -41,7 +41,7 @@
 			});
 
 			{% if not file.permitButton %}
-			$('#permitButton').attr("disabled", "disabled");
+			$('#permitButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#permitButton').click(function(e){
 			     
@@ -49,7 +49,7 @@
 			});
 
 			{% if not file.idButton %}
-			$('#idButton').attr("disabled", "disabled");
+			$('#idButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#idButton').click(function(e){
 			     
@@ -57,7 +57,7 @@
 			});
 
 			{% if not file.taxButton %}
-			$('#taxButton').attr("disabled", "disabled");
+			$('#taxButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#taxButton').click(function(e){
 			     
@@ -65,7 +65,7 @@
 			});
 
 			{% if not file.personButton %}
-			$('#personButton').attr("disabled", "disabled");
+			$('#personButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#personButton').click(function(e){
 			     
@@ -73,7 +73,7 @@
 			});
 
 			{% if not file.subButton %}
-			$('#subButton').attr("disabled", "disabled");
+			$('#subButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#subButton').click(function(e){
 			     
@@ -81,7 +81,7 @@
 			});
 
 			{% if not file.envidenceButton %}
-			$('#envidenceButton').attr("disabled", "disabled");
+			$('#envidenceButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#envidenceButton').click(function(e){
 			     
@@ -179,27 +179,27 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p>วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" placeholder="{{ form.date.date.day }}">
+									<p>วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox" value="{{ form.date.date.day }}">
 									
-									<p>เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" placeholder="{{ form.date.date.day }}">
+									<p>เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox" value="{{ form.date.date.day }}">
 									
-									<p>ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" placeholder="{{ form.date.date.year }}">
+									<p>ปี</p><input readonly type="TEXT" class="form-control" id="yearBox" value="{{ form.date.date.year }}">
 									
 
 								</div>
 							<!-- </div> -->
 							<div class="form-group infoLeft">	
-								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" placeholder="{{data.form_id}}">	
+								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input readonly type="TEXT" class="form-control" name="codeBox" id="codeBox" value="{{data.form_id}}">	
 							</div>
 
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" placeholder="{{ data.nameBox }}">
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" id="nameBox" value="{{ data.nameBox }}">
 								
-								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" placeholder="{{ data.ageBox}}"><p> ปี </p>
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" id="ageBox" value="{{ data.ageBox}}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" placeholder="{{ data.regionBox}}">
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" id="regionBox" value="{{ data.regionBox}}">
 								
 
 							</div>
@@ -210,57 +210,57 @@
 
 							<div class="form-group infoLeft">
 
-									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" id="code_taxBox" placeholder="{{data.code_taxBox}}">
+									<p>เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" id="code_taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p>สถานที่ติดต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p>ตั้งอยู่บ้านเลขที่</p>
-								<input disabled type="TEXT" class="form-control" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="address_contactBox" value="{{data.address_contactBox}}">
 								
 
 								<p>หมู่ที่</p>
-								<input disabled type="TEXT" class="form-control" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input disabled type="TEXT" class="form-control" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 
 								<p>ถนน</p>
-								<input disabled type="TEXT" class="form-control" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input disabled type="TEXT" class="form-control" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="district_contactBox" value="{{data.district_contactBox}}">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input disabled type="TEXT" class="form-control" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="canton_contactBox" value="{{data.canton_contactBox}}">
 
 
 								<p>จังหวัด</p>
-								<input disabled type="TEXT" class="form-control" id="provice_contactBox" placeholder="{{data.provice_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="provice_contactBox" value="{{data.provice_contactBox}}">
 
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input disabled type="TEXT" class="form-control" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="zip_contactBox" value="{{data.zip_contactBox}}">
 
 								<p>โทรศัพท์</p>
-								<input disabled type="TEXT" class="form-control" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								
 								</br>
 								<p>โทรสาร</p>
-								<input disabled type="TEXT" class="form-control" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input readonly type="TEXT" class="form-control" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
 							
 								<!-- <p>Email address</p>
-								<input disabled type="TEXT" class="form-control" id="email_contactBox" placeholder="{{data.email_contactBox}}" > -->
+								<input readonly type="TEXT" class="form-control" id="email_contactBox" value="{{data.email_contactBox}}" > -->
 								
 								</br>
 
 								<p> รายการที่แก้ไขขอการเปลี่ยนแปลง</p>
-								<textarea disabled id="descriptionBox" style="font-size:20px; width:565px; height:200px;" style="margin-top:40px;" placeholder="{{data.descriptionBox}}"></textarea>
+								<textarea readonly id="descriptionBox" style="font-size:20px; width:565px; height:200px;" style="margin-top:40px;" value="">{{data.descriptionBox}}</textarea>
 
 
 								</br></br>

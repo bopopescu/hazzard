@@ -43,7 +43,7 @@
 
 
 			{% if not file.permitButton %}
-			$('#permitButton').attr("disabled", "disabled");
+			$('#permitButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#permitButton').click(function(e){
 			     
@@ -51,7 +51,7 @@
 			});
 
 			{% if not file.idButton %}
-			$('#idButton').attr("disabled", "disabled");
+			$('#idButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#idButton').click(function(e){
 			     
@@ -59,7 +59,7 @@
 			});
 
 			{% if not file.personButton %}
-			$('#personButton').attr("disabled", "disabled");
+			$('#personButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#personButton').click(function(e){
 			     
@@ -67,7 +67,7 @@
 			});
 
 			{% if not file.subButton %}
-			$('#subButton').attr("disabled", "disabled");
+			$('#subButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#subButton').click(function(e){
 			     
@@ -75,7 +75,7 @@
 			});
 
 			{% if not file.listButton %}
-			$('#listButton').attr("disabled", "disabled");
+			$('#listButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#listButton').click(function(e){
 			     
@@ -83,7 +83,7 @@
 			});
 
 			{% if not file.planButton %}
-			$('#planButton').attr("disabled", "disabled");
+			$('#planButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#planButton').click(function(e){
 			     
@@ -91,7 +91,7 @@
 			});
 
 			{% if not file.SampleCon %}
-			$('#SampleCon').attr("disabled", "disabled");
+			$('#SampleCon').attr("readonly", "readonly");
 			{% endif %}
 			$('#SampleCon').click(function(e){
 			     
@@ -99,7 +99,7 @@
 			});
 
 			{% if not file.Sampleinsert %}
-			$('#Sampleinsert').attr("disabled", "disabled");
+			$('#Sampleinsert').attr("readonly", "readonly");
 			{% endif %}
 			$('#Sampleinsert').click(function(e){
 			     
@@ -107,7 +107,7 @@
 			});
 
 			{% if not file.reportAnalysis %}
-			$('#reportAnalysis').attr("disabled", "disabled");
+			$('#reportAnalysis').attr("readonly", "readonly");
 			{% endif %}
 			$('#reportAnalysis').click(function(e){
 			     
@@ -115,7 +115,7 @@
 			});
 
 			{% if not file.containerButton %}
-			$('#containerButton').attr("disabled", "disabled");
+			$('#containerButton').attr("readonly", "readonly");
 			{% endif %}
 			$('#containerButton').click(function(e){
 			     
@@ -211,27 +211,27 @@
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des infoRight">
 									
-									<p >วันที่</p><input disabled type="TEXT" class="form-control" id="dayBox" value="{{ form.date.date.day }}">
+									<p >วันที่</p><input readonly type="TEXT" class="form-control" id="dayBox" value="{{ form.date.date.day }}">
 									
-									<p >เดือน</p><input disabled type="TEXT" class="form-control" id="monthBox" value="{{ form.date.date.month }}">
+									<p >เดือน</p><input readonly type="TEXT" class="form-control" id="monthBox" value="{{ form.date.date.month }}">
 									
-									<p >ปี</p><input disabled type="TEXT" class="form-control" id="yearBox" value="{{ form.date.date.year }}">
+									<p >ปี</p><input readonly type="TEXT" class="form-control" id="yearBox" value="{{ form.date.date.year }}">
 									
 
 								</div>
 							<!-- </div> -->
 
 							<!-- <div class="form-group infoLeft">	
-								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input disabled type="TEXT" class="form-control" name="codeBox" id="codeBox" value="{{form.id}}">	
+								<p > ใบอนุญาต ขึ้นทะเบียนวัตถุอันตราย เลขที่</p><input readonly type="TEXT" class="form-control" name="codeBox" id="codeBox" value="{{form.id}}">	
 							</div> -->
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input disabled type="TEXT" class="form-control" id="nameBox" value="{{ data.nameBox }}">
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" id="nameBox" value="{{ data.nameBox }}">
 								
-								<p>อายุ</p><input disabled type="TEXT" class="form-control" id="ageBox" value="{{ data.ageBox }}"><p> ปี </p>
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" id="ageBox" value="{{ data.ageBox }}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input disabled type="TEXT" class="form-control" id="regionBox" value="{{ data.regionBox }}">
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control" id="regionBox" value="{{ data.regionBox }}">
 								
 
 							</div>
@@ -241,60 +241,60 @@
 
 							<div class="form-group infoLeft">
 
-									<p >เลขประจำตัวผู้เสียภาษีอากร</p><input disabled type="TEXT" class="form-control" id="code-taxBox" value="{{data.code_taxBox}}">
+									<p >เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" id="code-taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 								
 								<p  >สถานที่ติดต่อผู้ขอขึ้นทะเบียน</p>
 
 								<p  >ตั้งอยู่บ้านเลขที่</p>
-								<input disabled type="TEXT" class="form-control" id="address_contactBox" value="{{ data.address_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="address_contactBox" value="{{ data.address_contactBox }}">
 								
 
 								<p >หมู่ที่</p>
-								<input disabled type="TEXT" class="form-control" id="mo_contactBox" value="{{ data.mo_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="mo_contactBox" value="{{ data.mo_contactBox }}">
 
 								<p >ตรอก/ซอย</p>
-								<input disabled type="TEXT" class="form-control" id="soi_contactBox" value="{{ data.soi_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="soi_contactBox" value="{{ data.soi_contactBox }}">
 
 								<br/>
 
 
 								<p  >ถนน</p>
-								<input disabled type="TEXT" class="form-control" id="street_contactBox" value="{{ data.street_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="street_contactBox" value="{{ data.street_contactBox }}">
 
 								<p  >ตำบล/แขวง</p>
-								<input disabled type="TEXT" class="form-control" id="district_contactBox" value="{{ data.district_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="district_contactBox" value="{{ data.district_contactBox }}">
 								<br/>
 
 								<p>อำเภอ/เขต</p>
-								<input disabled type="TEXT" class="form-control" id="canton_contactBox" value="{{ data.canton_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="canton_contactBox" value="{{ data.canton_contactBox }}">
 
 								<p>จังหวัด</p>
-								<input disabled type="TEXT" class="form-control" id="province_contactBox" value="{{ data.province_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="province_contactBox" value="{{ data.province_contactBox }}">
 
 								</br>
 
 								<p>รหัสไปรษณีย์</p>
-								<input disabled type="TEXT" class="form-control" id="zip_contactBox" value="{{ data.zip_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="zip_contactBox" value="{{ data.zip_contactBox }}">
 
 
 								<p>โทรศัพท์</p>
-								<input disabled type="TEXT" class="form-control" id="mobile_contactBox" value="{{ data.mobile_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="mobile_contactBox" value="{{ data.mobile_contactBox }}">
 								<br/>
 
 								<p>โทรสาร</p>
-								<input disabled type="TEXT" class="form-control" id="fax_contactBox" value="{{ data.fax_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="fax_contactBox" value="{{ data.fax_contactBox }}">
 
 								<!-- <p>Email address</p>
-								<input disabled type="TEXT" class="form-control" id="email_contactBox" value=" {{ data.email_contactBox }}">
+								<input readonly type="TEXT" class="form-control" id="email_contactBox" value=" {{ data.email_contactBox }}">
  -->
 								</br>
 								</br>
 									<p> ขึ้นทะเบียนวัตถุอันตราย </p>
-									<p> ชนิดที่  </p><input disabled type="TEXT" class="type" id="typeBox" name="typeBox" value="{{data.typeBox}}">
+									<p> ชนิดที่  </p><input readonly type="TEXT" class="type" id="typeBox" name="typeBox" value="{{data.typeBox}}">
 
-									<p> เพื่อ  </p> <input disabled type="TEXT" class="to" id="toBox" name="toBox" value="{{data.toBox}}">
+									<p> เพื่อ  </p> <input readonly type="TEXT" class="to" id="toBox" name="toBox" value="{{data.toBox}}">
 									</br>
 						
 									</p>
@@ -304,36 +304,36 @@
 								</br></br>
 								
 									<p>๑.ชื่อวัตถุอันตราย</p>
-									<input disabled type="TEXT" class="form-control" id="hazardous_nameBox" value="{{ data.hazardous_nameBox }}">
+									<input readonly type="TEXT" class="form-control" id="hazardous_nameBox" value="{{ data.hazardous_nameBox }}">
 
 								</br>
 									<p>๒.สูตรอัตราส่วนผสมและลักษณะ</p>
-									<input disabled type="TEXT" class="form-control" id="formulaBox" value="{{ data.formulaBox }}">
+									<input readonly type="TEXT" class="form-control" id="formulaBox" value="{{ data.formulaBox }}">
 
 								</br>
 									<p>๓.ชื่อทางการค้าหรือหมายเลขรหัส</p>
-									<input disabled type="TEXT" class="form-control" id="marketingBox" value="{{ data.marketingBox }}">
+									<input readonly type="TEXT" class="form-control" id="marketingBox" value="{{ data.marketingBox }}">
 
 								</br>
 									<p> ๔.ชื่อผู้ผลิตและแหล่งผลิต</p>
-									<input disabled type="TEXT" class="form-control" id="producerBox" value="{{ data.producerBox }}">
+									<input readonly type="TEXT" class="form-control" id="producerBox" value="{{ data.producerBox }}">
 
 								</br>
 									<p> ๕.ชื่อผู้นำเข้า</p>
-									<input disabled type="TEXT" class="form-control" id="importerBox" value="{{ data.importerBox }}">
+									<input readonly type="TEXT" class="form-control" id="importerBox" value="{{ data.importerBox }}">
 
 								</br>
 									<p> ๖.ชื่อผู้จำหน่าย/ ผู้จัดจำหน่าย</p>
-									<input disabled type="TEXT" class="form-control" id="seller_nameBox" value="{{ data.seller_nameBox }}"
+									<input readonly type="TEXT" class="form-control" id="seller_nameBox" value="{{ data.seller_nameBox }}"
 									>
 
 								</br>
 									<p> ๗.ชนิดและลักษณะหับห่อหรือภาชนะบรรจุ พร้อมทั้งขนาดบรรจุ</p>
-									<input disabled type="TEXT" class="form-control" id="package_nameBox" value="{{ data.package_nameBox }}">
+									<input readonly type="TEXT" class="form-control" id="package_nameBox" value="{{ data.package_nameBox }}">
 
 								</br>
 									<p> ๘.ประเภทของการใช้</p>
-									<input disabled type="TEXT" class="form-control" id="type_usingBox" value="{{ data.type_usingBox }}">
+									<input readonly type="TEXT" class="form-control" id="type_usingBox" value="{{ data.type_usingBox }}">
 
 								</br></br>
 									<p> เอกสารที่และตัวอย่างที่ต้องส่งประกอบการขึ้นทะเบียน </p>
@@ -343,7 +343,7 @@
 									  <!-- <input id="permit_doc_check" class="checkbox"type="checkbox" value="check"> -->
 									  ใบสำคัญการขึ้นทะเบียนวัตถุอันตราย
 									  <div class="input-append infoRight">
-									    <!-- <input disabled type="TEXT" style="width:200px; height:30px;">  -->
+									    <!-- <input readonly type="TEXT" style="width:200px; height:30px;">  -->
 									     <button id="permitButton" name="permitButton" class="btn btn-warning" type="button" style="height:30px;">ดูเอกสาร</button>
 									 </div>
 								    </p></br></br>

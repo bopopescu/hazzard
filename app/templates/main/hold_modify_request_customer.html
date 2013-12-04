@@ -140,13 +140,13 @@
 
 
 						<div class="form-group infoleft">
-									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" value="{{form.id}}">
+									<p>ใบอนุญาตเลขที่</p><input readonly type="TEXT" class="form-control" name="orderBox" id="orderBox" value="{{form.id}}">
 								</div>
 
 								<br/>
 
 							<!-- <div class="form-group infoLeft">
-								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" value="{{data.codeBox}}">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input readonly type="TEXT" class="form-control" id="codeBox" name="codeBox" value="{{data.codeBox}}">
 							</div>
  -->
 							
@@ -252,22 +252,14 @@
 								<p>ชื่อผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบสำหรับการเก็บรักษา/การใช้รับจ้าง</p>
 									<br><p>( ในกรณีที่มีประกาศฯ ออกตามความมาตรา ๒๐ (๒) แห่งพระราชบัญญัติวัตถุอันตราย</p>
 									<br><p>พ.ศ.๒๕๓๕ กำหนดให้ต้องมีผู้เชี่ยวชาญหรือบุคลากรเฉพาะรับผิดชอบฯ )</p>
-								<textarea id = "specialistBox" name="specialistBox" style="margin-top:10px; margin-left:10; font-size:20px; width:565px; height:100px;" value="{{data.specialistBox}}" ></textarea>
+								<textarea id = "specialistBox" name="specialistBox" style="margin-top:10px; margin-left:10; font-size:20px; width:565px; height:100px;" value="" >{{data.specialistBox}}</textarea>
 
 								<br/>
 								<p>ขออนุญาตมีไว้ในครอบครองซึ่งวัตถุอันตราย โดยมีวัตถุประสงค์ในการครอบครองเพื่อ</p>
+								<input type="TEXT"readonly class="form-control" id="to_storage"name="to_storage" value="{{data.to_storage}}">
 
 								<br>
-								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
-								 <input checked type="radio" id="sell" name="radio"  value="sell_value" style = "margin-right: 5px;"> ขาย
-
-								  <input type="radio" id="shipping" name="radio" value="shipping_value" style = "margin-right: 5px;"> ขนส่ง
-
-								  <input type="radio" id="use" name="radio"  value="use_value" style = "margin-right: 5px;"> ใช้
-
-
-								</p>
-
+								
 								
 
 							
@@ -285,7 +277,7 @@
 
 								<br>
 								<p >ปริมาณการครอบครองรวมสูงสุด</p>
-								<input type="TEXT" class="form-control" id="seller_nameBox"name="seller_nameBox" value="{{data.seller_nameBox}}" style = "width: 100px">
+								<input type="TEXT" class="form-control" id="quantityBox"name="quantityBox" value="{{data.quantityBox}}" style = "width: 100px">
 
 								<br>
 								<p >พื้นที่เฉพาะในส่วนของการครอบครองรวมสูงสุด</p>
