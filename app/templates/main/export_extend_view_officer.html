@@ -137,38 +137,38 @@
 				<h1> คำขอต่ออายุใบอนุญาตส่งออกวัตถุอันตราย</h1>
 				<h2> วอ.๙	 </h2>
 		
-				<form action method="post">
+				<form>
 					
 							<!-- <div class="form-group"> -->
 								<div class="form-inline date_des">
 									
-									<p>วันที่</p><input readonly type="TEXT" class="form-control" name="dayBox" id="dayBox" placeholder="{{date.day}}">
+									<p >วันที่</p><input readonly type="TEXT" class="form-control"  name="dayBox" id="dayBox" value="{{form.date.date.day}}">
 									
-									<p>เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" placeholder="{{date.month}}">
+									<p >เดือน</p><input readonly type="TEXT" class="form-control" name="monthBox" id="monthBox" value="{{form.date.date.month}}">
 									
-									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" placeholder="{{date.year}}">
+									<p>ปี</p><input readonly type="TEXT" class="form-control" name="yearBox" id="yearBox" value="{{form.date.date.year}}">
 									
 
 								</div>
 							<!-- </div> -->
 						<div class="form-group infoleft">
-									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" placeholder="{{form.id}}">
+									<p>ใบอนุญาตเลขที่</p><input disabled type="TEXT" class="form-control" name="orderBox" id="orderBox" value="{{form.id}}">
 								</div>
 
 								<br/>
 <!-- 
 							<div class="form-group infoLeft">
-								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" placeholder="{{data.codeBox}}">
+								<p>ใบสำคัญการขึ้นทะเบียนเลขที่</p><input disabled type="TEXT" class="form-control" id="codeBox" name="codeBox" value="{{data.codeBox}}">
 							</div> -->
 
 							
 							<div class="form-group infoRight">
 								
-								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" placeholder="{{data.nameBox}}">
+								<p>ข้าพเจ้า</p><input readonly type="TEXT" class="form-control" name="nameBox" id="nameBox" value="{{data.nameBox}}">
 								
-								<p>อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" placeholder="{{data.ageBox}}"><p> ปี </p>
+								<p>อายุ</p><input readonly type="TEXT" class="form-control" name="ageBox" id="ageBox" value="{{data.ageBox}}"><p> ปี </p>
 								
-								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control"  name="regionBox" id="regionBox" placeholder="{{data.regionBox}}">
+								<p>สัญชาติ</p><input readonly type="TEXT" class="form-control"  name="regionBox" id="regionBox" value="{{data.regionBox}}">
 								
 
 							</div>
@@ -179,80 +179,80 @@
 
 							<div class="form-group infoLeft">
 
-								<p>เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" placeholder="{{data.code_taxBox}}">
+								<p>เลขประจำตัวผู้เสียภาษีอากร</p><input readonly type="TEXT" class="form-control" name="code_taxBox" id="code_taxBox" value="{{data.code_taxBox}}">
 
 								</br>
 
 								<p>สถานที่ติดต่อข้าพเจ้าตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" placeholder="{{data.address_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="address_contactBox" id="address_contactBox" value="{{data.address_contactBox}}">
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" placeholder="{{data.mo_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mo_contactBox" id="mo_contactBox" value="{{data.mo_contactBox}}">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" placeholder="{{data.soi_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="soi_contactBox" id="soi_contactBox" value="{{data.soi_contactBox}}">
 
 								<br/>
 
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" placeholder="{{data.street_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="street_contactBox" id="street_contactBox" value="{{data.street_contactBox}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" placeholder="{{data.district_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="district_contactBox" id="district_contactBox" value="{{data.district_contactBox}}">
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" placeholder="{{data.canton_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="canton_contactBox" id="canton_contactBox" value="{{data.canton_contactBox}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" placeholder="{{data.province_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="province_contactBox" id="province_contactBox" value="{{data.province_contactBox}}">
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" placeholder="{{data.zip_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="zip_contactBox" id="zip_contactBox" value="{{data.zip_contactBox}}">
 
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" placeholder="{{data.mobile_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="mobile_contactBox" id="mobile_contactBox" value="{{data.mobile_contactBox}}">
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" placeholder="{{data.fax_contactBox}}">
+								<input readonly type="TEXT" class="form-control" name="fax_contactBox" id="fax_contactBox" value="{{data.fax_contactBox}}">
 
 								<br/>
 								
 								<p>สถานที่เก็บรักษาวัตถุอันตราย</p>
 								<p>ชื่อ</p>
-								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" placeholder="{{data.name_storage}}">
+								<input readonly type="TEXT" class="form-control" name="name_storage" id="name_storage" value="{{data.name_storage}}">
 								</br>
 
 								<p>ตั้งอยู่เลขที่</p>
-								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" placeholder="{{data.address_storage}}" style="width:60px;">
+								<input readonly type="TEXT" class="form-control" name="address_storage" id="address_storage" value="{{data.address_storage}}" style="width:60px;">
 								
 								<p>หมู่ที่</p>
-								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" placeholder="{{data.mo_storage}}" style="width:60px;">
+								<input readonly type="TEXT" class="form-control" name="mo_storage" id="mo_storage" value="{{data.mo_storage}}" style="width:60px;">
 
 								<p>ตรอก/ซอย</p>
-								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" placeholder="{{data.soi_storage}}" style="width:200px">
+								<input readonly type="TEXT" class="form-control" name="soi_storage" id="soi_storage" value="{{data.soi_storage}}" style="width:200px">
  
 								<br/>
 								<p>ถนน</p>
-								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" placeholder="{{data.street_storage}}">
+								<input readonly type="TEXT" class="form-control" name="street_storage" id="street_storage" value="{{data.street_storage}}">
 
 								<p>ตำบล/แขวง</p>
-								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" placeholder="{{data.district_storage}}">
+								<input readonly type="TEXT" class="form-control" name="district_storage" id="district_storage" value="{{data.district_storage}}">
 								
 								<br/>
 								<p>อำเภอ/เขต</p>
-								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" placeholder="{{data.canton_storage}}">
+								<input readonly type="TEXT" class="form-control" name="canton_storage" id="canton_storage" value="{{data.canton_storage}}">
 								
 								<p>จังหวัด</p>
-								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" placeholder="{{data.province_storage}}">
+								<input readonly type="TEXT" class="form-control" name="province_storage" id="province_storage" value="{{data.province_storage}}">
 								
 								<br/>
 								<p>รหัสไปรษณีย์</p>
-								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" placeholder="{{data.zip_storage}}">
+								<input readonly type="TEXT" class="form-control" name="zip_storage" id="zip_storage" value="{{data.zip_storage}}">
 
 								<p>โทรศัพท์</p>
-								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" placeholder="{{data.mobile_storage}}">
+								<input readonly type="TEXT" class="form-control" name="mobile_storage" id="mobile_storage" value="{{data.mobile_storage}}">
 								<br/>
 								<p>โทรสาร</p>
-								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" placeholder="{{data.fax_storage}}">
+								<input readonly type="TEXT" class="form-control" name="fax_storage" id="fax_storage" value="{{data.fax_storage}}">
 								<br/>
 
 								<!-- <div class="choose_permit_doc">
@@ -302,7 +302,7 @@
 								</br><br> -->
 								
 								<!-- <p>ใบอนุญาตเลขที่</p>
-								<input type="TEXT" style="width:370px;" class="form-control" name="extend_doc_number" id="extend_doc_number" placeholder=""></br> -->
+								<input type="TEXT" style="width:370px;" class="form-control" name="extend_doc_number" id="extend_doc_number" value=""></br> -->
 								
 								<p>พร้อมกันนี้ข้าพเจ้าได้ส่ง</p><br><br>
 								<p style="margin-top: 0px; margin-left: 30px; margin-right: 30px; padding-top:0px;">
@@ -315,10 +315,25 @@
 								<p>มาเพื่อประกอบการพิจารณาด้วย</p>
 								
 
-								<div class="button buttonRequest">
-								<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;">อนุมัติ</button>
-
-								<button id="reset" class="btn btn-inverse" type="reset" style="height:30px; width: 80px;">ไม่อนุมัต</button>
+								<div class="button buttonView">
+									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
+									<a href="approved/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
+									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="#identify_customer_modal">  ไม่อนุมัติ </button>
+									<div id="identify_customer_modal" class="modal hide fade">
+										 <form id="modal-form">
+										  <div class="modal-header">
+										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										    <h3>  เหตุผลที่เอกสารผู้ประกอบการไม่ผ่านการอนุมัติ </h3>
+										  </div>
+										  <div class="modal-body">
+										    <textarea id="comment" name="comment" style="margin-top:20px; width:450px; height:200px;"> </textarea>
+										  </div>
+										  <div class="modal-footer">
+										    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">  ยกเลิก </button>
+										    <button class="btn btn-primary" id="modal-button"> แจ้งผู้ประกอบการ </button>
+										  </div>
+										</form>
+									</div>
 								</div>
 										
 							</div><!-- infoleft -->
