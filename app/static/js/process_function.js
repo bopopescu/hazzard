@@ -207,64 +207,58 @@ function extend_produceFunction(){
 }
 
 function substitue_produceFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('substitue_produceProcess_list').style.display = 'block';
 
 }
 
 function reportPersonFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('report_person').style.display = 'block';
 }
 
 function reportCountryFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('report_country').style.display = 'block';
 }
 
 function reportPlaceFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('report_placeKeep').style.display = 'block';
 }
 
 
 function reportNameFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('report_name').style.display = 'block';
 
 }
 
 function reportLogFunction(){
-	hideOfficerFunction();
+	hideAllReport();
 	document.getElementById('report_log').style.display = 'block';
 }
 
-	
-function queryperson(){
-	// hideOfficerFunction();
-	document.getElementById('table_person').style.display = 'block';
-}
 
-function querycountry(){
-	// hideOfficerFunction();
-	document.getElementById('table_country').style.display = 'block';
-}
+function hideAllReport(){
+	document.getElementById('report_person').style.display = 'none';
+	document.getElementById('report_placeKeep').style.display = 'none';
+	document.getElementById('report_country').style.display = 'none';
+	document.getElementById('report_name').style.display = 'none';
 
-function queryplace(){
-	// hideOfficerFunction();
-	document.getElementById('table_place').style.display = 'block';
-}
-	
 
-function queryname(){
-	// hideOfficerFunction();
-	document.getElementById('table_name').style.display = 'block';
 }
+// function report_yearFunction(){
+
 	
 function querylog(){
-	// hideOfficerFunction();
-	document.getElementById('table_log').style.display = 'block';
-}
-	
+	document.getElementById('report_log').style.display = 'block';
 
+}
+
+	
+function showTab(){
+	document.getElementById('tab').style.display = 'block';
+
+}
 

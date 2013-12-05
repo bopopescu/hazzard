@@ -1,4 +1,4 @@
- ด<!DOCTYPE>
+ <!DOCTYPE>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -159,16 +159,11 @@
 
 							<li><a href="#collapse-reportperson"  data-toggle="collapse" data-parent="process">  รายงาน</a>
 								<ul id="collapse-reportperson" class="collapse sublist">
-									    	<li><a href="#report_person" onclick="reportPersonFunction()">  รายงานเกี่ยวกับ จำนวนการขอ </a></li>
+									    	<li><a href="" >  รายงานเกี่ยวกับ รายงานประจำปี </a></li>
 
-									    	<li><a href="#report_country" onclick="reportCountryFunction()">  รายงานเกี่ยวกับ ประเทศที่ผลิตวัตถุอันตราย </a></li>
+									    	<li><a href="" >  รายงานบุคคล </a></li>
 
-									    	<li><a href="#report_placeKeep" onclick="reportPlaceFunction()">  รายงานเกี่ยวกับ เก็บวัตถุอันตราย </a></li>
-
-									    	<li><a href="#report_name" onclick="reportNameFunction()">  รายงานเกี่ยวกับ ชื่อวัตถุอันตราย </a></li>
-
-									    	<li><a href="#report_log" onclick="reportLogFunction()">  รายงานเกี่ยวกับ การขอ </a></li>
-											
+									    	
 											
 										</ul>
 
@@ -1293,195 +1288,9 @@
 					</div>
 
 
-					<div id="report_person" class="span6" style="margin-top:20px;" >
-						<H1> รายงาน แสดงจำนวนคนของแต่ละ กระบวนการ</H1> 
-						
-						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" Onclick = "queryperson()" > ค้นหา </button>
-
-								
-						<div id="table_person">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="process_head"> กระบวนการ </th>
-								      <th id="count_head"> จำนวนคน </th>
-
-
-								      
-								      <!-- <th id="link_head"> Link with </th> -->
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="process_value"> </td>
-								      <td id="count_value"> </td>
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
- 
- 					<div id="report_country" class="span6" style="margin-top:20px;" >
-						<H1> รายงาน แสดงประเทศที่ผลิตวัตถุอันตราย</H1> 
-						
-						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" Onclick = "querycountry()" > ค้นหา </button>
-
-								
-						<div id="table_country">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="country_head"> ประเทศ </th>
-								      <th id="count_head"> จำนวน </th>
-
-
-								      
-								      <!-- <th id="link_head"> Link with </th> -->
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="country_value"> </td>
-								      <td id="count_value"> </td>
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
- 
- 					<div id="report_placeKeep" class="span6" style="margin-top:20px;" >
-						<H1> รายงาน แสดงจังหวัดที่เก็บวัตถุอันตราย</H1> 
-						
-						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" Onclick = "queryplace()" > ค้นหา </button>
-
-								
-						<div id="table_place">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="place_head"> จังหวัด </th>
-								      <th id="permit_head"> เลชใบอนุญาต </th>
-
-
-								      
-								      <!-- <th id="link_head"> Link with </th> -->
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="place_value"> </td>
-								      <td id="permit_value"> </td>
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
-
-					<div id="report_name" class="span6" style="margin-top:20px;" >
-						<H1> รายงาน แสดงชื่อวัตถุอันตราย</H1> 
-						
-						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" Onclick = "queryname()" > ค้นหา </button>
-
-								
-						<div id="table_name">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="name_head"> ชื่อ </th>
-								      <th id="permit_head"> เลชใบอนุญาต </th>
-
-
-								      
-								      <!-- <th id="link_head"> Link with </th> -->
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="name_value"> </td>
-								      <td id="permit_value"> </td>
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
 
 
  
- 					<div id="report_log" class="span6" style="margin-top:20px;" >
-						<H1> รายงาน ประวัติการขอ</H1> 
-						
-						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" Onclick = "querylog()" > ค้นหา </button>
-
-								
-						<div id="table_log">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="name_head"> ชื่อวัตถุ </th>
-								      <th id="permit_head"> เลชใบอนุญาต </th>
-								      <th id="process_head"> ประเภท </th>
-
-
-								      
-								      <!-- <th id="link_head"> Link with </th> -->
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="name_value"> </td>
-								      <td id="permit_value"> </td>
-								      <th id="process_value">  </th>
-
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
  
  
 
