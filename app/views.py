@@ -631,7 +631,70 @@ def showfile(request,file_id):
                             force_http=True)
 	print url
 	return HttpResponseRedirect(url)
+def reportByYear(request,year):
+    if('user_id' not in request.session):
+        return HttpResponseRedirect("/")
+    user_obj = User.objects.get(pk=request.session['user_id'])
+    if('officer' not in user_obj.role.name):
+        context = {'message':'Permission Denied','user':user_obj}
+        return render(request,'main/message.html',context)
+    forms = Form.objects.all()
+    forms_select = []
+    for i in forms:
+        print i.date.year
+        if(str(i.date.year) == str(year)):
+            print 'gg'
+            forms_select.append(i)
+    contr = {}
+    province = {}
+    name = {}
+    print forms_select
+    for i in forms_select:
+        data = xmltodict.parse(i.data)['xml']
+        try:
+            cont_box = data['countryBox']
+        except:
+            print "GG"
+        try:
+            province_box = data['province_storage']
+        except:
+            print "GG"
+        try:
+            name_box = data['hazardous_nameBox']
+        except:
+            print "GG"
+        if(cont_box):
+            if(cont_box not in contr):
+                contr[cont_box] = []
+            contr[cont_box].append(i)
+        if(province_box):
+            if(province_box not in province):
+                province[province_box] = []
+            province[province_box].append(i)
+        if(name_box):
+            if(name_box not in name):
+                name[name_box] = []
+            name[name_box].append(i)
 
+    print forms_select
+    print contr
+    print province
+    print name
+    return HttpResponse("OK")
+    def reportByUsername(request,username):
+    if('user_id' not in request.session):
+        return HttpResponseRedirect("/")
+    user_obj = User.objects.get(pk=request.session['user_id'])
+    if('officer' not in user_obj.role.name):
+        
+    try:
+        user_target = User.objects.get(username=username)
+    except:
+        #not found
+        context = {'message':'User '+username+' not found.','user':user_obj}
+        return render(request,'main/message.html',context)
+    forms = Form.objects.filter(user=user_target)
+    return HttpResponse('OK')
 
 
 
