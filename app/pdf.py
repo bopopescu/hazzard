@@ -23,6 +23,32 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 
+def count_year(request):
+
+    ##YEAR ( EDIT REQUEST YEAR )
+    YEAR = '2013'
+    count = 0
+    response = HttpResponse(content_type='text/html')
+    for f in Form.objects.all():
+        data = xmltodict.parse(f.data)['xml']
+        if data['yearBox'] == str(YEAR):
+            count += 1
+    response.write("<html><body>OK count : "+str(count)+"</body></html>")
+    return response
+
+def country_list(request):
+    countries = []
+    response = HttpResponse(content_type='text/html')
+    for f in Form.objects.all():
+        print f.formType.name
+        if 'import' in str(f.formType.name) or 'export' in f.formType.name:
+            data = xmltodict.parse(f.data)['xml']
+            if 'countryBox' in data:
+                countries.append(data['countryBox'])
+    print countries
+    response.write("<html><body>ok "+str(countries)+"</body></html>")
+    return response
+
 ### pdf produce###
 def pdf_produce(request,form_id):
 
@@ -56,7 +82,9 @@ def pdf_produce(request,form_id):
         # context = {'form':form_obj,'data':data,'user':user_obj}
         # return render(request,'main/register_permit.html',context)
 
-
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
@@ -71,7 +99,7 @@ def pdf_produce(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produce.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     
@@ -195,9 +223,9 @@ def pdf_produce(request,form_id):
 
    
 
-    p.drawString(219, 145, u"c")  #
-    p.drawString(284, 145, u"d")  #
-    p.drawString(355, 145, u"e")  #
+    p.drawString(219, 145, data['dayBox'])  #
+    p.drawString(284, 145, data['monthBox'])  #
+    p.drawString(355, 145, str(form_obj.expire.year))  #
 
 
     p.showPage()
@@ -234,6 +262,9 @@ def pdf_import(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
@@ -243,7 +274,7 @@ def pdf_import(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_import.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(150, 590, form_id)  #ใบเลขที่
@@ -369,9 +400,9 @@ def pdf_import(request,form_id):
         p.drawString(219, 267, u"")  #
 
 
-    p.drawString(219, 190, u"c")  #
-    p.drawString(284, 190, u"d")  #
-    p.drawString(355, 190, u"e")  #
+    p.drawString(219, 190, data['dayBox'])  #
+    p.drawString(284, 190, data['monthBox'])  #
+    p.drawString(355, 190, str(form_obj.expire.year))  #
 
 
     #
@@ -413,6 +444,9 @@ def pdf_export(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
 
@@ -428,7 +462,7 @@ def pdf_export(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_export.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(150, 590, form_id)  #ใบเลขที่
@@ -581,7 +615,9 @@ def pdf_hold(request,form_id):
 
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
-
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
@@ -591,7 +627,7 @@ def pdf_hold(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_hold.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(150, 590, form_id)  #ใบเลขที่
@@ -778,12 +814,12 @@ def pdf_hold(request,form_id):
 
 
 
-    p.drawString(215, 111, u"d")  #
-    p.drawString(280, 111, u"d")  #
-    p.drawString(386, 111, u"d")  #
-	
-	
-	
+    p.drawString(215, 111, data['dayBox'])  #
+    p.drawString(280, 111, data['monthBox'])  #
+    p.drawString(386, 111, str(form_obj.expire.year))  #
+    
+    
+    
     #
     # p.drawString(255, 374, u"y")  #
     # Close the PDF object cleanly.
@@ -820,7 +856,9 @@ def pdf_register(request,form_id):
 
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
-
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
@@ -830,7 +868,7 @@ def pdf_register(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
 
@@ -958,9 +996,9 @@ def pdf_register(request,form_id):
         p.drawString(320, 314, u"")  #
 
 
-    p.drawString(317, 272, u"date")  #
-    p.drawString(392, 272, u"date")  #
-    p.drawString(475, 272, u"date")  #
+    p.drawString(317, 272, data['dayBox'])  #
+    p.drawString(392, 272, data['monthBox'])  #
+    p.drawString(475, 272, str(form_obj.expire.year))  #
 
 
     # p.drawString(255, 374, u"y")  #
@@ -998,6 +1036,9 @@ def pdf_sample_produce(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -1174,9 +1215,9 @@ def pdf_sample_produce(request,form_id):
 
      
 
-    p.drawString(205, 255, u"date")  #
-    p.drawString(269, 255, u"date")  #
-    p.drawString(386, 255, u"date")  #
+    p.drawString(205, 255, data['dayBox'])  #
+    p.drawString(269, 255, data['monthBox'])  #
+    p.drawString(386, 255, str(form_obj.expire.year))  #
 
 
     #
@@ -1215,6 +1256,9 @@ def pdf_sample_import(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -1223,7 +1267,7 @@ def pdf_sample_import(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     if(data.willing_radioButt == "import"):
         p.drawImage(ImageReader("image/permit_sample_import.jpg"), 0, 0, width=595, height=842)
     elif(data.willing_radioButt == "produce"):
@@ -1431,6 +1475,9 @@ def pdf_register_extend(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -1438,7 +1485,7 @@ def pdf_register_extend(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register_extend.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(406, 755, form_id)  #ใบเลขที่
@@ -1455,7 +1502,7 @@ def pdf_register_extend(request,form_id):
     p.drawString(247, 660, u".")  
     p.drawString(252, 660, data['monthBox'])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    p.drawString(272, 660, str(form_obj.expire.year))  #expire
 
     p.drawString(367, 660, u"")  #list
     
@@ -1497,6 +1544,9 @@ def pdf_register_sub(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
@@ -1505,7 +1555,7 @@ def pdf_register_sub(request,form_id):
     p.setFont('THSarabunNew',16)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
-   
+
     ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register_sub.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
@@ -1514,9 +1564,9 @@ def pdf_register_sub(request,form_id):
     # p.drawString(425, 555, u"")  #กระทรวง
 
 
-    p.drawString(340, 538, data['dayBox'])  # วันที่
-    p.drawString(416, 538, data['monthBox'])  #
-    p.drawString(484, 538, data['yearBox'])  #
+    p.drawString(340, 538, str(form_obj.expire.day))  # วันที่
+    p.drawString(416, 538, str(form_obj.expire.month))  #
+    p.drawString(484, 538, str(form_obj.expire.year-1))  #
 
     # if( data['codeBox']  !=  None):
     #     p.drawString(244, 525, data['codeBox'])  #
@@ -1572,130 +1622,12 @@ def pdf_register_sub(request,form_id):
         p.drawString(440, 459, data['district_contactBox'])  #
     elif( data['district_contactBox']  ==  None):
         p.drawString(440, 459, u"")  #
-    
-    # if( data['province_contactBox']  !=  None):
-    #     p.drawString(112, 443, data['province_contactBox'])  #
-    # elif( data['province_contactBox']  ==  None):
-    #     p.drawString(112, 443, u"")  #
-
-    if( data['zip_contactBox']  !=  None):
-        p.drawString(251, 443, data['zip_contactBox'])  #
-    elif( data['zip_contactBox']  ==  None):
-        p.drawString(251, 443, u"")  #
-
-    if( data['mobile_contactBox']  !=  None):
-        p.drawString(362, 443, data['mobile_contactBox'])  #
-    elif( data['mobile_contactBox']  ==  None):
-        p.drawString(362, 443, u"")  #
-
-    if( data['fax_contactBox']  !=  None):
-        p.drawString(112, 427, data['fax_contactBox'])  #
-    elif( data['fax_contactBox']  ==  None):
-        p.drawString(112, 427, u"")  #
-
-
-    # if( data['name_storage']  !=  None):
-    #     p.drawString(270, 410, data['name_storage'])  #
-    # elif( data['name_storage']  ==  None):
-    #     p.drawString(270, 410, u"")  #
-
-    # if( data['address_storage']  !=  None):
-    #     p.drawString(118, 395, data['address_storage'])  #
-    # elif( data['address_storage']  ==  None):
-    #     p.drawString(118, 395, u"")  #
-
-    # if( data['mo_storage']  !=  None):
-    #     p.drawString(195, 395, data['mo_storage'])  #
-    # elif( data['mo_storage']  ==  None):
-    #     p.drawString(195, 395, u"")  #
-
-    # if( data['soi_storage']  !=  None):
-    #     p.drawString(283, 395, data['soi_storage'])  #
-    # elif( data['soi_storage']  ==  None):
-    #     p.drawString(283, 395, u"")  #
-
-    # if( data['street_storage']  !=  None):
-    #     p.drawString(424, 395, data['street_storage'])  #
-    # elif( data['street_storage']  ==  None):
-    #     p.drawString(424, 395, u"")  #
-
-    # if( data['canton_storage']  !=  None):
-    #     p.drawString(140, 380, data['canton_storage'])  #
-    # elif( data['canton_storage']  ==  None):
-    #     p.drawString(140, 380, u"")  #
-
-    # if( data['district_storage']  !=  None):
-    #     p.drawString(320, 380, data['district_storage'])  #
-    # elif( data['district_storage']  ==  None):
-    #     p.drawString(320, 380, u"")  #
-
-
-    # if( data['province_storage']  !=  None):
-    #     p.drawString(443, 380, data['province_storage'])  #
-    # elif( data['province_storage']  ==  None):
-    #     p.drawString(442, 380, u"")  #
-
-
-    # if( data['zip_storage']  !=  None):
-    #     p.drawString(153, 365, data['zip_storage'])  #
-    # elif( data['zip_storage']  ==  None):
-    #     p.drawString(153, 365, u"")  #
-
-    # if( data['mobile_storage']  !=  None):
-    #     p.drawString(278, 365, data['mobile_storage'])  #
-    # elif( data['mobile_storage']  ==  None):
-    #     p.drawString(278, 365, u"")  #
-
-    # if( data['fax_storage']  !=  None):
-    #     p.drawString(419, 365, data['fax_storage'])  #
-    # elif( data['fax_storage']  ==  None):
-    #     p.drawString(419, 365, u"")  
-
-    # if( data['specialistBox']  !=  None):
-    #     p.drawString(131, 303, data['specialistBox'])  #
-    # elif( data['specialistBox']  ==  None):
-    #     p.drawString(131, 303, u"")  #
-
-    # if( data['quantityBox']  !=  None):
-    #     p.drawString(228, 269, data['quantityBox'])  #
-    # elif( data['quantityBox']  ==  None):
-    #     p.drawString(228, 269, u"")  #
-
-    # if( data['maxArea_storage']  !=  None):
-    #     p.drawString(294, 252, data['maxArea_storage'])  #
-    # elif( data['maxArea_storage']  ==  None):
-    #     p.drawString(294, 252, u"")  #
-
-    # if( data['to_storage']  !=  None):
-    #     p.drawString(400, 237, data['to_storage'])  #
-    # elif( data['to_storage']  ==  None):
-    #     p.drawString(400, 237, u"")  #
-
-    # if( data['hazardous_nameBox']  !=  None):
-    #     p.drawString(316, 222, data['hazardous_nameBox'])  #
-    # elif( data['hazardous_nameBox']  ==  None):
-    #     p.drawString(316, 222, u"")  #
-
-    # if( data['marketingBox']  !=  None):
-    #     p.drawString(271, 207, data['marketingBox'])  #
-    # elif( data['marketingBox']  ==  None):
-    #     p.drawString(271, 207, u"")  #
-
-    # if( data['codeBox']  !=  None):
-    #     p.drawString(172, 192, data['codeBox'])  #
-    # elif( data['codeBox']  ==  None):
-    #     p.drawString(172, 192, u"")  #
-
-    # if( data['codeBox']  !=  None):
-    #     p.drawString(172, 192, data['codeBox'])  #
-    # elif( data['codeBox']  ==  None):
-    #     p.drawString(172, 192, u"")  #
 
 
 
-    p.drawString(215, 111, u"d")  #
-    p.drawString(280, 111, u"d")  #
-    p.drawString(386, 111, u"d")  #
+    p.drawString(215, 111, data['dayBox'])  #
+    p.drawString(280, 111, data['monthBox'])  #
+    p.drawString(386, 111, str(form_obj.expire.year))  #
     
     
     
@@ -1726,6 +1658,10 @@ def pdf_produce_extend(request,form_id):
     if(form_obj.status != form_obj.formType.autherize_number):
         context = {'message':'Permission Denied','user':user_obj}
         return render(request,'main/message.html',context)
+
+    date = timezone.now()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="produce_extend.pdf"'
@@ -1736,11 +1672,12 @@ def pdf_produce_extend(request,form_id):
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
+
     p.setFont('THSarabunNew',16)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produce_extend.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(406, 755, form_id)  #ใบเลขที่
@@ -1757,7 +1694,7 @@ def pdf_produce_extend(request,form_id):
     p.drawString(247, 660, u".")  
     p.drawString(252, 660, data['monthBox'])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    p.drawString(272, 660, str(form_obj.expire.year))  #expire
 
     p.drawString(367, 660, u"")  #list
     
@@ -1799,6 +1736,10 @@ def pdf_export_extend(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
+
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -1806,7 +1747,7 @@ def pdf_export_extend(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_export_extend.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(406, 755, form_id)  #ใบเลขที่
@@ -1823,7 +1764,7 @@ def pdf_export_extend(request,form_id):
     p.drawString(247, 660, u".")  
     p.drawString(252, 660, data['monthBox'])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    p.drawString(272, 660, str(form_obj.expire.year))  #expire
 
     p.drawString(367, 660, u"")  #list
     
@@ -1864,6 +1805,9 @@ def pdf_import_extend(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -1871,7 +1815,7 @@ def pdf_import_extend(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_import_extend.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(406, 755, form_id)  #ใบเลขที่
@@ -1884,11 +1828,11 @@ def pdf_import_extend(request,form_id):
     p.drawString(150, 660, data['yearBox'])  
 
     # p.drawString(137, 660, data[monthBox])  
-    p.drawString(235, 660, data['dayBox'])  #expire
+    p.drawString(235, 660,  data['dayBox']) #expire
     p.drawString(247, 660, u".")  
     p.drawString(252, 660, data['monthBox'])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    p.drawString(272, 660, str(form_obj.expire.year))  #expire
 
     p.drawString(367, 660, u"")  #list
 
@@ -1930,7 +1874,10 @@ def pdf_hold_extend(request,form_id):
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
     
-
+    date = timezone.now().date()
+    # data = xmltodict.parse(form_obj.data)['xml']
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     # Create the PDF object, using the BytesIO object as its "file."
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
@@ -1940,7 +1887,7 @@ def pdf_hold_extend(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_hold_extend.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(406, 755, form_id)  #ใบเลขที่
@@ -1957,7 +1904,7 @@ def pdf_hold_extend(request,form_id):
     p.drawString(247, 660, u".")  
     p.drawString(252, 660, data['monthBox'])  #expire
     p.drawString(267, 660, u".") 
-    p.drawString(272, 660, data['yearBox'])  #expire
+    p.drawString(272, 660, str(form_obj.expire.year))  #expire
 
     p.drawString(367, 660, u"")  #list
     
@@ -2001,7 +1948,10 @@ def pdf_hold_modify(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
-    
+    date = timezone.now().date()
+    # data = xmltodict.parse(form_obj.data)['xml']
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
 
     # Create the PDF object, using the BytesIO object as its "file."
     buffer = BytesIO()
@@ -2011,7 +1961,7 @@ def pdf_hold_modify(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_hold_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(466, 755, form_id)  #ใบเลขที่
@@ -2019,15 +1969,15 @@ def pdf_hold_modify(request,form_id):
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
+    p.drawString(215, 660, str(form_obj.expire.day))  #
     p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
+    p.drawString(235, 660, str(form_obj.expire.month))  #
     p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(255, 660, str(form_obj.expire.year-1))  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
+    if( data['descriptionBox'] != None ):
+        p.drawString(367, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
         p.drawString(367, 660, u"")  #list
     
 
@@ -2067,6 +2017,10 @@ def pdf_produce_modify(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    # data = xmltodict.parse(form_obj.data)['xml']
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -2074,24 +2028,24 @@ def pdf_produce_modify(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produce_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, str(form_obj.expire.day))  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, str(form_obj.expire.month))  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, str(form_obj.expire.year-1))  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"")  #list
     
 
 
@@ -2130,6 +2084,10 @@ def pdf_import_modify(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    data = xmltodict.parse(form_obj.data)['xml']
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -2137,24 +2095,25 @@ def pdf_import_modify(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_import_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, str(form_obj.expire.day))  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, str(form_obj.expire.month))  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, str(form_obj.expire.year-1))  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"")  #list
+    
 
 
     #
@@ -2199,24 +2158,24 @@ def pdf_export_modify(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_export_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, str(form_obj.expire.day))  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, str(form_obj.expire.month))  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, str(form_obj.expire.year-1))  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
     
 
 
@@ -2255,6 +2214,10 @@ def pdf_register_modify(request,form_id):
     pdfmetrics.registerFont(TTFont('THSarabunNew', './font/THSarabunNew.ttf'))
     addMapping('THSarabunNew', 0, 0, 'THSarabunNew')
 
+    date = timezone.now().date()
+    # data = xmltodict.parse(form_obj.data)['xml']
+    form_obj.expire = date.replace(year=date.year + 1)
+    form_obj.save()
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     data = xmltodict.parse(form_obj.data)['xml']
@@ -2262,24 +2225,24 @@ def pdf_register_modify(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_register_modify.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
-    p.drawString(466, 755, form_id)  #ใบเลขที่
+    p.drawString(386, 755, form_id)  #ใบเลขที่
 
 
     
     # p.drawString(137, 660, data[monthBox])  
-    # p.drawString(215, 660, data['dayBox'])  #
-    p.drawString(230, 660, u".")  
-    # p.drawString(235, 660, data['monthBox'])  #
-    p.drawString(250, 660, u".") 
-    # p.drawString(255, 660, data['yearBox'])  #
+    p.drawString(210, 660, str(form_obj.expire.day))  #
+    p.drawString(225, 660, u".")  
+    p.drawString(230, 660, str(form_obj.expire.month))  #
+    p.drawString(245, 660, u".") 
+    p.drawString(250, 660, str(form_obj.expire.year-1))  #
 
-    if( data['changeArea'] != None ):
-        p.drawString(367, 660, data['changeArea'])  #list
-    elif( data['changeArea'] == None ):
-        p.drawString(367, 660, u"")  #list
+    if( data['descriptionBox'] != None ):
+        p.drawString(317, 660, data['descriptionBox'])  #list
+    elif( data['descriptionBox'] == None ):
+        p.drawString(317, 660, u"asdd")  #list
     
 
 
@@ -2326,7 +2289,7 @@ def pdf_exportEND(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_exportEnd.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(290, 740, u"a")  #
@@ -2392,7 +2355,7 @@ def pdf_importEND(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_importEnd.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(290, 740, u"a")  #
@@ -2458,7 +2421,7 @@ def pdf_produceEND(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_produceEnd.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(290, 740, u"a")  #
@@ -2540,7 +2503,7 @@ def pdf_holdEND(request,form_id):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
    
-   	## DRAW BACKGROUND IMAGE ##
+    ## DRAW BACKGROUND IMAGE ##
     p.drawImage(ImageReader("image/permit_holdEnd.jpg"), 0, 0, width=595, height=842)
     ## DRAW STRINGS ##
     p.drawString(290, 740, u"a")  #
@@ -2568,4 +2531,3 @@ def pdf_holdEND(request,form_id):
     buffer.close()
     response.write(pdf)
     return response
-###
