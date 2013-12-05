@@ -23,7 +23,6 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 
-
 @never_cache
 def index(request):
 	if('user_id' not in request.session):
@@ -274,10 +273,8 @@ def modify_form(request,form_id):
 
 @never_cache
 def extend_form(request,form_id):
-
-
     if('user_id' not in request.session):
-        return HttpResponseRedirect("/")  
+        return HttpResponseRedirect("/")
     user_obj = User.objects.get(pk=request.session['user_id'])
     form_obj = Form.objects.get(pk=form_id)
     if(form_obj.user != user_obj):
