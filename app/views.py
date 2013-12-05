@@ -321,7 +321,6 @@ def extend_form(request,form_id):
 			return render(request,'main/message.html',context)	  
     context = {'message':'Form have been Saved.','user':user_obj}
     return render(request,'main/message.html',context)
-# >>>>>>> 4ce82135cbb4655a33e1703b3dab7c28609c0386
 
 @never_cache
 def substitute_form(request,form_id):
