@@ -681,20 +681,23 @@ def reportByYear(request,year):
     print province
     print name
     return HttpResponse("OK")
-    def reportByUsername(request,username):
-    if('user_id' not in request.session):
-        return HttpResponseRedirect("/")
-    user_obj = User.objects.get(pk=request.session['user_id'])
-    if('officer' not in user_obj.role.name):
-        
-    try:
-        user_target = User.objects.get(username=username)
-    except:
-        #not found
-        context = {'message':'User '+username+' not found.','user':user_obj}
-        return render(request,'main/message.html',context)
-    forms = Form.objects.filter(user=user_target)
-    return HttpResponse('OK')
+
+def reportByUsername(request,username):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+	try:
+		user_target = User.objects.get(username=username)
+	except:
+	#not found
+		context = {'message':'User '+username+' not found.','user':user_obj}
+		return render(request,'main/message.html',context)
+	forms = Form.objects.filter(user=user_target)
+	return HttpResponse('OK')
+
 
 
 
