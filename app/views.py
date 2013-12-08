@@ -22,11 +22,6 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-def checkForLoggedIn(request):
-	if('user_id' not in request.session):
-		return False
-	return True
-
 @never_cache
 def index(request):
 	if('user_id' not in request.session):
@@ -73,7 +68,7 @@ def profile(request):
 
 @never_cache
 def approvement(request):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
@@ -95,7 +90,7 @@ def approvement(request):
 
 @never_cache
 def user_approve(request, user_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
@@ -111,7 +106,7 @@ def user_approve(request, user_id):
 
 @never_cache
 def reject_user(request, user_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
@@ -145,7 +140,7 @@ def register(request):
 
 @never_cache
 def list(request):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' in user_obj.role.name):
@@ -172,7 +167,7 @@ def list(request):
 
 @never_cache
 def create_form(request,formtype_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if(request.method != 'POST'):
@@ -229,7 +224,7 @@ def create_form(request,formtype_id):
 
 @never_cache
 def modify_form(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -325,7 +320,7 @@ def extend_form(request,form_id):
 
 @never_cache
 def substitute_form(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -373,7 +368,7 @@ def substitute_form(request,form_id):
 
 @never_cache
 def approve_form(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	print(user_obj.role.name)
@@ -452,7 +447,7 @@ def approve_form(request,form_id):
 
 @never_cache	
 def approved(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
@@ -472,7 +467,7 @@ def approved(request,form_id):
 
 @never_cache
 def reject(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
@@ -491,7 +486,7 @@ def reject(request,form_id):
 
 @never_cache
 def form_show(request,form_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -621,7 +616,7 @@ def uploadFile(request,form_obj,uploadType):
 	return 1
 
 def showfile(request,file_id):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	file_obj = FileUpload.objects.get(pk=file_id)
@@ -702,7 +697,7 @@ def countReport(report_map):
 	return result
 
 def reportByUsername(request,username):
-	if(checkForLoggedIn):
+	if('user_id' not in request.session):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
