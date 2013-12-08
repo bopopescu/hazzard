@@ -22,25 +22,21 @@
 		<script type="text/javascript"src="{{STATIC_URL}}js/process_function.js"></script>
 
 		<style type="text/css">
-		
 			@font-face {
-					    font-family: 'thai_sans_lite';
-					    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.eot');
-					    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-					         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-					         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
-					    font-weight: normal;
-					    font-style: normal;
-
+			    font-family: 'thai_sans_lite';
+			    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.eot');
+			    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+			         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+			         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+			    font-weight: normal;
+			    font-style: normal;
 			}
-
 		</style>
 	</head>
 
 	<body style="overflow: auto;">
 		<!--header-->
 		<header>
-			
 			<div class="header_block" >
 					<nav class="head_nav">
 
@@ -55,7 +51,7 @@
 							<img src="{{STATIC_URL}}img/hazard.min.png">
 
 						</li>
-						<li><a href="/approvement" style="margin-left: 200px;">อนุมัติผู้ใช้</a>
+						<li><a href="/list" style="margin-left: 200px;">เอกสาร</a>
 							
 						</li>
 
@@ -66,161 +62,20 @@
 						<p style="display:inline" name="name">{{user.username}} </p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
-
 				</nav>	
 			</div>
 		</header>
 
-			<div class="content" style="min-height:100px;">
-					<div class="subContent" style="margin-left:50px; margin-right:50px;">
-						<form action="" method="get"  enctype="multipart/form-data">{% csrf_token %}
-							<div>
-									<H1> กรุณาระบุปีที่ต้องการ </H1> 
-									<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="" style="height:30px;">
-									<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" href="/display" onclick="showTab()"> ค้นหา </button>
-							 </div>
-						</form>
-
-					<div id="tab" >
-						
-						<ul class="nav nav-tabs" style="font-size:20px;">
-							
-							<li class="active"><a href="#report_person" onclick="reportPersonFunction()" 
-								data-toggle="tab">  รายงานเกี่ยวกับ จำนวนการขอ</a></li>
-
-							<li><a href="#report_country" onclick="reportCountryFunction()" data-toggle="tab">  รายงานเกี่ยวกับ ประเทศที่ผลิตวัตถุอันตราย </a></li>
-
-							<li><a href="#report_placeKeep" onclick="reportPlaceFunction()" data-toggle="tab">  รายงานเกี่ยวกับ เก็บวัตถุอันตราย </a></li>
-
-							<li><a href="#report_name" onclick="reportNameFunction()" data-toggle="tab">  รายงานเกี่ยวกับ ชื่อวัตถุอันตราย </a></li>
-
-							<!-- <li><a href="#report_log" onclick="reportLogFunction()" data-toggle="tab"> รายงานเกี่ยวกับ การขอ </a></li> -->
-											
-						</ul>
-
-						
+		<div class="content" style="min-height:100px;">
+			<div class="subContent" style="margin-left:50px; margin-right:50px;">
+				<form action="" method="get"  enctype="multipart/form-data">{% csrf_token %}
+					<div>
+						<H1> กรุณาระบุปีที่ต้องการ </H1> 
+						<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="" style="height:30px;">
+						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" href="/report"> ค้นหา </button>
 					</div>
-
-
-					<div id="report_person" class="span6" style="margin:100px;" >
-						<H1> รายงาน แสดงจำนวนคนของแต่ละ กระบวนการ</H1> 
-			
-						<div id="table_person">
-							 <table class="table table-striped" >
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="process_head"> กระบวนการ </th>
-								      <th id="count_head"> จำนวนคน </th>
-
-
-						
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  
-								    <tr>
-								      
-								      <td id="process_value"> </td>
-								      <td id="count_value"> </td>
-								      
-								    </tr>
-								    
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
- 
- 					<div id="report_country" class="span6" style="margin:100px;">
-						<H1> รายงาน แสดงประเทศที่ผลิตวัตถุอันตราย</H1> 
-						
-					
-						<div id="table_country">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="country_head"> ประเทศ </th>
-								      <th id="count_head"> จำนวน </th>
-
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  	{% for name, val in country %}
-								    <tr>
-								      
-								      <td id="country_value">{{ name }}</td>
-								      <td id="count_value">{{ val }}</td>
-								      
-								    </tr>
-								    {% endfor %}
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
- 
- 					<div id="report_placeKeep" class="span6" style="margin:100px;" >
-						<H1> รายงาน แสดงจังหวัดที่เก็บวัตถุอันตราย</H1> 
-						
-						<div id="table_place">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="place_head"> จังหวัด </th>
-								      <th id="permit_head"> เลชใบอนุญาต </th>
-
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  	{% for key, val in province %}
-								    <tr>
-								      
-								      <td id="place_value">{{ name }}</td>
-								      <td id="permit_value">{{ val }}</td>
-								      
-								    </tr>
-								    {% endfor %}
-								  </tbody>
-							</table>
-
-						</div>
-
-					</div>
-
-					<div id="report_name" class="span6" style="margin:100px;" >
-						<H1> รายงาน แสดงชื่อวัตถุอันตราย</H1> 
-					
-						<div id="table_name">
-							 <table class="table table-striped">
-	  							<thead>
-								    <tr>
-								      <!-- <th id="No_head"> No. </th> -->
-								      <th id="name_head"> ชื่อ </th>
-								      <th id="permit_head"> เลชใบอนุญาต </th>
-								    </tr>
-								 </thead>
-
-								   <tbody>
-								  	{% for key, val in province %}
-								    <tr>
-								      
-								      <td id="name_value">{{ name }}</td>
-								      <td id="permit_value">{{ val }}</td>
-								      
-								    </tr>
-								    {% endfor %}
-								  </tbody>
-							</table>
-						</div>
-					</div>
-				</div>			
-			</div>
+				</form>
+			</div>			
+		</div>
 	</body>
+</html>

@@ -632,8 +632,16 @@ def showfile(request,file_id):
 	return HttpResponseRedirect(url)
 
 def reportByYear(request):
+	if('user_id' not in request.session):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+
 	if(not request.GET):
 		return render(request, 'main/reportYear.html')
+	return reportByYearResult(request)
 
 def reportByYearResult(request):
     if('user_id' not in request.session):
@@ -652,11 +660,15 @@ def reportByYearResult(request):
     contr = {}
     province = {}
     name = {}
+    form_type = {}
     for i in forms_select:
         data = xmltodict.parse(i.data)['xml']
+        if(i.formType.name not in form_type):
+        	form_type[i.formType.name] = []
+        form_type[i.formType.name].append(i)
+
         try:
             cont_box = data['countryBox']
-            print cont_box
             if(cont_box):
             	if(cont_box not in contr):
                 	contr[cont_box] = []
@@ -682,18 +694,29 @@ def reportByYearResult(request):
         except:
             pass
 
+    form_type_count = countReport(form_type)
     country_count = countReport(contr)
     province_count = countReport(province)
     name_count = countReport(name)
 
-    context = {'forms_select':forms_select, 'country': country_count, 'province':province_count, 'name':name_count}
-    #return render(request, 'main/reportYear.html', context)
-    return HttpResponse('OK')
+    context = {'form_type':form_type_count, 'country': country_count, 'province':province_count, 'name':name_count}
+    return render(request, 'main/reportYearResult.html', context)
 
 def countReport(report_map):
 	result = {}
 	for key, val in report_map.iteritems() :
 		result[key] = len(val)
+	print(result)
+	return result
+
+#this method is no longer used, but keep it until forever (i will delete it myself) , Thi
+def extractFormID(report_map):
+	result = {}
+	for key, val in report_map.iteritems():
+		result[key] = []
+		for val in report_map[key]:
+			result[key].append(val.id)
+	print result
 	return result
 
 def reportByUsername(request,username):

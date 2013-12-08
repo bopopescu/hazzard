@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^form/(?P<form_id>\d+)/$', views.form_show, name='show'),
     url(r'^file/(?P<file_id>\d+)/$', views.showfile, name='file'),
     url(r'^yearreport/$',views.reportByYear , name='reportByYear'),
-    url(r'^yearreport/result$',views.reportByYearResult , name='reportByYearResult'),
+    url(r'^yearreport/report$',views.reportByYearResult , name='reportByYearResult'),
 
 
     ########################## PDF STUFF ###########################

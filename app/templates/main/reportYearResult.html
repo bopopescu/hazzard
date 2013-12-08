@@ -1,0 +1,186 @@
+ <!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+		<title>Hazard Web</title>
+
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap-responsive.css">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
+
+		<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{STATIC_URL}}css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{STATIC_URL}}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
+		<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/officer_documents.css" type="text/css" media="screen" charset="utf-8"> -->
+		<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme-responsive.css" type="text/css" media="screen" charset="utf-8">
+
+		<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.js"></script>
+		<script type="text/javascript"src="{{STATIC_URL}}js/process_function.js"></script>
+
+		<style type="text/css">
+			@font-face {
+			    font-family: 'thai_sans_lite';
+			    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.eot');
+			    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+			         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+			         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+		</style>
+	</head>
+
+	<body style="overflow: auto;">
+		<!--header-->
+		<header>
+			<div class="header_block" >
+					<nav class="head_nav">
+
+					<!-- DESKTOP -->
+					<ul class="mainmenu visible-desktop visible-tablet">
+						<!-- <li class="login dropdown pull-right" style = " padding-left: 0px;"> -->
+						<li class="" style="margin-left: 50px;">
+								<a href="/"> หน้าหลัก </a>
+
+						</li>
+						<li class="logo">
+							<img src="{{STATIC_URL}}img/hazard.min.png">
+
+						</li>
+						<li><a href="/list" style="margin-left: 200px;">เอกสาร</a>
+							
+						</li>
+
+					</ul>
+
+					<div class="info_id">
+						<p style="display:inline" style="font-size:10px;"> username:</p>
+						<p style="display:inline" name="name">{{user.username}} </p>
+						<a href="/logout"> ออกจากระบบ </a>
+					</div>
+				</nav>	
+			</div>
+		</header>
+
+		<div class="content" style="min-height:100px;">
+			<div class="subContent" style="margin-left:50px; margin-right:50px;">
+				<div id="tab" style="display:block" >
+					<ul class="nav nav-tabs" style="font-size:20px;">
+						<li class="active"><a href="#report_person" onclick="reportPersonFunction()" 
+							data-toggle="tab">ประเภทของใบอนุญาต</a></li>
+
+						<li><a href="#report_country" onclick="reportCountryFunction()" data-toggle="tab">ประเทศแหล่งผลิตวัตถุอันตราย </a></li>
+
+						<li><a href="#report_placeKeep" onclick="reportPlaceFunction()" data-toggle="tab">สถานที่เก็บวัตถุอันตราย </a></li>
+
+						<li><a href="#report_name" onclick="reportNameFunction()" data-toggle="tab">ชื่อวัตถุอันตราย </a></li>
+
+						<!-- <li><a href="#report_log" onclick="reportLogFunction()" data-toggle="tab"> รายงานเกี่ยวกับ การขอ </a></li> -->			
+					</ul>
+				</div>
+
+				<div id="report_person" class="span8" >
+					<H1> ประเภทของใบอนุญาต</H1> 
+	
+					<div id="table_person">
+						 <table class="table table-striped" >
+  							<thead>
+							    <tr>
+							    	<!-- <th id="No_head"> No. </th> -->
+							    	<th id="process_head"> กระบวนการ </th>
+							    	<th id="count_head"> จำนวนผู้ขอ </th>
+							    </tr>
+							 </thead>
+						 	<tbody>
+						 		{% for name, val in form_type.items %}
+						    	<tr>
+						    		<td id="process_value">{{ name }}</td>
+						    		<td id="count_value">{{ val }}</td>
+						    	</tr>
+						    	{% endfor %}
+						 	</tbody>
+						</table>
+					</div>
+				</div>
+ 
+				<div id="report_country" class="span8">
+					<H1> ประเทศแหล่งผลิตวัตถุอันตราย</H1> 
+
+					<div id="table_country">
+						 <table class="table table-striped">
+  							<thead>
+							    <tr>
+							      <!-- <th id="No_head"> No. </th> -->
+							    	<th id="country_head"> ประเทศ </th>
+							    	<th id="count_head"> จำนวนใบอนุญาต </th>
+							    </tr>
+							</thead>
+
+							<tbody>
+								{% for name, val in country.items %}
+								<tr>
+						    		<td id="country_value">{{ name }}</td>
+						    		<td id="count_value">{{ val }}</td>
+						    	</tr>
+						    	{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+ 
+				<div id="report_placeKeep" class="span8" >
+					<H1> สถานที่เก็บวัตถุอันตรายภายในประเทศ</H1> 
+					
+					<div id="table_place">
+						<table class="table table-striped">
+  							<thead>
+							    <tr>
+							      <!-- <th id="No_head"> No. </th> -->
+							    	<th id="place_head"> จังหวัด </th>
+									<th id="permit_head"> จำนวนใบอนุญาต </th>
+							    </tr>
+							 </thead>
+						 	<tbody>
+						  		{% for key, val in province.items %}
+						    	<tr>
+						    		<td id="place_value">{{ key }}</td>
+						    		<td id="permit_value">{{ val }}</td>
+						    	</tr>
+						    	{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div id="report_name" class="span8" >
+					<H1> ชื่อวัตถุอันตรายที่ขึ้นทะเบียน</H1> 
+				
+					<div id="table_name">
+						 <table class="table table-striped">
+  							<thead>
+							    <tr>
+							    	<!-- <th id="No_head"> No. </th> -->
+							    	<th id="name_head"> ชื่อ </th>
+							    	<th id="permit_head"> จำนวนใบอนุญาต </th>
+							    </tr>
+							</thead>
+
+							<tbody>
+						 		{% for key, val in name.items %}
+								<tr>
+						    		<td id="name_value">{{ key }}</td>
+						    		<td id="permit_value">{{ val }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</body>
+</html>
