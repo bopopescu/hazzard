@@ -14,12 +14,16 @@ urlpatterns = patterns('',
     url(r'^modify/(?P<form_id>\d+)/$', views.modify_form, name='modify'),
     url(r'^extend/(?P<form_id>\d+)/$', views.extend_form, name='extend'),
     url(r'^substitute/(?P<form_id>\d+)/$', views.substitute_form, name='copy'),
-    url(r'^report/(?P<year>\d+)/$', views.reportByYear, name='reportByYear'),
     url(r'^form/(?P<form_id>\d+)/approve/$', views.approve_form, name='approve'),
     url(r'^form/(?P<form_id>\d+)/approve/approved/$', views.approved, name='approved'),
     url(r'^form/(?P<form_id>\d+)/approve/reject/$', views.reject, name='reject'),
     url(r'^form/(?P<form_id>\d+)/$', views.form_show, name='show'),
     url(r'^file/(?P<file_id>\d+)/$', views.showfile, name='file'),
+    url(r'^yearreport/$',views.reportByYear , name='reportByYear'),
+    url(r'^yearreport/result$',views.reportByYearResult , name='reportByYearResult'),
+
+
+    ########################## PDF STUFF ###########################
     #url(r'^form/(?P<form_id>\d+)/$', views.manage_form, name='submit_form'),
     url(r'^form/(?P<form_id>\d+)/pdf/$', pdf.pdf_export, name='pdf'),
     # url(r'^pdf/$',views.pdf_export , name='pdf'),

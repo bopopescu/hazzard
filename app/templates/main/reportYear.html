@@ -1,48 +1,43 @@
  <!DOCTYPE>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
-	<title>Hazard Web</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+		<title>Hazard Web</title>
 
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap-responsive.css">
-	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap-responsive.css">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap3.min.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrapTheme3.min.css"> -->
 
+		<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{STATIC_URL}}css/registration.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="{{STATIC_URL}}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
+		<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/officer_documents.css" type="text/css" media="screen" charset="utf-8"> -->
+		<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme-responsive.css" type="text/css" media="screen" charset="utf-8">
 
-	<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="{{STATIC_URL}}css/registration.css" type="text/css" media="screen" charset="utf-8">
-	<link rel="stylesheet" href="{{STATIC_URL}}css/customer-officer_documents.css" type="text/css" media="screen" charset="utf-8">
-	<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/officer_documents.css" type="text/css" media="screen" charset="utf-8"> -->
-	<link rel="stylesheet" href="{{STATIC_URL}}css/hazardTheme-responsive.css" type="text/css" media="screen" charset="utf-8">
+		<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.js"></script>
+		<script type="text/javascript"src="{{STATIC_URL}}js/process_function.js"></script>
 
-	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
-	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.js"></script>
-	<script type="text/javascript"src="{{STATIC_URL}}js/process_function.js"></script>
+		<style type="text/css">
+		
+			@font-face {
+					    font-family: 'thai_sans_lite';
+					    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.eot');
+					    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
+					         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
+					         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
+					    font-weight: normal;
+					    font-style: normal;
 
-	 
+			}
 
-	<style type="text/css">
-	
-		@font-face {
-				    font-family: 'thai_sans_lite';
-				    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.eot');
-				    src: url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.woff') format('woff'),
-				         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.ttf') format('truetype'),
-				         url('{{STATIC_URL}}fonts/thaisan/thaisanslite_r1-webfont.svg#thai_sans_literegular') format('svg');
-				    font-weight: normal;
-				    font-style: normal;
-
-		}
-
-	</style>
-</head>
+		</style>
+	</head>
 
 	<body style="overflow: auto;">
-
-
 		<!--header-->
 		<header>
 			
@@ -72,24 +67,19 @@
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
-				</nav>
-
-					
+				</nav>	
 			</div>
-
-			
-
-
 		</header>
 
 			<div class="content" style="min-height:100px;">
 					<div class="subContent" style="margin-left:50px; margin-right:50px;">
-
-					<div>
-							<H1 > กรุณาระบุปีที่ต้องการ </H1> 
-							<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="" style="height:30px;">
-							<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" onclick="showTab()"> ค้นหา </button>
-					 </div>
+						<form action="" method="get"  enctype="multipart/form-data">{% csrf_token %}
+							<div>
+									<H1> กรุณาระบุปีที่ต้องการ </H1> 
+									<input type="TEXT" class="form-control infoLeft" name="yearQ" id="yearQ" value="" style="height:30px;">
+									<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" href="/display" onclick="showTab()"> ค้นหา </button>
+							 </div>
+						</form>
 
 					<div id="tab" >
 						
@@ -160,14 +150,14 @@
 								 </thead>
 
 								   <tbody>
-								  
+								  	{% for name, val in country %}
 								    <tr>
 								      
-								      <td id="country_value"> </td>
-								      <td id="count_value"> </td>
+								      <td id="country_value">{{ name }}</td>
+								      <td id="count_value">{{ val }}</td>
 								      
 								    </tr>
-								    
+								    {% endfor %}
 								  </tbody>
 							</table>
 
@@ -190,14 +180,14 @@
 								 </thead>
 
 								   <tbody>
-								  
+								  	{% for key, val in province %}
 								    <tr>
 								      
-								      <td id="place_value"> </td>
-								      <td id="permit_value"> </td>
+								      <td id="place_value">{{ name }}</td>
+								      <td id="permit_value">{{ val }}</td>
 								      
 								    </tr>
-								    
+								    {% endfor %}
 								  </tbody>
 							</table>
 
@@ -215,33 +205,22 @@
 								      <!-- <th id="No_head"> No. </th> -->
 								      <th id="name_head"> ชื่อ </th>
 								      <th id="permit_head"> เลชใบอนุญาต </th>
-
-
 								    </tr>
 								 </thead>
 
 								   <tbody>
-								  
+								  	{% for key, val in province %}
 								    <tr>
 								      
-								      <td id="name_value"> </td>
-								      <td id="permit_value"> </td>
+								      <td id="name_value">{{ name }}</td>
+								      <td id="permit_value">{{ val }}</td>
 								      
 								    </tr>
-								    
+								    {% endfor %}
 								  </tbody>
 							</table>
-
 						</div>
-
 					</div>
-
-						
-						
-
-					
-				
 				</div>			
-				
 			</div>
 	</body>

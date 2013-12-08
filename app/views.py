@@ -631,68 +631,84 @@ def showfile(request,file_id):
                             force_http=True)
 	print url
 	return HttpResponseRedirect(url)
-def reportByYear(request,year):
+
+def reportByYear(request):
     if('user_id' not in request.session):
         return HttpResponseRedirect("/")
     user_obj = User.objects.get(pk=request.session['user_id'])
     if('officer' not in user_obj.role.name):
         context = {'message':'Permission Denied','user':user_obj}
         return render(request,'main/message.html',context)
+
+    if(not request.GET):
+    	return render(request, 'main/reportYear.html')
+
     forms = Form.objects.all()
     forms_select = []
     for i in forms:
-        print i.date.year
+        year =  request.GET['yearQ']
         if(str(i.date.year) == str(year)):
-            print 'gg'
             forms_select.append(i)
     contr = {}
     province = {}
     name = {}
-    print forms_select
     for i in forms_select:
         data = xmltodict.parse(i.data)['xml']
         try:
             cont_box = data['countryBox']
+            print cont_box
+            if(cont_box):
+            	if(cont_box not in contr):
+                	contr[cont_box] = []
+            	contr[cont_box].append(i)
         except:
-            print "GG"
+            pass
+
         try:
             province_box = data['province_storage']
+            if(province_box):
+	            if(province_box not in province):
+	                province[province_box] = []
+	            province[province_box].append(i)
         except:
-            print "GG"
+            pass
+
         try:
             name_box = data['hazardous_nameBox']
+            if(name_box):
+	            if(name_box not in name):
+	                name[name_box] = []
+	            name[name_box].append(i)
         except:
-            print "GG"
-        if(cont_box):
-            if(cont_box not in contr):
-                contr[cont_box] = []
-            contr[cont_box].append(i)
-        if(province_box):
-            if(province_box not in province):
-                province[province_box] = []
-            province[province_box].append(i)
-        if(name_box):
-            if(name_box not in name):
-                name[name_box] = []
-            name[name_box].append(i)
+            pass
 
-    print forms_select
-    print contr
-    print province
-    print name
-    return HttpResponse("OK")
-    def reportByUsername(request,username):
+    country_count = countReport(contr)
+    province_count = countReport(province)
+    name_count = countReport(name)
+
+    context = {'forms_select':forms_select, 'country': country_count, 'province':province_count, 'name':name_count}
+    #return render(request, 'main/reportYear.html', context)
+    return HttpResponse('OK')
+
+def countReport(report_map):
+	result = {}
+	for key, val in report_map.iteritems() :
+		result[key] = len(val)
+	return result
+
+
+
+def reportByUsername(request,username):
     if('user_id' not in request.session):
         return HttpResponseRedirect("/")
     user_obj = User.objects.get(pk=request.session['user_id'])
     if('officer' not in user_obj.role.name):
-        
-    try:
-        user_target = User.objects.get(username=username)
-    except:
-        #not found
-        context = {'message':'User '+username+' not found.','user':user_obj}
-        return render(request,'main/message.html',context)
+	    try:
+	        user_target = User.objects.get(username=username)
+	    except:
+	        #not found
+	        context = {'message':'User '+username+' not found.','user':user_obj}
+	        return render(request,'main/message.html',context)
     forms = Form.objects.filter(user=user_target)
     return HttpResponse('OK')
 
