@@ -79,11 +79,11 @@ function hideOfficerFunction(){
 	 document.getElementById('extend_produceProcess_list').style.display = 'none';
 	document.getElementById('substitue_produceProcess_list').style.display = 'none';
 
-	document.getElementById('report_person').style.display = 'none';
-	document.getElementById('report_country').style.display = 'none';
-	document.getElementById('report_placeKeep').style.display = 'none';
-	document.getElementById('report_name').style.display = 'none';
-	document.getElementById('report_log').style.display = 'none';
+	// document.getElementById('report_person').style.display = 'none';
+	// document.getElementById('report_country').style.display = 'none';
+	// document.getElementById('report_placeKeep').style.display = 'none';
+	// document.getElementById('report_name').style.display = 'none';
+	// document.getElementById('report_log').style.display = 'none';
 
 	
 
@@ -251,14 +251,14 @@ function hideAllReport(){
 // function report_yearFunction(){
 
 	
-function querylog(){
-	document.getElementById('report_log').style.display = 'block';
+// function querylog(){
+// 	document.getElementById('report_log').style.display = 'block';
 
-}
+// }
 
 	
-function showTab(){
-	document.getElementById('tab').style.display = 'block';
+// function showTab(){
+// 	document.getElementById('tab').style.display = 'block';
 
-}
+// }
 
