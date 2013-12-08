@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^file/(?P<file_id>\d+)/$', views.showfile, name='file'),
     url(r'^yearreport/$',views.reportByYear , name='reportByYear'),
     url(r'^yearreport/report$',views.reportByYearResult , name='reportByYearResult'),
+    url(r'^userreport/$',views.reportByUsername , name='reportByUsername'),
+    url(r'^userreport/report$',views.reportByUsernameResult , name='reportByUsernameResult'),
 
 
     ########################## PDF STUFF ###########################

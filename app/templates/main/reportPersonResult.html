@@ -84,13 +84,40 @@
 
 		<div class="content" style="min-height:100px;">
 			<div class="subContent" style="margin-left:50px; margin-right:50px;">
-				<form action="" method="get"  enctype="multipart/form-data">{% csrf_token %}
+
+				<div id="report_log" class="span8" style="display:block" >
+					<H1> ประวัติการขอใบอนุญาต</H1> 
+							
+					<div id="table_log">
+						 <table class="table table-striped">
+  							<thead>
+							    <tr>
+							      <!-- <th id="No_head"> No. </th> -->
+							      <th id="name_head"> สูตรวัตถุ </th>
+							      <th id="permit_head"> เลขใบอนุญาต </th>
+							      <th id="process_head"> ประเภท </th>
+							      <!-- <th id="link_head"> Link with </th> -->
+							    </tr>
+							 </thead>
+
+							   <tbody>
+							  	{% for val in result %}
+							    <tr>
+							      <td id="name_value">{{val.formula}}</td>
+							      <td id="permit_value">{{val.form_id}}</td>
+							      <th id="process_value">{{val.form_type}}</th>
+							    </tr>
+							    {% endfor %}
+							  </tbody>
+						</table>
+
+					</div>
+					<div class="button buttonView">
+						<button class="btn btn-inverse" style="height:30px; width: 80px;" onclick="window.location.href='/userreport'">Back</button>
 					<div>
-						<H1 > กรุณาระบุ username ที่ต้องการ </H1> 
-						<input type="TEXT" class="form-control infoLeft" name="namePerson" id="namePerson" value="" style="height:30px;">
-						<button id="submit" class="btn btn-inverse" type="submit" style="height:30px; width: 80px;" href="/report"> ค้นหา </button>
-					 </div>
-				</form>
-			</div>
+				</div>
+
+			</div>			
+			
 		</div>
 	</body>
