@@ -22,6 +22,10 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+def checkForLoggedIn(request):
+	if('user_id' not in request.session):
+		return False
+	return True
 
 @never_cache
 def index(request):
@@ -69,13 +73,13 @@ def profile(request):
 
 @never_cache
 def approvement(request):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
 		context = {'message':'Permission Denied','user':user_obj}
-		return render(request,'main/approvement_message.html',context)
-
+		return render(request,'main/message.html',context)
+		
 	if(request.method != 'POST'):
 		return render(request, 'main/approvement.html')
 
@@ -84,30 +88,30 @@ def approvement(request):
 	customer_obj = User.objects.filter(id_no=id_no, role=role_obj)
 	if(len(customer_obj) == 0):
 		context = {'message':"User with id " + id_no + " not found"}
-		return render(request,'main/approvement_message.html',context)
+		return render(request,'main/message.html',context)
 
 	context = {'user': customer_obj[0]}
 	return render(request,'main/user_approve.html',context)
 
 @never_cache
 def user_approve(request, user_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
 		context = {'message':'Permission Denied','user':user_obj}
-		return render(request,'main/approvement_message.html',context)
-
+		return render(request,'main/message.html',context)
+		
 	customer_obj = User.objects.get(id=int(user_id))
 	approved_role = Role.objects.get(name='autherize_member')
 	customer_obj.role = approved_role
 	customer_obj.save()
 	context = {'message':"User with id " + customer_obj.id_no + " approved to autherized user"}
-	return render(request,'main/approvement_message.html',context)
+	return render(request,'main/message.html',context)
 
 @never_cache
 def reject_user(request, user_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name ):
@@ -141,7 +145,7 @@ def register(request):
 
 @never_cache
 def list(request):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' in user_obj.role.name):
@@ -168,7 +172,7 @@ def list(request):
 
 @never_cache
 def create_form(request,formtype_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if(request.method != 'POST'):
@@ -225,7 +229,7 @@ def create_form(request,formtype_id):
 
 @never_cache
 def modify_form(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -321,7 +325,7 @@ def extend_form(request,form_id):
 
 @never_cache
 def substitute_form(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -369,7 +373,7 @@ def substitute_form(request,form_id):
 
 @never_cache
 def approve_form(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	print(user_obj.role.name)
@@ -448,7 +452,7 @@ def approve_form(request,form_id):
 
 @never_cache	
 def approved(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
@@ -468,7 +472,7 @@ def approved(request,form_id):
 
 @never_cache
 def reject(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	if('officer' not in user_obj.role.name):
@@ -487,7 +491,7 @@ def reject(request,form_id):
 
 @never_cache
 def form_show(request,form_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	form_obj = Form.objects.get(pk=form_id)
@@ -617,7 +621,7 @@ def uploadFile(request,form_obj,uploadType):
 	return 1
 
 def showfile(request,file_id):
-	if('user_id' not in request.session):
+	if(checkForLoggedIn):
 		return HttpResponseRedirect("/")
 	user_obj = User.objects.get(pk=request.session['user_id'])
 	file_obj = FileUpload.objects.get(pk=file_id)
@@ -633,15 +637,16 @@ def showfile(request,file_id):
 	return HttpResponseRedirect(url)
 
 def reportByYear(request):
+	if(not request.GET):
+		return render(request, 'main/reportYear.html')
+
+def reportByYearResult(request):
     if('user_id' not in request.session):
         return HttpResponseRedirect("/")
     user_obj = User.objects.get(pk=request.session['user_id'])
     if('officer' not in user_obj.role.name):
         context = {'message':'Permission Denied','user':user_obj}
         return render(request,'main/message.html',context)
-
-    if(not request.GET):
-    	return render(request, 'main/reportYear.html')
 
     forms = Form.objects.all()
     forms_select = []
@@ -696,21 +701,21 @@ def countReport(report_map):
 		result[key] = len(val)
 	return result
 
-
-
 def reportByUsername(request,username):
-    if('user_id' not in request.session):
-        return HttpResponseRedirect("/")
-    user_obj = User.objects.get(pk=request.session['user_id'])
-    if('officer' not in user_obj.role.name):
-	    try:
-	        user_target = User.objects.get(username=username)
-	    except:
-	        #not found
-	        context = {'message':'User '+username+' not found.','user':user_obj}
-	        return render(request,'main/message.html',context)
-    forms = Form.objects.filter(user=user_target)
-    return HttpResponse('OK')
+	if(checkForLoggedIn):
+		return HttpResponseRedirect("/")
+	user_obj = User.objects.get(pk=request.session['user_id'])
+	if('officer' not in user_obj.role.name):
+		context = {'message':'Permission Denied','user':user_obj}
+		return render(request,'main/message.html',context)
+	try:
+		user_target = User.objects.get(username=username)
+	except:
+	#not found
+		context = {'message':'User '+username+' not found.','user':user_obj}
+		return render(request,'main/message.html',context)
+	forms = Form.objects.filter(user=user_target)
+	return HttpResponse('OK')
 
 
 
