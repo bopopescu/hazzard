@@ -639,11 +639,12 @@ def reportByYear(request):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 
+	context = {'user': user_obj}
 	if(not request.GET):
-		return render(request, 'main/reportYear.html')
-	return reportByYearResult(request)
+		return render(request, 'main/reportYear.html', context)
+	return reportByYearResult(request, user_obj)
 
-def reportByYearResult(request):
+def reportByYearResult(request, user_obj):
     if('user_id' not in request.session):
         return HttpResponseRedirect("/")
     user_obj = User.objects.get(pk=request.session['user_id'])
@@ -699,7 +700,7 @@ def reportByYearResult(request):
     province_count = countReport(province)
     name_count = countReport(name)
 
-    context = {'form_type':form_type_count, 'country': country_count, 'province':province_count, 'name':name_count}
+    context = {'user':user_obj, 'form_type':form_type_count, 'country': country_count, 'province':province_count, 'name':name_count}
     return render(request, 'main/reportYearResult.html', context)
 
 def countReport(report_map):
@@ -707,16 +708,6 @@ def countReport(report_map):
 	for key, val in report_map.iteritems() :
 		result[key] = len(val)
 	print(result)
-	return result
-
-#this method is no longer used, but keep it until forever (i will delete it myself) , Thi
-def extractFormID(report_map):
-	result = {}
-	for key, val in report_map.iteritems():
-		result[key] = []
-		for val in report_map[key]:
-			result[key].append(val.id)
-	print result
 	return result
 
 def reportByUsername(request):
@@ -727,11 +718,12 @@ def reportByUsername(request):
 		context = {'message':'Permission Denied','user':user_obj}
 		return render(request,'main/message.html',context)
 
+	context = {'user':user_obj}
 	if(not request.GET):
-		return render(request, 'main/reportPerson.html')
-	return reportByUsernameResult(request)
+		return render(request, 'main/reportPerson.html',context)
+	return reportByUsernameResult(request, user_obj)
 
-def reportByUsernameResult(request):
+def reportByUsernameResult(request, user_obj):
 	try:
 		username = request.GET['namePerson']
 		user_target = User.objects.get(username=username)
@@ -752,7 +744,7 @@ def reportByUsernameResult(request):
 		except:
 			pass
 
-	context = {'result':result}
+	context = {'user':user_obj, 'result':result}
 	return render(request, 'main/reportPersonResult.html', context)
 
 
