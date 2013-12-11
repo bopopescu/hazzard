@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^yearreport/report$',views.reportByYearResult , name='reportByYearResult'),
     url(r'^userreport/$',views.reportByUsername , name='reportByUsername'),
     url(r'^userreport/report$',views.reportByUsernameResult , name='reportByUsernameResult'),
-
+    url(r'^approvement/(?P<user_id>\d+)/approve/$', views.user_approve, name='user_approve'),
 
     ########################## PDF STUFF ###########################
     #url(r'^form/(?P<form_id>\d+)/$', views.manage_form, name='submit_form'),

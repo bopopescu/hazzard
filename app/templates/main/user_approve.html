@@ -100,7 +100,7 @@
 
 					<div class="info_id">
 						<p style="display:inline" style="font-size:10px;"> username:</p>
-						<p style="display:inline" name="name">{{user.username}} </p>
+						<p style="display:inline" name="name">{{user.username}}</p>
 						<a href="/logout"> ออกจากระบบ </a>
 					</div>
 
@@ -129,40 +129,40 @@
 								
 								<div class="form-group">
 									<p for="nameText">ชื่อ</p>
-									<input disabled type="TEXT" class="form-control" id="nameBox" name="nameBox"
+									<input readOnly type="TEXT" class="form-control" id="nameBox" name="nameBox"
 									value="{{user.name}}">
 								</div>
 								
 								<div class="form-group">
 									<p for="emailText">E-mail</p>
-									<input disabled type="TEXT" class="form-control" id="emailBox" name="emailBox"
+									<input readOnly type="TEXT" class="form-control" id="emailBox" name="emailBox"
 									 value="{{user.email}}">
 								</div>
 
 								<p>วันเกิด</p>
 								<div class="form-inline" style="margin-top:-10px;">
 									<p class="dateRe" >วันที่</p>
-									<input disabled type="TEXT" class="form-control" id="birthdayBox"
+									<input readOnly type="TEXT" class="form-control" id="birthdayBox"
 									name="birthdayBox" value="{{user.birth_date}}">
 
 									<p class="dateRe" >เดือน</p>
-									<input disabled type="TEXT" class="form-control" id="birthmonthBox"
+									<input readOnly type="TEXT" class="form-control" id="birthmonthBox"
 									name="birthmonthBox" value="{{user.birth_month}}">
 
 									<p class="dateRe">ปี</p>
-									<input disabled type="TEXT" class="form-control" id="birthyearBox"
+									<input readOnly type="TEXT" class="form-control" id="birthyearBox"
 									name="birthyearBox" value="{{user.birth_year}}">
 
 								</div>
 
 								
 								<p>ที่อยู่</p><br/>
-								<textarea disabled type="TEXT" class="form-control" id="addressarea"
+								<textarea readOnly type="TEXT" class="form-control" id="addressarea"
 								name="addressarea">{{user.address}}</textarea>
 
 								<div class="form-inline">
 									<p class="address" >รหัสไปรษณีย์</p>
-									<input disabled type="TEXT" class="form-control" id="zip_code"
+									<input readOnly type="TEXT" class="form-control" id="zip_code"
 									name="zip_code" value="{{user.zip_code}}" style="background: #FAFAFA; border: 1px solid #96BBD4; font-size:18px;">
 								</div>
 
@@ -174,19 +174,19 @@
 						<div role="form">
 							<div class="form-group">
 								<p for="surnameText">นามสกุล</p>
-								<input disabled type="TEXT" class="form-control" id="surnameBox"
+								<input readOnly type="TEXT" class="form-control" id="surnameBox"
 								name="surnameBox"  value="{{user.surname}}">
 							</div>
 
 							<div class="form-group">
 								<p for="personText">ID No.</p>
-								<input disabled type="TEXT" class="form-control" id="personBox"
+								<input readOnly type="TEXT" class="form-control" id="personBox"
 								name="personBox" value="{{user.id_no}}">
 							</div>
 
 							<div class="form-group">
 								<p for="telText">โทรศัพท์</p>
-								<input disabled type="TEXT" class="form-control" id="telBox"
+								<input readOnly type="TEXT" class="form-control" id="telBox"
 								 name="telBox" value="{{user.phone}}">
 							</div>
 						</div>
@@ -194,7 +194,7 @@
 					<div class="button buttonView">
 									<!-- <button id="home" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> กลับหน้าหลัก </button> -->
 									<a href="{{user.id}}/approve/" ><button id="submit" class="btn btn-inverse" type="button" style="height:30px; width: 80px;"> อนุมัติ </button></a>
-									<button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" href="{{user.id}}/reject/">  ไม่อนุมัติ </button>
+									<a href="{{user.id}}/reject/"><button id="reset" class="btn btn-inverse" type="button" style="height:30px; width: 80px;" data-toggle="modal" >  ไม่อนุมัติ </button></a>
 									
 								</div>
 
